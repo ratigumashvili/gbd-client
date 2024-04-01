@@ -1,0 +1,49 @@
+import Link from "next/link"
+import { team, teamAppreciation } from "../_lib/data"
+import Image from "next/image"
+
+const Blocks = ({data = []}) => {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2">
+      {data.length && data.map(({id, name, researchGate, text, photo}) => (
+        <div key={id} className="flex flex-col md:flex-row gap-4 mb-4">
+          <Image src={photo ? photo : '/iliauni-logo_eng.png'} width={150} height={150} className="w-full md:w-[150px] h-[350px] md:h-[150px] object-cover shrink-0" alt={name} />
+          <div>
+            <h4 className="mb-3">{name}</h4>
+            {researchGate && (<Link href={researchGate} target="blank" className="link inline-block mb-3">Researchgate Profile</Link>)}
+            <div
+              dangerouslySetInnerHTML={{ __html: text }}
+              className="[&>p]:mb-3 text-sm"
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+const Team = () => {
+  return (
+    <div className="py-4">
+      <h2 className="text-2xl font-medium mb-4">Team</h2>
+
+      <h3 className="font-medium mb-4">Editors</h3>
+
+      <Blocks data={team.data.editors} />
+
+      <h3 className="font-medium mb-4">Authors</h3>
+
+      <Blocks data={team.data.authors} />
+
+      <h3 className="font-medium mb-4">Special thanks</h3>
+
+      <div className="[&>p]:mb-3 [&>ul]:mb-3 [&>ul]:list-disc [&>ul]:ml-4 p-4 bg-slate-50 rounded-md"
+        dangerouslySetInnerHTML={{ __html: teamAppreciation }}
+      />
+
+    </div>
+
+  )
+}
+
+export default Team

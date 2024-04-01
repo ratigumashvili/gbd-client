@@ -1,0 +1,1 @@
+export const separator = (index, array) => index === array.length - 1 ? "" : ', '
