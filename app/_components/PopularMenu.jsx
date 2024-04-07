@@ -6,7 +6,7 @@ function PopularMenu() {
   return (
     <div className='p-4 bg-slate-50 rounded-md col-span-1'>
       <h2 className="text-2xl font-medium mb-4">
-        Popular menu
+        Popular entries
       </h2>
       <ul>
         {popularMenu.map((menuitem) => (

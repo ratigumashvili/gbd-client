@@ -6,7 +6,7 @@ import Link from "next/link"
 
 import { TopMenu } from "../_lib/constants"
 
-import LoginModal from "./LoginModal"
+import AuthModal from "./AuthModal"
 import SearchModal from "./SearchModal"
 
 import Hamburger from "./icons/Hamburger"
@@ -97,7 +97,7 @@ function Header() {
                         
                         <SearchModal />
 
-                        <LoginModal />
+                        <AuthModal />
 
                     </div>
                 </div>

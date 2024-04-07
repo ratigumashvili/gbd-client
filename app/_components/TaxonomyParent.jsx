@@ -27,9 +27,12 @@ export default function TaxonomyParent({ title, description, photos }) {
 
     return (
         <div className='py-4'>
-            <h2 className="text-2xl font-medium mb-4">{title}</h2>
+            <h2 className="text-2xl font-medium mb-6">{title}</h2>
             <div className="flex flex-col md:flex-row gap-4">
                 <div className="flex-1">
+
+                    <h2 className='font-medium my-2 block-title'>Description</h2>
+
                     <dl className="data-list">
                         {scientificNameId && (
                             <>
@@ -124,11 +127,15 @@ export default function TaxonomyParent({ title, description, photos }) {
                     </dl>
                 </div>
                 <div className="flex-1">
+
+                    <h2 className='font-medium my-2 block-title'>Gallery</h2>
+
                     <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
                         {photos.map((image) => (
                             <TaxonomyParentImage key={image.id} {...image} />
                         ))}
                     </div>
+
                 </div>
             </div>
             <div className="col-span-2 my-4 border rounded-md">

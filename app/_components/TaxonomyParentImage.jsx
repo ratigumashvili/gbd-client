@@ -77,7 +77,7 @@ export default function TaxonomyParentImage({ url, title, id, taxon, taxonId, co
 
                                     <div className="mt-4 flex flex-col gap-4">
 
-                                        <Image src={url} width={500} height={500} alt={title} className='w-full h-auto object-cover' />
+                                        <Image src={url} width={500} height={500} alt={title} className='w-full h-auto object-cover z-[999999]' />
 
                                         <dl className="data-list">
                                             <dt>Taxon:</dt>

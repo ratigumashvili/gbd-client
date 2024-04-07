@@ -22,8 +22,6 @@ import "react-leaflet-fullscreen/styles.css";
 import { mapOptions } from "@/app/_lib/constants"
 import { places } from "@/app/_lib/data";
 
-
-
 const { center, zoom } = mapOptions
 
 function HomePageMap() {
@@ -72,9 +70,8 @@ function HomePageMap() {
 
             <div className="flex-1 md:max-w-[320px] h-[400px] overflow-y-auto">{speciesData.length === 0 ? "Click on markers to load data" : (
                 <ul>
-                    {speciesData.map(({ id, name, genus, url }) => (
+                    {speciesData.map(({ id, name, url }) => (
                         <li key={id} className="flex flex-col gap-2 py-2">
-                            <span>Genus: {genus}</span>
                             <span>Species: {name}</span>
                             <Link href={url} className="text-teal-600 underline hover:text-teal-700">Read more</Link>
                             <hr />

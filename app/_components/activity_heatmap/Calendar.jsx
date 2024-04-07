@@ -5,14 +5,7 @@ import { useState } from "react"
 import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 
-const activityChartData = [
-    { date: '2023-04-01', count: 1 },
-    { date: '2023-05-22', count: 22 },
-    { date: '2023-06-1', count: 6 },
-    { date: '2023-06-27', count: 11 },
-    { date: '2023-06-28', count: 3 },
-    { date: '2023-06-29', count: 8 },
-]
+import { activityChartData } from "@/app/_lib/data";
 
 export default function Calendar() {
     const [count, setCount] = useState('')

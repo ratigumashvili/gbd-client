@@ -235,1029 +235,6 @@ export const teamAppreciation = `
     <p>We appreciate contribution into the Database/website Development provided by the following persons:</p><ul><li>Sandro Tarkhan-Mouravi (development of the first versions of the website and website management in 2006-2010),</li><li>Zezva Asanidze,</li><li>Rusiko Mamradze,</li><li>Ketino Odikadze (inputting information, in particular species checklists).</li></ul><pWe>Other contributors are listed on the pages of the Database that they have developed or edited.</pWe appreciate contribution into the Database/website Development provided by the following persons: Sandro Tarkhan-Mouravi (development of the first versions of the website and website management in 2006-2010), Zezva Asanidze, Rusiko Mamradze, Ketino Odikadze (inputting information, in particular species checklists). Other contributors are listed on the pages of the Database that they have developed or edited.>
 `
 
-export const activitySeries = [
-    {
-        name: "January",
-        data: [
-            {
-                x: '2005',
-                y: 200
-            },
-            {
-                x: '2006',
-                y: 10
-            },
-            {
-                x: '2007',
-                y: 50
-            },
-            {
-                x: '2008',
-                y: 0
-            },
-            {
-                x: '2009',
-                y: 10
-            },
-            {
-                x: '2010',
-                y: 0
-            },
-            {
-                x: '2011',
-                y: 30
-            },
-            {
-                x: '2012',
-                y: 15
-            },
-            {
-                x: '2013',
-                y: 0
-            },
-            {
-                x: '2014',
-                y: 3
-            },
-            {
-                x: '2015',
-                y: 50
-            },
-            {
-                x: '2016',
-                y: 200
-            },
-            {
-                x: '2017',
-                y: 10
-            },
-            {
-                x: '2018',
-                y: 50
-            },
-            {
-                x: '2019',
-                y: 0
-            },
-            {
-                x: '2020',
-                y: 10
-            },
-            {
-                x: '2021',
-                y: 0
-            },
-            {
-                x: '2022',
-                y: 30
-            },
-            {
-                x: '2023',
-                y: 15
-            },
-            {
-                x: '2024',
-                y: 0
-            }
-        ]
-    },
-    {
-        name: "February",
-        data: [
-            {
-                x: '2005',
-                y: 43
-            },
-            {
-                x: '2006',
-                y: 3
-            },
-            {
-                x: '2007',
-                y: 5
-            },
-            {
-                x: '2008',
-                y: 10
-            },
-            {
-                x: '2009',
-                y: 11
-            },
-            {
-                x: '2010',
-                y: 0
-            },
-            {
-                x: '2011',
-                y: 7
-            },
-            {
-                x: '2012',
-                y: 29
-            },
-            {
-                x: '2013',
-                y: 20
-            },
-            {
-                x: '2014',
-                y: 0
-            },
-            {
-                x: '2015',
-                y: 80
-            },
-            {
-                x: '2016',
-                y: 43
-            },
-            {
-                x: '2017',
-                y: 3
-            },
-            {
-                x: '2018',
-                y: 5
-            },
-            {
-                x: '2019',
-                y: 10
-            },
-            {
-                x: '2020',
-                y: 11
-            },
-            {
-                x: '2021',
-                y: 0
-            },
-            {
-                x: '2022',
-                y: 7
-            },
-            {
-                x: '2023',
-                y: 29
-            },
-            {
-                x: '2024',
-                y: 20
-            },
-        ]
-    },
-    {
-        name: "March",
-        data: [
-            {
-                x: '2005',
-                y: 99
-            },
-            {
-                x: '2006',
-                y: 7
-            },
-            {
-                x: '2007',
-                y: 29
-            },
-            {
-                x: '2008',
-                y: 20
-            },
-            {
-                x: '2009',
-                y: 0
-            },
-            {
-                x: '2010',
-                y: 80
-            },
-            {
-                x: '2011',
-                y: 7
-            },
-            {
-                x: '2012',
-                y: 29
-            },
-            {
-                x: '2013',
-                y: 20
-            },
-            {
-                x: '2014',
-                y: 0
-            },
-            {
-                x: '2015',
-                y: 80
-            },
-            {
-                x: '2016',
-                y: 43
-            },
-            {
-                x: '2017',
-                y: 3
-            },
-            {
-                x: '2018',
-                y: 5
-            },
-            {
-                x: '2019',
-                y: 10
-            },
-            {
-                x: '2020',
-                y: 11
-            },
-            {
-                x: '2021',
-                y: 0
-            },
-            {
-                x: '2022',
-                y: 7
-            },
-            {
-                x: '2023',
-                y: 29
-            },
-            {
-                x: '2024',
-                y: 20
-            },
-        ]
-    },
-    {
-        name: "April",
-        data: [
-            {
-                x: '2005',
-                y: 74
-            },
-            {
-                x: '2006',
-                y: 63
-            },
-            {
-                x: '2007',
-                y: 5
-            },
-            {
-                x: '2008',
-                y: 1
-            },
-            {
-                x: '2009',
-                y: 88
-            },
-            {
-                x: '2010',
-                y: 0
-            },
-            {
-                x: '2011',
-                y: 89
-            },
-            {
-                x: '2012',
-                y: 15
-            },
-            {
-                x: '2013',
-                y: 12
-            },
-            {
-                x: '2014',
-                y: 0
-            },
-            {
-                x: '2015',
-                y: 15
-            },
-            {
-                x: '2016',
-                y: 43
-            },
-            {
-                x: '2017',
-                y: 3
-            },
-            {
-                x: '2018',
-                y: 5
-            },
-            {
-                x: '2019',
-                y: 10
-            },
-            {
-                x: '2020',
-                y: 11
-            },
-            {
-                x: '2021',
-                y: 0
-            },
-            {
-                x: '2022',
-                y: 7
-            },
-            {
-                x: '2023',
-                y: 29
-            },
-            {
-                x: '2024',
-                y: null
-            },
-        ]
-    },
-    {
-        name: "May",
-        data: [
-            {
-                x: '2005',
-                y: 385
-            },
-            {
-                x: '2006',
-                y: 30
-            },
-            {
-                x: '2007',
-                y: 15
-            },
-            {
-                x: '2008',
-                y: 0
-            },
-            {
-                x: '2009',
-                y: 3
-            },
-            {
-                x: '2010',
-                y: 50
-            },
-            {
-                x: '2011',
-                y: 30
-            },
-            {
-                x: '2012',
-                y: 15
-            },
-            {
-                x: '2013',
-                y: 0
-            },
-            {
-                x: '2014',
-                y: 3
-            },
-            {
-                x: '2015',
-                y: 50
-            },
-            {
-                x: '2016',
-                y: 43
-            },
-            {
-                x: '2017',
-                y: 3
-            },
-            {
-                x: '2018',
-                y: 5
-            },
-            {
-                x: '2019',
-                y: 10
-            },
-            {
-                x: '2020',
-                y: 11
-            },
-            {
-                x: '2021',
-                y: 0
-            },
-            {
-                x: '2022',
-                y: 7
-            },
-            {
-                x: '2023',
-                y: 29
-            },
-            {
-                x: '2024',
-                y: null
-            },
-        ]
-    },
-    {
-        name: "June",
-        data: [
-            {
-                x: '2005',
-                y: 31
-            },
-            {
-                x: '2006',
-                y: 301
-            },
-            {
-                x: '2007',
-                y: 500
-            },
-            {
-                x: '2008',
-                y: 12
-            },
-            {
-                x: '2009',
-                y: 1
-            },
-            {
-                x: '2010',
-                y: 13
-            },
-            {
-                x: '2011',
-                y: 31
-            },
-            {
-                x: '2012',
-                y: 301
-            },
-            {
-                x: '2013',
-                y: 500
-            },
-            {
-                x: '2014',
-                y: 12
-            },
-            {
-                x: '2015',
-                y: 1
-            },
-            {
-                x: '2016',
-                y: 43
-            },
-            {
-                x: '2017',
-                y: 3
-            },
-            {
-                x: '2018',
-                y: 5
-            },
-            {
-                x: '2019',
-                y: 10
-            },
-            {
-                x: '2020',
-                y: 11
-            },
-            {
-                x: '2021',
-                y: 0
-            },
-            {
-                x: '2022',
-                y: 7
-            },
-            {
-                x: '2023',
-                y: 29
-            },
-            {
-                x: '2024',
-                y: null
-            },
-        ]
-    },
-    {
-        name: "July",
-        data: [
-            {
-                x: '2005',
-                y: 13
-            },
-            {
-                x: '2006',
-                y: 87
-            },
-            {
-                x: '2007',
-                y: 18
-            },
-            {
-                x: '2008',
-                y: 20
-            },
-            {
-                x: '2009',
-                y: 0
-            },
-            {
-                x: '2010',
-                y: 60
-            },
-            {
-                x: '2011',
-                y: 13
-            },
-            {
-                x: '2012',
-                y: 87
-            },
-            {
-                x: '2013',
-                y: 18
-            },
-            {
-                x: '2014',
-                y: 20
-            },
-            {
-                x: '2015',
-                y: 0
-            },
-            {
-                x: '2016',
-                y: 43
-            },
-            {
-                x: '2017',
-                y: 3
-            },
-            {
-                x: '2018',
-                y: 5
-            },
-            {
-                x: '2019',
-                y: 10
-            },
-            {
-                x: '2020',
-                y: 11
-            },
-            {
-                x: '2021',
-                y: 0
-            },
-            {
-                x: '2022',
-                y: 7
-            },
-            {
-                x: '2023',
-                y: 29
-            },
-            {
-                x: '2024',
-                y: null
-            },
-        ]
-    },
-    {
-        name: "August",
-        data: [
-            {
-                x: '2005',
-                y: 430
-            },
-            {
-                x: '2006',
-                y: 63
-            },
-            {
-                x: '2007',
-                y: 25
-            },
-            {
-                x: '2008',
-                y: 55
-            },
-            {
-                x: '2009',
-                y: 0
-            },
-            {
-                x: '2010',
-                y: 870
-            },
-            {
-                x: '2011',
-                y: 89
-            },
-            {
-                x: '2012',
-                y: 15
-            },
-            {
-                x: '2013',
-                y: 12
-            },
-            {
-                x: '2014',
-                y: 0
-            },
-            {
-                x: '2015',
-                y: 15
-            },
-            {
-                x: '2016',
-                y: 43
-            },
-            {
-                x: '2017',
-                y: 3
-            },
-            {
-                x: '2018',
-                y: 5
-            },
-            {
-                x: '2019',
-                y: 10
-            },
-            {
-                x: '2020',
-                y: 11
-            },
-            {
-                x: '2021',
-                y: 0
-            },
-            {
-                x: '2022',
-                y: 7
-            },
-            {
-                x: '2023',
-                y: 29
-            },
-            {
-                x: '2024',
-                y: null
-            },
-        ]
-    },
-    {
-        name: "September",
-        data: [
-            {
-                x: '2005',
-                y: 63
-            },
-            {
-                x: '2006',
-                y: 73
-            },
-            {
-                x: '2007',
-                y: 85
-            },
-            {
-                x: '2008',
-                y: 2
-            },
-            {
-                x: '2009',
-                y: 88
-            },
-            {
-                x: '2010',
-                y: 19
-            },
-            {
-                x: '2011',
-                y: 7
-            },
-            {
-                x: '2012',
-                y: 29
-            },
-            {
-                x: '2013',
-                y: 20
-            },
-            {
-                x: '2014',
-                y: 0
-            },
-            {
-                x: '2015',
-                y: 80
-            },
-            {
-                x: '2016',
-                y: 43
-            },
-            {
-                x: '2017',
-                y: 3
-            },
-            {
-                x: '2018',
-                y: 5
-            },
-            {
-                x: '2019',
-                y: 10
-            },
-            {
-                x: '2020',
-                y: 11
-            },
-            {
-                x: '2021',
-                y: 0
-            },
-            {
-                x: '2022',
-                y: 7
-            },
-            {
-                x: '2023',
-                y: 29
-            },
-            {
-                x: '2024',
-                y: null
-            },
-        ]
-    },
-    {
-        name: "October",
-        data: [
-            {
-                x: '2005',
-                y: 43
-            },
-            {
-                x: '2006',
-                y: 3
-            },
-            {
-                x: '2007',
-                y: 5
-            },
-            {
-                x: '2008',
-                y: 69
-            },
-            {
-                x: '2009',
-                y: 0
-            },
-            {
-                x: '2010',
-                y: 1
-            },
-            {
-                x: '2011',
-                y: 7
-            },
-            {
-                x: '2012',
-                y: 29
-            },
-            {
-                x: '2013',
-                y: 20
-            },
-            {
-                x: '2014',
-                y: 0
-            },
-            {
-                x: '2015',
-                y: 80
-            },
-            {
-                x: '2016',
-                y: 43
-            },
-            {
-                x: '2017',
-                y: 3
-            },
-            {
-                x: '2018',
-                y: 5
-            },
-            {
-                x: '2019',
-                y: 10
-            },
-            {
-                x: '2020',
-                y: 11
-            },
-            {
-                x: '2021',
-                y: 0
-            },
-            {
-                x: '2022',
-                y: 7
-            },
-            {
-                x: '2023',
-                y: 29
-            },
-            {
-                x: '2024',
-                y: null
-            },
-        ]
-    },
-    {
-        name: "November",
-        data: [
-            {
-                x: '2005',
-                y: 26
-            },
-            {
-                x: '2006',
-                y: 89
-            },
-            {
-                x: '2007',
-                y: 15
-            },
-            {
-                x: '2008',
-                y: 12
-            },
-            {
-                x: '2009',
-                y: 0
-            },
-            {
-                x: '2010',
-                y: 15
-            },
-            {
-                x: '2011',
-                y: 89
-            },
-            {
-                x: '2012',
-                y: 15
-            },
-            {
-                x: '2013',
-                y: 12
-            },
-            {
-                x: '2014',
-                y: 0
-            },
-            {
-                x: '2015',
-                y: 15
-            },
-            {
-                x: '2016',
-                y: 43
-            },
-            {
-                x: '2017',
-                y: 3
-            },
-            {
-                x: '2018',
-                y: 5
-            },
-            {
-                x: '2019',
-                y: 10
-            },
-            {
-                x: '2020',
-                y: 11
-            },
-            {
-                x: '2021',
-                y: 0
-            },
-            {
-                x: '2022',
-                y: 7
-            },
-            {
-                x: '2023',
-                y: 29
-            },
-            {
-                x: '2024',
-                y: null
-            },
-        ]
-    },
-    {
-        name: "December",
-        data: [
-            {
-                x: '2005',
-                y: 42
-            },
-            {
-                x: '2006',
-                y: 0
-            },
-            {
-                x: '2007',
-                y: 5
-            },
-            {
-                x: '2008',
-                y: 8
-            },
-            {
-                x: '2009',
-                y: 80
-            },
-            {
-                x: '2010',
-                y: 0
-            },
-            {
-                x: '2011',
-                y: 200
-            },
-            {
-                x: '2012',
-                y: 10
-            },
-            {
-                x: '2013',
-                y: 50
-            },
-            {
-                x: '2014',
-                y: 0
-            },
-            {
-                x: '2015',
-                y: 10
-            },
-            {
-                x: '2016',
-                y: 0
-            },
-            {
-                x: '2017',
-                y: 5
-            },
-            {
-                x: '2018',
-                y: 8
-            },
-            {
-                x: '2019',
-                y: 80
-            },
-            {
-                x: '2020',
-                y: 0
-            },
-            {
-                x: '2021',
-                y: 200
-            },
-            {
-                x: '2022',
-                y: 10
-            },
-            {
-                x: '2023',
-                y: 50
-            },
-            {
-                x: '2024',
-                y: null
-            }
-        ]
-    }
-]
-
 export const popularMenu = [
     {
         id: 1,
@@ -2110,8 +1087,7 @@ export const places = [
             {
                 id: 1,
                 name: 'Mustela ermina',
-                genus: 'Mustela',
-                url: '#'
+                url: 'species/mustela-ermina'
             }
         ]
     },
@@ -2126,26 +1102,22 @@ export const places = [
             {
                 id: 1,
                 name: 'Mustela lutreola',
-                genus: 'Mustela',
-                url: '#'
+                url: 'species/mustela-lutreola'
             },
             {
                 id: 2,
                 name: "Martes foina",
-                genus: "Martes",
-                url: "#"
+                url: "species/martes-foina"
             },
             {
                 id: 3,
                 name: "Martes martes",
-                genus: "Martes",
-                url: "#"
+                url: "species/martes-martes"
             },
             {
                 id: 4,
                 name: 'Mustela nivalis',
-                genus: "Mustela",
-                url: '#'
+                url: 'species/mustela-nivalis'
             }
         ]
     },
@@ -2160,9 +1132,210 @@ export const places = [
             {
                 id: 1,
                 name: 'Mustela nivalis',
-                genus: "Mustela",
-                url: '#'
+                url: 'species/mustela-nivalis'
             }
         ]
+    }
+]
+
+// Heatmap data 
+
+export const heatmapData = [
+    [37.7749, -122.4194, 50],
+    [51.505, -0.09, 0.1],
+    [51.106, -0.08, 0.5],
+    [51.507, -0.07, 0.3],
+    [51.505, -0.09, 0.1],
+    [51.508, -0.07, 0.2],
+    [51.509, -0.06, 0.7],
+    [51.507, -0.08, 0.4],
+    [51.504, -0.07, 0.6],
+    [51.503, -0.09, 0.3],
+    [51.506, -0.06, 0.2],
+    [40.7128, -74.006, 100],
+    [34.0522, -118.2437, 80],
+    [41.8781, -87.6298, 70],
+    [29.7604, -95.3698, 60],
+    [42.3601, -71.0589, 50],
+    [32.7157, -117.1611, 40],
+    [39.9526, -75.1652, 30],
+    [33.4484, -112.074, 20],
+    [47.6062, -122.3321, 10],
+    [38.9072, -77.0369, 5],
+
+    [19.076, 72.8777, 50], // Mumbai
+    [19.041, 73.0777, 10], // Mumbai
+    [19.066, 73.8077, 20], // Mumbai
+    [19.076, 73.3077, 30], // Mumbai
+    [28.7041, 77.1025, 40], // Delhi
+    [12.9716, 77.5946, 30], // Bangalore
+    [22.5726, 88.3639, 20], // Kolkata
+    [13.0827, 80.2707, 10], // Chennai
+    [26.9124, 75.7873, 5], // Jaipur
+    [17.385, 78.4867, 5], // Hyderabad
+    [22.7196, 75.8577, 2], // Indore
+    [19.076, 72.8777, 3]
+];
+
+export const activityChartData = [
+    { date: '2023-04-01', count: 1 },
+    { date: '2023-05-22', count: 22 },
+    { date: '2023-06-1', count: 6 },
+    { date: '2023-06-27', count: 11 },
+    { date: '2023-06-28', count: 3 },
+    { date: '2023-06-29', count: 8 },
+    { date: '2023-11-03', count: 2 },
+    { date: '2023-11-04', count: 3 },
+    { date: '2023-12-28', count: 6 },
+    { date: '2024-01-14', count: 12 },
+    { date: '2024-01-26', count: 21 },
+]
+
+export const species = [
+    {
+        id: 1,
+        slug: 'mustela-lutreola',
+        name: 'Mustela lutreola',
+        scientificNameID: '2438',
+        nameAccordingTo: {
+            title: 'Darwin Core',
+            url: 'https://dwc.tdwg.org/list/#dwc_nameAccordingTo'
+        },
+        species: 'lutreola',
+        taxonRank: {
+            title: 'Darwin Core',
+            url: 'https://dwc.tdwg.org/list/#dwc_taxonRank'
+        },
+        scientificNameAuthorship: {
+            title: 'Darwin Core',
+            url: 'https://dwc.tdwg.org/list/#dwc_scientificNameAuthorship'
+        },
+        vernacularName: {
+            title: 'Darwin Core',
+            url: 'https://dwc.tdwg.org/list/#dwc_vernacularName'
+        },
+        georgianName: 'წაულა',
+        referenceOfOccurrenceInGeorgia: [
+            {
+                id: 1,
+                title: 'Bukhnikashvili, A. & Kandaurov, A., 2002. The annotated list of mammals of Georgia. Proceedings of the Institute of Zoology, Tbilisi, XXI: 319-336'
+            },
+            {
+                id: 2,
+                title: 'Testing more then one reference'
+            }
+        ],
+        speciesDistribution: [
+            [37.7749, -122.4194, 50],
+            [51.505, -0.09, 0.1],
+            [51.106, -0.08, 0.5],
+            [51.507, -0.07, 0.3],
+            [51.505, -0.09, 0.1],
+            [51.508, -0.07, 0.2],
+            [51.509, -0.06, 0.7],
+            [51.507, -0.08, 0.4],
+            [51.504, -0.07, 0.6],
+            [51.503, -0.09, 0.3],
+            [51.506, -0.06, 0.2],
+        ],
+        conservationStatus: {
+            nationalRedLisStatus: 'CR',
+            IUCNRedListStatus: 'CR',
+            protectionStatus: 'Not defined',
+            reason: 'A3ce (IUCN)',
+            trend: 'Unknown',
+            native_introduced: 'Native',
+            comment: '**',
+            georgianName: 'წაულა',
+            englishName: 'European Mink',
+            subSpecies: 'M.l. turovi',
+            synonyms: 'Mustela lutreola caucasica, M.l. binominata',
+            taxonomyAccordingTo: 'www.redlist.org',
+            referencies: [
+                {
+                    id: 1,
+                    title: 'Bukhnikashvili, A. & Kandaurov, A., 2002. The annotated list of mammals of Georgia. Proceedings of the Institute of Zoology, Tbilisi, XXI: 319-420'
+                }
+            ],
+            evaluatedBy: [
+                {
+                    id: 1,
+                    name: 'Bukhnikashvili A.'
+                },
+                {
+                    id: 2,
+                    name: 'Kandaurov A.'
+                },
+                {
+                    id: 3,
+                    name: 'Natradze I.'
+                }
+            ],
+            dateEvaluated: 'Nov 2021'
+        }
+    },
+    {
+        id: 2,
+        slug: 'mustela-ermina',
+        name: 'Mustela ermina',
+        scientificNameID: '2437',
+        nameAccordingTo: {},
+        species: 'ermina',
+        taxonRank: {
+            title: 'Darwin Core',
+            url: 'https://dwc.tdwg.org/list/#dwc_taxonRank'
+        },
+        scientificNameAuthorship: {},
+        vernacularName: {},
+        georgianName: '',
+        referenceOfOccurrenceInGeorgia: [],
+        speciesDistribution: [
+            [37.7749, -122.4194, 50],
+            [51.505, -0.09, 0.1],
+            [51.106, -0.08, 0.5],
+            [51.507, -0.07, 0.3],
+            [51.505, -0.09, 0.1],
+            [51.508, -0.07, 0.2],
+            [51.509, -0.06, 0.7],
+            [51.507, -0.08, 0.4],
+            [51.504, -0.07, 0.6],
+            [51.503, -0.09, 0.3],
+            [51.506, -0.06, 0.2],
+        ],
+        conservationStatus: {
+            nationalRedLisStatus: 'DD',
+            IUCNRedListStatus: 'LC',
+            protectionStatus: 'Not defined',
+            reason: 'N/A',
+            trend: 'Unknown',
+            native_introduced: 'Native',
+            comment: '**',
+            georgianName: 'ყარყუმი',
+            englishName: 'Stoat',
+            subSpecies: 'M.e. teberdiana',
+            synonyms: '',
+            taxonomyAccordingTo: 'www.redlist.org',
+            referencies: [
+                {
+                    id: 1,
+                    title: 'Bukhnikashvili, A. & Kandaurov, A., 2002. The annotated list of mammals of Georgia. Proceedings of the Institute of Zoology, Tbilisi, XXI: 319-419'
+                }
+            ],
+            evaluatedBy: [
+                {
+                    id: 1,
+                    name: 'Bukhnikashvili A.'
+                },
+                {
+                    id: 2,
+                    name: 'Kandaurov A.'
+                },
+                {
+                    id: 3,
+                    name: 'Natradze I.'
+                }
+            ],
+            dateEvaluated: 'Nov 2021'
+        }
     }
 ]
