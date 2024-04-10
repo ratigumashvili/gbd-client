@@ -24,7 +24,7 @@ export default function Distribution({ data }) {
             <MapContainer
                 center={[18.54181410564795, 73.79118672935255]}
                 zoom={12}
-                style={{ height: "250px", width: "100%", zIndex: '10' }}
+                style={{ height: "350px", width: "100%", zIndex: '10' }}
             >
                 <HeatmapLayer
                     fitBoundsOnLoad

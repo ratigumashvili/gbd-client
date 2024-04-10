@@ -27,6 +27,11 @@
         before:w-5 
         before:h-[2px] 
         before:bg-teal-700
+        print:font-semibold
+}
+
+.actions-dropdown-item {
+    @apply px-4 py-2 text-left hover:bg-teal-700 hover:text-white rounded-sm hover:cursor-pointer transition-all ease-in
 }
 
 .data-list {

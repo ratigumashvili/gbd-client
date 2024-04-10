@@ -6,7 +6,7 @@ const Blocks = ({data = []}) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2">
       {data.length && data.map(({id, name, researchGate, text, photo}) => (
-        <div key={id} className="flex flex-col md:flex-row gap-4 mb-4">
+        <div key={id} className="flex flex-col md:flex-row gap-4 mb-6">
           <Image src={photo ? photo : '/iliauni-logo_eng.png'} width={150} height={150} className="w-full md:w-[150px] h-[350px] md:h-[150px] object-cover shrink-0" alt={name} />
           <div>
             <h4 className="mb-3">{name}</h4>
@@ -34,6 +34,10 @@ const Team = () => {
       <h3 className="font-medium mb-4">Authors</h3>
 
       <Blocks data={team.data.authors} />
+
+      <h3 className="font-medium mb-4">Contributors</h3>
+
+      <Blocks data={team.data.contributors} />
 
       <h3 className="font-medium mb-4">Special thanks</h3>
 

@@ -162,6 +162,8 @@ export const team = {
                 text: `Biologist by University of Granada (Spain) and author of project Mycogeorgia. Along 2011 and 2012 he made a sampling of Georgian mushrooms within several Natural Protected Areas under the auspices of the Ministry of Environment Protection of Georgia.`,
                 photo: "https://biodiversity.iliauni.edu.ge/images/team/diego.jpg"
             },
+        ],
+        contributors: [
             {
                 id: 5,
                 name: "Natia Kopaliani",
@@ -1255,6 +1257,10 @@ export const species = [
                 {
                     id: 1,
                     title: 'Bukhnikashvili, A. & Kandaurov, A., 2002. The annotated list of mammals of Georgia. Proceedings of the Institute of Zoology, Tbilisi, XXI: 319-420'
+                },
+                {
+                    id: 2,
+                    title: "Test 222"
                 }
             ],
             evaluatedBy: [
@@ -1319,6 +1325,10 @@ export const species = [
                 {
                     id: 1,
                     title: 'Bukhnikashvili, A. & Kandaurov, A., 2002. The annotated list of mammals of Georgia. Proceedings of the Institute of Zoology, Tbilisi, XXI: 319-419'
+                },
+                {
+                    id: 2,
+                    title: "test"
                 }
             ],
             evaluatedBy: [

@@ -76,3 +76,36 @@ export const mapOptions = {
     zoom: 8,
     center: [42.236104704638805, 43.75807953121158]
 }
+
+export const conservationStatusInterface = {
+    nationalRedLisStatus: '',
+    IUCNRedListStatus: '',
+    protectionStatus: '',
+    reason: '',
+    trend: '',
+    native_introduced: '',
+    comment: '',
+    georgianName: '',
+    englishName: '',
+    subSpecies: '',
+    synonyms: '',
+    taxonomyAccordingTo: '',
+    referencies: [],
+    evaluatedBy: [],
+    dateEvaluated: ''
+}
+
+export const singleMetaInterface = {
+    id: null,
+    slug: '',
+    name: '',
+    scientificNameID: '',
+    nameAccordingTo: {},
+    species: '',
+    taxonRank: {},
+    scientificNameAuthorship: {},
+    vernacularName: {},
+    georgianName: '',
+    referenceOfOccurrenceInGeorgia: [],
+    speciesDistribution: [],
+}

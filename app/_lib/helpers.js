@@ -1,9 +1,42 @@
-export const separator = (index, array) => index === array.length - 1 ? "" : ', '
+import { Bounce } from "react-toastify"
+
+export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+
+export const separator = (index, array, separatorType = ', ') => index === array.length - 1 ? "." : separatorType
 
 export const checkObject = (object) => {
-    if (Object.keys(object).length !== 0) {
+    if (object && Object?.keys(object).length !== 0) {
         return object
     } else {
         return
     }
 }
+
+export const currentDate = new Date().toLocaleDateString().split('/').join('-')
+
+export const copyToClipboard = (value) => {
+    navigator.clipboard.writeText(value);
+}
+
+export const toastOptions = {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: false,
+    progress: undefined,
+    theme: "light",
+    transition: Bounce,
+}
+
+export const exportData = (dataObject) => {
+    const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+        JSON.stringify(dataObject)
+    )}`;
+    const link = document.createElement("a");
+    link.href = jsonString;
+    link.download = "data.json";
+
+    link.click();
+};
