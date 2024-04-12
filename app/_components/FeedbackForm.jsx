@@ -1,16 +1,18 @@
 'use client'
 
-
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 
 import MDEditor from '@uiw/react-md-editor';
 import rehypeSanitize from "rehype-sanitize";
 
-import { Bounce, toast } from 'react-toastify';
+import { useUserContext } from '../_context/UserContext';
+
+import { toast } from 'react-toastify';
+import { toastOptions } from '../_lib/helpers';
 
 import Close from './icons/Close';
-import { toastOptions } from '../_lib/helpers';
+
 
 export default function FeedbackForm({ isOpen, closeModal, metaData }) {
 
@@ -18,6 +20,8 @@ export default function FeedbackForm({ isOpen, closeModal, metaData }) {
     const [description, setDescription] = useState('')
 
     const [formError, setFormError] = useState(false)
+
+    const { user } = useUserContext()
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
@@ -29,7 +33,6 @@ export default function FeedbackForm({ isOpen, closeModal, metaData }) {
             closeModal()
             toast.success("Your feedback was sent", toastOptions)
         }
-
     }
 
     return (
@@ -69,40 +72,43 @@ export default function FeedbackForm({ isOpen, closeModal, metaData }) {
                                             <Close />
                                         </button>
                                     </Dialog.Title>
-                                    <form className="mt-2 flex flex-col gap-4" onSubmit={handleFormSubmit}>
-                                        <small>Issue title <span className='text-red-700'>*</span></small>
-                                        <input
-                                            value={issueTitle}
-                                            onChange={(e) => setIssueTitle(e.target.value)}
-                                            type="text"
-                                            className='p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-xs'
-                                            placeholder='Provide descriptive title'
-                                        />
-                                        <small>Issue description <span className='text-red-700'>*</span></small>
-                                        <MDEditor
-                                            value={description}
-                                            onChange={setDescription}
-                                            previewOptions={{
-                                                rehypePlugins: [[rehypeSanitize]],
-                                            }}
-                                            textareaProps={{
-                                                placeholder: 'Describe an issue',
-                                            }}
-                                        />
 
-                                        <div className="mt-4 flex items-center justify-between">
-                                            <button
-                                                type="submit"
-                                                className="button"
-                                                onClick={handleFormSubmit}
-                                            >
-                                                Send feedback
-                                            </button>
+                                    {user.loggedIn ? (
+                                        <form className="mt-2 flex flex-col gap-4" onSubmit={handleFormSubmit}>
+                                            <small>Issue title <span className='text-red-700'>*</span></small>
+                                            <input
+                                                value={issueTitle}
+                                                onChange={(e) => setIssueTitle(e.target.value)}
+                                                type="text"
+                                                className='p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-xs'
+                                                placeholder='Provide descriptive title'
+                                            />
+                                            <small>Issue description <span className='text-red-700'>*</span></small>
+                                            <MDEditor
+                                                value={description}
+                                                onChange={setDescription}
+                                                previewOptions={{
+                                                    rehypePlugins: [[rehypeSanitize]],
+                                                }}
+                                                textareaProps={{
+                                                    placeholder: 'Describe an issue',
+                                                }}
+                                            />
 
-                                            {formError && <p className='text-sm text-red-700'>{formError}</p>}
-                                        </div>
+                                            <div className="mt-4 flex items-center justify-between">
+                                                <button
+                                                    type="submit"
+                                                    className="button"
+                                                    onClick={handleFormSubmit}
+                                                >
+                                                    Send feedback
+                                                </button>
 
-                                    </form>
+                                                {formError && <p className='text-sm text-red-700'>{formError}</p>}
+                                            </div>
+
+                                        </form>
+                                    ) : <p className='my-6 text-red-700'>Only authorised users can leave their feedback. Please, login to your account.</p>}
 
                                 </Dialog.Panel>
                             </Transition.Child>

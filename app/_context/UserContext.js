@@ -9,7 +9,7 @@ export function UserWrapper({children}) {
     const [user, setUser] = useState({
         name: "",
         userName: "",
-        loggedIn: false
+        loggedIn: true
     })
 
     return (
