@@ -23,8 +23,11 @@ import ApexChart from "react-apexcharts"
 
 import { mapOptions } from "@/app/_lib/constants"
 import { places } from "@/app/_lib/data";
+
 import Chart from "../icons/Chart";
 import List from "../icons/List";
+import ArrowLeft from "../icons/ArrowLeft";
+import ArrowRight from "../icons/ArrowRight";
 
 const { center, zoom } = mapOptions
 
@@ -32,6 +35,7 @@ function HomePageMap() {
 
     const [speciesData, setSpeciesData] = useState([])
     const [view, setView] = useState("list")
+    const [expanded, setExpanded] = useState(false)
 
     const handleChangeView = () => {
         view === 'list' ? setView("statistics") : setView("list")
@@ -109,13 +113,23 @@ function HomePageMap() {
                 </MapContainer>
             </div>
 
-            <div className="flex-1 md:max-w-[320px] h-[400px] overflow-y-auto">{speciesData.length === 0 ? "Click on markers to load data" : (
+            <div className={`flex-1 h-[400px] overflow-y-auto ${!expanded ? 'md:max-w-[320px]' : 'md:[max-w-[600px]]'}`}>{speciesData.length === 0 ? "Click on markers to load data" : (
 
                 <>
 
                     <div className="sticky top-0 right-0 bg-white shadow-sm">
-                        <div className="flex justify-end">
-                            <button onClick={() => handleChangeView()} className="button mb-4">
+                        <div className="flex justify-between">
+                            <button
+                                onClick={() => setExpanded((prev) => !prev)}
+                                className="hidden px-3 py-2 md:inline-block mb-4"
+                                title={!expanded ? "Expand" : "Collapse"}
+                            >
+                                {!expanded ? <ArrowLeft width="18" height="18" /> : <ArrowRight width="18" height="18" />}
+                            </button>
+                            <button
+                                onClick={() => handleChangeView()}
+                                className="border border-teal-700 hover:bg-teal-700 hover:text-white px-3 py-2 rounded-md text-sm inline-block mb-4 transition-all ease-in"
+                            >
                                 {view === "list" ? (
                                     <p className="flex gap-2 items-center h-5 w-full"><span className="text-nowrap">Chart view</span> <Chart /></p>
                                 ) : (
@@ -142,7 +156,7 @@ function HomePageMap() {
                             ))}
                         </ul>
                     ) : (
-                        <ApexChart type="bar" options={option} series={series} height={330} width={320} />
+                        <ApexChart type='bar' options={option} series={series} height={330} width={!expanded ? 320 : 600} />
                     )}
 
                 </>

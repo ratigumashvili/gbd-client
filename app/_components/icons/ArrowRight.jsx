@@ -1,22 +1,20 @@
-function Chart() {
+function ArrowRight({width = "18", height = "18"}) {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width='18'
-        height='18'
+        width={width}
+        height={height}
         fill="none"
         stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="2"
-        className="lucide lucide-bar-chart"
+        className="lucide lucide-arrow-right-from-line"
         viewBox="0 0 24 24"
       >
-        <path d="M12 20L12 10"></path>
-        <path d="M18 20L18 4"></path>
-        <path d="M6 20L6 16"></path>
+        <path d="M3 5v14M21 12H7M15 18l6-6-6-6"></path>
       </svg>
     );
   }
   
-  export default Chart;
+  export default ArrowRight;

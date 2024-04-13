@@ -2,6 +2,8 @@
 
 import { Fragment, useState } from 'react'
 
+import { usePathname } from 'next/navigation'
+
 import { Menu, Transition } from '@headlessui/react'
 
 import { toast } from 'react-toastify'
@@ -9,8 +11,8 @@ import { toast } from 'react-toastify'
 import { copyToClipboard, currentDate, exportData, toastOptions, baseUrl } from '../_lib/helpers'
 
 import FeedbackForm from './FeedbackForm'
-import Cog from './icons/Cog'
-import { usePathname } from 'next/navigation'
+
+import Hamburger from './icons/Hamburger'
 
 export default function ActionsDropdown({ handlePrint, record }) {
 
@@ -44,7 +46,7 @@ export default function ActionsDropdown({ handlePrint, record }) {
 
             <Menu as="div" className="relative inline-block text-left">
                 <Menu.Button title='Actions'>
-                    <Cog />
+                    <Hamburger />
                 </Menu.Button>
                 <Transition
                     as={Fragment}
