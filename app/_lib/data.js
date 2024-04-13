@@ -1085,13 +1085,45 @@ export const places = [
             placeName: "Khashuri",
             regionName: "Kartli"
         },
-        species: [
+        genus: [
             {
                 id: 1,
-                name: 'Mustela ermina',
-                url: 'species/mustela-ermina'
+                name: "Genus Xylaria",
+                species: [
+                    {
+                        id: 1,
+                        name: 'Mustela ermina',
+                        url: 'species/mustela-ermina'
+                    },
+                    {
+                        id: 2,
+                        name: 'Annulohypoxylon truncatum',
+                        url: 'species/mustela-ermina'
+                    },
+                ]
+            },
+            {
+                id: 2,
+                name: "Genus Annulohypoxylon",
+                species: [
+                    {
+                        id: 2,
+                        name: "Nemania atropurpurea",
+                        url: 'species/mustela-ermina'
+                    },
+                    {
+                        id: 3,
+                        name: "Nemania effusa",
+                        url: 'species/mustela-ermina'
+                    },
+                    {
+                        id: 4,
+                        name: "Nemania serpens",
+                        url: 'species/mustela-ermina'
+                    }
+                ]
             }
-        ]
+        ],
     },
     {
         id: 2,
@@ -1100,28 +1132,50 @@ export const places = [
             placeName: "Surami",
             regionName: "Kartli"
         },
-        species: [
-            {
-                id: 1,
-                name: 'Mustela lutreola',
-                url: 'species/mustela-lutreola'
-            },
-            {
-                id: 2,
-                name: "Martes foina",
-                url: "species/martes-foina"
-            },
+        genus: [
             {
                 id: 3,
-                name: "Martes martes",
-                url: "species/martes-martes"
+                name: "Genus Nemania",
+                species: [
+                    {
+                        id: 1,
+                        name: 'Mustela ermina',
+                        url: 'species/mustela-ermina'
+                    },
+                    {
+                        id: 2,
+                        name: 'Poronia punctata',
+                        url: 'species/mustela-ermina'
+                    },
+                    {
+                        id: 3,
+                        name: 'Ustulina deusta',
+                        url: 'species/mustela-ermina'
+                    },
+                ]
             },
             {
-                id: 4,
-                name: 'Mustela nivalis',
-                url: 'species/mustela-nivalis'
+                id: 9,
+                name: "Genus Poronia",
+                species: [
+                    {
+                        id: 2,
+                        name: "Ustulina maxima",
+                        url: 'species/mustela-ermina'
+                    },
+                    {
+                        id: 3,
+                        name: "Xylaria carpophila",
+                        url: 'species/mustela-ermina'
+                    },
+                    {
+                        id: 4,
+                        name: "Xylaria hypoxylon",
+                        url: 'species/mustela-ermina'
+                    }
+                ]
             }
-        ]
+        ],
     },
     {
         id: 3,
@@ -1130,13 +1184,19 @@ export const places = [
             placeName: "Some other name",
             regionName: "Test region name"
         },
-        species: [
+        genus: [
             {
-                id: 1,
-                name: 'Mustela nivalis',
-                url: 'species/mustela-nivalis'
+                id: 3,
+                name: "Genus Ustulina",
+                species: [
+                    {
+                        id: 1,
+                        name: 'Mustela nivalis',
+                        url: 'species/mustela-nivalis'
+                    }
+                ]
             }
-        ]
+        ],
     }
 ]
 

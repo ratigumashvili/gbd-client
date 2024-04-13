@@ -33,9 +33,15 @@ function HomePageMap() {
         iconSize: [38, 38]
     })
 
+    const initialValue = 0
+
+    let sum = 0
+
+    let arr
+
     return (
         <div className="flex flex-col md:flex-row gap-4">
-            
+
             <div className="flex-1">
                 <MapContainer
                     preferCanvas={true}
@@ -53,7 +59,7 @@ function HomePageMap() {
                     <FullscreenControl position="topright" title="Toggle fulscreen" forceSeparateButton={true} />
 
                     <MarkerClusterGroup>
-                        {places.map(({ id, geocode, popup, species }) => (
+                        {/* {places.map(({ id, geocode, popup, species }) => (
                             <Marker key={id} position={geocode} icon={customIcon}>
                                 <Popup>
                                     <div className="flex flex-col gap-2">
@@ -64,21 +70,44 @@ function HomePageMap() {
                                     </div>
                                 </Popup>
                             </Marker>
-                        ))}
+                        ))} */}
+
+                        {places.map(({ id, geocode, popup, genus }) => {
+                            const speciesLength = genus.map((item) => item.species.length)
+                            return <Marker key={id} position={geocode} icon={customIcon}>
+                                <Popup>
+                                    <div className="flex flex-col gap-2">
+                                        <h2>Place: {popup.placeName}</h2>
+                                        <h3>Region: {popup.regionName}</h3>
+                                        <h3>Registered Genus: {genus.length}</h3>
+                                        <h4>Species total: {speciesLength.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}</h4>
+                                        <button className="button text-sm mt-2 whitespace-nowrap" onClick={() => setSpeciesData(genus)}>Load data</button>
+                                    </div>
+                                </Popup>
+                            </Marker>
+                        })}
                     </MarkerClusterGroup>
                 </MapContainer>
             </div>
 
             <div className="flex-1 md:max-w-[320px] h-[400px] overflow-y-auto">{speciesData.length === 0 ? "Click on markers to load data" : (
+                
                 <ul>
-                    {speciesData.map(({ id, name, url }) => (
-                        <li key={id} className="flex flex-col gap-2 py-2">
-                            <span>Species: {name}</span>
-                            <Link href={url} className="text-teal-600 underline hover:text-teal-700">Read more</Link>
-                            <hr />
+                    {speciesData.map((genus) => (
+                        <li key={genus.id} className="flex flex-col gap-2 py-2">
+                            
+                            <h2 className="font-medium">{genus.name} ({genus.species.length})</h2>
+
+                            {genus.species.map(({ id, name, url }) => (
+                                <div className="pl-4 flex flex-col gap-3" key={id}>
+                                    <span>Species: <Link href={url} className="text-teal-600 underline hover:text-teal-700"><em>{name}</em></Link></span>
+                                    <hr />
+                                </div>
+                            ))}
                         </li>
                     ))}
                 </ul>
+
             )}
             </div>
 
