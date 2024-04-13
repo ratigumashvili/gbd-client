@@ -1152,6 +1152,21 @@ export const places = [
                         name: 'Ustulina deusta',
                         url: 'species/mustela-ermina'
                     },
+                    {
+                        id: 4,
+                        name: 'Mustela ermina',
+                        url: 'species/mustela-ermina'
+                    },
+                    {
+                        id: 5,
+                        name: 'Poronia punctata',
+                        url: 'species/mustela-ermina'
+                    },
+                    {
+                        id: 6,
+                        name: 'Ustulina deusta',
+                        url: 'species/mustela-ermina'
+                    },
                 ]
             },
             {
