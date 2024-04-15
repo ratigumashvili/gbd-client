@@ -1,13 +1,24 @@
+'use client'
+
+import { useRef } from 'react'
+
 import Link from 'next/link'
 
+import { useReactToPrint } from 'react-to-print'
+
 import { separator } from "@/app/_lib/helpers"
+
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 import TaxonomyParentImage from './TaxonomyParentImage'
 import DynamicTaxonomyOrder from './taxonomyOrder'
 
 import { fungiTree } from '../_lib/data'
+import ActionsDropdown from './ActionsDropdown'
+import Cite from './Cite'
 
-export default function TaxonomyParent({ title, description, photos }) {
+export default function TaxonomyParent({ name, description, photos }) {
 
     const {
         scientificNameId,
@@ -25,9 +36,24 @@ export default function TaxonomyParent({ title, description, photos }) {
         pageAuthors,
     } = description
 
+    const printContent = useRef();
+
+    const handlePrint = useReactToPrint({
+        content: () => printContent.current,
+        documentTitle: `GBD - ${name}`,
+        pageStyle: 'p-8'
+    });
+
     return (
-        <div className='py-4'>
-            <h2 className="text-2xl font-medium mb-6">{title}</h2>
+        <div className='py-4' ref={printContent}>
+            <ToastContainer />
+            <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-medium mb-6">{name}</h2>
+                <ActionsDropdown 
+                    downloadContent={false} 
+                    handlePrint={handlePrint}
+                />
+            </div>
             <div className="flex flex-col md:flex-row gap-4">
                 <div className="flex-1">
 
@@ -138,11 +164,12 @@ export default function TaxonomyParent({ title, description, photos }) {
 
                 </div>
             </div>
-            <div className="col-span-2 my-4 border rounded-md">
-                <h2 className='font-medium text-md my-4 px-4'>Visual representation of the {title}</h2>
+            <div className="col-span-2 my-4 border rounded-md print:hidden">
+                <h2 className='font-medium text-md my-4 px-4'>Visual representation of the {name}</h2>
                 <hr className='shadow-sm' />
                 <DynamicTaxonomyOrder treeContent={fungiTree} />
             </div>
+            <Cite name={name} />
         </div>
     )
 }

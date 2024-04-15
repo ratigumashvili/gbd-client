@@ -427,7 +427,7 @@ export const iucnCategory = [
 export const taxonomy = [
     {
         id: 1,
-        title: "Animalia",
+        name: "Animalia",
         description: {
             scientificNameId: "45130",
             nameAccordingTo: {
@@ -553,7 +553,7 @@ export const taxonomy = [
     },
     {
         id: 2,
-        title: "Fungi",
+        name: "Fungi",
         description: {
             scientificNameId: "45135",
             nameAccordingTo: {
@@ -671,7 +671,7 @@ export const taxonomy = [
     },
     {
         id: 3,
-        title: "Plantae",
+        name: "Plantae",
         description: {
             scientificNameId: "45132",
             nameAccordingTo: null,

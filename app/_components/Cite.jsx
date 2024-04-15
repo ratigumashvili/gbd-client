@@ -9,7 +9,7 @@ import { baseUrl, copyToClipboard, currentDate, toastOptions } from "../_lib/hel
 
 import Copy from "./icons/Copy"
 
-export default function Cite({ record }) {
+export default function Cite({ name, id = undefined }) {
 
     const citeRef = useRef()
     const [citeElement, setCiteElement] = useState()
@@ -36,7 +36,7 @@ export default function Cite({ record }) {
                     <Copy width="18" height="18" />
                 </button>
 
-                <em><b>Cite this page:</b></em> <span ref={citeRef}>{`${record?.name}`}. Georgian Biodiversity Database (Tbilisi, {`${currentDate.slice(-4)}`}). Ilia State University, Institute of Ecology. Record id {`${record?.id}`}; Available at: {`${baseUrl + pathname}`}. Date accessed: {`${currentDate}`}.</span>
+                <em><b>Cite this page:</b></em> <span ref={citeRef}>{`${name}`}. Georgian Biodiversity Database (Tbilisi, {`${currentDate.slice(-4)}`}). Ilia State University, Institute of Ecology. {id !== undefined && `Record id: ${id};`} Available at: {`${baseUrl + pathname}`}. Date accessed: {`${currentDate}`}.</span>
 
             </div>
         </>

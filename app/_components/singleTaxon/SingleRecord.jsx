@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
 import ActionsDropdown from "../ActionsDropdown"
@@ -43,7 +43,7 @@ export default function SingleRecord({ record }) {
             )}
 
             {record[0] !== undefined && (
-                <Cite record={record[0]} />
+                <Cite name={record[0]?.name} id={record[0]?.id} record={record[0]} />
             )}
 
         </div>

@@ -14,7 +14,7 @@ import FeedbackForm from './FeedbackForm'
 
 import Hamburger from './icons/Hamburger'
 
-export default function ActionsDropdown({ handlePrint, record }) {
+export default function ActionsDropdown({ handlePrint = () => void(0), record = [], downloadContent = true }) {
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -29,7 +29,7 @@ export default function ActionsDropdown({ handlePrint, record }) {
     }
 
     const metaData = {
-        title: record[0]?.name,
+        title: record[0]?.name || "Feedback",
         url: baseUrl + pathname,
         date: currentDate
     }
@@ -61,7 +61,7 @@ export default function ActionsDropdown({ handlePrint, record }) {
                         <Menu.Item as="button" onClick={handleCopyToClipboard} className="actions-dropdown-item">Copy permalink</Menu.Item>
                         <Menu.Item as="button" onClick={handlePrint} className="actions-dropdown-item">Print page</Menu.Item>
                         <Menu.Item as="button" onClick={openModal} className="actions-dropdown-item">Send feedback</Menu.Item>
-                        <Menu.Item as="button" onClick={() => exportData(record)} className="actions-dropdown-item">Download JSON</Menu.Item>
+                        {downloadContent && (<Menu.Item as="button" onClick={() => exportData(record)} className="actions-dropdown-item">Download JSON</Menu.Item>)}
                     </Menu.Items>
                 </Transition>
             </Menu>

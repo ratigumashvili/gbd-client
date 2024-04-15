@@ -5,7 +5,7 @@ import { taxonomy } from "@/app/_lib/data"
 export default function Plantae() {
     return (
         <TaxonomyParent
-            title={"Kingdom Plantae"}
+            name={"Kingdom Plantae"}
             description={taxonomy[2].description}
             photos={taxonomy[2].photos}
         />

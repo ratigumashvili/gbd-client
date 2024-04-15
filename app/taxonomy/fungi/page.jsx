@@ -5,7 +5,7 @@ import { taxonomy } from "@/app/_lib/data"
 export default function Fungi() {
   return (
     <TaxonomyParent
-      title={"Kingdom Fungi"}
+      name={"Kingdom Fungi"}
       description={taxonomy[1].description}
       photos={taxonomy[1].photos}
     />
