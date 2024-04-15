@@ -320,19 +320,19 @@ export const popularMenu = [
 export const browseByTaxonomy = [
     {
         id: 1,
-        title: "Kingdom Animalia",
+        name: "Kingdom Animalia",
         count: 16266,
         url: 'animalia'
     },
     {
         id: 2,
-        title: "Kingdom Fungi",
+        name: "Kingdom Fungi",
         count: 2103,
         url: 'fungi'
     },
     {
         id: 3,
-        title: "Kingdom Plantae",
+        name: "Kingdom Plantae",
         count: 5090,
         url: 'plantae'
     }
