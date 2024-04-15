@@ -51,7 +51,7 @@ function HomePageMap() {
 
     const option = {
         chart: {
-            id: 'apexchart-example'
+            id: 'apexchart'
         },
         xaxis: {
             categories: genusNames,
