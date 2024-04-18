@@ -322,21 +322,18 @@ export const browseByTaxonomy = [
         id: 1,
         name: "Kingdom Animalia",
         count: 16266,
-        url: 'animalia',
         slug: 'kingdom-animalia'
     },
     {
         id: 2,
         name: "Kingdom Fungi",
         count: 2103,
-        url: 'fungi',
         slug: 'kingdom-fungi'
     },
     {
         id: 3,
         name: "Kingdom Plantae",
         count: 5090,
-        url: 'plantae',
         slug: 'kingdom-plantae'
     }
 ]
