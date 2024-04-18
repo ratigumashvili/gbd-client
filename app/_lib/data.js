@@ -322,19 +322,22 @@ export const browseByTaxonomy = [
         id: 1,
         name: "Kingdom Animalia",
         count: 16266,
-        url: 'animalia'
+        url: 'animalia',
+        slug: 'kingdom-animalia'
     },
     {
         id: 2,
         name: "Kingdom Fungi",
         count: 2103,
-        url: 'fungi'
+        url: 'fungi',
+        slug: 'kingdom-fungi'
     },
     {
         id: 3,
         name: "Kingdom Plantae",
         count: 5090,
-        url: 'plantae'
+        url: 'plantae',
+        slug: 'kingdom-plantae'
     }
 ]
 
@@ -702,6 +705,7 @@ export const fungiTree = {
         {
             id: 1,
             name: "Phylum Ascomycota",
+            url: "/",
             children: [
                 {
                     id: 3,
@@ -785,6 +789,7 @@ export const fungiTree = {
         {
             id: 2,
             name: "Phylum Basidiomycota",
+            url: "/",
             children: [
                 {
                     id: 22,

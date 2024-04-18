@@ -22,8 +22,8 @@ export default function SingleRecord({ record }) {
     return (
         <div className="py-4" ref={printContent}>
 
-            <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-medium mb-4">{record[0]?.name}</h2>
+            <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-medium">{record[0]?.name}</h2>
                 <ActionsDropdown
                     handlePrint={handlePrint}
                     record={record}

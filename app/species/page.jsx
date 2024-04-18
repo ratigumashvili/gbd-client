@@ -1,7 +1,9 @@
-import React from 'react'
+import BrowseByTaxonomy from '../_components/BrowseByTaxonomy'
 
 export default function Species() {
   return (
-    <div>Species</div>
+    <div>
+      <BrowseByTaxonomy />
+    </div>
   )
 }

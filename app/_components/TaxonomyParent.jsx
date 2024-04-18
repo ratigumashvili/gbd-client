@@ -17,6 +17,7 @@ import DynamicTaxonomyOrder from './taxonomyOrder'
 import { fungiTree } from '../_lib/data'
 import ActionsDropdown from './ActionsDropdown'
 import Cite from './Cite'
+import TaxonomyChildNodes from './TaxonomyChildNodes'
 
 export default function TaxonomyParent({ name, description, photos }) {
 
@@ -47,10 +48,10 @@ export default function TaxonomyParent({ name, description, photos }) {
     return (
         <div className='py-4' ref={printContent}>
             <ToastContainer />
-            <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-medium mb-6">{name}</h2>
-                <ActionsDropdown 
-                    downloadContent={false} 
+            <div className="flex items-center justify-between  mb-6">
+                <h2 className="text-2xl font-medium">{name}</h2>
+                <ActionsDropdown
+                    downloadContent={false}
                     handlePrint={handlePrint}
                 />
             </div>
@@ -164,6 +165,14 @@ export default function TaxonomyParent({ name, description, photos }) {
 
                 </div>
             </div>
+
+            <div className='mt-8 pb-[4px] shadow-md' />
+
+            <div className="col-span-1 mt-8 mb-4">
+                <h2 className='font-medium text-md my-4'>Taxonomy of the {name}</h2>
+                <TaxonomyChildNodes data={fungiTree} />
+            </div>
+
             <div className="col-span-2 my-4 border rounded-md print:hidden">
                 <h2 className='font-medium text-md my-4 px-4'>Visual representation of the {name}</h2>
                 <hr className='shadow-sm' />
