@@ -431,6 +431,7 @@ export const taxonomy = [
     {
         id: 1,
         name: "Animalia",
+        slug: 'kingdom-animalia',
         description: {
             scientificNameId: "45130",
             nameAccordingTo: {
@@ -557,6 +558,7 @@ export const taxonomy = [
     {
         id: 2,
         name: "Fungi",
+        slug: 'kingdom-fungi',
         description: {
             scientificNameId: "45135",
             nameAccordingTo: {
@@ -675,6 +677,7 @@ export const taxonomy = [
     {
         id: 3,
         name: "Plantae",
+        slug: "kingdom-plantae",
         description: {
             scientificNameId: "45132",
             nameAccordingTo: null,

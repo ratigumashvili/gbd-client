@@ -2,9 +2,9 @@ import Link from 'next/link'
 
 import { browseByTaxonomy } from '../_lib/data'
 
-const Blocks = ({ name, url, count }) => {
+const Blocks = ({ name, url, count, slug }) => {
     return (
-        <Link href={`/taxonomy/${url}`}
+        <Link href={`/taxonomy/${slug}`}
             className='text-center flex-1 p-8 rounded-md border border-teal-600 bg-teal-600 text-white hover:bg-white hover:text-gray-900 transition-all ease-in'
         >
             <h4 className='font-medium text-xl mb-2'>{name}</h4>
