@@ -6,7 +6,7 @@ import TaxonomyParent from '@/app/_components/TaxonomyParent'
 
 export default function page({ params }) {
 
-    const data = taxonomy.filter((item) => item.slug === params.slug)
+    const data = taxonomy.filter((item) => item.slug === params.kingdom)
     const children = taxonomy[0].phylum.map((child) => child)
 
     if (data.length === 0) {

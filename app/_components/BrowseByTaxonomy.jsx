@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { browseByTaxonomy } from '../_lib/data'
 
 const Blocks = ({ name, count, slug }) => {
+    console.log(slug)
     return (
         <Link href={`/taxonomy/${slug}`}
             className='text-center flex-1 p-8 rounded-md border border-teal-600 bg-teal-600 text-white hover:bg-white hover:text-gray-900 transition-all ease-in'
