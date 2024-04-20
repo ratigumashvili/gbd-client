@@ -12,6 +12,8 @@ export const checkObject = (object) => {
     }
 }
 
+export const checkLink = (path) => path ? path : "#"
+
 export const currentDate = new Date().toLocaleDateString().split('/').join('-')
 
 export const copyToClipboard = (value) => {

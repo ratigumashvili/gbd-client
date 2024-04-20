@@ -47,6 +47,12 @@ export const TopMenu = [
         title: 'Gallery',
         path: '/gallery',
         children: []
+    },
+    {
+        id: 7,
+        title: 'Collaborators',
+        path: '/collaborators',
+        children: []
     }
 ]
 
@@ -108,4 +114,20 @@ export const singleMetaInterface = {
     georgianName: '',
     referenceOfOccurrenceInGeorgia: [],
     speciesDistribution: [],
+}
+
+export const taxonomyParentInterface = {
+    scientificNameId: '',
+    nameAccordingTo: {},
+    namePublishedInYear: '',
+    species: '',
+    infraspecificEpithet: '',
+    taxonRank: {},
+    scientificNameAuthorship: {},
+    vernacularName: '',
+    georgianName: '',
+    taxonomicStatus: '',
+    taxonRemarks: '',
+    GBDRemarks: '',
+    pageAuthors: [],
 }

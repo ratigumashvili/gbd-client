@@ -3,23 +3,31 @@
 import { useRef } from 'react'
 
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 import { useReactToPrint } from 'react-to-print'
 
-import { separator } from "@/app/_lib/helpers"
+import { checkLink, separator } from "@/app/_lib/helpers"
 
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+
+import { taxonomyParentInterface } from '../_lib/constants'
 
 import TaxonomyParentImage from './TaxonomyParentImage'
 import DynamicTaxonomyOrder from './taxonomyOrder'
 
 import { fungiTree } from '../_lib/data'
+
 import ActionsDropdown from './ActionsDropdown'
 import Cite from './Cite'
 import TaxonomyChildNodes from './TaxonomyChildNodes'
+import GoBack from './icons/GoBack'
 
-export default function TaxonomyParent({ name, description, photos }) {
+
+export default function TaxonomyParent({ name, description, photos, children }) {
+
+    const router = useRouter()
 
     const {
         scientificNameId,
@@ -35,7 +43,7 @@ export default function TaxonomyParent({ name, description, photos }) {
         taxonRemarks,
         GBDRemarks,
         pageAuthors,
-    } = description
+    } = description || taxonomyParentInterface
 
     const printContent = useRef();
 
@@ -50,10 +58,15 @@ export default function TaxonomyParent({ name, description, photos }) {
             <ToastContainer />
             <div className="flex items-center justify-between  mb-6">
                 <h2 className="text-2xl font-medium">{name}</h2>
-                <ActionsDropdown
-                    downloadContent={false}
-                    handlePrint={handlePrint}
-                />
+                <div className='flex items-center gap-4'>
+                    <button onClick={() => router.back()} title='Go back'>
+                        <GoBack width="22" heigth="22" />
+                    </button>
+                    <ActionsDropdown
+                        downloadContent={false}
+                        handlePrint={handlePrint}
+                    />
+                </div>
             </div>
             <div className="flex flex-col md:flex-row gap-4">
                 <div className="flex-1">
@@ -70,7 +83,7 @@ export default function TaxonomyParent({ name, description, photos }) {
                         {nameAccordingTo && (
                             <>
                                 <dt>Name According to:</dt>
-                                <dd><Link href={nameAccordingTo.url} target="blank">{nameAccordingTo.title}</Link></dd>
+                                <dd><Link href={checkLink(nameAccordingTo.url)} target="blank">{nameAccordingTo.title}</Link></dd>
                             </>
                         )}
                         {namePublishedInYear && (
@@ -94,19 +107,19 @@ export default function TaxonomyParent({ name, description, photos }) {
                         {taxonRank && (
                             <>
                                 <dt>Taxon Rank:</dt>
-                                <dd><Link href={taxonRank.url} target="blank">{taxonRank.title}</Link></dd>
+                                <dd><Link href={checkLink(taxonRank.url)} target="blank">{taxonRank.title}</Link></dd>
                             </>
                         )}
                         {scientificNameAuthorship && (
                             <>
                                 <dt>Scientific Name Authorship:</dt>
-                                <dd><Link href={scientificNameAuthorship.url} target="blank">{scientificNameAuthorship.title}</Link></dd>
+                                <dd><Link href={checkLink(scientificNameAuthorship.url)} target="blank">{scientificNameAuthorship.title}</Link></dd>
                             </>
                         )}
                         {vernacularName && (
                             <>
                                 <dt>Vernacular Name:</dt>
-                                <dd><Link href={vernacularName.url} target="blank">{vernacularName.title}</Link></dd>
+                                <dd><Link href={checkLink(vernacularName.url)} target="blank">{vernacularName.title}</Link></dd>
                             </>
                         )}
                         {georgianName && (
@@ -137,13 +150,13 @@ export default function TaxonomyParent({ name, description, photos }) {
                                 </dd>
                             </>
                         )}
-                        {pageAuthors.length !== 0 && (
+                        {pageAuthors?.length !== 0 && (
                             <>
                                 <dt>Page Authors:</dt>
                                 <dd>
-                                    {pageAuthors.map((author, index) => (
+                                    {pageAuthors?.map((author, index) => (
                                         <span key={author.id}>
-                                            <Link href={`/authors/${author.id.toString()}`}>
+                                            <Link href={checkLink(`/authors/${author?.id?.toString()}`)}>
                                                 {author.name}
                                             </Link>{separator(index, pageAuthors)}
                                         </span>
@@ -158,7 +171,7 @@ export default function TaxonomyParent({ name, description, photos }) {
                     <h2 className='font-medium my-2 block-title'>Gallery</h2>
 
                     <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
-                        {photos.map((image) => (
+                        {photos?.map((image) => (
                             <TaxonomyParentImage key={image.id} {...image} />
                         ))}
                     </div>
@@ -166,11 +179,9 @@ export default function TaxonomyParent({ name, description, photos }) {
                 </div>
             </div>
 
-            <div className='mt-8 pb-[4px] shadow-md' />
-
             <div className="col-span-1 mt-8 mb-4">
                 <h2 className='font-medium text-md my-4'>Taxonomy of the {name}</h2>
-                <TaxonomyChildNodes data={fungiTree} />
+                <TaxonomyChildNodes data={children} />
             </div>
 
             <div className="col-span-2 my-4 border rounded-md print:hidden">

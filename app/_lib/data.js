@@ -550,6 +550,108 @@ export const taxonomy = [
                 authorId: 5,
                 uploadedBy: "Armen Seropian"
             }
+        ],
+        phylum: [
+            {
+                id: 1,
+                name: 'Annelida',
+                slug: 'annelida',
+                description: {
+                    scientificNameId: "",
+                    nameAccordingTo: {
+                        title: "tolweb.org",
+                        url: "http://tolweb.org/tree?group=Eukaryotes&contgroup=Life_on_Earth"
+                    },
+                    taxonRank: {
+                        title: "Phylum",
+                        url: "https://dwc.tdwg.org/list/#dwc_taxonRank"
+                    },
+                    scientificNameAuthorship: {
+                        title: "Lamarck, 1809",
+                        url: "https://dwc.tdwg.org/list/#dwc_scientificNameAuthorship"
+                    },
+                    vernacularName: {
+                        title: "Ring Worms",
+                        url: "https://dwc.tdwg.org/list/#dwc_vernacularName"
+                    },
+                    georgianName: "რგოლიანი ჭიები",
+                    GBDRemarks: `<p>Georgia has 131 terrestrial and freshwater species of ring worms, most of that rainworms and leaches.</p>`,
+                    pageAuthors: [
+                        {
+                            id: 1,
+                            name: "David Tarkhnishvili"
+                        }
+                    ]
+                },
+                photos: [
+                    {
+                        id: 1,
+                        url: "https://biodiversity.iliauni.edu.ge/DBImages/lumbricus-tetritskaro.jpg",
+                        title: "",
+                        taxon: "Annelida",
+                        taxonId: 1,
+                        comment: 'Lumbricus spÂ',
+                        author: "Davit Tarknishvili",
+                        authorId: 1,
+                        uploadedBy: "Davit Tarkhnishvili",
+                    },
+                    {
+                        id: 2,
+                        url: "https://biodiversity.iliauni.edu.ge/DBImages/Lumbricus-sp.jpg",
+                        title: "Lumbricidae sp",
+                        taxon: "Annelida",
+                        taxonId: 1,
+                        comment: '',
+                        author: "Davit Tarknishvili",
+                        authorId: 1,
+                        uploadedBy: "Davit Tarkhnishvili",
+                    },
+                    {
+                        id: 3,
+                        url: "https://biodiversity.iliauni.edu.ge/DBImages/Hirudo-Erusheti-Range-22-09.jpg",
+                        title: "Hirudinea sp",
+                        taxon: "Annelida",
+                        taxonId: 1,
+                        comment: 'Erusheti range 22 09 07',
+                        author: "Davit Tarknishvili",
+                        authorId: 1,
+                        uploadedBy: "Davit Tarkhnishvili",
+                    }
+                ],
+                class: [
+                    {
+                        id: 1,
+                        name: "Citellata",
+                        slug: "class-citellata"
+                    },
+                    {
+                        id: 2,
+                        name: "Clitellata",
+                        slug: "class-clitellata"
+                    },
+                    {
+                        id: 3,
+                        name: "Oligochaeta",
+                        slug: "class-oligochaeta"
+                    }
+                ]
+            },
+            {
+                id: 2,
+                name: 'Arthropoda',
+                slug: 'arthropoda',
+                description: {
+
+                },
+                photos: [],
+                class: [
+                    {
+                        id: 3,
+                        name: "Polychaeta",
+                        slug: "class-Polychaeta"
+                    }
+                ]
+            }
         ]
     },
     {
