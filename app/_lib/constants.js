@@ -131,3 +131,9 @@ export const taxonomyParentInterface = {
     GBDRemarks: '',
     pageAuthors: [],
 }
+
+export const AUTH_FORM_INITIAL_STATE = {
+    data: null,
+    zodErrors: null,
+    message: null
+}

@@ -1,83 +1,67 @@
 "use client"
 
-import { Dialog, Transition } from '@headlessui/react'
-import Link from 'next/link'
 import { Fragment, useState } from 'react'
+import { useFormState } from "react-dom"
+import { useRouter } from 'next/navigation'
+
+import { Dialog, Transition } from '@headlessui/react'
+import { loginUserAction } from '../_lib/actions/auth-actions'
+
+import { AUTH_FORM_INITIAL_STATE } from '../_lib/constants'
+
 import Close from './icons/Close'
 
+const LoginPanel = ({ closeModal, loginFormAction }) => {
 
-const LoginPanel = ({ closeModal, handleSwitchPanel }) => {
+    const router = useRouter()
+
     return (
-        <>
+        <form action={loginFormAction}>
             <div className="my-8 flex flex-col gap-4">
-                <input type="text" placeholder='Email' className='p-2 bg-transparent border rounded-md outline-teal-500' />
-                <input type="password" placeholder='Password' className='p-2 bg-transparent border rounded-md outline-teal-500' />
+                <input
+                    type="text"
+                    name='email'
+                    placeholder='Email'
+                    className='p-2 bg-transparent border rounded-md outline-teal-500'
+                />
+                <input
+                    type="password"
+                    name='password'
+                    placeholder='Password'
+                    className='p-2 bg-transparent border rounded-md outline-teal-500'
+                />
             </div>
 
-            <div className="mt-4 flex items-center justify-between">
+            <div className="mt-4 flex flex-col md:flex-row gap-4 items-center justify-between">
                 <button
-                    type="button"
-                    className="inline-flex justify-center rounded-md border border-transparent bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-900 focus-visible:ring-offset-2"
+                    type="submit"
+                    className="w-full md:w-max inline-flex justify-center rounded-md border border-transparent bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-900 focus-visible:ring-offset-2"
                     onClick={closeModal}
                 >
                     Login
                 </button>
 
                 <p className='text-sm'>
-                    Don't have an account? <button onClick={() => handleSwitchPanel("register")} className='text-teal-600 hover:text-teal-700 underline'>Register</button>
+                    Don't have an account? <button type='button' onClick={() => { closeModal(), router.push("/register") }} className='text-teal-600 hover:text-teal-700 underline'>Register</button>
                 </p>
             </div>
-        </>
-    )
-}
-
-const RegisterPanel = ({closeModal, handleSwitchPanel}) => {
-    return (
-        <>
-            <div className="my-8 flex flex-col gap-4">
-                <input type="text" placeholder='Name' className='p-2 bg-transparent border rounded-md outline-teal-500' />
-                <input type="email" placeholder='Email' className='p-2 bg-transparent border rounded-md outline-teal-500' />
-                <input type="password" placeholder='Password' className='p-2 bg-transparent border rounded-md outline-teal-500' />
-                <input type="password" placeholder='Confirm password' className='p-2 bg-transparent border rounded-md outline-teal-500' />
-            </div>
-
-            <div className="mt-4 flex items-center justify-between">
-                <button
-                    type="button"
-                    className="inline-flex justify-center rounded-md border border-transparent bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-900 focus-visible:ring-offset-2"
-                    onClick={closeModal}
-                >
-                    Register
-                </button>
-
-                <p className='text-sm'>
-                    Allready have an account? <button onClick={() => handleSwitchPanel("login")} className='text-teal-600 hover:text-teal-700 underline'>Login</button>
-                </p>
-            </div>
-        </>
+        </form>
     )
 }
 
 export default function AuthModal() {
     const [isOpen, setIsOpen] = useState(false)
 
-    const [panelSwitch, setPanelSwitch] = useState("login")
+    const [loginFormState, loginFormAction] = useFormState(loginUserAction, AUTH_FORM_INITIAL_STATE)
+
+    console.log(loginFormState, " login from client")
 
     function closeModal() {
         setIsOpen(false)
-        setPanelSwitch("login")
     }
 
     function openModal() {
         setIsOpen(true)
-    }
-
-    function handleSwitchPanel() {
-        if (panelSwitch === 'login') {
-            setPanelSwitch('register')
-        } else {
-            setPanelSwitch('login')
-        }
     }
 
     return (
@@ -120,19 +104,17 @@ export default function AuthModal() {
                                         className="text-lg font-medium leading-6 text-gray-900"
                                     >
                                         <div className='flex items-center justify-between'>
-                                            <span>{panelSwitch === "login" ? "Login to your account" : "Register"}</span>
                                             <button onClick={closeModal}>
                                                 <Close />
                                             </button>
                                         </div>
                                     </Dialog.Title>
 
-                                    {panelSwitch === "login" ? 
-                                        <LoginPanel closeModal={closeModal} handleSwitchPanel={handleSwitchPanel} /> : 
-                                        <RegisterPanel closeModal={closeModal} handleSwitchPanel={handleSwitchPanel} />
-                                    }
+                                    <LoginPanel
+                                        closeModal={closeModal}
+                                        loginFormAction={loginFormAction}
+                                    />
 
-                                    
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>
