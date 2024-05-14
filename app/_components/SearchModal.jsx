@@ -25,11 +25,19 @@ export default function SearchModal() {
     return (
         <>
 
-            <button
+            {/* <button
                 type='button'
                 onClick={openModal}
                 title="Search"
                 className="flex item-center gap-2 px-3 py-2 border border-teal-600 rounded-md text-sm hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all ease-in">
+                <SearchIcon /> Search
+            </button> */}
+
+            <button
+                type='button'
+                onClick={openModal}
+                title="Search"
+                className="flex item-center gap-2">
                 <SearchIcon /> Search
             </button>
 

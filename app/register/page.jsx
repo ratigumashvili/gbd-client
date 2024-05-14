@@ -14,7 +14,8 @@ export default function Register() {
     console.log(registerFormState)
     return (
         <div className="flex items-center justify-center">
-            <form action={registerFormAction} className="w-full max-w-[320px]">
+            
+            <form action={registerFormAction} className="w-full max-w-[320px] mb-4">
                 <div className="my-8 flex flex-col gap-4">
                     <label htmlFor="name">Name</label>
                     <input

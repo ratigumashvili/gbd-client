@@ -10,6 +10,7 @@ import { loginUserAction } from '../_lib/actions/auth-actions'
 import { AUTH_FORM_INITIAL_STATE } from '../_lib/constants'
 
 import Close from './icons/Close'
+import RightDoubleIcon from './icons/RightDoubleIcon'
 
 const LoginPanel = ({ closeModal, loginFormAction }) => {
 
@@ -66,10 +67,18 @@ export default function AuthModal() {
 
     return (
         <>
-            <button
+            {/* <button
                 type='button'
                 onClick={openModal}
                 className="button">
+                Login
+            </button> */}
+
+            <button
+                type='button'
+                onClick={openModal}
+                className="flex items-center gap-2">
+                <RightDoubleIcon />
                 Login
             </button>
 
