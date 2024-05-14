@@ -23,13 +23,13 @@ const LoginPanel = ({ closeModal, loginFormAction }) => {
                     type="text"
                     name='email'
                     placeholder='Email'
-                    className='p-2 bg-transparent border rounded-md outline-teal-500'
+                    className='p-2 bg-transparent border rounded-md outline-teal-500 dark:border-slate-100'
                 />
                 <input
                     type="password"
                     name='password'
                     placeholder='Password'
-                    className='p-2 bg-transparent border rounded-md outline-teal-500'
+                    className='p-2 bg-transparent border rounded-md outline-teal-500 dark:border-slate-100'
                 />
             </div>
 
@@ -107,13 +107,13 @@ export default function AuthModal() {
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white dark:bg-slate-600 p-6 text-left align-middle shadow-xl transition-all">
                                     <Dialog.Title
                                         as="h3"
                                         className="text-lg font-medium leading-6 text-gray-900"
                                     >
                                         <div className='flex items-center justify-between'>
-                                            <button onClick={closeModal}>
+                                            <button onClick={closeModal} className='dark:text-slate-300'>
                                                 <Close />
                                             </button>
                                         </div>

@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 function PopularMenu() {
   return (
-    <div className='p-4 bg-slate-50 rounded-md col-span-1'>
+    <div className='p-4 bg-slate-50 dark:bg-slate-700 rounded-md col-span-1'>
       <h2 className="text-2xl font-medium mb-4">
         Popular entries
       </h2>

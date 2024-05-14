@@ -15,7 +15,7 @@ const properties = {
 
 function HomePageSlider() {
   return (
-    <div className='p-4 bg-slate-50 rounded-md'>
+    <div className='p-4 bg-slate-50 dark:bg-slate-600 rounded-md'>
       <h2 className='text-2xl font-medium mb-4'>Latest uploads</h2>
       <div className="slide-container">
         <Slide {...properties}>

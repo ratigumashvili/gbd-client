@@ -44,8 +44,8 @@ export default function ActionsDropdown({ handlePrint = () => void(0), record = 
 
             {isOpen && <FeedbackForm isOpen={isOpen} closeModal={closeModal} metaData={metaData} />}
 
-            <Menu as="div" className="relative inline-block text-left">
-                <Menu.Button title='Actions'>
+            <Menu as="div" className="relative inline-block text-left dark:text-slate-700">
+                <Menu.Button title='Actions' className="dark:text-slate-300">
                     <Hamburger />
                 </Menu.Button>
                 <Transition

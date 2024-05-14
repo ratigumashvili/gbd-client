@@ -7,7 +7,7 @@ const Blocks = (item) => {
     return (
         <li key={item.id}>
             <Link
-                className="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-gray-700/75 dark:text-slate-400 dark:hover:text-slate-300"
                 href={item.url}
                 target="blank"
             >
@@ -21,11 +21,11 @@ const Footer = () => {
     const currentDate = new Date().getFullYear()
 
     return (
-        <footer className="bg-white mt-auto border border-t-1">
+        <footer className="bg-white dark:bg-slate-900 mt-auto border border-t-1 dark:border-0">
             <div className="container flex-container mx-auto px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24">
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                     <div>
-                        <div className="flex flex-col gap-4 p-6 border border-teal-600 rounded-md">
+                        <div className="flex flex-col gap-4 p-6 border border-teal-600 rounded-md dark:border-slate-400">
                             <div>
                                 <h2 className="text-center sm:text-left">Subscribe to our newsletter</h2>
                                 <p className="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-sm sm:text-left">
@@ -33,7 +33,7 @@ const Footer = () => {
                                 </p>
                             </div>
                             <div className="flex gap-2">
-                                <input type="email" placeholder="Enter your email" className="w-full p-2 border focus:outline-none" />
+                                <input type="email" placeholder="Enter your email" className="w-full p-2 border focus:outline-none dark:border-0 bg-slate-700" />
                                 <button className="button">
                                     Subscribe
                                 </button>
@@ -46,7 +46,7 @@ const Footer = () => {
                                     href="#"
                                     rel="noreferrer"
                                     target="_blank"
-                                    className="text-teal-700 transition hover:text-teal-700/75"
+                                    className="text-teal-700 transition hover:text-teal-700/75 dark:text-slate-50 dark:hover:text-slate-300"
                                     title="Facebook"
                                 >
                                     <span className="sr-only">Facebook</span>
@@ -65,7 +65,7 @@ const Footer = () => {
                                     href="#"
                                     rel="noreferrer"
                                     target="_blank"
-                                    className="text-teal-700 transition hover:text-teal-700/75"
+                                    className="text-teal-700 transition hover:text-teal-700/75 dark:text-slate-50 dark:hover:text-slate-300"
                                     title="Instagram"
                                 >
                                     <span className="sr-only">Instagram</span>
@@ -84,7 +84,7 @@ const Footer = () => {
                                     href="#"
                                     rel="noreferrer"
                                     target="_blank"
-                                    className="text-teal-700 transition hover:text-teal-700/75"
+                                    className="text-teal-700 transition hover:text-teal-700/75 dark:text-slate-50 dark:hover:text-slate-300"
                                     title="Twitter"
                                 >
                                     <span className="sr-only">Twitter</span>
@@ -102,7 +102,7 @@ const Footer = () => {
                     <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-2">
 
                         <div className="text-center sm:text-left">
-                            <p className="text-lg font-medium text-gray-900">
+                            <p className="text-lg font-medium text-gray-900 dark:text-slate-400">
                                 Projects
                             </p>
                             <ul className="mt-8 space-y-4 text-sm">
@@ -111,7 +111,7 @@ const Footer = () => {
                         </div>
 
                         <div className="text-center sm:text-left">
-                            <p className="text-lg font-medium text-gray-900">
+                            <p className="text-lg font-medium text-gray-900 dark:text-slate-400">
                                 Helpful links
                             </p>
                             <ul className="mt-8 space-y-4 text-sm">
@@ -120,7 +120,7 @@ const Footer = () => {
                         </div>
 
                         <div className="text-center sm:text-left">
-                            <p className="text-lg font-medium text-gray-900">
+                            <p className="text-lg font-medium text-gray-900 dark:text-slate-400">
                                 Contact us
                             </p>
                             <ul className="mt-8 space-y-4 text-sm">
@@ -129,7 +129,7 @@ const Footer = () => {
                         </div>
 
                         <div className="flex items-start justify-center">
-                            <Image src="/iliauni-logo_eng.png" width={100} height={100} alt="logo" />
+                            <Image src="/iliauni-logo_eng.png" width={100} height={100} alt="logo" className="dark:brightness-0 dark:invert-[1]" />
                         </div>
                     </div>
                 </div>
@@ -160,7 +160,7 @@ const Footer = () => {
                             &copy; 2005 - {currentDate} Georgian Biodiversity Database. Ilia State University
                         </p>
 
-                        <p className="text center text-xs text-gray-700">
+                        <p className="text center text-xs text-gray-700 dark:text-slate-400">
                             Developed @
                             <Link href={'mailto:dh@diliauni.edu.ge'} className="hover:text-teal-700">
                                 ISU DH Lab

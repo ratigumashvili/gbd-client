@@ -14,6 +14,29 @@
     @apply text-teal-600 hover:text-teal-700 transition-all ease-in
 }
 
+.apexcharts-title-text {
+    @apply dark:fill-slate-50 fill-slate-700
+}
+
+.apexcharts-text tspan {
+    @apply fill-slate-700 dark:fill-slate-50 
+}
+
+.apexcharts-menu-item {
+    @apply dark:text-slate-700
+}
+
+.apexcharts-tooltip {
+    @apply dark:text-slate-700
+}
+
+/* .apexcharts-menu-item {
+    @layer  {
+
+        @apply dark:bg-slate-700 dark:text-slate-70
+    }
+} */
+
 .block-title {
     @apply 
         relative 
@@ -72,6 +95,11 @@
 
 .react-calendar-heatmap {
     @apply h-72 md:h-60 w-full
+}
+
+.color-empty {
+    /* @apply fill-late-300 */
+    @apply dark:!fill-slate-200
 }
 
 .react-calendar-heatmap-month-label {

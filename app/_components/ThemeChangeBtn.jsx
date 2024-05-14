@@ -1,12 +1,12 @@
 'use client'
 
-import { useState } from "react"
+import { useTheme } from "next-themes"
 
-import SunIcon from "./SunIcon"
+import SunIcon from "./icons/SunIcon"
 import MoonIcon from "./icons/MoonIcon"
 
 function ThemeChangeBtn() {
-    const [theme, setTheme] = useState('light')
+    const { theme, setTheme } = useTheme()
 
     const handleThemeChange = () => {
         theme === 'light' ? setTheme('dark') : setTheme('light')

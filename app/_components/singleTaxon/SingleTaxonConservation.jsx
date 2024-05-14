@@ -21,7 +21,7 @@ export default function SingleTaxonConservation({ record }) {
         dateEvaluated
     } = record[0]?.conservationStatus || conservationStatusInterface
     return (
-        <div className="flex-1 bg-slate-50 rounded-md px-6 pb-6">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-700 rounded-md px-6 pb-6">
             <h2 className='mt-8 mb-2 block-title'>Conservation Status</h2>
             <dl className="data-list">
 
