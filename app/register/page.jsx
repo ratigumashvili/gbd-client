@@ -11,7 +11,7 @@ export default function Register() {
 
     const [registerFormState, registerFormAction] = useFormState(registerUserAction, AUTH_FORM_INITIAL_STATE)
 
-    console.log(registerFormState)
+    // console.log(registerFormState)
     return (
         <div className="flex items-center justify-center">
             

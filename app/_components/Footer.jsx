@@ -33,7 +33,7 @@ const Footer = () => {
                                 </p>
                             </div>
                             <div className="flex gap-2">
-                                <input type="email" placeholder="Enter your email" className="w-full p-2 border focus:outline-none dark:border-0 bg-slate-700" />
+                                <input type="email" placeholder="Enter your email" className="w-full p-2 border focus:outline-none dark:border-0 dark:bg-slate-700" />
                                 <button className="button">
                                     Subscribe
                                 </button>

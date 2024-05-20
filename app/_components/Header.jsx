@@ -1,9 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import Link from "next/link"
 import Image from "next/image"
+
+import { Switch } from "@headlessui/react"
 
 import { TopMenu } from "../_lib/constants"
 
@@ -12,7 +14,6 @@ import SearchModal from "./SearchModal"
 
 import Hamburger from "./icons/Hamburger"
 import Close from "./icons/Close"
-import MoonIcon from "./icons/MoonIcon"
 import RightDoubleIcon from "./icons/RightDoubleIcon"
 import ThemeChangeBtn from "./ThemeChangeBtn"
 
@@ -55,34 +56,32 @@ const NavbarMobile = ({ menuOpen, setMenuOpen }) => {
     )
 }
 
-// const LanguageSwithcer = () => {
-//     const pathname = usePathname()
-//     const router = useRouter()
-//     const currentLocale = useLocale()
+const LanguageSwitcher = () => {
+    const [enabled, setEnabled] = useState(true)
 
-//     const handleLanguageChange = (selectedLanguage) => {
-//         router.replace(pathname, { locale: selectedLanguage });
-//         router.refresh()
-//     }
-
-//     return (
-//         <div className="flex gap-2">
-//             {Languages.map(({ id, name, locale }) => {
-//                 const isActive = currentLocale === locale
-//                 return (
-//                     <button
-//                         key={id}
-//                         className={isActive ? 'font-medium' : 'font-normal'}
-//                         onClick={() => handleLanguageChange(locale)}
-//                     >
-//                         {name}
-//                     </button>
-//                 )
-//             })}
-//         </div>
-//     )
-// }
-
+    useEffect(() => {
+        enabled ? console.log("English") : console.log("ქართული")
+    }, [enabled])
+    
+    return (
+        <div className="flex items-center gap-2">
+            <Switch.Group>
+                <Switch
+                    checked={enabled}
+                    onChange={setEnabled}
+                    className="relative border inline-flex h-6 w-11 items-center rounded-full"
+                >
+                    <span className="sr-only">{enabled ? "English" : "ქართული"}</span>
+                    <span
+                        className={`${enabled ? 'translate-x-6' : 'translate-x-1'
+                            } inline-block h-4 w-4 transform rounded-full bg-white transition`}
+                    />
+                </Switch>
+                <Switch.Label>{enabled ? "English" : "ქართული"}</Switch.Label>
+            </Switch.Group>
+        </div>
+    )
+}
 
 
 function Header() {
@@ -98,10 +97,12 @@ function Header() {
                         </h1>
                         <AuthModal />
                     </div>
-                    <div className="flex gap-4">
-                        <span>English</span>
+                    <div className="flex items-center gap-4">
+
+                        <LanguageSwitcher />
                         <ThemeChangeBtn />
                         <SearchModal />
+                        
                     </div>
                 </div>
             </div>
@@ -112,11 +113,6 @@ function Header() {
                         <h1 className="text-xl uppercase">Ilia State <br /> University</h1>
                     </div>
                     <div className="flex gap-3 items-center">
-                        {/* <LanguageSwithcer /> */}
-
-                        {/* <SearchModal /> */}
-
-                        {/* <AuthModal /> */}
 
                         <NavbarDesktop
                             menuOpen={menuOpen}
