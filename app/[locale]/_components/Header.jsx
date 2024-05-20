@@ -58,25 +58,37 @@ const NavbarMobile = ({ menuOpen, setMenuOpen }) => {
 }
 
 const LanguageSwitcher = ({ locale }) => {
+    
     const router = useRouter()
 
     const handleLanguageChange = (lang) => {
-        if (lang === 'ka') {
-            router.replace('/', { locale: 'ka' })
-        } else {
-            router.replace('/', { locale: 'en' })
-        }
+        lang === 'ka' ? router.replace('/', { locale: 'ka' }) : router.replace('/', { locale: 'en' })
     }
+    
     return (
         <div className="flex gap-2 items-center">
-            {locale === 'ka' ? (<button onClick={() => handleLanguageChange("en")}>English</button>) : (<button onClick={() => handleLanguageChange("ka")}>ქართული</button>)}
+            {locale === 'ka' ? (
+                <>
+                    <div className="switch justify-end"  onClick={() => handleLanguageChange("en")}>
+                        <div className="switch-circle"></div>
+                    </div>
+                    <button onClick={() => handleLanguageChange("en")}>English</button>
+                </>
+            ) : (
+                <>
+                    <div className="switch justify-start" onClick={() => handleLanguageChange("ka")}>
+                        <div className="switch-circle"></div>
+                    </div>
+                    <button onClick={() => handleLanguageChange("ka")}>ქართული</button>
+                </>
+            )}
         </div>
     )
 }
 
 
 function Header({ locale }) {
-    
+
     const [menuOpen, setMenuOpen] = useState(false)
 
     return (

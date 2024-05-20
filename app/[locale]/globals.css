@@ -140,3 +140,11 @@
 .react-calendar-heatmap .color-scale-28 { @apply fill-[#1e6823] }
 .react-calendar-heatmap .color-scale-29 { @apply fill-[#1e6823] }
 .react-calendar-heatmap .color-scale-30 { @apply fill-[#1e6823] }
+
+.switch {
+    @apply w-[40px] h-[20px] border rounded-full flex items-center relative p-[1px] cursor-pointer
+}
+
+.switch-circle {
+    @apply w-[16px] h-[16px] rounded-full bg-white
+}
