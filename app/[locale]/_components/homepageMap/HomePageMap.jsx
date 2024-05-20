@@ -21,8 +21,8 @@ import "react-leaflet-fullscreen/styles.css";
 
 import ApexChart from "react-apexcharts"
 
-import { mapOptions } from "@/app/_lib/constants"
-import { places } from "@/app/_lib/data";
+import { mapOptions } from "@/app/[locale]/_lib/constants"
+import { places } from "@/app/[locale]/_lib/data";
 
 import Chart from "../icons/Chart";
 import List from "../icons/List";

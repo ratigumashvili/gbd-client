@@ -1,8 +1,8 @@
 import { redirect } from 'next/navigation'
 
-import { taxonomy } from '@/app/_lib/data'
+import { taxonomy } from '@/app/[locale]/_lib/data'
 
-import TaxonomyParent from '@/app/_components/TaxonomyParent'
+import TaxonomyParent from '@/app/[locale]/_components/TaxonomyParent'
 
 export default function page({ params }) {
 

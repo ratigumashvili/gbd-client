@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 
 import { useReactToPrint } from 'react-to-print'
 
-import { checkLink, separator } from "@/app/_lib/helpers"
+import { checkLink, separator } from "@/app/[locale]/_lib/helpers"
 
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';

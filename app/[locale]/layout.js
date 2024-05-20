@@ -12,13 +12,13 @@ export const metadata = {
   description: 'app description',
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, params: {locale} }) {
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={`${inter.className} flex flex-col h-screen`}>
         <ThemeProviders>
           <UserWrapper>
-            <Header />
+            <Header locale={locale} />
             <main className="container mx-auto flex-grow p-4">
               {children}
             </main>

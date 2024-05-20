@@ -1,4 +1,4 @@
-import { conservationStatusInterface } from "@/app/_lib/constants"
+import { conservationStatusInterface } from "@/app/[locale]/_lib/constants"
 import { separator } from "../../_lib/helpers"
 
 export default function SingleTaxonConservation({ record }) {

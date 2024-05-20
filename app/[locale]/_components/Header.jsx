@@ -1,11 +1,12 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
-import Link from "next/link"
 import Image from "next/image"
 
-import { Switch } from "@headlessui/react"
+import { useRouter, Link } from "@/navigation"
+
+// import { Switch } from "@headlessui/react"
 
 import { TopMenu } from "../_lib/constants"
 
@@ -56,35 +57,26 @@ const NavbarMobile = ({ menuOpen, setMenuOpen }) => {
     )
 }
 
-const LanguageSwitcher = () => {
-    const [enabled, setEnabled] = useState(true)
+const LanguageSwitcher = ({ locale }) => {
+    const router = useRouter()
 
-    useEffect(() => {
-        enabled ? console.log("English") : console.log("ქართული")
-    }, [enabled])
-    
+    const handleLanguageChange = (lang) => {
+        if (lang === 'ka') {
+            router.replace('/', { locale: 'ka' })
+        } else {
+            router.replace('/', { locale: 'en' })
+        }
+    }
     return (
-        <div className="flex items-center gap-2">
-            <Switch.Group>
-                <Switch
-                    checked={enabled}
-                    onChange={setEnabled}
-                    className="relative border inline-flex h-6 w-11 items-center rounded-full"
-                >
-                    <span className="sr-only">{enabled ? "English" : "ქართული"}</span>
-                    <span
-                        className={`${enabled ? 'translate-x-6' : 'translate-x-1'
-                            } inline-block h-4 w-4 transform rounded-full bg-white transition`}
-                    />
-                </Switch>
-                <Switch.Label>{enabled ? "English" : "ქართული"}</Switch.Label>
-            </Switch.Group>
+        <div className="flex gap-2 items-center">
+            {locale === 'ka' ? (<button onClick={() => handleLanguageChange("en")}>English</button>) : (<button onClick={() => handleLanguageChange("ka")}>ქართული</button>)}
         </div>
     )
 }
 
 
-function Header() {
+function Header({ locale }) {
+    
     const [menuOpen, setMenuOpen] = useState(false)
 
     return (
@@ -99,10 +91,10 @@ function Header() {
                     </div>
                     <div className="flex items-center gap-4">
 
-                        <LanguageSwitcher />
+                        <LanguageSwitcher locale={locale} />
                         <ThemeChangeBtn />
                         <SearchModal />
-                        
+
                     </div>
                 </div>
             </div>

@@ -5,7 +5,7 @@ import { useState } from "react"
 import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 
-import { activityChartData } from "@/app/_lib/data";
+import { activityChartData } from "@/app/[locale]/_lib/data";
 
 export default function Calendar() {
     const [count, setCount] = useState('')

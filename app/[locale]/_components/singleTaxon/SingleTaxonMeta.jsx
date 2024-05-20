@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 import { separator, checkObject } from "../../_lib/helpers"
-import { singleMetaInterface } from "@/app/_lib/constants"
+import { singleMetaInterface } from "@/app/[locale]/_lib/constants"
 
 export default function SingleTaxonMeta({ record }) {
 

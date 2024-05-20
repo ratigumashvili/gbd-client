@@ -55,7 +55,7 @@ export default function AuthModal() {
 
     const [loginFormState, loginFormAction] = useFormState(loginUserAction, AUTH_FORM_INITIAL_STATE)
 
-    console.log(loginFormState, " login from client")
+    // console.log(loginFormState, " login from client")
 
     function closeModal() {
         setIsOpen(false)

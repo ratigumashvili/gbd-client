@@ -1,5 +1,5 @@
-import TaxonomyParent from "@/app/_components/TaxonomyParent"
-import { taxonomy } from "@/app/_lib/data"
+import TaxonomyParent from "@/app/[locale]/_components/TaxonomyParent"
+import { taxonomy } from "@/app/[locale]/_lib/data"
 
 function Phylum({params}) {
   

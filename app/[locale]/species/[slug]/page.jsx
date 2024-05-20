@@ -1,6 +1,6 @@
-import { species } from "@/app/_lib/data"
+import { species } from "@/app/[locale]/_lib/data"
 
-import SingleRecord from "@/app/_components/singleTaxon/SingleRecord"
+import SingleRecord from "@/app/[locale]/_components/singleTaxon/SingleRecord"
 
 export default function SingleSpecies({ params }) {
 
