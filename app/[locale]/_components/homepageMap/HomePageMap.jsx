@@ -28,6 +28,7 @@ import Chart from "../icons/Chart";
 import List from "../icons/List";
 import ArrowLeft from "../icons/ArrowLeft";
 import ArrowRight from "../icons/ArrowRight";
+import { useTranslations } from "next-intl";
 
 const { center, zoom } = mapOptions
 
@@ -36,6 +37,8 @@ function HomePageMap() {
     const [speciesData, setSpeciesData] = useState([])
     const [view, setView] = useState("list")
     const [expanded, setExpanded] = useState(false)
+
+    const t = useTranslations("Map")
 
     const handleChangeView = () => {
         view === 'list' ? setView("statistics") : setView("list")
@@ -61,7 +64,7 @@ function HomePageMap() {
         },
         colors: ["#00796B"],
         title: {
-            text: "Distribution of species by rank Genus",
+            text: t("distribution"),
             style: {
                 fontSize: '16px',
                 fontWeight: 'normal'
@@ -73,6 +76,8 @@ function HomePageMap() {
         name: 'Species',
         data: genusCount
     }]
+
+   
 
     return (
         <div className="flex flex-col md:flex-row gap-4">
@@ -100,11 +105,11 @@ function HomePageMap() {
                             return <Marker key={id} position={geocode} icon={customIcon}>
                                 <Popup>
                                     <div className="flex flex-col gap-2">
-                                        <h2>Place: {popup.placeName}</h2>
-                                        <h3>Region: {popup.regionName}</h3>
-                                        <h3>Registered Genus: {genus.length}</h3>
-                                        <h4>Species total: {speciesLength.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}</h4>
-                                        <button className="button text-sm mt-2 whitespace-nowrap" onClick={() => setSpeciesData(genus)}>Load data</button>
+                                        <h2>{t("place")}: {popup.placeName}</h2>
+                                        <h3>{t("region")}: {popup.regionName}</h3>
+                                        <h3>{t("registeredGenus")}: {genus.length}</h3>
+                                        <h4>{t("speciesTotal")}: {speciesLength.reduce((accumulator, currentValue) => accumulator + currentValue, 0)}</h4>
+                                        <button className="button text-sm mt-2 whitespace-nowrap" onClick={() => setSpeciesData(genus)}>{t("loadData")}</button>
                                     </div>
                                 </Popup>
                             </Marker>
@@ -113,7 +118,7 @@ function HomePageMap() {
                 </MapContainer>
             </div>
 
-            <div className={`flex-1 h-[400px] overflow-y-auto ${!expanded ? 'md:max-w-[320px]' : 'md:[max-w-[600px]]'}`}>{speciesData.length === 0 ? "Click on markers to load data" : (
+            <div className={`flex-1 h-[400px] overflow-y-auto ${!expanded ? 'md:max-w-[320px]' : 'md:[max-w-[600px]]'}`}>{speciesData.length === 0 ? <span className="font-firaGo">{t("clickOnMarkers")}</span> : (
 
                 <>
 
@@ -122,7 +127,7 @@ function HomePageMap() {
                             <button
                                 onClick={() => setExpanded((prev) => !prev)}
                                 className="hidden px-3 py-2 md:inline-block mb-4"
-                                title={!expanded ? "Expand" : "Collapse"}
+                                title={!expanded ? t("expand") : t("collapse")}
                             >
                                 {!expanded ? <ArrowLeft width="18" height="18" /> : <ArrowRight width="18" height="18" />}
                             </button>
@@ -131,9 +136,9 @@ function HomePageMap() {
                                 className="border border-teal-700 hover:bg-teal-700 hover:text-white dark:bg-teal-700 px-3 py-2 rounded-md text-sm inline-block mb-4 transition-all ease-in"
                             >
                                 {view === "list" ? (
-                                    <p className="flex gap-2 items-center h-5 w-full"><span className="text-nowrap">Chart view</span> <Chart /></p>
+                                    <p className="flex gap-2 items-center h-5 w-full"><span className="text-nowrap">{t("chartView")}</span> <Chart /></p>
                                 ) : (
-                                    <p className="flex gap-2 items-center h-5 w-full"><span className="text-nowrap">List view</span> <List /></p>
+                                    <p className="flex gap-2 items-center h-5 w-full"><span className="text-nowrap">{t("listView")}</span> <List /></p>
                                 )}
                             </button>
                         </div>
@@ -148,7 +153,7 @@ function HomePageMap() {
 
                                     {genus.species.map(({ id, name, url }) => (
                                         <div className="pl-4 flex flex-col gap-3" key={id}>
-                                            <span>Species: <Link href={url} className="text-teal-600 underline hover:text-teal-700"><em>{name}</em></Link></span>
+                                            <span>{t("species")}: <Link href={url} className="text-teal-600 underline hover:text-teal-700"><em>{name}</em></Link></span>
                                             <hr />
                                         </div>
                                     ))}

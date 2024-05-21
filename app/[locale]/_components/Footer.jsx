@@ -2,10 +2,11 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { Projects, Links, Contacts } from "../_lib/data"
+import { useTranslations } from "next-intl"
 
 const Blocks = (item) => {
     return (
-        <li key={item.id}>
+        <li key={item.id} className="font-firaGo">
             <Link
                 className="text-gray-700 transition hover:text-gray-700/75 dark:text-slate-400 dark:hover:text-slate-300"
                 href={item.url}
@@ -20,6 +21,8 @@ const Blocks = (item) => {
 const Footer = () => {
     const currentDate = new Date().getFullYear()
 
+    const t = useTranslations("Footer")
+
     return (
         <footer className="bg-white dark:bg-slate-900 mt-auto border border-t-1 dark:border-0">
             <div className="container flex-container mx-auto px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24">
@@ -27,15 +30,15 @@ const Footer = () => {
                     <div>
                         <div className="flex flex-col gap-4 p-6 border border-teal-600 rounded-md dark:border-slate-400">
                             <div>
-                                <h2 className="text-center sm:text-left">Subscribe to our newsletter</h2>
-                                <p className="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-sm sm:text-left">
-                                    Subscribing to GBD can be a valuable for those looking to stay informed, connected, and at the forefront of Georgian biodiversity research.
+                                <h2 className="text-center sm:text-left">{t("subscribeTitle")}</h2>
+                                <p className="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-sm sm:text-left font-firaGo">
+                                    {t("subscribeText")}
                                 </p>
                             </div>
-                            <div className="flex gap-2">
-                                <input type="email" placeholder="Enter your email" className="w-full p-2 border focus:outline-none dark:border-0 dark:bg-slate-700" />
+                            <div className="flex gap-2 font-firaGo">
+                                <input type="email" placeholder={t("subscribePlaceholder")} className="w-full p-2 border focus:outline-none dark:border-0 dark:bg-slate-700" />
                                 <button className="button">
-                                    Subscribe
+                                    {t("subscribeBtn")}
                                 </button>
                             </div>
                         </div>
@@ -103,7 +106,7 @@ const Footer = () => {
 
                         <div className="text-center sm:text-left">
                             <p className="text-lg font-medium text-gray-900 dark:text-slate-400">
-                                Projects
+                                {t("projects")}
                             </p>
                             <ul className="mt-8 space-y-4 text-sm">
                                 {Projects.map((item) => <Blocks key={item.id} {...item} />)}
@@ -112,7 +115,7 @@ const Footer = () => {
 
                         <div className="text-center sm:text-left">
                             <p className="text-lg font-medium text-gray-900 dark:text-slate-400">
-                                Helpful links
+                                {t("links")}
                             </p>
                             <ul className="mt-8 space-y-4 text-sm">
                                 {Links.map((item) => <Blocks key={item.id} {...item} />)}
@@ -121,7 +124,7 @@ const Footer = () => {
 
                         <div className="text-center sm:text-left">
                             <p className="text-lg font-medium text-gray-900 dark:text-slate-400">
-                                Contact us
+                                {t("contactUs")}
                             </p>
                             <ul className="mt-8 space-y-4 text-sm">
                                 {Contacts.map((item) => <Blocks key={item.id} {...item} />)}
@@ -136,13 +139,13 @@ const Footer = () => {
 
                 <div className="mt-12 border-t border-gray-100 pt-6">
                     <div className="text-center flex flex-col gap-4">
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-gray-500 font-firaGo">
                             <Link
                                 className="inline-block text-teal-600 underline transition hover:text-teal-600/75"
                                 href="https://iliauni.edu.ge/en/cookie-files"
                                 target="blank"
                             >
-                                Cookies Policy
+                                {t("cookies")}
                             </Link>
 
                             <span> &middot; </span>
@@ -152,12 +155,12 @@ const Footer = () => {
                                 href="https://iliauni.edu.ge/en/privacy-policy"
                                 target="blank"
                             >
-                                Privacy Policy
+                                {t("privacy")}
                             </Link>
                         </p>
 
-                        <p className="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0">
-                            &copy; 2005 - {currentDate} Georgian Biodiversity Database. Ilia State University
+                        <p className="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0 font-firaGo">
+                            &copy; 2005 - {currentDate} {t("copyright")}
                         </p>
 
                         <p className="text center text-xs text-gray-700 dark:text-slate-400">

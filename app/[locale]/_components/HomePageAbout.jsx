@@ -11,7 +11,7 @@ const HomePageAbout = () => {
       <h2 className="text-2xl font-medium mb-4">{t('about_title')}</h2>
       <div
         dangerouslySetInnerHTML={{ __html: about.data.excerpt }}
-        className="[&>p]:mb-3"
+        className="[&>p]:mb-3 font-firaGo"
       />
       <Link href={'/about'} className="button my-4">Read more</Link>
     </div>

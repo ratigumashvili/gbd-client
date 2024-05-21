@@ -14,46 +14,46 @@ export const Languages = [
 export const TopMenu = [
     {
         id: 1,
-        title: 'Home',
+        title: 'home',
         path: '/',
         children: []
     },
     {
         id: 2,
-        title: 'About',
+        title: 'about',
         path: '/about',
         children: []
     },
     {
         id: 3,
-        title: 'Team',
+        title: 'team',
         path: '/team',
         children: []
     },
     {
         id: 4,
-        title: 'Taxonomy',
+        title: 'taxonomy',
         path: '/taxonomy',
         children: []
     },
     {
         id: 5,
-        title: 'Caucasus',
+        title: 'caucasus',
         path: '/caucasus',
         children: []
     },
     {
         id: 6,
-        title: 'Gallery',
+        title: 'gallery',
         path: '/gallery',
         children: []
     },
-    {
-        id: 7,
-        title: 'Collaborators',
-        path: '/collaborators',
-        children: []
-    }
+    // {
+    //     id: 7,
+    //     title: 'collaborators',
+    //     path: '/collaborators',
+    //     children: []
+    // }
 ]
 
 export const MARGIN = { top: 10, right: 10, bottom: 50, left: 50 };

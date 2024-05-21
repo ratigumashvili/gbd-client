@@ -1,6 +1,73 @@
 {
+  "Common": {
+    "isu": "Ilia State University",
+    "loading": "Loading..."
+  },
+  "Header": {
+    "isu": "Ilia State University",
+    "login": "Login",
+    "dark": "Dark",
+    "light": "Light",
+    "search": "Search"
+  },
+  "Footer": {
+    "subscribeTitle": "Subscribe to our newsletter",
+    "subscribeText": "Subscribing to GBD can be a valuable for those looking to stay informed, connected, and at the forefront of Georgian biodiversity research.",
+    "subscribePlaceholder": "Enter your email",
+    "subscribeBtn": "Subscribe",
+    "projects": "Projects",
+    "links": "Helpful links",
+    "contactUs": "Contact us",
+    "copyright": "Georgian Biodiversity Database. Ilia State University",
+    "cookies": "Cookies Policy",
+    "privacy": "Privacy Policy"
+  },
+  "TopNavigation": {
+    "home": "Home",
+    "about": "About",
+    "team": "Team",
+    "taxonomy": "Taxonomy",
+    "caucasus": "Caucasus",
+    "gallery": "Gallery",
+    "collaborators": "Collaborators"
+  },
+  "Search": {
+    "SimpleSearchByName": "Simple search by name",
+    "AdvancedSearch": "Advanced search",
+    "LGE": "Latin, Georgian or English name",
+    "TaxonRank": "Taxon Rank",
+    "LatinName": "Latin name",
+    "NationalIUCNCategory": "National IUCN Category"
+  },
     "Index": {
       "title": "Welcome to GBD",
-      "about_title": "About the database"
+      "about_title": "About the database",
+      "popularEntries": "Popular entries",
+      "BrowseByTaxonomy": "Browse by taxonomy",
+      "BrowseByGeography": "Browse by geography",
+      "registeredRecords": "registered records",
+      "latestUploads": "Latest uploads",
+      "taxon": "Taxon",
+      "comment": "Comment",
+      "author": "Author",
+      "uploadedBy": "Uploaded by",
+      "GBDActivityCalendar": "GBD activity calendar",
+      "date": "Date",
+      "recordsRegistered": "Record(s) registered",
+      "legend": "Legend"
+    },
+    "Map": {
+      "clickOnMarkers": "Click on markers to load data",
+      "place": "Place",
+      "region": "Region",
+      "registeredGenus": "Registered Genus",
+      "speciesTotal": "Species total",
+      "loadData": "Load data",
+      "expand": "Expand",
+      "collapse": "Collapse",
+      "chartView": "Chart view",
+      "listView": "List view",
+      "species": "Species",
+      "distribution": "Distribution of species by rank Genus"
     }
   }

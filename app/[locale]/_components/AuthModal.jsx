@@ -11,6 +11,7 @@ import { AUTH_FORM_INITIAL_STATE } from '../_lib/constants'
 
 import Close from './icons/Close'
 import RightDoubleIcon from './icons/RightDoubleIcon'
+import { useTranslations } from 'next-intl'
 
 const LoginPanel = ({ closeModal, loginFormAction }) => {
 
@@ -55,7 +56,7 @@ export default function AuthModal() {
 
     const [loginFormState, loginFormAction] = useFormState(loginUserAction, AUTH_FORM_INITIAL_STATE)
 
-    // console.log(loginFormState, " login from client")
+    const t = useTranslations("Header")
 
     function closeModal() {
         setIsOpen(false)
@@ -67,19 +68,12 @@ export default function AuthModal() {
 
     return (
         <>
-            {/* <button
-                type='button'
-                onClick={openModal}
-                className="button">
-                Login
-            </button> */}
-
             <button
                 type='button'
                 onClick={openModal}
-                className="flex items-center gap-2">
+                className="flex items-center gap-2 font-firaGo">
                 <RightDoubleIcon />
-                Login
+                {t("login")}
             </button>
 
             <Transition appear show={isOpen} as={Fragment}>
@@ -96,7 +90,7 @@ export default function AuthModal() {
                         <div className="fixed inset-0 bg-black/25" />
                     </Transition.Child>
 
-                    <div className="fixed inset-0 overflow-y-auto">
+                    <div className="fixed inset-0 overflow-y-auto font-firaGo">
                         <div className="flex min-h-full items-center justify-center p-4 text-center">
                             <Transition.Child
                                 as={Fragment}

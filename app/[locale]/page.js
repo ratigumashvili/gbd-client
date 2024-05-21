@@ -18,7 +18,7 @@ export default function Home() {
         <HomePageAbout />
         <PopularMenu />
       </div>
-      <BrowseByTaxonomy title="Browse by taxonomy" />
+      <BrowseByTaxonomy title={t("BrowseByTaxonomy")} />
       <BrowseByGeography />
       <HomePageSlider />
       <Calendar />

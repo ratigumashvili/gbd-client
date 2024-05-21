@@ -6,20 +6,20 @@ import Image from "next/image"
 
 import { useRouter, Link } from "@/navigation"
 
-// import { Switch } from "@headlessui/react"
-
 import { TopMenu } from "../_lib/constants"
 
 import AuthModal from "./AuthModal"
 import SearchModal from "./SearchModal"
+import ThemeChangeBtn from "./ThemeChangeBtn"
 
 import Hamburger from "./icons/Hamburger"
 import Close from "./icons/Close"
 import RightDoubleIcon from "./icons/RightDoubleIcon"
-import ThemeChangeBtn from "./ThemeChangeBtn"
+import { useTranslations } from "next-intl"
 
 
 const NavbarDesktop = ({ menuOpen, setMenuOpen }) => {
+    const t = useTranslations("TopNavigation")
     return (
         <>
             <button
@@ -28,9 +28,9 @@ const NavbarDesktop = ({ menuOpen, setMenuOpen }) => {
             >
                 {menuOpen ? <Close /> : <Hamburger />}
             </button>
-            <ul className="hidden md:flex gap-3">
+            <ul className="hidden md:flex gap-3 font-firaGo">
                 {TopMenu.map(({ id, title, path }) => (
-                    <Link key={id} href={path}>{(title)}</Link>
+                    <Link key={id} href={path}>{t(title)}</Link>
                 ))}
             </ul>
         </>
@@ -38,17 +38,18 @@ const NavbarDesktop = ({ menuOpen, setMenuOpen }) => {
 }
 
 const NavbarMobile = ({ menuOpen, setMenuOpen }) => {
+    const t = useTranslations("TopNavigation")
     return (
         <>
             {menuOpen && (
-                <ul className="flex flex-col gap-4 p-4 h-screen w-full absolute z-50 bg-white">
+                <ul className="flex flex-col gap-4 p-4 h-screen w-full absolute z-50 bg-white font-firaGo">
                     {TopMenu.map(({ id, title, path }) => (
                         <button
                             key={id}
                             className="max-w-max"
                             onClick={() => setMenuOpen(false)
                             }>
-                            <Link href={path}>{title}</Link>
+                            <Link href={path}>{t(title)}</Link>
                         </button>
                     ))}
                 </ul>
@@ -64,9 +65,9 @@ const LanguageSwitcher = ({ locale }) => {
     const handleLanguageChange = (lang) => {
         lang === 'ka' ? router.replace('/', { locale: 'ka' }) : router.replace('/', { locale: 'en' })
     }
-    
+
     return (
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2 items-center font-firaGo">
             {locale === 'ka' ? (
                 <>
                     <div className="switch justify-end"  onClick={() => handleLanguageChange("en")}>
@@ -90,6 +91,8 @@ const LanguageSwitcher = ({ locale }) => {
 function Header({ locale }) {
 
     const [menuOpen, setMenuOpen] = useState(false)
+    const t = useTranslations('Header')
+    const c = useTranslations('Common')
 
     return (
         <div className="relative">
@@ -97,7 +100,7 @@ function Header({ locale }) {
                 <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-sm">
                     <div className="flex items-center gap-2 mb-4 md:mb-0">
                         <h1>
-                            <Link href='https://iliauni.edu.ge/ge' target="blank" className="flex items-center gap-2"><RightDoubleIcon />Ilia State University</Link>
+                            <Link href='https://iliauni.edu.ge/ge' target="blank" className="flex items-center gap-2 font-firaGo"><RightDoubleIcon />{t('isu')}</Link>
                         </h1>
                         <AuthModal />
                     </div>
@@ -114,7 +117,7 @@ function Header({ locale }) {
                 <div className="container flex justify-between items-center flex-container mx-auto px-4 py-8">
                     <div className="flex items-center gap-3">
                         <Image src="/iliauni-logo_eng.png" width={80} height={80} alt="logo" className="brightness-0 invert-[1]" />
-                        <h1 className="text-xl uppercase">Ilia State <br /> University</h1>
+                        <h1 className="text-xl uppercase w-[200px]">{c("isu")}</h1>
                     </div>
                     <div className="flex gap-3 items-center">
 
