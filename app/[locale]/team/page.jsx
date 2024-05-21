@@ -1,10 +1,11 @@
 import Link from "next/link"
 import { team, teamAppreciation } from "../_lib/data"
 import Image from "next/image"
+import { useTranslations } from "next-intl"
 
 const Blocks = ({ data = [] }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 font-firaGo">
       {data.length && data.map(({ id, name, researchGate, text, photo }) => (
         <div key={id} className="flex flex-col md:flex-row gap-4 mb-6">
           {photo ? (
@@ -27,23 +28,26 @@ const Blocks = ({ data = [] }) => {
 }
 
 const Team = () => {
+
+  const t = useTranslations("Team")
+
   return (
     <div className="py-4">
-      <h2 className="text-2xl font-medium mb-4">Team</h2>
+      <h2 className="text-2xl font-medium mb-4">{t("pageTitle")}</h2>
 
-      <h3 className="font-medium mb-4">Editors</h3>
+      <h3 className="font-medium mb-4">{t("editors")}</h3>
 
       <Blocks data={team.data.editors} />
 
-      <h3 className="font-medium mb-4">Authors</h3>
+      <h3 className="font-medium mb-4">{t("authors")}</h3>
 
       <Blocks data={team.data.authors} />
 
-      <h3 className="font-medium mb-4">Contributors</h3>
+      <h3 className="font-medium mb-4">{t("contributors")}</h3>
 
       <Blocks data={team.data.contributors} />
 
-      <h3 className="font-medium mb-4">Special thanks</h3>
+      <h3 className="font-medium mb-4">{t("thanks")}</h3>
 
       <div className="[&>p]:mb-3 [&>ul]:mb-3 [&>ul]:list-disc [&>ul]:ml-4 p-4 bg-slate-50 dark:bg-slate-600 rounded-md"
         dangerouslySetInnerHTML={{ __html: teamAppreciation }}

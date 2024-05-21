@@ -69,5 +69,24 @@
       "listView": "აჩვენე სია",
       "species": "სახეობა",
       "distribution": "სახეობები გვარების მიხედვით"
+    },
+    "About": {
+      "pageTitle": "ბაზის შესახებ"
+    },
+    "Team": {
+      "pageTitle": "ჯგუფი",
+      "editors": "რედაქტორები",
+      "authors": "ავტორები",
+      "contributors": "კონტრიბუტორები",
+      "thanks": "განსაკუთრებული მადლობა"
+    },
+    "Taxonomy": {
+      "pageTitle": "ტაქსონომია"
+    },
+    "Caucasus": {
+      "pageTitle": "კავკასია"
+    },
+    "Gallery": {
+      "pageTitle": "გალერეა"
     }
   }

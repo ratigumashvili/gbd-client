@@ -4,7 +4,7 @@ import { useState } from "react"
 
 import Image from "next/image"
 
-import { useRouter, Link } from "@/navigation"
+import { useRouter, Link, usePathname } from "@/navigation"
 
 import { TopMenu } from "../_lib/constants"
 
@@ -61,9 +61,10 @@ const NavbarMobile = ({ menuOpen, setMenuOpen }) => {
 const LanguageSwitcher = ({ locale }) => {
     
     const router = useRouter()
+    const pathname = usePathname()
 
     const handleLanguageChange = (lang) => {
-        lang === 'ka' ? router.replace('/', { locale: 'ka' }) : router.replace('/', { locale: 'en' })
+        lang === 'ka' ? router.replace(pathname, { locale: 'ka' }) : router.replace(pathname, { locale: 'en' })
     }
 
     return (

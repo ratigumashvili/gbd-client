@@ -69,5 +69,24 @@
       "listView": "List view",
       "species": "Species",
       "distribution": "Distribution of species by rank Genus"
+    },
+    "About": {
+      "pageTitle": "About the database"
+    },
+    "Team": {
+      "team": "pageTitle",
+      "editors": "Editors",
+      "authors": "Authors",
+      "contributors": "Contributors",
+      "thanks": "Special thanks"
+    },
+    "Taxonomy": {
+      "pageTitle": "Taxonomy"
+    },
+    "Caucasus": {
+      "pageTitle": "Caucasus"
+    },
+    "Gallery": {
+      "pageTitle": "Gallery"
     }
   }
