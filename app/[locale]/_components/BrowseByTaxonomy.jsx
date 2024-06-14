@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Link } from '@/navigation'
 
 import { browseByTaxonomy } from '../_lib/data'
 import { useTranslations } from 'next-intl'

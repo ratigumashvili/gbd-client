@@ -1,5 +1,3 @@
-import localfont from "next/font/local"
-
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
@@ -9,29 +7,9 @@ import ThemeProviders from './_providers/themeProvider'
 import Footer from './_components/Footer'
 import Header from './_components/Header'
 
-import './globals.css'
+import { arial, firaGo, bpg } from "./_lib/fonts";
 
-const firaGo = localfont({
-  src: [
-    {
-      path: "../../public/fonts/firago-300.ttf",
-      weight: "300"
-    },
-    {
-      path: "../../public/fonts/firago-400.ttf",
-      weight: "400"
-    },
-    {
-      path: "../../public/fonts/firago-500.ttf",
-      weight: "500"
-    },
-    {
-      path: "../../public/fonts/firago-700.ttf",
-      weight: "700"
-    },
-  ],
-  variable: "--font-firaGo"
-})
+import './globals.css'
 
 export const metadata = {
   title: 'Georgian Biodiversity Database',
@@ -40,10 +18,11 @@ export const metadata = {
 
 export default async function RootLayout({ children, params: { locale } }) {
   const messages = await getMessages();
+  
   return (
     <html lang={locale}>
-      <body className={`${firaGo.variable} flex flex-col h-screen`}>
-        <NextIntlClientProvider messages={messages}>
+      <body className={`${firaGo.variable} ${bpg.variable} ${arial.variable} flex flex-col h-screen`}>
+        <NextIntlClientProvider messages={messages} locale={locale}>
           <ThemeProviders>
             <UserWrapper>
               <Header locale={locale} />

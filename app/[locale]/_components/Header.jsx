@@ -15,11 +15,15 @@ import ThemeChangeBtn from "./ThemeChangeBtn"
 import Hamburger from "./icons/Hamburger"
 import Close from "./icons/Close"
 import RightDoubleIcon from "./icons/RightDoubleIcon"
+
 import { useTranslations } from "next-intl"
 
+import { bpg } from "../_lib/fonts"
 
-const NavbarDesktop = ({ menuOpen, setMenuOpen }) => {
+
+const NavbarDesktop = ({ menuOpen, setMenuOpen, locale }) => {
     const t = useTranslations("TopNavigation")
+    const pathname = usePathname()
     return (
         <>
             <button
@@ -28,28 +32,35 @@ const NavbarDesktop = ({ menuOpen, setMenuOpen }) => {
             >
                 {menuOpen ? <Close /> : <Hamburger />}
             </button>
-            <ul className="hidden md:flex gap-3 font-firaGo">
+            <ul className={`hidden md:flex gap-3 ${locale === 'ka' ? bpg.className : 'font-arial uppercase'}`}>
                 {TopMenu.map(({ id, title, path }) => (
-                    <Link key={id} href={path}>{t(title)}</Link>
+                    <li key={id} className={pathname === path ? "font-bold" : "font-normal"}>
+                        <Link href={path}>
+                            {t(title)}
+                        </Link>
+                    </li>
                 ))}
-            </ul>
+            </ul >
         </>
     )
 }
 
-const NavbarMobile = ({ menuOpen, setMenuOpen }) => {
+const NavbarMobile = ({ menuOpen, setMenuOpen, locale }) => {
     const t = useTranslations("TopNavigation")
+    const pathname = usePathname()
     return (
         <>
             {menuOpen && (
-                <ul className="flex flex-col gap-4 p-4 h-screen w-full absolute z-50 bg-white font-firaGo">
+                <ul className={`flex flex-col gap-4 p-4 h-screen w-full absolute z-50 bg-white ${locale === 'ka' ? bpg.className : 'font-arial uppercase'}`}>
                     {TopMenu.map(({ id, title, path }) => (
                         <button
                             key={id}
                             className="max-w-max"
                             onClick={() => setMenuOpen(false)
                             }>
-                            <Link href={path}>{t(title)}</Link>
+                            <Link href={path} className={pathname === path ? "font-bold" : "font-normal"}>
+                                {t(title)}
+                            </Link>
                         </button>
                     ))}
                 </ul>
@@ -59,7 +70,7 @@ const NavbarMobile = ({ menuOpen, setMenuOpen }) => {
 }
 
 const LanguageSwitcher = ({ locale }) => {
-    
+
     const router = useRouter()
     const pathname = usePathname()
 
@@ -71,7 +82,7 @@ const LanguageSwitcher = ({ locale }) => {
         <div className="flex gap-2 items-center font-firaGo">
             {locale === 'ka' ? (
                 <>
-                    <div className="switch justify-end"  onClick={() => handleLanguageChange("en")}>
+                    <div className="switch justify-end" onClick={() => handleLanguageChange("en")}>
                         <div className="switch-circle"></div>
                     </div>
                     <button onClick={() => handleLanguageChange("en")}>English</button>
@@ -101,8 +112,16 @@ function Header({ locale }) {
                 <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-sm">
                     <div className="flex items-center gap-2 mb-4 md:mb-0">
                         <h1>
-                            <Link href='https://iliauni.edu.ge/ge' target="blank" className="flex items-center gap-2 font-firaGo"><RightDoubleIcon />{t('isu')}</Link>
+                            <Link href='https://iliauni.edu.ge/ge' target="blank" className="flex items-center gap-2 font-firaGo">
+                                <RightDoubleIcon />
+                                {t('isu')}
+                            </Link>
                         </h1>
+
+                        <Link href="/" className="flex items-center gap-2 font-firaGo">
+                            <RightDoubleIcon />
+                            {t("dashboard")}</Link>
+
                         <AuthModal />
                     </div>
                     <div className="flex items-center gap-4">
@@ -118,13 +137,14 @@ function Header({ locale }) {
                 <div className="container flex justify-between items-center flex-container mx-auto px-4 py-8">
                     <div className="flex items-center gap-3">
                         <Image src="/iliauni-logo_eng.png" width={80} height={80} alt="logo" className="brightness-0 invert-[1]" />
-                        <h1 className="text-xl uppercase w-[200px]">{c("isu")}</h1>
+                        <h1 className={`text-xl w-[200px] ${locale === 'ka' ? bpg.className : "font-arial uppercase"}`}>{c("isu")}</h1>
                     </div>
                     <div className="flex gap-3 items-center">
 
                         <NavbarDesktop
                             menuOpen={menuOpen}
                             setMenuOpen={setMenuOpen}
+                            locale={locale}
                         />
 
                     </div>
@@ -133,6 +153,7 @@ function Header({ locale }) {
             <NavbarMobile
                 menuOpen={menuOpen}
                 setMenuOpen={setMenuOpen}
+                locale={locale}
             />
         </div>
     )

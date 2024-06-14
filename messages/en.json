@@ -6,9 +6,10 @@
   "Header": {
     "isu": "Ilia State University",
     "login": "Login",
-    "dark": "Dark",
-    "light": "Light",
-    "search": "Search"
+    "dark": "Dark theme",
+    "light": "Light theme",
+    "search": "Search",
+    "dashboard": "Dashboard"
   },
   "Footer": {
     "subscribeTitle": "Subscribe to our newsletter",
@@ -23,13 +24,13 @@
     "privacy": "Privacy Policy"
   },
   "TopNavigation": {
-    "home": "Home",
-    "about": "About",
-    "team": "Team",
-    "taxonomy": "Taxonomy",
-    "caucasus": "Caucasus",
-    "gallery": "Gallery",
-    "collaborators": "Collaborators"
+    "home": "HOME",
+    "about": "ABOUT",
+    "team": "TEAM",
+    "taxonomy": "TAXONOMY",
+    "caucasus": "CAUCASUS",
+    "gallery": "GALLERY",
+    "collaborators": "COLLABORATORS"
   },
   "Search": {
     "SimpleSearchByName": "Simple search by name",

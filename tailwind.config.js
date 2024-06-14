@@ -15,7 +15,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      firaGo: ['var(--font-firaGo)']
+      firaGo: ['var(--font-firaGo)', 'var(--font-noto)', 'var-(--font-arial)', 'var-(--font-bpg)']
     }
   },
   plugins: [],
