@@ -2,7 +2,7 @@
 
 import { Fragment, useState } from 'react'
 import { useFormState } from "react-dom"
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/navigation'
 
 import { Dialog, Transition } from '@headlessui/react'
 import { loginUserAction } from '../_lib/actions/auth-actions'
@@ -44,7 +44,7 @@ const LoginPanel = ({ closeModal, loginFormAction }) => {
                 </button>
 
                 <p className='text-sm'>
-                    Don't have an account? <button type='button' onClick={() => { closeModal(), router.push("/register") }} className='text-teal-600 hover:text-teal-700 underline'>Register</button>
+                    Don't have an account? <button type='button' onClick={() => { closeModal(), router.push(`/register`) }} className='text-teal-600 hover:text-teal-700 underline'>Register</button>
                 </p>
             </div>
         </form>

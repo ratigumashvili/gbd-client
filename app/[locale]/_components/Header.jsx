@@ -32,7 +32,7 @@ const NavbarDesktop = ({ menuOpen, setMenuOpen, locale }) => {
             >
                 {menuOpen ? <Close /> : <Hamburger />}
             </button>
-            <ul className={`hidden md:flex gap-3 ${locale === 'ka' ? bpg.className : 'font-arial uppercase'}`}>
+            <ul className={`hidden md:flex gap-3 text-lg ${locale === 'ka' ? bpg.className : 'font-arial uppercase'}`}>
                 {TopMenu.map(({ id, title, path }) => (
                     <li key={id} className={pathname === path ? "font-bold" : "font-normal"}>
                         <Link href={path}>
