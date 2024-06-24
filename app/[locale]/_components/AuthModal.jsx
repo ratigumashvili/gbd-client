@@ -2,15 +2,16 @@
 
 import { Fragment, useState } from 'react'
 import { useFormState } from "react-dom"
+
 import { useRouter } from '@/navigation'
 
 import { Dialog, Transition } from '@headlessui/react'
 import { loginUserAction } from '../_lib/actions/auth-actions'
-
 import { AUTH_FORM_INITIAL_STATE } from '../_lib/constants'
 
 import Close from './icons/Close'
 import RightDoubleIcon from './icons/RightDoubleIcon'
+
 import { useTranslations } from 'next-intl'
 
 const LoginPanel = ({ closeModal, loginFormAction }) => {

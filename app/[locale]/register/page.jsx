@@ -1,60 +1,115 @@
 'use client'
 
-import { useFormState } from "react-dom"
+import { useRouter } from "@/navigation"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod"
+import FormErrors from "../_components/FormErrors"
 
-import ZodErrors from "../_components/ZodErrors"
+export default function LoginPage() {
+    const router = useRouter()
 
-import { registerUserAction } from '../_lib/actions/auth-actions'
-import { AUTH_FORM_INITIAL_STATE } from "../_lib/constants"
+    const schema = z.object({
+        first_name: z.string().min(3, {
+            message: "Name must be between 3 and 20 characters",
+        }).max(20),
+        last_name: z.string().min(3, {
+            message: "Surname must be between 3 and 20 characters",
+        }).max(20),
+        password: z.string().min(6, {
+            message: "Password must be between 6 and 12 characters",
+        }).max(12),
+        email: z.string().email({
+            message: "Please enter a valid email address",
+        }),
+    });
 
-export default function Register() {
+    const { register, handleSubmit, formState: {errors} } = useForm({ resolver: zodResolver(schema) })
 
-    const [registerFormState, registerFormAction] = useFormState(registerUserAction, AUTH_FORM_INITIAL_STATE)
+    // async function handleSubmit(event) {
+    //     event.preventDefault()
 
-    // console.log(registerFormState)
+    //     const formData = new FormData(event.currentTarget)
+
+    //     const first_name = formData.get("first_name")
+    //     const last_name = formData.get("last_name")
+    //     const email = formData.get('email')
+    //     const password = formData.get('password')
+
+    //     try {
+    //         const response = await fetch(process.env.NEXT_PUBLIC_API_URL + '/api/auth/register', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'Accept': 'application/json'
+    //             },
+    //             body: JSON.stringify({
+    //                 first_name,
+    //                 last_name,
+    //                 email,
+    //                 password
+    //             }),
+    //         })
+
+    //         if (response.ok) {
+    //             // router.push('/')
+    //             console.log(response)
+    //         } else {
+    //             // Handle errors
+    //             console.log(response.status, " status")
+    //         }
+
+    //     } catch (error) {
+    //         console.log('Error ... ', error)
+    //     }
+    // }
+
+    async function submitData(data) {
+        try {
+            console.log(data)
+        } catch (error) {
+            console.error(error)
+            // throw new Error(formatZodError(error))
+        }
+    }
+
     return (
-        <div className="flex items-center justify-center">
-            
-            <form action={registerFormAction} className="w-full max-w-[320px] mb-4">
-                <div className="my-8 flex flex-col gap-4">
-                    <label htmlFor="name">Name</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder='Enter Your Name'
-                        className='p-2 bg-transparent border rounded-md outline-teal-500'
-                    />
-                    <ZodErrors error={registerFormState?.zodErrors?.name} />
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="text"
-                        id="email"
-                        name="email"
-                        placeholder='Enter Your Email'
-                        className='p-2 bg-transparent border rounded-md outline-teal-500'
-                    />
-                    <ZodErrors error={registerFormState?.zodErrors?.email} />
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        placeholder='Enter Your Password'
-                        className='p-2 bg-transparent border rounded-md outline-teal-500'
-                    />
-                    <ZodErrors error={registerFormState?.zodErrors?.password} />
-                </div>
-
-                <div className="mt-4 flex flex-col md:flex-row gap-4 items-center justify-between">
-                    <button
-                        type="submit"
-                        className="w-full md:w-max inline-flex justify-center rounded-md border border-transparent bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-900 focus-visible:ring-offset-2"
-                    >
-                        Register
-                    </button>
-                </div>
-            </form>
-        </div>
+        <form onSubmit={handleSubmit(submitData)} className='className="w-full max-w-[320px] mb-4 mx-auto'>
+            <div className="my-8 flex flex-col gap-4">
+                <input
+                    type="text"
+                    name="first_name"
+                    placeholder='First name'
+                    className='p-2 bg-transparent border rounded-md outline-teal-500'
+                    {...register("first_name")}
+                />
+                {errors.first_name && <FormErrors error={errors.first_name.message} />}
+                <input
+                    type="text"
+                    name="last_name"
+                    placeholder='Last name'
+                    className='p-2 bg-transparent border rounded-md outline-teal-500'
+                    {...register("last_name")}
+                />
+                {errors.last_name && <FormErrors error={errors.last_name.message} />}
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    className='p-2 bg-transparent border rounded-md outline-teal-500'
+                    {...register("email")}
+                />
+                {errors.email && <FormErrors error={errors.email.message} />}
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    className='p-2 bg-transparent border rounded-md outline-teal-500'
+                    {...register("password")}
+                />
+                {errors.password && <FormErrors error={errors.password.message} />}
+                <button type="submit">Register</button>
+            </div>
+        </form>
     )
 }

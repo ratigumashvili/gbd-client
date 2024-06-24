@@ -3,8 +3,11 @@
 import { z } from "zod"
 
 const schemaRegister = z.object({
-    name: z.string().min(3).max(20, {
-        message: "Username must be between 3 and 20 characters",
+    first_name: z.string().min(3).max(20, {
+        message: "Name must be between 3 and 20 characters",
+    }),
+    last_name: z.string().min(3).max(20, {
+        message: "Surname must be between 3 and 20 characters",
     }),
     password: z.string().min(6).max(100, {
         message: "Password must be between 6 and 100 characters",
@@ -31,7 +34,8 @@ export async function loginUserAction(prevState, formData) {
 export async function registerUserAction(prevState, formData) {
 
     const validatedFields = schemaRegister.safeParse({
-        name: formData.get("name"),
+        first_name: formData.get("fist_name"),
+        last_surname: formData.get("last_name"),
         password: formData.get("password"),
         email: formData.get("email"),
     });
@@ -43,9 +47,32 @@ export async function registerUserAction(prevState, formData) {
             message: "Missing Fields. Failed to Register.",
         };
     } 
+
+    // const {name, surname, email, password} = validatedFields?.data
+
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + '/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // body: JSON.stringify(name, surname, email, password),
+        body: JSON.stringify({
+            first_name: validatedFields.fisrt_name,
+            last_name: validatedFields.last_name,
+            email: validatedFields.email,
+            password: validatedFields.password
+        })
+
+    })
     
-    return {
-        ...prevState,
-        data: validatedFields,
-    };
+    const data = await response.json()
+
+    console.log("data")
+    
+    // return {
+    //     ...prevState,
+    //     data: validatedFields,
+    // };
+    
+
 }

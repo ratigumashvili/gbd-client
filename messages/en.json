@@ -1,7 +1,8 @@
 {
   "Common": {
     "isu": "Ilia State University",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "readMore": "Read more"
   },
   "Header": {
     "isu": "Ilia State University",

@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl"
 
 const Blocks = ({ data = [] }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 font-firaGo">
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 font-firaGo">
       {data.length && data.map(({ id, name, researchGate, text, photo }) => (
         <div key={id} className="flex flex-col md:flex-row gap-4 mb-6">
           {photo ? (

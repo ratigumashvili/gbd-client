@@ -3,11 +3,13 @@ import { popularMenu } from '../_lib/data'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 
-function PopularMenu() {
+import { detectLocale } from '../_lib/helpers'
+
+function PopularMenu({locale}) {
   const t = useTranslations("Index")
   return (
     <div className='p-4 bg-slate-50 dark:bg-slate-700 rounded-md col-span-1'>
-      <h2 className="text-2xl font-medium mb-4">
+      <h2 className={`text-2xl font-medium mb-4 ${detectLocale(locale)}`}>
         {t("popularEntries")}
       </h2>
       <ul>

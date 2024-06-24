@@ -1,4 +1,5 @@
 import { Bounce } from "react-toastify"
+import { bpg } from "./fonts"
 
 export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
 
@@ -42,3 +43,7 @@ export const exportData = (dataObject) => {
 
     link.click();
 };
+
+export const detectLocale = (language) => {
+    return language === 'ka' ? bpg.className : 'font-arial uppercase' 
+}

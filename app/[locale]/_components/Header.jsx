@@ -18,7 +18,7 @@ import RightDoubleIcon from "./icons/RightDoubleIcon"
 
 import { useTranslations } from "next-intl"
 
-import { bpg } from "../_lib/fonts"
+import { detectLocale } from "../_lib/helpers"
 
 
 const NavbarDesktop = ({ menuOpen, setMenuOpen, locale }) => {
@@ -32,9 +32,9 @@ const NavbarDesktop = ({ menuOpen, setMenuOpen, locale }) => {
             >
                 {menuOpen ? <Close /> : <Hamburger />}
             </button>
-            <ul className={`hidden md:flex gap-3 text-lg ${locale === 'ka' ? bpg.className : 'font-arial uppercase'}`}>
+            <ul className={`hidden md:flex gap-3 text-lg ${detectLocale(locale)}`}>
                 {TopMenu.map(({ id, title, path }) => (
-                    <li key={id} className={pathname === path ? "font-bold" : "font-normal"}>
+                    <li key={id} className={pathname === path ? "underline" : ""}>
                         <Link href={path}>
                             {t(title)}
                         </Link>
@@ -51,7 +51,7 @@ const NavbarMobile = ({ menuOpen, setMenuOpen, locale }) => {
     return (
         <>
             {menuOpen && (
-                <ul className={`flex flex-col gap-4 p-4 h-screen w-full absolute z-50 bg-white ${locale === 'ka' ? bpg.className : 'font-arial uppercase'}`}>
+                <ul className={`flex flex-col gap-4 p-4 h-screen w-full absolute z-50 bg-white ${detectLocale(locale)}`}>
                     {TopMenu.map(({ id, title, path }) => (
                         <button
                             key={id}
@@ -137,7 +137,7 @@ function Header({ locale }) {
                 <div className="container flex justify-between items-center flex-container mx-auto px-4 py-8">
                     <div className="flex items-center gap-3">
                         <Image src="/iliauni-logo_eng.png" width={80} height={80} alt="logo" className="brightness-0 invert-[1]" />
-                        <h1 className={`text-xl w-[200px] ${locale === 'ka' ? bpg.className : "font-arial uppercase"}`}>{c("isu")}</h1>
+                        <h1 className={`text-xl w-[200px] ${detectLocale(locale)}`}>{c("isu")}</h1>
                     </div>
                     <div className="flex gap-3 items-center">
 
