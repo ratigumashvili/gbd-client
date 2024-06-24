@@ -90,5 +90,18 @@
     },
     "Gallery": {
       "pageTitle": "Gallery"
+    },
+    "Registration": {
+      "register": "Register",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "firstNameError": "Name must be between 3 and 20 characters",
+      "lastNameError": "Surname must be between 3 and 20 characters",
+      "emailError": "Password must be between 6 and 12 characters",
+      "passwordError": "Please enter a valid email address",
+      "userRegistered": "Success. Verification email has been sent to your email",
+      "invalidEmail": "Email allready registered"
     }
   }
