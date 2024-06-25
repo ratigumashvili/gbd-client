@@ -5,8 +5,10 @@ import { useState } from "react"
 import { useRouter } from "@/navigation"
 
 import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
+
+import bcrypt from "bcryptjs";
 
 import { useTranslations } from "next-intl"
 
@@ -41,12 +43,16 @@ export default function LoginPage() {
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(schema) })
 
     async function submitData(formData) {
+        
         setMessage({
             text: '',
             status: ''
         })
+
+        const hashedPassword = bcrypt.hashSync(formData.password)
+
         try {
-            const response = await fetch(process.env.NEXT_PUBLIC_API_URL + '/api/auth/register', {
+            const response = await fetch(process.env.NEXT_PUBLIC_API_URL + '/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -56,13 +62,13 @@ export default function LoginPage() {
                     first_name: formData.first_name,
                     last_name: formData.last_name,
                     email: formData.email,
-                    password: formData.password
+                    password: hashedPassword
                 }),
             })
 
             if (response.ok) {
                 // router.push('/')
-                console.log(response)
+                console.log(response, "hashed: ", hashedPassword)
                 setMessage({
                     text: t("userRegistered"),
                     status: 'ok'
@@ -75,7 +81,7 @@ export default function LoginPage() {
             }
 
         } catch (error) {
-            console.log('Error ... ', error)
+            console.log('Error... ', error)
         }
     }
 
