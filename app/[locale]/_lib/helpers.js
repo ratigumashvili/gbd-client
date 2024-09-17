@@ -47,3 +47,7 @@ export const exportData = (dataObject) => {
 export const detectLocale = (language) => {
     return language === 'ka' ? bpg.className : 'font-arial uppercase' 
 }
+
+export const sortTeam = (members, position) => {
+    return members?.filter((member) => member.position === position)
+}
