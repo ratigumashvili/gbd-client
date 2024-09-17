@@ -112,7 +112,7 @@ function Header({ locale }) {
                 <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-sm">
                     <div className="flex items-center gap-2 mb-4 md:mb-0">
                         <h1>
-                            <Link href='https://iliauni.edu.ge/ge' target="blank" className="flex items-center gap-2 font-firaGo">
+                            <Link href='https://iliauni.edu.ge/ge' target="blank" className="sm:flex items-center gap-2 font-firaGo hidden">
                                 <RightDoubleIcon />
                                 {t('isu')}
                             </Link>
