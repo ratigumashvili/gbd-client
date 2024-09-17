@@ -23,14 +23,14 @@ const LoginPanel = ({ closeModal, loginFormAction }) => {
             <div className="my-8 flex flex-col gap-4">
                 <input
                     type="text"
-                    name='email'
-                    placeholder='Email'
+                    name="email"
+                    placeholder="Email"
                     className='p-2 bg-transparent border rounded-md outline-teal-500 dark:border-slate-100'
                 />
                 <input
                     type="password"
-                    name='password'
-                    placeholder='Password'
+                    name="password"
+                    placeholder="Password"
                     className='p-2 bg-transparent border rounded-md outline-teal-500 dark:border-slate-100'
                 />
             </div>
@@ -45,7 +45,13 @@ const LoginPanel = ({ closeModal, loginFormAction }) => {
                 </button>
 
                 <p className='text-sm'>
-                    Don't have an account? <button type='button' onClick={() => { closeModal(), router.push(`/register`) }} className='text-teal-600 hover:text-teal-700 underline'>Register</button>
+                    {"Don't have an account? "}
+                    <button 
+                        type="button" 
+                        onClick={() => { closeModal(), router.push("/register") }} 
+                        className="text-teal-600 hover:text-teal-700 underline">
+                            Register
+                    </button>
                 </p>
             </div>
         </form>

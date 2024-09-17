@@ -1,24 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { Projects, Links, Contacts } from "../_lib/data"
 import { useTranslations } from "next-intl"
 
-const Blocks = (item) => {
-    return (
-        <li key={item.id} className="font-firaGo">
-            <Link
-                className="text-gray-700 transition hover:text-gray-700/75 dark:text-slate-400 dark:hover:text-slate-300"
-                href={item.url}
-                target="blank"
-            >
-                {item.title}
-            </Link>
-        </li>
-    )
-}
+import FooterProjects from "./FooterProjects"
+import FooterLinks from "./FooterLinks"
+import FooterContact from "./FooterContact"
 
-const Footer = () => {
+const Footer = ({locale}) => {
     const currentDate = new Date().getFullYear()
 
     const t = useTranslations("Footer")
@@ -108,9 +97,7 @@ const Footer = () => {
                             <p className="text-lg font-medium text-gray-900 dark:text-slate-400">
                                 {t("projects")}
                             </p>
-                            <ul className="mt-8 space-y-4 text-sm">
-                                {Projects.map((item) => <Blocks key={item.id} {...item} />)}
-                            </ul>
+                            <FooterProjects locale={locale} />
                         </div>
 
                         <div className="text-center sm:text-left">
@@ -118,7 +105,7 @@ const Footer = () => {
                                 {t("links")}
                             </p>
                             <ul className="mt-8 space-y-4 text-sm">
-                                {Links.map((item) => <Blocks key={item.id} {...item} />)}
+                                <FooterLinks locale={locale} />
                             </ul>
                         </div>
 
@@ -127,7 +114,7 @@ const Footer = () => {
                                 {t("contactUs")}
                             </p>
                             <ul className="mt-8 space-y-4 text-sm">
-                                {Contacts.map((item) => <Blocks key={item.id} {...item} />)}
+                                <FooterContact locale={locale} />
                             </ul>
                         </div>
 

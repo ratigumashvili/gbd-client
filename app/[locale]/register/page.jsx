@@ -14,6 +14,8 @@ import { useTranslations } from "next-intl"
 
 import FormErrors from "../_components/FormErrors"
 
+const salt = bcrypt.genSaltSync(10)
+
 export default function LoginPage() {
 
     const [message, setMessage] = useState({
@@ -40,16 +42,16 @@ export default function LoginPage() {
         }),
     });
 
-    const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(schema) })
+    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({ resolver: zodResolver(schema) })
 
     async function submitData(formData) {
-        
+
         setMessage({
             text: '',
             status: ''
         })
 
-        const hashedPassword = bcrypt.hashSync(formData.password)
+        const hashedPassword = bcrypt.hashSync(formData.password, salt)
 
         try {
             const response = await fetch(process.env.NEXT_PUBLIC_API_URL + '/auth/register', {
@@ -68,7 +70,7 @@ export default function LoginPage() {
 
             if (response.ok) {
                 // router.push('/')
-                console.log(response, "hashed: ", hashedPassword)
+                console.log(response)
                 setMessage({
                     text: t("userRegistered"),
                     status: 'ok'
@@ -123,7 +125,12 @@ export default function LoginPage() {
                     {...register("password")}
                 />
                 {errors.password && <FormErrors error={errors.password.message} />}
-                <button type="submit" className="button">{t("register")}</button>
+                <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`button ${isSubmitting && 'pointer-events-none opacity-50'}`} >
+                    {t("register")}
+                </button>
             </div>
         </form>
     )

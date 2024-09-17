@@ -47,3 +47,19 @@ export const exportData = (dataObject) => {
 export const detectLocale = (language) => {
     return language === 'ka' ? bpg.className : 'font-arial uppercase' 
 }
+
+export async function getStaticData(endpoint, page, perPage) {
+    try {
+      const response = await fetch(`http://test-api.biodiversity.iliauni.edu.ge/api/1.0/${endpoint}?page=${page}&per_page=${perPage}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+      })
+      const data = await response.json()
+      return data
+    } catch (error) {
+      console.log(error)
+    }
+  }

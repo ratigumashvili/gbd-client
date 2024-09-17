@@ -7,7 +7,7 @@ import TaxonomyParent from '@/app/[locale]/_components/TaxonomyParent'
 export default function page({ params }) {
 
     const data = taxonomy.filter((item) => item.slug === params.kingdom)
-    const children = taxonomy[0].phylum.map((child) => child)
+    const child = taxonomy[0].phylum.map((child) => child)
 
     if (data.length === 0) {
         redirect('/taxonomy')
@@ -15,14 +15,13 @@ export default function page({ params }) {
 
     return (
         <>
-        {/* {JSON.stringify(children, null, 2)} */}
-        <TaxonomyParent
-            name={`Kingdom ${data[0]?.name}`}
-            description={data[0]?.description}
-            photos={data[0]?.photos}
-            children={children}
-        />
-        
+        {/* {JSON.stringify(child, null, 2)} */}
+            <TaxonomyParent
+                name={`Kingdom ${data[0]?.name}`}
+                description={data[0]?.description}
+                photos={data[0]?.photos}
+                child={child}
+            />
         </>
     )
 }

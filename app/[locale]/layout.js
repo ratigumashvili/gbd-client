@@ -29,7 +29,7 @@ export default async function RootLayout({ children, params: { locale } }) {
               <main className="container mx-auto flex-grow p-4">
                 {children}
               </main>
-              <Footer />
+              <Footer locale={locale} />
             </UserWrapper>
           </ThemeProviders>
         </NextIntlClientProvider>

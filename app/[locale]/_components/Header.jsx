@@ -122,7 +122,7 @@ function Header({ locale }) {
                             <RightDoubleIcon />
                             {t("dashboard")}</Link>
 
-                        <AuthModal />
+                        {/* <AuthModal /> */}
                     </div>
                     <div className="flex items-center gap-4">
 
