@@ -1,9 +1,13 @@
 import Link from "next/link"
-import { team, teamAppreciation } from "../_lib/data"
+
 import Image from "next/image"
+
 import { useTranslations } from "next-intl"
-import { getStaticData } from "../_lib/helpers"
+
 import { AuthorsTranslate, ContributorsTranslate, EditorsTranslate } from "./Translations"
+
+import { team, teamAppreciation } from "../_lib/data"
+import { getData } from "../_lib/apiCalls"
 
 const Blocks = ({ data = [] }) => {
 
@@ -32,16 +36,19 @@ const Blocks = ({ data = [] }) => {
   )
 }
 
-const Team = async () => {
+const Team = async ({params}) => {
 
   // const t = useTranslations("Team")
-  const researchers = await getStaticData('researcher', 1, 10)
+
+  const {data: researchers} = await getData('researcher', params.locale)
 
   return (
     <div className="py-4">
       <EditorsTranslate />
 
-      <Blocks data={researchers.data} />
+      {/* <Blocks data={researchers.data} /> */}
+
+      {JSON.stringify(researchers, null, 2)}
       
       <AuthorsTranslate />
 

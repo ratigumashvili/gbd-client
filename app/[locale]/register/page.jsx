@@ -40,6 +40,8 @@ export default function LoginPage() {
         email: z.string().email({
             message: t("emailError"),
         }),
+        institution: z.string(),
+        interests: z.string()
     });
 
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({ resolver: zodResolver(schema) })
@@ -64,7 +66,9 @@ export default function LoginPage() {
                     first_name: formData.first_name,
                     last_name: formData.last_name,
                     email: formData.email,
-                    password: hashedPassword
+                    password: hashedPassword,
+                    institution: formData.institution,
+                    interests: formData.institution,
                 }),
             })
 
@@ -75,7 +79,14 @@ export default function LoginPage() {
                     text: t("userRegistered"),
                     status: 'ok'
                 })
-            } else {
+            } 
+            if (response.status === 404) {
+                setMessage({
+                    text: t("error"),
+                    status: '404'
+                })
+            }
+            else {
                 setMessage({
                     text: t("invalidEmail"),
                     status: '422'
@@ -84,13 +95,17 @@ export default function LoginPage() {
 
         } catch (error) {
             console.log('Error... ', error)
+            setMessage({
+                text: error,
+                status: '404'
+            })
         }
     }
 
     return (
-        <form onSubmit={handleSubmit(submitData)} className='className="w-full max-w-[320px] mb-4 mx-auto'>
+        <form onSubmit={handleSubmit(submitData)} className='className="w-full max-w-xl mb-4 mx-auto'>
 
-            {message && <p className={`${message.status === '422' ? "text-pink-500" : "text-teal-600"} text-sm text-center`}>{message?.text}</p>}
+            {message && <p className={`${message.status === '422' || message.status === '404' ? "text-pink-500" : "text-teal-600"} text-sm text-center`}>{message?.text}</p>}
 
             <div className="my-8 flex flex-col gap-4">
                 <input
@@ -117,6 +132,20 @@ export default function LoginPage() {
                     {...register("email")}
                 />
                 {errors.email && <FormErrors error={errors.email.message} />}
+                <input
+                    type="text"
+                    name="institution"
+                    placeholder={t("institution")}
+                    className='p-2 bg-transparent border rounded-md outline-teal-500'
+                    {...register("institution")}
+                />
+                <input
+                    type="text"
+                    name="interests"
+                    placeholder={t("interests")}
+                    className='p-2 bg-transparent border rounded-md outline-teal-500'
+                    {...register("interests")}
+                />
                 <input
                     type="password"
                     name="password"

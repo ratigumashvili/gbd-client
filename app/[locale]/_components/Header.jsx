@@ -120,7 +120,12 @@ function Header({ locale }) {
 
                         <Link href="/" className="flex items-center gap-2 font-firaGo">
                             <RightDoubleIcon />
-                            {t("dashboard")}</Link>
+                            {t("dashboard")}
+                        </Link>
+                        <Link href="/register" className="flex items-center gap-2 font-firaGo">
+                        <RightDoubleIcon />
+                            {t("register")}
+                        </Link>
 
                         {/* <AuthModal /> */}
                     </div>

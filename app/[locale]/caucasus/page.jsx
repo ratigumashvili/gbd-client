@@ -1,16 +1,18 @@
-import { useTranslations } from 'next-intl'
+import { getData } from '../_lib/apiCalls'
 import { caucasus } from '../_lib/data'
+import { PageTitle } from './Translations'
 
-function Caucasus() {
+async function Caucasus({ params }) {
 
-  const t = useTranslations("Caucasus")
+  const { data } = await getData('static-page/caucasian', params.locale)
 
   return (
     <div className="py-4">
-      <h2 className="text-2xl font-medium mb-4">{t("pageTitle")}</h2>
+      <PageTitle />
       <div className="text-content font-firaGo"
-        dangerouslySetInnerHTML={{ __html: caucasus.data }}
+        dangerouslySetInnerHTML={{ __html: data?.meta_data_localized?.text }}
       />
+      {/* {JSON.stringify(data?.meta_data_localized?.text, null, 2)} */}
     </div>
   )
 }

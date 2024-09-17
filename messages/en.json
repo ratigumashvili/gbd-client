@@ -10,7 +10,8 @@
     "dark": "Dark theme",
     "light": "Light theme",
     "search": "Search",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "register": "Registration"
   },
   "Footer": {
     "subscribeTitle": "Subscribe to our newsletter",
@@ -98,11 +99,14 @@
       "last_name": "Last Name",
       "email": "Email",
       "password": "Password",
+      "institution": "Institution",
+      "interests": "Research interests",
       "firstNameError": "Name must be between 3 and 20 characters",
       "lastNameError": "Surname must be between 3 and 20 characters",
-      "emailError": "Password must be between 6 and 12 characters",
+      "emailError": "Plaease, use valid email address",
       "passwordError": "Please enter a valid email address",
       "userRegistered": "Success. Verification email has been sent to your email",
-      "invalidEmail": "Email allready registered"
+      "invalidEmail": "Email allready registered",
+      "error": "Problem occurred. Please, try again later"
     }
   }
