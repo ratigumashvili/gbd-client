@@ -10,9 +10,6 @@ import { useTranslations } from 'next-intl';
 
 import ReCAPTCHA from 'react-google-recaptcha';
 
-import { useUserContext } from '../_context/UserContext';
-
-
 import { toast } from 'react-toastify';
 import { toastOptions } from '../_lib/helpers';
 
@@ -28,8 +25,6 @@ export default function FeedbackForm({ isOpen, closeModal, metaData }) {
     const [formError, setFormError] = useState(false)
 
     const t = useTranslations("Common")
-
-    const { user } = useUserContext()
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
@@ -81,48 +76,46 @@ export default function FeedbackForm({ isOpen, closeModal, metaData }) {
                                         </button>
                                     </Dialog.Title>
 
-                                    {user.loggedIn ? (
-                                        <form className="mt-2 flex flex-col gap-4" onSubmit={handleFormSubmit}>
-                                            <small>{t("issueTitle")} <span className='text-red-700'>*</span></small>
-                                            <input
-                                                value={issueTitle}
-                                                onChange={(e) => setIssueTitle(e.target.value)}
-                                                type="text"
-                                                className='p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-xs'
-                                                placeholder={t("provideTitle")}
-                                            />
-                                            <small>{t("issueDesc")} <span className='text-red-700'>*</span></small>
-                                            <MDEditor
-                                                value={description}
-                                                onChange={setDescription}
-                                                previewOptions={{
-                                                    rehypePlugins: [[rehypeSanitize]],
-                                                }}
-                                                textareaProps={{
-                                                    placeholder: t("describeIssue"),
-                                                }}
-                                            />
+                                    <form className="mt-2 flex flex-col gap-4" onSubmit={handleFormSubmit}>
+                                        <small>{t("issueTitle")} <span className='text-red-700'>*</span></small>
+                                        <input
+                                            value={issueTitle}
+                                            onChange={(e) => setIssueTitle(e.target.value)}
+                                            type="text"
+                                            className='p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-xs'
+                                            placeholder={t("provideTitle")}
+                                        />
+                                        <small>{t("issueDesc")} <span className='text-red-700'>*</span></small>
+                                        <MDEditor
+                                            value={description}
+                                            onChange={setDescription}
+                                            previewOptions={{
+                                                rehypePlugins: [[rehypeSanitize]],
+                                            }}
+                                            textareaProps={{
+                                                placeholder: t("describeIssue"),
+                                            }}
+                                        />
 
-                                            <ReCAPTCHA 
-                                                sitekey={process.env.NEXT_PUBLIC_SITE_KEY}
-                                                onChange={(value) => setRecaptchaValue(value)}
-                                            />
+                                        <ReCAPTCHA
+                                            sitekey={process.env.NEXT_PUBLIC_SITE_KEY}
+                                            onChange={(value) => setRecaptchaValue(value)}
+                                        />
 
-                                            <div className="mt-1 flex items-center justify-between">
-                                                <button
-                                                    type="submit"
-                                                    className="button disabled:opacity-50 disabled:cursor-not-allowed"
-                                                    disabled={!recaptchaValue}
-                                                    onClick={handleFormSubmit}
-                                                >
-                                                    {t("sendFeedback")}
-                                                </button>
+                                        <div className="mt-1 flex items-center justify-between">
+                                            <button
+                                                type="submit"
+                                                className="button disabled:opacity-50 disabled:cursor-not-allowed"
+                                                disabled={!recaptchaValue}
+                                                onClick={handleFormSubmit}
+                                            >
+                                                {t("sendFeedback")}
+                                            </button>
 
-                                                {formError && <p className='text-sm text-red-700'>{formError}</p>}
-                                            </div>
+                                            {formError && <p className='text-sm text-red-700'>{formError}</p>}
+                                        </div>
 
-                                        </form>
-                                    ) : <p className='my-6 text-red-700'>Only authorised users can leave their feedback. Please, login to your account.</p>}
+                                    </form>
 
                                 </Dialog.Panel>
                             </Transition.Child>
