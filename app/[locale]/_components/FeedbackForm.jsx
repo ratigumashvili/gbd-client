@@ -6,19 +6,24 @@ import { Fragment, useState } from 'react'
 import MDEditor from '@uiw/react-md-editor';
 import rehypeSanitize from "rehype-sanitize";
 
+import { useTranslations } from 'next-intl';
+
+import ReCAPTCHA from 'react-google-recaptcha';
+
 import { useUserContext } from '../_context/UserContext';
+
 
 import { toast } from 'react-toastify';
 import { toastOptions } from '../_lib/helpers';
 
 import Close from './icons/Close';
-import { useTranslations } from 'next-intl';
-
 
 export default function FeedbackForm({ isOpen, closeModal, metaData }) {
 
     const [issueTitle, setIssueTitle] = useState('')
     const [description, setDescription] = useState('')
+
+    const [recaptchaValue, setRecaptchaValue] = useState(null)
 
     const [formError, setFormError] = useState(false)
 
@@ -29,7 +34,7 @@ export default function FeedbackForm({ isOpen, closeModal, metaData }) {
     const handleFormSubmit = (e) => {
         e.preventDefault()
         setFormError(false)
-        if (issueTitle === '' || description === '') {
+        if (issueTitle.trim() === '' || description.trim() === '') {
             setFormError(t("required"))
         } else {
             console.log({ issueTitle, description, metaData })
@@ -98,10 +103,16 @@ export default function FeedbackForm({ isOpen, closeModal, metaData }) {
                                                 }}
                                             />
 
-                                            <div className="mt-4 flex items-center justify-between">
+                                            <ReCAPTCHA 
+                                                sitekey={process.env.NEXT_PUBLIC_SITE_KEY}
+                                                onChange={(value) => setRecaptchaValue(value)}
+                                            />
+
+                                            <div className="mt-1 flex items-center justify-between">
                                                 <button
                                                     type="submit"
-                                                    className="button"
+                                                    className="button disabled:opacity-50 disabled:cursor-not-allowed"
+                                                    disabled={!recaptchaValue}
                                                     onClick={handleFormSubmit}
                                                 >
                                                     {t("sendFeedback")}
