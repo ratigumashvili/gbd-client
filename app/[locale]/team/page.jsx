@@ -9,22 +9,24 @@ import { sortTeam } from "../_lib/helpers"
 
 const Blocks = ({ data = [] }) => {
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {data.length !== 0 && data?.map((item) => (
-        <div key={item.id} className="flex gap-4">
-          <Image
-            src={`${item.image_url}`}
-            width={150}
-            height={150}
-            alt={item.title}
-            className="object-cover overflow-hidden self-start flex-nowrap min-w-36 min-h-min-w-36"
-          />
+        <div key={item.id} className="flex flex-col sm:flex-row gap-4">
+          <div className="shrink-0">
+            <Image
+              src={`${item.image_url}`}
+              width={150}
+              height={150}
+              alt={item.title}
+              className="object-cover overflow-hidden self-start w-full sm:w-32 sm:h-32 mt-2"
+            />
+          </div>
           <div>
             <h2 className="font-medium text-xl mb-1">{item.title}</h2>
-            <Link href="/" target="blank" className="block mb-3">ResearchGate</Link>
+            <Link href="/" target="blank" className="block mb-3 text-teal-600 transition hover:text-teal-600/75">ResearchGate</Link>
             <div
               dangerouslySetInnerHTML={{ __html: item.biography }}
-              className="[&>p]:mb-3 font-firaGo text-base"
+              className="[&>p]:mb-3 font-firaGo text-sm"
             />
           </div>
         </div>))}
@@ -43,15 +45,17 @@ const Team = async ({ params }) => {
   return (
     <div className="py-4">
 
-      {editors.length !== 0 && <EditorsTranslate />}
+      {/* {JSON.stringify(editors, null, 2)} */}
+
+      {editors && editors?.length !== 0 && <EditorsTranslate />}
 
       <Blocks data={editors} />
 
-      {authors.length !== 0 && <AuthorsTranslate />}
+      {authors && authors?.length !== 0 && <AuthorsTranslate />}
 
       <Blocks data={authors} />
 
-      {contributors.length !== 0 && <ContributorsTranslate />}
+      {contributors && contributors?.length !== 0 && <ContributorsTranslate />}
 
       <Blocks data={contributors} />
 

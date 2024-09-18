@@ -1,7 +1,10 @@
 "use client"
 
-import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
+
+import { useTranslations } from 'next-intl'
+
+import { Dialog, Transition } from '@headlessui/react'
 
 import Close from '../icons/Close'
 import ExportIcon from '../icons/ExportIcon'
@@ -9,6 +12,8 @@ import ExportIcon from '../icons/ExportIcon'
 
 export default function DataDownload({title}) {
     const [isOpen, setIsOpen] = useState(false)
+
+    const t = useTranslations("Common")
 
     function closeModal() {
         setIsOpen(false)
@@ -24,7 +29,7 @@ export default function DataDownload({title}) {
                 type='button'
                 onClick={openModal}
                 className='border rounded-md px-2 py-1'
-                title='Download data'
+                title={t("downloadData")}
             >
                 <ExportIcon width={"18"} height={"18"} />
             </button>
@@ -60,7 +65,7 @@ export default function DataDownload({title}) {
                                         className="text-lg font-medium leading-6 text-gray-900"
                                     >
                                         <div className='flex items-center justify-between'>
-                                            <span>Download data</span>
+                                            <span>{t("downloadData")}</span>
                                             <button onClick={closeModal}>
                                                 <Close />
                                             </button>
@@ -68,33 +73,33 @@ export default function DataDownload({title}) {
                                     </Dialog.Title>
 
                                     <div className="my-8 flex flex-col gap-4">
-                                        <h2>Select taxonomy level of the {title}</h2>
+                                        <h2>{t("slectLevel")} {title}</h2>
 
                                         <div className="w-full mx-auto max-w-2xl">
                                             <div>
                                                 <label className="radio-group">
                                                     <input type="radio" name="taxonomy" />
-                                                    <i className="pl-2">Kingdom</i>
+                                                    <i className="pl-2">{t("kingdom")}</i>
                                                 </label>
                                                 <label className="radio-group">
                                                     <input type="radio" name="taxonomy" />
-                                                    <i className="pl-2">Phylum</i>
+                                                    <i className="pl-2">{t("phylum")}</i>
                                                 </label>
                                                 <label className="radio-group">
                                                     <input type="radio" name="taxonomy" />
-                                                    <i className="pl-2">Class</i>
+                                                    <i className="pl-2">{t("class")}</i>
                                                 </label>
                                                 <label className="radio-group">
                                                     <input type="radio" name="taxonomy" />
-                                                    <i className="pl-2">Order</i>
+                                                    <i className="pl-2">{t("order")}</i>
                                                 </label>
                                                 <label className="radio-group">
                                                     <input type="radio" name="taxonomy" />
-                                                    <i className="pl-2">Family</i>
+                                                    <i className="pl-2">{t("family")}</i>
                                                 </label>
                                                 <label className="radio-group">
                                                     <input type="radio" name="taxonomy" />
-                                                    <i className="pl-2">Genus</i>
+                                                    <i className="pl-2">{t("genus")}</i>
                                                 </label>
                                             </div>
                                         </div>
@@ -107,7 +112,7 @@ export default function DataDownload({title}) {
                                             className="inline-flex justify-center rounded-md border border-transparent bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-900 focus-visible:ring-offset-2"
                                             onClick={closeModal}
                                         >
-                                            Download
+                                            {t("download")}
                                         </button>
                                     </div>
                                 </Dialog.Panel>

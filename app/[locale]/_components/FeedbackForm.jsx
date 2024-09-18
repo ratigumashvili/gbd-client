@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 import { toastOptions } from '../_lib/helpers';
 
 import Close from './icons/Close';
+import { useTranslations } from 'next-intl';
 
 
 export default function FeedbackForm({ isOpen, closeModal, metaData }) {
@@ -21,17 +22,19 @@ export default function FeedbackForm({ isOpen, closeModal, metaData }) {
 
     const [formError, setFormError] = useState(false)
 
+    const t = useTranslations("Common")
+
     const { user } = useUserContext()
 
     const handleFormSubmit = (e) => {
         e.preventDefault()
         setFormError(false)
         if (issueTitle === '' || description === '') {
-            setFormError("Please, fill out required '*' fields")
+            setFormError(t("required"))
         } else {
             console.log({ issueTitle, description, metaData })
             closeModal()
-            toast.success("Your feedback was sent", toastOptions)
+            toast.success(t("feedbackSent"), toastOptions)
         }
     }
 
@@ -67,7 +70,7 @@ export default function FeedbackForm({ isOpen, closeModal, metaData }) {
                                         as="h3"
                                         className="text-lg font-medium leading-6 text-gray-900 flex items-center justify-between"
                                     >
-                                        <span>Feedback form</span>
+                                        <span>{t("feedbackForm")}</span>
                                         <button onClick={closeModal}>
                                             <Close />
                                         </button>
@@ -75,15 +78,15 @@ export default function FeedbackForm({ isOpen, closeModal, metaData }) {
 
                                     {user.loggedIn ? (
                                         <form className="mt-2 flex flex-col gap-4" onSubmit={handleFormSubmit}>
-                                            <small>Issue title <span className='text-red-700'>*</span></small>
+                                            <small>{t("issueTitle")} <span className='text-red-700'>*</span></small>
                                             <input
                                                 value={issueTitle}
                                                 onChange={(e) => setIssueTitle(e.target.value)}
                                                 type="text"
                                                 className='p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-xs'
-                                                placeholder='Provide descriptive title'
+                                                placeholder={t("provideTitle")}
                                             />
-                                            <small>Issue description <span className='text-red-700'>*</span></small>
+                                            <small>{t("issueDesc")} <span className='text-red-700'>*</span></small>
                                             <MDEditor
                                                 value={description}
                                                 onChange={setDescription}
@@ -91,7 +94,7 @@ export default function FeedbackForm({ isOpen, closeModal, metaData }) {
                                                     rehypePlugins: [[rehypeSanitize]],
                                                 }}
                                                 textareaProps={{
-                                                    placeholder: 'Describe an issue',
+                                                    placeholder: t("describeIssue"),
                                                 }}
                                             />
 
@@ -101,7 +104,7 @@ export default function FeedbackForm({ isOpen, closeModal, metaData }) {
                                                     className="button"
                                                     onClick={handleFormSubmit}
                                                 >
-                                                    Send feedback
+                                                    {t("sendFeedback")}
                                                 </button>
 
                                                 {formError && <p className='text-sm text-red-700'>{formError}</p>}

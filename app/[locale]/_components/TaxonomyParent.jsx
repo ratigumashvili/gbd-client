@@ -5,6 +5,8 @@ import { useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
+import { useTranslations } from 'next-intl'
+
 import { useReactToPrint } from 'react-to-print'
 
 import { checkLink, separator } from "@/app/[locale]/_lib/helpers"
@@ -25,9 +27,11 @@ import TaxonomyChildNodes from './TaxonomyChildNodes'
 import GoBack from './icons/GoBack'
 
 
-export default function TaxonomyParent({ name, description, photos, children }) {
+export default function TaxonomyParent({ name, description, photos, child, locale }) {
 
     const router = useRouter()
+
+    const t = useTranslations("Common")
 
     const {
         scientificNameId,
@@ -71,7 +75,7 @@ export default function TaxonomyParent({ name, description, photos, children }) 
             <div className="flex flex-col md:flex-row gap-4">
                 <div className="flex-1">
 
-                    <h2 className='font-medium my-2 block-title'>Description</h2>
+                    <h2 className='font-medium my-2 block-title'>{t("desc")}</h2>
 
                     <dl className="data-list">
                         {scientificNameId && (
@@ -152,7 +156,7 @@ export default function TaxonomyParent({ name, description, photos, children }) 
                         )}
                         {pageAuthors?.length !== 0 && (
                             <>
-                                <dt>Page Authors:</dt>
+                                <dt>{t("authors")}:</dt>
                                 <dd>
                                     {pageAuthors?.map((author, index) => (
                                         <span key={author.id}>
@@ -168,7 +172,7 @@ export default function TaxonomyParent({ name, description, photos, children }) 
                 </div>
                 <div className="flex-1">
 
-                    <h2 className='font-medium my-2 block-title'>Gallery</h2>
+                    <h2 className='font-medium my-2 block-title'>{t("gallery")}</h2>
 
                     <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
                         {photos?.map((image) => (
@@ -180,12 +184,12 @@ export default function TaxonomyParent({ name, description, photos, children }) 
             </div>
 
             <div className="col-span-1 mt-8 mb-4">
-                <h2 className='font-medium text-md my-4'>Taxonomy of the {name}</h2>
-                <TaxonomyChildNodes data={children} />
+                <h2 className='font-medium text-md my-4'>{locale === 'ka' ? `${name} - ${t("taxonomyOfThe")}` : `${t("taxonomyOfThe")} ${name}`}</h2>
+                <TaxonomyChildNodes data={child} />
             </div>
 
             <div className="col-span-2 my-4 border rounded-md print:hidden">
-                <h2 className='font-medium text-md my-4 px-4'>Visual representation of the {name}</h2>
+                <h2 className='font-medium text-md my-4 px-4'>{locale === 'ka' ? `${name} - ${t("visualRepresentation")}` : `${t("visualRepresentation")} ${name}`}</h2>
                 <hr className='shadow-sm' />
                 <DynamicTaxonomyOrder treeContent={fungiTree} />
             </div>

@@ -2,7 +2,36 @@
   "Common": {
     "isu": "ილიას სახელმწიფო უნივერსიტეტი",
     "loading": "იტვირთება...",
-    "readMore": "დაწვრილებით"
+    "readMore": "დაწვრილებით",
+    "citePage": "გვერდის ციტირება",
+    "copied": "მონაცემები კოპირებულია",
+    "required": "გთხოვთ, შეავსოთ ყველა სავალდებულო '*' ველი",
+    "feedbackSent": "უკუკავშირი გაგზავნილია",
+    "feedbackForm": "უკუკავშირის ფორმა",
+    "issueTitle": "საკითხის/პრობლემის სახელწოდება",
+    "issueDesc": "საკითხის/პრობლემის აღწერა",
+    "provideTitle": "",
+    "describeIssue": "აღწერეთ საკითხი/პრობლემა",
+    "sendFeedback": "გაგზავნა",
+    "copyUrl": "ბმულის კოპირება",
+    "print": "გვერდის დაბეჭდვა",
+    "feedback": "უკუკავშირი",
+    "json": "ჩამოტვირთეთ JSON",
+    "desc": "აღწერა",
+    "authors": "გვერდის ავტორები",
+    "gallery": "გალერეა",
+    "taxonomyOfThe": "ტაქსონომია",
+    "visualRepresentation": "ვიზუალური რეპრეზენტაცია",
+    "downloadData": "მონაცემების ჩამოტვირთვა",
+    "slectLevel": "აირჩიეთ ტაქსონომიური დონე",
+    "download": "ჩამოტვირთვა",
+    "kingdom": "სამეფო",
+    "phylum": "ტიპი",
+    "class": "კლასი",
+    "order": "რიგი",
+    "family": "ოჯახი",
+    "genus": "გვარი",
+    "fullScreen": "გაშლა სრულ ეკრანზე"
   },
   "Header": {
     "isu": "ილიაუნი",
@@ -42,71 +71,71 @@
     "LatinName": "ლათინური სახელწოდება",
     "NationalIUCNCategory": "ნაციონალური IUCN კატეგორია"
   },
-    "Index": {
-      "title": "მოგესალმებით GBD-ში",
-      "about_title": "ბაზის შესახებ",
-      "popularEntries": "პოპულარული ჩანაწერები",
-      "BrowseByTaxonomy": "ნავიგაცია ტაქსონომიით",
-      "BrowseByGeography": "ნავიგაცია გეოგრაფიით",
-      "registeredRecords": "რეგისტრირებული ჩანაწერი",
-      "latestUploads": "ბოლოს დამატებული",
-      "taxon": "ტაქსონი",
-      "comment": "კომენტარი",
-      "author": "ავტორი",
-      "uploadedBy": "ამტვირთავი",
-      "GBDActivityCalendar": "GBD აქტივობის კალენდარი",
-      "date": "თარიღი",
-      "recordsRegistered": "რეგისტრირებული ჩანაწერი",
-      "legend": "ლეგენდა"
-    },
-    "Map": {
-      "clickOnMarkers": "მონაცემთა ჩატვირთვისათვის დააწკაპუნეთ რუკაზე არსებულ მარკერებს",
-      "place": "ადგილი",
-      "region": "რეგიონი",
-      "registeredGenus": "გვარ(ებ)ი",
-      "speciesTotal": "სახეობა ჯამში",
-      "loadData": "მონაცემების ჩატვირთვა",
-      "expand": "ფანჯრის გადიდება",
-      "collapse": "ფანჯრის დაპატარავება",
-      "chartView": "გრაფიკი",
-      "listView": "სია",
-      "species": "სახეობა",
-      "distribution": "სახეობები გვარების მიხედვით"
-    },
-    "About": {
-      "pageTitle": "ბაზის შესახებ"
-    },
-    "Team": {
-      "pageTitle": "ჯგუფი",
-      "editors": "რედაქტორები",
-      "authors": "ავტორები",
-      "contributors": "კონტრიბუტორები",
-      "thanks": "განსაკუთრებული მადლობა",
-      "profile": "Researchgate პროფილი"
-    },
-    "Taxonomy": {
-      "pageTitle": "ტაქსონომია"
-    },
-    "Caucasus": {
-      "pageTitle": "კავკასია"
-    },
-    "Gallery": {
-      "pageTitle": "გალერეა"
-    },
-    "Registration": {
-      "register": "რეგისტრაცია",
-      "first_name": "სახელი",
-      "last_name": "გვარი",
-      "email": "ელფოსტა",
-      "password": "პაროლი",
-      "institution": "ინსტიტუცია",
-      "interests": "კვლევითი ინტერესები",
-      "firstNameError": "სახელი უნდა შეიცავდეს მინიმუმ 3 და მაქსიმუმ 20 სიმბოლოს",
-      "lastNameError": "გვარი უნდა შეიცავდეს მინიმუმ 3 და მაქსიმუმ 20 სიმბოლოს",
-      "emailError": "გთხოვთ, გამოიყენოთ ვალიდური ელ.ფოსტა",
-      "passwordError": "გთხოვთ, გამოიყენოთ ვალიდური ელფოსტა",
-      "userRegistered": "თქვენ წარმატებით გაიარეთ რეგისტრაციის პოროცესი. ვერიფიკაციის ბმული გამოგზავნილია მითითებულ ელფოსტაზე",
-      "invalidEmail": "აღნიშნული ელფოსტა უკვე რეგისტრირებულია",
-      "error": "დაფიქსირდა შეცდომა. გთხოვთ სცადოთ მოგვიანებით"
-    }
+  "Index": {
+    "title": "მოგესალმებით GBD-ში",
+    "about_title": "ბაზის შესახებ",
+    "popularEntries": "პოპულარული ჩანაწერები",
+    "BrowseByTaxonomy": "ნავიგაცია ტაქსონომიით",
+    "BrowseByGeography": "ნავიგაცია გეოგრაფიით",
+    "registeredRecords": "რეგისტრირებული ჩანაწერი",
+    "latestUploads": "ბოლოს დამატებული",
+    "taxon": "ტაქსონი",
+    "comment": "კომენტარი",
+    "author": "ავტორი",
+    "uploadedBy": "ამტვირთავი",
+    "GBDActivityCalendar": "GBD აქტივობის კალენდარი",
+    "date": "თარიღი",
+    "recordsRegistered": "რეგისტრირებული ჩანაწერი",
+    "legend": "ლეგენდა"
+  },
+  "Map": {
+    "clickOnMarkers": "მონაცემთა ჩატვირთვისათვის დააწკაპუნეთ რუკაზე არსებულ მარკერებს",
+    "place": "ადგილი",
+    "region": "რეგიონი",
+    "registeredGenus": "გვარ(ებ)ი",
+    "speciesTotal": "სახეობა ჯამში",
+    "loadData": "მონაცემების ჩატვირთვა",
+    "expand": "ფანჯრის გადიდება",
+    "collapse": "ფანჯრის დაპატარავება",
+    "chartView": "გრაფიკი",
+    "listView": "სია",
+    "species": "სახეობა",
+    "distribution": "სახეობები გვარების მიხედვით"
+  },
+  "About": {
+    "pageTitle": "ბაზის შესახებ"
+  },
+  "Team": {
+    "pageTitle": "ჯგუფი",
+    "editors": "რედაქტორები",
+    "authors": "ავტორები",
+    "contributors": "კონტრიბუტორები",
+    "thanks": "განსაკუთრებული მადლობა",
+    "profile": "Researchgate პროფილი"
+  },
+  "Taxonomy": {
+    "pageTitle": "ტაქსონომია"
+  },
+  "Caucasus": {
+    "pageTitle": "კავკასია"
+  },
+  "Gallery": {
+    "pageTitle": "გალერეა"
+  },
+  "Registration": {
+    "register": "რეგისტრაცია",
+    "first_name": "სახელი",
+    "last_name": "გვარი",
+    "email": "ელფოსტა",
+    "password": "პაროლი",
+    "institution": "ინსტიტუცია",
+    "interests": "კვლევითი ინტერესები",
+    "firstNameError": "სახელი უნდა შეიცავდეს მინიმუმ 3 და მაქსიმუმ 20 სიმბოლოს",
+    "lastNameError": "გვარი უნდა შეიცავდეს მინიმუმ 3 და მაქსიმუმ 20 სიმბოლოს",
+    "emailError": "გთხოვთ, გამოიყენოთ ვალიდური ელ.ფოსტა",
+    "passwordError": "გთხოვთ, გამოიყენოთ ვალიდური ელფოსტა",
+    "userRegistered": "თქვენ წარმატებით გაიარეთ რეგისტრაციის პოროცესი. ვერიფიკაციის ბმული გამოგზავნილია მითითებულ ელფოსტაზე",
+    "invalidEmail": "აღნიშნული ელფოსტა უკვე რეგისტრირებულია",
+    "error": "დაფიქსირდა შეცდომა. გთხოვთ სცადოთ მოგვიანებით"
   }
+}

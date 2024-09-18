@@ -21,6 +21,7 @@ export default function page({ params }) {
                 description={data[0]?.description}
                 photos={data[0]?.photos}
                 child={child}
+                locale={params.locale}
             />
         </>
     )

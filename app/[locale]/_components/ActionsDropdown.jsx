@@ -13,12 +13,15 @@ import { copyToClipboard, currentDate, exportData, toastOptions, baseUrl } from 
 import FeedbackForm from './FeedbackForm'
 
 import Hamburger from './icons/Hamburger'
+import { useTranslations } from 'next-intl'
 
 export default function ActionsDropdown({ handlePrint = () => void(0), record = [], downloadContent = true }) {
 
     const [isOpen, setIsOpen] = useState(false)
 
     const pathname = usePathname()
+
+    const t = useTranslations("Common")
 
     function closeModal() {
         setIsOpen(false)
@@ -36,7 +39,7 @@ export default function ActionsDropdown({ handlePrint = () => void(0), record = 
 
     const handleCopyToClipboard = () => {
         copyToClipboard(baseUrl + pathname)
-        toast.success("Data copied to clipboard", toastOptions)
+        toast.success(t("copied"), toastOptions)
     }
 
     return (
@@ -58,10 +61,10 @@ export default function ActionsDropdown({ handlePrint = () => void(0), record = 
                     leaveTo="transform opacity-0 scale-95"
                 >
                     <Menu.Items className="absolute top-10 right-0 z-10 flex flex-col gap-1 p-1 text-sm bg-white whitespace-nowrap rounded-sm min-w-28 shadow-md">
-                        <Menu.Item as="button" onClick={handleCopyToClipboard} className="actions-dropdown-item">Copy permalink</Menu.Item>
-                        <Menu.Item as="button" onClick={handlePrint} className="actions-dropdown-item">Print page</Menu.Item>
-                        <Menu.Item as="button" onClick={openModal} className="actions-dropdown-item">Send feedback</Menu.Item>
-                        {downloadContent && (<Menu.Item as="button" onClick={() => exportData(record)} className="actions-dropdown-item">Download JSON</Menu.Item>)}
+                        <Menu.Item as="button" onClick={handleCopyToClipboard} className="actions-dropdown-item">{t("copyUrl")}</Menu.Item>
+                        <Menu.Item as="button" onClick={handlePrint} className="actions-dropdown-item">{t("print")}</Menu.Item>
+                        <Menu.Item as="button" onClick={openModal} className="actions-dropdown-item">{t("feedback")}</Menu.Item>
+                        {downloadContent && (<Menu.Item as="button" onClick={() => exportData(record)} className="actions-dropdown-item">{"json"}</Menu.Item>)}
                     </Menu.Items>
                 </Transition>
             </Menu>

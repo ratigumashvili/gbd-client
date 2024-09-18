@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
 
+import { useTranslations } from "next-intl"
+
 import { toast } from "react-toastify"
 
 import { baseUrl, copyToClipboard, currentDate, toastOptions } from "../_lib/helpers"
@@ -15,13 +17,15 @@ export default function Cite({ name, id = undefined }) {
     const [citeElement, setCiteElement] = useState()
     const pathname = usePathname()
 
+    const t = useTranslations("Common")
+
     useEffect(() => {
         setCiteElement(citeRef.current)
     }, [])
 
     const handleCopyCite = () => {
         copyToClipboard(citeElement.innerText)
-        toast.success("Copied to clipboard", toastOptions)
+        toast.success(t("copied"), toastOptions)
     }
 
     return (
@@ -36,7 +40,7 @@ export default function Cite({ name, id = undefined }) {
                     <Copy width="18" height="18" />
                 </button>
 
-                <em><b>Cite this page:</b></em> <span ref={citeRef}>{`${name}`}. Georgian Biodiversity Database (Tbilisi, {`${currentDate.slice(-4)}`}). Ilia State University, Institute of Ecology. {id !== undefined && `Record id: ${id};`} Available at: {`${baseUrl + pathname}`}. Date accessed: {`${currentDate}`}.</span>
+                <em><b>{t("citePage")}:</b></em> <span ref={citeRef}>{`${name}`}. Georgian Biodiversity Database (Tbilisi, {`${currentDate.slice(-4)}`}). Ilia State University, Institute of Ecology. {id !== undefined && `Record id: ${id};`} Available at: {`${baseUrl + pathname}`}. Date accessed: {`${currentDate}`}.</span>
 
             </div>
         </>

@@ -1,5 +1,7 @@
 "use client"
 
+import { useTranslations } from "next-intl";
+
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { Tree, TreeNode } from "react-organizational-chart"
 
@@ -30,6 +32,8 @@ const TreeItem = ({ name, data }) => {
 
 export default function TaxonomyOrderTree({ treeContent }) {
 
+    const t = useTranslations("Common")
+
     const handleFullScreen = useFullScreenHandle();
     
     return (
@@ -40,7 +44,7 @@ export default function TaxonomyOrderTree({ treeContent }) {
                     <button
                         onClick={handleFullScreen.enter}
                         className="border rounded-md px-2 py-1"
-                        title="Full screen"
+                        title={t("fullScreen")}
                     >
                         <FullScreenIcon w={"18"} height={"18"} />
                     </button>
