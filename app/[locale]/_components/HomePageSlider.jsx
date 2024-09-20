@@ -1,12 +1,16 @@
 "use client"
 
+import Image from 'next/image';
+import { Link } from '@/navigation';
+
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
+
 import { homePageSlider } from '../_lib/data';
-import Image from 'next/image';
+
 import ChevronLeft from './icons/ChevronLeft';
 import ChevronRight from './icons/ChevronRight';
-import Link from 'next/link';
+
 import { useTranslations } from 'next-intl';
 
 const properties = {
@@ -35,11 +39,11 @@ function HomePageSlider() {
                 <h2 className='text-xl font-medium mb-2'>
                   {recordTitle}
                 </h2>
-                <p>{t("taxon")}: <Link className='text-teal-600 hover:text-teal-700' href={taxonId.toString()}>{taxonTitle}</Link></p>
+                <p>{t("taxon")}: <Link className='text-teal-600 hover:text-teal-700' href={`/${taxonId.toString()}`}>{taxonTitle}</Link></p>
                 {comment && (
                   <p className='text-wrap'>{t("comment")}: {comment}</p>
                 )}
-                <p>{t("author")}: <Link className='text-teal-600 hover:text-teal-700' href={authorId.toString()}>{photoAuthor}</Link></p>
+                <p>{t("author")}: <Link className='text-teal-600 hover:text-teal-700' href={`/${authorId.toString()}`}>{photoAuthor}</Link></p>
                 <p>{t("uploadedBy")}: {uploadedBy}</p>
               </div>
             </div>

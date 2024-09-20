@@ -53,6 +53,8 @@ const Team = async ({ params }) => {
 
       <PageTitle locale={params.locale} />
 
+      {JSON.stringify(editors, null, 2)}
+
       {editors && editors?.length !== 0 && <EditorsTranslate />}
 
       <Blocks data={editors.sort((a,b) => a.sort_weight - b.sort_weight)} />

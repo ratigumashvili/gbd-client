@@ -52,7 +52,9 @@
     "contactUs": "Contact us",
     "copyright": "Georgian Biodiversity Database. Ilia State University",
     "cookies": "Cookies Policy",
-    "privacy": "Privacy Policy"
+    "privacy": "Privacy Policy",
+    "emailError": "Plaease, use valid email address",
+    "success": "You have successfully subscribed to our newsletter"
   },
   "TopNavigation": {
     "home": "HOME",

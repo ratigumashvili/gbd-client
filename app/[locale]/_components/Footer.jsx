@@ -3,9 +3,14 @@ import Link from "next/link"
 
 import { useTranslations } from "next-intl"
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import FooterProjects from "./FooterProjects"
 import FooterLinks from "./FooterLinks"
 import FooterContact from "./FooterContact"
+import FooterSubscribe from "./FooterSubscribe"
+
 
 const Footer = ({locale}) => {
     const currentDate = new Date().getFullYear()
@@ -14,23 +19,11 @@ const Footer = ({locale}) => {
 
     return (
         <footer className="bg-white dark:bg-slate-900 mt-auto border border-t-1 dark:border-0">
+            <ToastContainer />
             <div className="container flex-container mx-auto px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24">
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                     <div>
-                        <div className="flex flex-col gap-4 p-6 border border-teal-600 rounded-md dark:border-slate-400">
-                            <div>
-                                <h2 className="text-center sm:text-left">{t("subscribeTitle")}</h2>
-                                <p className="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-sm sm:text-left font-firaGo">
-                                    {t("subscribeText")}
-                                </p>
-                            </div>
-                            <div className="flex gap-2 font-firaGo">
-                                <input type="email" placeholder={t("subscribePlaceholder")} className="w-full p-2 border focus:outline-none dark:border-0 dark:bg-slate-700" />
-                                <button className="button">
-                                    {t("subscribeBtn")}
-                                </button>
-                            </div>
-                        </div>
+                        <FooterSubscribe />
 
                         <ul className="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
                             <li>
