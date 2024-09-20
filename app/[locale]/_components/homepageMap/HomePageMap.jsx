@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import Link from "next/link";
+import { Link } from "@/navigation";
 
 import "leaflet/dist/leaflet.css";
 
@@ -77,7 +77,7 @@ function HomePageMap() {
         data: genusCount
     }]
 
-   
+
 
     return (
         <div className="flex flex-col md:flex-row gap-4">
@@ -153,7 +153,12 @@ function HomePageMap() {
 
                                     {genus.species.map(({ id, name, url }) => (
                                         <div className="pl-4 flex flex-col gap-3" key={id}>
-                                            <span>{t("species")}: <Link href={url} className="text-teal-600 underline hover:text-teal-700"><em>{name}</em></Link></span>
+                                            <span>{t("species")}: <Link href={`/${url}`} className="text-teal-600 underline hover:text-teal-700">
+                                                <em>
+                                                    {name}
+                                                </em>
+                                            </Link>
+                                            </span>
                                             <hr />
                                         </div>
                                     ))}

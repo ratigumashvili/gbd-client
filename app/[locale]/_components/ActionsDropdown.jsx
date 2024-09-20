@@ -64,7 +64,7 @@ export default function ActionsDropdown({ handlePrint = () => void(0), record = 
                         <Menu.Item as="button" onClick={handleCopyToClipboard} className="actions-dropdown-item">{t("copyUrl")}</Menu.Item>
                         <Menu.Item as="button" onClick={handlePrint} className="actions-dropdown-item">{t("print")}</Menu.Item>
                         <Menu.Item as="button" onClick={openModal} className="actions-dropdown-item">{t("feedback")}</Menu.Item>
-                        {downloadContent && (<Menu.Item as="button" onClick={() => exportData(record)} className="actions-dropdown-item">{"json"}</Menu.Item>)}
+                        {downloadContent && (<Menu.Item as="button" onClick={() => exportData(record)} className="actions-dropdown-item">{t("download_json")}</Menu.Item>)}
                     </Menu.Items>
                 </Transition>
             </Menu>
