@@ -1,6 +1,14 @@
 import { getData } from '../_lib/apiCalls'
-import { caucasus } from '../_lib/data'
-import { PageTitle } from './Translations'
+import { detectLocale } from '../_lib/helpers'
+
+import { useTranslations } from 'next-intl'
+
+const PageTitle = ({locale}) => {
+  const t = useTranslations("Caucasus")
+  return (
+    <h2 className={`text-2xl font-medium mb-4 ${detectLocale(locale)}`}>{t("pageTitle")}</h2>
+  )
+}
 
 async function Caucasus({ params }) {
 
@@ -8,11 +16,10 @@ async function Caucasus({ params }) {
 
   return (
     <div className="py-4">
-      <PageTitle />
+      <PageTitle locale={params.locale} />
       <div className="text-content font-firaGo"
         dangerouslySetInnerHTML={{ __html: data?.meta_data_localized?.text }}
       />
-      {/* {JSON.stringify(data?.meta_data_localized?.text, null, 2)} */}
     </div>
   )
 }

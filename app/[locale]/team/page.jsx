@@ -4,7 +4,8 @@ import Image from "next/image"
 import { AuthorsTranslate, ContributorsTranslate, EditorsTranslate } from "./Translations"
 
 import { getData } from "../_lib/apiCalls"
-import { sortPosition } from "../_lib/helpers"
+import { detectLocale, sortPosition } from "../_lib/helpers"
+import { useTranslations } from "next-intl"
 
 const Blocks = ({ data = [] }) => {
   return (
@@ -33,6 +34,11 @@ const Blocks = ({ data = [] }) => {
   )
 }
 
+const PageTitle = ({locale}) => {
+  const t = useTranslations("Team")
+  return <h2 className={`text-2xl font-medium mb-4 ${detectLocale(locale)}`}>{t("pageTitle")}</h2>
+}
+
 const Team = async ({ params }) => {
 
   const { data: researchers } = await getData('researcher', params.locale)
@@ -45,7 +51,7 @@ const Team = async ({ params }) => {
   return (
     <div className="py-4">
 
-      {JSON.stringify(editors, null, 2)}
+      <PageTitle locale={params.locale} />
 
       {editors && editors?.length !== 0 && <EditorsTranslate />}
 

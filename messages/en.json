@@ -106,7 +106,7 @@
       "pageTitle": "About the database"
     },
     "Team": {
-      "team": "pageTitle",
+      "pageTitle": "Team",
       "editors": "Editors",
       "authors": "Authors",
       "contributors": "Contributors",
