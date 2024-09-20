@@ -133,7 +133,7 @@
       "firstNameError": "Name must be between 3 and 20 characters",
       "lastNameError": "Surname must be between 3 and 20 characters",
       "emailError": "Plaease, use valid email address",
-      "passwordError": "Please enter a valid email address",
+      "passwordError": "Password must be between 6 and 12 characters",
       "userRegistered": "Success. Verification email has been sent to your email",
       "invalidEmail": "Email allready registered",
       "error": "Problem occurred. Please, try again later"

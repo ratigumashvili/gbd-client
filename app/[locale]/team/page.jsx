@@ -3,9 +3,8 @@ import Image from "next/image"
 
 import { AuthorsTranslate, ContributorsTranslate, EditorsTranslate } from "./Translations"
 
-import { team, teamAppreciation } from "../_lib/data"
 import { getData } from "../_lib/apiCalls"
-import { sortTeam } from "../_lib/helpers"
+import { sortPosition } from "../_lib/helpers"
 
 const Blocks = ({ data = [] }) => {
   return (
@@ -23,7 +22,7 @@ const Blocks = ({ data = [] }) => {
           </div>
           <div>
             <h2 className="font-medium text-xl mb-1">{item.title}</h2>
-            <Link href="/" target="blank" className="block mb-3 text-teal-600 transition hover:text-teal-600/75">ResearchGate</Link>
+            <Link href={item.researchgate} target="blank" className="block mb-3 text-teal-600 transition hover:text-teal-600/75">ResearchGate</Link>
             <div
               dangerouslySetInnerHTML={{ __html: item.biography }}
               className="[&>p]:mb-3 font-firaGo text-sm"
@@ -37,30 +36,31 @@ const Blocks = ({ data = [] }) => {
 const Team = async ({ params }) => {
 
   const { data: researchers } = await getData('researcher', params.locale)
+  const {data : teamAppreciation} = await getData('static-page/researcher', params.locale)
 
-  const editors = sortTeam(researchers, "Editor")
-  const authors = sortTeam(researchers, "Author")
-  const contributors = sortTeam(researchers, "Contributor")
+  const editors = sortPosition(researchers, "Editor")
+  const authors = sortPosition(researchers, "Author")
+  const contributors = sortPosition(researchers, "Contributor")
 
   return (
     <div className="py-4">
 
-      {/* {JSON.stringify(editors, null, 2)} */}
+      {JSON.stringify(editors, null, 2)}
 
       {editors && editors?.length !== 0 && <EditorsTranslate />}
 
-      <Blocks data={editors} />
+      <Blocks data={editors.sort((a,b) => a.sort_weight - b.sort_weight)} />
 
       {authors && authors?.length !== 0 && <AuthorsTranslate />}
 
-      <Blocks data={authors} />
+      <Blocks data={authors.sort((a,b) => a.sort_weight - b.sort_weight)} />
 
       {contributors && contributors?.length !== 0 && <ContributorsTranslate />}
 
-      <Blocks data={contributors} />
+      <Blocks data={contributors.sort((a,b) => a.sort_weight - b.sort_weight)} />
 
       <div className="[&>p]:mb-3 [&>ul]:mb-3 [&>ul]:list-disc [&>ul]:ml-4 p-4 bg-slate-50 dark:bg-slate-600 rounded-md mt-8"
-        dangerouslySetInnerHTML={{ __html: teamAppreciation }}
+        dangerouslySetInnerHTML={{ __html: teamAppreciation?.meta_data_localized?.text }}
       />
 
     </div>

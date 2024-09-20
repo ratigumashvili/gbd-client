@@ -48,6 +48,6 @@ export const detectLocale = (language) => {
     return language === 'ka' ? bpg.className : 'font-arial uppercase' 
 }
 
-export const sortTeam = (members, position) => {
+export const sortPosition = (members, position) => {
     return members?.filter((member) => member.position === position)
 }

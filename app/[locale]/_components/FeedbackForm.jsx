@@ -19,16 +19,16 @@ export default function FeedbackForm({ isOpen, closeModal, metaData }) {
 
     const [issueTitle, setIssueTitle] = useState('')
     const [description, setDescription] = useState('')
+    const [formError, setFormError] = useState(false)
 
     const [recaptchaValue, setRecaptchaValue] = useState(null)
 
-    const [formError, setFormError] = useState(false)
-
     const t = useTranslations("Common")
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault()
         setFormError(false)
+        
         if (issueTitle.trim() === '' || description.trim() === '') {
             setFormError(t("required"))
         } else {
@@ -36,6 +36,7 @@ export default function FeedbackForm({ isOpen, closeModal, metaData }) {
             closeModal()
             toast.success(t("feedbackSent"), toastOptions)
         }
+        
     }
 
     return (

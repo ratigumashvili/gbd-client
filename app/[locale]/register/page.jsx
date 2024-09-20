@@ -96,7 +96,7 @@ export default function LoginPage() {
         } catch (error) {
             console.log('Error... ', error)
             setMessage({
-                text: error,
+                text: t("error"),
                 status: '404'
             })
         }

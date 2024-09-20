@@ -2,8 +2,6 @@ import Link from "next/link"
 
 import { getData } from "../_lib/apiCalls"
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL
-
 async function FooterProjects({locale}) {
 
   const { data } = await getData('project', locale)
