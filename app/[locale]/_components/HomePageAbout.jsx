@@ -1,4 +1,5 @@
-import Link from "next/link"
+
+import { Link } from '@/navigation';
 
 import {useTranslations} from 'next-intl';
 
@@ -11,7 +12,7 @@ const HomePageAbout = ({locale}) => {
   const c = useTranslations('Common')
   return (
     <div className="p-4 bg-slate-50 dark:bg-slate-700 rounded-md col-span-2">
-      <h2 className={`text-2xl font-medium mb-4 ${detectLocale(locale)}`}>{t('about_title')}</h2>
+      <h2 className={`text-2xl font-medium mb-4 ${detectLocale(locale)}`}>{t('about_title')}</h2>?
       <div
         dangerouslySetInnerHTML={{ __html: about.data.excerpt }}
         className="[&>p]:mb-3 font-firaGo"

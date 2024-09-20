@@ -1,15 +1,20 @@
 import { useTranslations } from "next-intl"
-import { about } from "../_lib/data"
+import { getData } from "../_lib/apiCalls"
 
-function About() {
+const PageTitle = () => {
+  const t = useTranslations("About")
+  return <h2 className="text-2xl font-medium mb-4">{t("pageTitle")}</h2>
+}
 
-const t = useTranslations("About")
+async function About({params}) {
+
+const {data} = await getData('static-page/about', params.locale)
 
   return (
     <div className="py-4">
-      <h2 className="text-2xl font-medium mb-4">{t("pageTitle")}</h2>
+      <PageTitle />
       <div className="[&>p]:mb-3 font-firaGo"
-        dangerouslySetInnerHTML={{ __html: about.data.text }}
+        dangerouslySetInnerHTML={{ __html: data?.meta_data_localized?.text }}
       />
     </div>
   )
