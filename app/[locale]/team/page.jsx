@@ -11,7 +11,7 @@ const Blocks = ({ data = [] }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {data.length !== 0 && data?.map((item) => (
-        <div key={item.id} className="flex flex-col sm:flex-row gap-4">
+        <div key={item.id} className="flex flex-col sm:flex-row gap-4 mb-6">
           <div className="shrink-0">
             <Image
               src={`${item.image_url}`}
@@ -34,7 +34,7 @@ const Blocks = ({ data = [] }) => {
   )
 }
 
-const PageTitle = ({locale}) => {
+const PageTitle = ({ locale }) => {
   const t = useTranslations("Team")
   return <h2 className={`text-2xl font-medium mb-4 ${detectLocale(locale)}`}>{t("pageTitle")}</h2>
 }
@@ -42,30 +42,28 @@ const PageTitle = ({locale}) => {
 const Team = async ({ params }) => {
 
   const { data: researchers } = await getData('researcher', params.locale)
-  const {data : teamAppreciation} = await getData('static-page/researcher', params.locale)
+  const { data: teamAppreciation } = await getData('static-page/researcher', params.locale)
 
-  const editors = sortPosition(researchers, "Editor")
-  const authors = sortPosition(researchers, "Author")
-  const contributors = sortPosition(researchers, "Contributor")
+  const editors = sortPosition(researchers, "editor")
+  const authors = sortPosition(researchers, "author")
+  const contributors = sortPosition(researchers, "contributor")
 
   return (
     <div className="py-4">
 
       <PageTitle locale={params.locale} />
 
-      {JSON.stringify(editors, null, 2)}
-
       {editors && editors?.length !== 0 && <EditorsTranslate />}
 
-      <Blocks data={editors.sort((a,b) => a.sort_weight - b.sort_weight)} />
+      <Blocks data={editors?.sort((a, b) => a.sort_weight - b.sort_weight)} />
 
       {authors && authors?.length !== 0 && <AuthorsTranslate />}
 
-      <Blocks data={authors.sort((a,b) => a.sort_weight - b.sort_weight)} />
+      <Blocks data={authors?.sort((a, b) => a.sort_weight - b.sort_weight)} />
 
       {contributors && contributors?.length !== 0 && <ContributorsTranslate />}
 
-      <Blocks data={contributors.sort((a,b) => a.sort_weight - b.sort_weight)} />
+      <Blocks data={contributors?.sort((a, b) => a.sort_weight - b.sort_weight)} />
 
       <div className="[&>p]:mb-3 [&>ul]:mb-3 [&>ul]:list-disc [&>ul]:ml-4 p-4 bg-slate-50 dark:bg-slate-600 rounded-md mt-8"
         dangerouslySetInnerHTML={{ __html: teamAppreciation?.meta_data_localized?.text }}
