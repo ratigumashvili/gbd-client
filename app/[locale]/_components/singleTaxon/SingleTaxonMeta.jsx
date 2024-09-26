@@ -5,16 +5,16 @@ import { singleMetaInterface } from "@/app/[locale]/_lib/constants"
 
 export default function SingleTaxonMeta({ record }) {
 
-const {
-  scientificNameID,
-  nameAccordingTo,
-  species,
-  taxonRank,
-  scientificNameAuthorship,
-  vernacularName,
-  georgianName,
-  referenceOfOccurrenceInGeorgia,
-} = record[0] || singleMetaInterface
+  const {
+    scientificNameID,
+    nameAccordingTo,
+    species,
+    taxonRank,
+    scientificNameAuthorship,
+    vernacularName,
+    georgianName,
+    referenceOfOccurrenceInGeorgia,
+  } = record[0] || singleMetaInterface
 
   return (
     <div className="flex-1">
@@ -28,49 +28,27 @@ const {
           </>
         )}
 
-        {checkObject(nameAccordingTo) && (
-          <>
-            <dt>Name According to:</dt>
-            <dd>
-              <Link href={nameAccordingTo.url} target="blank">
-                {nameAccordingTo.title}
-              </Link>
-            </dd>
-          </>
-        )}
+        <>
+          <dt>Scientific name:</dt>
+          <dd><em>title</em></dd>
+        </>
 
-        {species && (
-          <>
-            <dt>Species:</dt>
-            <dd>{species}</dd>
-          </>
-        )}
+        <>
+          <dt>Name according to:</dt>
+          <dd>Linnaeus 1958</dd>
+        </>
 
-        {checkObject(taxonRank) && (
-          <>
-            <dt>Taxon Rank:</dt>
-            <dd>
-              <Link href={taxonRank.url}>
-                {taxonRank.title}
-              </Link>
-            </dd>
-          </>
-        )}
 
-        {checkObject(scientificNameAuthorship) && (
+        {georgianName && (
           <>
-            <dt>Scientific Name Authorship:</dt>
-            <dd>
-              <Link href={scientificNameAuthorship.url}>
-                {scientificNameAuthorship.title}
-              </Link>
-            </dd>
+            <dt>Georgian Name:</dt>
+            <dd>{georgianName}</dd>
           </>
         )}
 
         {checkObject(vernacularName) && (
           <>
-            <dt>Vernacular Name:</dt>
+            <dt>English Name:</dt>
             <dd>
               <Link href={record[0].vernacularName.url}>
                 {record[0].vernacularName.title}
@@ -79,12 +57,30 @@ const {
           </>
         )}
 
-        {georgianName && (
-          <>
-            <dt>Georgian Name:</dt>
-            <dd>{georgianName}</dd>
-          </>
-        )}
+        <>
+          <dt>Synonyms:</dt>
+          <dd>text</dd>
+        </>
+
+        <>
+          <dt>SubSpecies:</dt>
+          <dd><em>text</em></dd>
+        </>
+
+        <>
+          <dt>Taxonomy source:</dt>
+          <dd>link</dd>
+        </>
+
+        <>
+          <dt>Native/Introduced:</dt>
+          <dd>Native (enum)</dd>
+        </>
+
+        <>
+          <dt>Comment:</dt>
+          <dd>text</dd>
+        </>
 
         {referenceOfOccurrenceInGeorgia?.length !== 0 && (
           <>
@@ -98,6 +94,22 @@ const {
             </dd>
           </>
         )}
+
+<>
+          <dt>Editor:</dt>
+          <dd>name, surname, email</dd>
+        </>
+
+        <>
+          <dt>Contributors:</dt>
+          <dd>persons list</dd>
+        </>
+
+        <>
+          <dt>References list:</dt>
+          <dd>text</dd>
+        </>
+
       </dl>
     </div>
   )

@@ -10,10 +10,11 @@ import { toast } from 'react-toastify'
 
 import { copyToClipboard, currentDate, exportData, toastOptions, baseUrl } from '../_lib/helpers'
 
+import { useTranslations } from 'next-intl'
+
 import FeedbackForm from './FeedbackForm'
 
 import Hamburger from './icons/Hamburger'
-import { useTranslations } from 'next-intl'
 
 export default function ActionsDropdown({ handlePrint = () => void(0), record = [], downloadContent = true }) {
 

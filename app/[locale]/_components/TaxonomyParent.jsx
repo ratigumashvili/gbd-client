@@ -11,9 +11,6 @@ import { useReactToPrint } from 'react-to-print'
 
 import { checkLink, separator } from "@/app/[locale]/_lib/helpers"
 
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
-
 import { taxonomyParentInterface } from '../_lib/constants'
 
 import TaxonomyParentImage from './TaxonomyParentImage'
@@ -59,7 +56,6 @@ export default function TaxonomyParent({ name, description, photos, child, local
 
     return (
         <div className='py-4' ref={printContent}>
-            <ToastContainer />
             <div className="flex items-center justify-between  mb-6">
                 <h2 className="text-2xl font-medium">{name}</h2>
                 <div className='flex items-center gap-4'>
@@ -96,18 +92,6 @@ export default function TaxonomyParent({ name, description, photos, child, local
                                 <dd>{namePublishedInYear}</dd>
                             </>
                         )}
-                        {species && (
-                            <>
-                                <dt>Species:</dt>
-                                <dd>{species}</dd>
-                            </>
-                        )}
-                        {infraspecificEpithet && (
-                            <>
-                                <dt>Infraspethific Epithet:</dt>
-                                <dd>{infraspecificEpithet}</dd>
-                            </>
-                        )}
                         {taxonRank && (
                             <>
                                 <dt>Taxon Rank:</dt>
@@ -122,7 +106,7 @@ export default function TaxonomyParent({ name, description, photos, child, local
                         )}
                         {vernacularName && (
                             <>
-                                <dt>Vernacular Name:</dt>
+                                <dt>English Name:</dt>
                                 <dd><Link href={checkLink(vernacularName.url)} target="blank">{vernacularName.title}</Link></dd>
                             </>
                         )}
@@ -130,18 +114,6 @@ export default function TaxonomyParent({ name, description, photos, child, local
                             <>
                                 <dt>Gerogian Name:</dt>
                                 <dd>{georgianName}</dd>
-                            </>
-                        )}
-                        {taxonomicStatus && (
-                            <>
-                                <dt>Taxonomic Status:</dt>
-                                <dd>{taxonomicStatus}</dd>
-                            </>
-                        )}
-                        {taxonRemarks && (
-                            <>
-                                <dt>Taxon Remarks:</dt>
-                                <dd>{taxonRemarks}</dd>
                             </>
                         )}
                         {GBDRemarks && (
@@ -168,6 +140,9 @@ export default function TaxonomyParent({ name, description, photos, child, local
                                 </dd>
                             </>
                         )}
+
+                        <dt>Contributors:</dt>
+                        <dd>persons list</dd>
                     </dl>
                 </div>
                 <div className="flex-1">

@@ -49,5 +49,5 @@ export const detectLocale = (language) => {
 }
 
 export const sortPosition = (members, role) => {
-    return members?.filter((member) => member.role === role)
+    return members?.filter((member) => member.role === role).sort((a, b) => a.sort_weight - b.sort_weight)
 }

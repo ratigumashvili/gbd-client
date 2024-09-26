@@ -27,7 +27,7 @@ export default function SingleTaxonConservation({ record }) {
 
                 {nationalRedLisStatus && (
                     <>
-                        <dt>National Red Lis Status:</dt>
+                        <dt>National Red List Status:</dt>
                         <dd>{nationalRedLisStatus}</dd>
                     </>
                 )}
@@ -60,12 +60,12 @@ export default function SingleTaxonConservation({ record }) {
                     </>
                 )}
 
-                {native_introduced && (
+                {/* {native_introduced && (
                     <>
                         <dt>Native/introduced:</dt>
                         <dd>{native_introduced}</dd>
                     </>
-                )}
+                )} */}
 
                 {comment && (
                     <>
@@ -74,40 +74,40 @@ export default function SingleTaxonConservation({ record }) {
                     </>
                 )}
 
-                {georgianName && (
+                {/* {georgianName && (
                     <>
                         <dt>Georgian Name:</dt>
                         <dd>{georgianName}</dd>
                     </>
-                )}
+                )} */}
 
-                {englishName && (
+                {/* {englishName && (
                     <>
                         <dt>English Name:</dt>
                         <dd>{englishName}</dd>
                     </>
-                )}
+                )} */}
 
-                {subSpecies && (
+                {/* {subSpecies && (
                     <>
                         <dt>SubSpecies:</dt>
                         <dd>{subSpecies}</dd>
                     </>
-                )}
+                )} */}
 
-                {synonyms && (
+                {/* {synonyms && (
                     <>
                         <dt>Synonyms:</dt>
                         <dd>{synonyms}</dd>
                     </>
-                )}
+                )} */}
 
-                {taxonomyAccordingTo && (
+                {/* {taxonomyAccordingTo && (
                     <>
                         <dt>Taxonomy according to:</dt>
                         <dd>{taxonomyAccordingTo}</dd>
                     </>
-                )}
+                )} */}
 
                 {referencies?.length !== 0 && (
                     <>

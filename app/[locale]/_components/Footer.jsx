@@ -3,9 +3,6 @@ import Link from "next/link"
 
 import { useTranslations } from "next-intl"
 
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 import FooterProjects from "./FooterProjects"
 import FooterLinks from "./FooterLinks"
 import FooterContact from "./FooterContact"
@@ -19,7 +16,6 @@ const Footer = ({locale}) => {
 
     return (
         <footer className="bg-white dark:bg-slate-900 mt-auto border border-t-1 dark:border-0">
-            <ToastContainer />
             <div className="container flex-container mx-auto px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24">
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                     <div>

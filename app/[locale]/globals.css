@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.toast-custom {
+    @apply font-firaGo text-sm
+}
+
 .flex-container {
     @apply max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] 2xl:max-w-[1536px]
 }

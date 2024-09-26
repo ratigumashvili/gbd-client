@@ -30,9 +30,12 @@ export default function SingleRecord({ record }) {
                 />
             </div>
 
-            <div className="flex flex-col md:flex-row gap-4">
-                <SingleTaxonMeta record={record} />
-                <SingleTaxonConservation record={record} />
+            <div className="flex flex-col gap-4">
+                GALLERY
+                <div className='flex flex-col md:flex-row gap-4'>
+                    <SingleTaxonMeta record={record} />
+                    <SingleTaxonConservation record={record} />
+                </div>
             </div>
 
             {record.length !== 0 && (

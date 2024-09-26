@@ -3,6 +3,9 @@ import { getMessages } from 'next-intl/server';
 
 import ThemeProviders from './_providers/themeProvider'
 
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
 import Footer from './_components/Footer'
 import Header from './_components/Header'
 
@@ -24,6 +27,7 @@ export default async function RootLayout({ children, params: { locale } }) {
         <NextIntlClientProvider messages={messages} locale={locale}>
           <ThemeProviders>
             <Header locale={locale} />
+            <ToastContainer toastClassName="toast-custom" />
             <main className="container mx-auto flex-grow p-4">
               {children}
             </main>

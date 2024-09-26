@@ -19,6 +19,7 @@ import RightDoubleIcon from "./icons/RightDoubleIcon"
 import { useTranslations } from "next-intl"
 
 import { detectLocale } from "../_lib/helpers"
+import { useSearchParams } from "next/navigation"
 
 
 const NavbarDesktop = ({ menuOpen, setMenuOpen, locale }) => {
@@ -73,9 +74,10 @@ const LanguageSwitcher = ({ locale }) => {
 
     const router = useRouter()
     const pathname = usePathname()
+    const searchParams = useSearchParams()
 
     const handleLanguageChange = (lang) => {
-        lang === 'ka' ? router.replace(pathname, { locale: 'ka' }) : router.replace(pathname, { locale: 'en' })
+        lang === 'ka' ? router.replace(pathname + '?' + searchParams, { locale: 'ka' }) : router.replace(pathname + '?' + searchParams, { locale: 'en' })
     }
 
     return (

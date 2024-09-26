@@ -1,6 +1,9 @@
 'use client'
 
 import { useState } from "react"
+
+import Link from "next/link"
+
 import { useRouter } from "@/navigation"
 
 import { useForm } from "react-hook-form"
@@ -9,19 +12,18 @@ import { zodResolver } from "@hookform/resolvers/zod"
 
 import bcrypt from "bcryptjs";
 
+import { toast } from "react-toastify"
+
 import { useTranslations } from "next-intl"
 
 import FormErrors from "../_components/FormErrors"
-import { detectLocale } from "../_lib/helpers"
+import { detectLocale, toastOptions } from "../_lib/helpers"
 
 const salt = bcrypt.genSaltSync(10)
 
-export default function LoginPage({params}) {
+export default function RegisterPage({ params }) {
 
-    const [message, setMessage] = useState({
-        text: '',
-        status: ''
-    })
+    const [isChecked, setIsChecked] = useState(false)
 
     const router = useRouter()
 
@@ -48,15 +50,10 @@ export default function LoginPage({params}) {
 
     async function submitData(formData) {
 
-        setMessage({
-            text: '',
-            status: ''
-        })
-
         const hashedPassword = bcrypt.hashSync(formData.password, salt)
 
         try {
-            const response = await fetch(process.env.NEXT_PUBLIC_API_URL + '/auth/register', {
+            const response = await fetch(process.env.NEXT_PUBLIC_REGISTER_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -73,32 +70,20 @@ export default function LoginPage({params}) {
             })
 
             if (response.ok) {
-                // router.push('/')
-                console.log(response)
-                setMessage({
-                    text: t("userRegistered"),
-                    status: 'ok'
-                })
+                toast.success(t("userRegistered"), toastOptions)
+                router.replace('/')
             }
-            if (response.status === 404) {
-                setMessage({
-                    text: t("error"),
-                    status: '404'
-                })
+
+            if (response.status === 422) {
+                toast.error(t("invalidEmail"))
             }
-            else {
-                setMessage({
-                    text: t("invalidEmail"),
-                    status: '422'
-                })
+
+            if (response.status === 403) {
+                toast.error(t("error"))
             }
 
         } catch (error) {
             console.log('Error... ', error)
-            setMessage({
-                text: t("error"),
-                status: '404'
-            })
         }
     }
 
@@ -107,8 +92,6 @@ export default function LoginPage({params}) {
             <h2 className={`text-2xl font-medium mb-4 ${detectLocale(params.locale)}`}>{t("register")}</h2>
 
             <form onSubmit={handleSubmit(submitData)} className='className="w-full max-w-xl mb-4'>
-
-                {message && <p className={`${message.status === '422' || message.status === '404' ? "text-pink-500" : "text-teal-600"} text-sm text-center`}>{message?.text}</p>}
 
                 <div className="my-8 flex flex-col gap-4">
                     <input
@@ -156,10 +139,25 @@ export default function LoginPage({params}) {
                         {...register("password")}
                     />
                     {errors.password && <FormErrors error={errors.password.message} />}
+                    <div className="flex items-center gap-2 text-sm">
+                        <input
+                            type="checkbox"
+                            name="checkbox"
+                            id="checkbox"
+                            value={isChecked}
+                            onChange={() => setIsChecked(!isChecked)}
+                        />
+                        <label htmlFor="checkbox">
+                            <Link href={params.locale === 'ka' ? 'https://iliauni.edu.ge/ge/privacy-policy' : 'https://iliauni.edu.ge/en/privacy-policy'} target="blank">
+                                {t("confirm")}
+                            </Link>
+                        </label>
+                    </div>
                     <button
                         type="submit"
-                        disabled={isSubmitting}
-                        className={`button ${isSubmitting && 'pointer-events-none opacity-50'}`} >
+                        disabled={isSubmitting || !isChecked}
+                        className="button disabled:pointer-events-none disabled:opacity-50"
+                    >
                         {t("register")}
                     </button>
                 </div>
