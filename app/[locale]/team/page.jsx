@@ -15,14 +15,14 @@ const Blocks = ({ data = [] }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {data.length !== 0 && data?.map((item) => (
-        <article key={item.id} className="flex flex-col sm:flex-row gap-4 mb-6">
+        <article key={item.id} className="flex gap-4 mb-6">
           <div className="shrink-0">
             <Image
               src={`${item.image_url}`}
               width={150}
               height={150}
               alt={item.title}
-              className="object-cover overflow-hidden self-start w-full sm:w-32 sm:h-32 mt-2"
+              className="object-cover overflow-hidden self-start rounded-full w-28 h-28 mt-2"
             />
           </div>
           <div>

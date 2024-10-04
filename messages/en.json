@@ -34,7 +34,10 @@
     "fullScreen": "Full screen",
     "next": "Next",
     "prev": "Previous",
-    "page": "Page"
+    "page": "Page",
+    "errorTitle": "Oops! Something went wrong",
+    "errorSubtitle": "Could not find requested page",
+    "errorGoHome": "Return Home"
   },
   "Header": {
     "isu": "Ilia State University",
@@ -116,7 +119,10 @@
       "authors": "Authors",
       "contributors": "Contributors",
       "thanks": "Special thanks",
-      "profile": "Researchgate profile"
+      "profile": "Researchgate profile",
+      "position": "Position",
+      "bio": "Biography",
+      "interests": "Interests"
     },
     "Taxonomy": {
       "pageTitle": "Taxonomy"

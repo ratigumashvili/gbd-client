@@ -5,7 +5,6 @@ import { useState, useEffect } from "react"
 import { useRouter } from "@/navigation"
 import { useTranslations } from "next-intl"
 
-
 function Pagination({ path, currentPage, total }) {
     const [current, setCurrent] = useState(+currentPage || 1)
 
@@ -18,7 +17,7 @@ function Pagination({ path, currentPage, total }) {
     const t = useTranslations("Common")
 
     const handlePagionationClick = (direction) => direction === 'next' ? setCurrent((prev) => prev + 1) : setCurrent((prev) => prev - 1)
-
+    
     return (
         <div className="flex items-center justify-between">
             <div className="flex gap-2">

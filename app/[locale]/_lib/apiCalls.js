@@ -9,7 +9,7 @@ export const getData = async (endpoint, locale) => axios.get(`${apiUrl}/${endpoi
       'Accept': 'application/json',
       'Accept-Language': locale
     },
-  }).then((response) => response.data).catch((error) => error.message)
+  }).then((response) => response.data).catch((error) => error)
 
 export const getPaginatedData = async (endpoint, locale, currentPage, perPage) => axios.get(`${apiUrl}/${endpoint}`,
   {

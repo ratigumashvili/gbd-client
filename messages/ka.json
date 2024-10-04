@@ -34,7 +34,10 @@
     "fullScreen": "გაშლა სრულ ეკრანზე",
     "next": "შემდეგი",
     "prev": "წინა",
-    "page": "გვერდი"
+    "page": "გვერდი",
+    "errorTitle": "დაფიქსირდა შეცდომა",
+    "errorSubtitle": "მოთხოვნილი გვერდი ვერ მოიძებნა",
+    "errorGoHome": "დაბრუნდით მთავარზე"
   },
   "Header": {
     "isu": "ილიაუნი",
@@ -116,7 +119,10 @@
     "authors": "ავტორები",
     "contributors": "კონტრიბუტორები",
     "thanks": "განსაკუთრებული მადლობა",
-    "profile": "Researchgate პროფილი"
+    "profile": "Researchgate პროფილი",
+    "position": "პოზიცია",
+    "bio": "ბიოგრაფია",
+    "interests": "ინტერესები"
   },
   "Taxonomy": {
     "pageTitle": "ტაქსონომია"
