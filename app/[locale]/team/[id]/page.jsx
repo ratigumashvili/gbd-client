@@ -1,10 +1,10 @@
-import Link from "next/link"
 import Image from "next/image"
 
 import { getData } from "../../_lib/apiCalls"
 
 import NothingFound from "../../_components/NothingFound"
 import TeamMemberDesc from "../../_components/TeamMemberDesc"
+import TeamMemberRecords from "../../_components/TeamMemberRecords"
 
 const TeamMemberPage = async ({ params }) => {
 
@@ -25,9 +25,9 @@ const TeamMemberPage = async ({ params }) => {
                     className="object-cover overflow-hidden self-start rounded-full w-28 h-28 shrink-0 mt-2"
                 />
                 <div>
-                    <h2 className="font-medium text-xl mb-4">{member.title}</h2>
-                    <p className="mb-6 text-teal-700"><Link href={member.researchgate} target="blank">Researchgate</Link></p>
                     <TeamMemberDesc member={member} />
+                    <br />
+                    <TeamMemberRecords />
                 </div>
             </article>
         </div>

@@ -122,7 +122,9 @@
     "profile": "Researchgate პროფილი",
     "position": "პოზიცია",
     "bio": "ბიოგრაფია",
-    "interests": "ინტერესები"
+    "interests": "ინტერესები",
+    "contacts": "კონტაქტი",
+    "registered": "რეგისტრირებული ჩანაწერები"
   },
   "Taxonomy": {
     "pageTitle": "ტაქსონომია"

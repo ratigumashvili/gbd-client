@@ -122,7 +122,9 @@
       "profile": "Researchgate profile",
       "position": "Position",
       "bio": "Biography",
-      "interests": "Interests"
+      "interests": "Interests",
+      "contacts": "Contacts",
+      "registered": "Registered records"
     },
     "Taxonomy": {
       "pageTitle": "Taxonomy"

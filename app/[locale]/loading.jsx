@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function loading() {
     return (
         <div role="status" className='flex items-center justify-center p-20'>

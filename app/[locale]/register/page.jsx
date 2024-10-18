@@ -156,7 +156,7 @@ export default function RegisterPage({ params }) {
                     <button
                         type="submit"
                         disabled={isSubmitting || !isChecked}
-                        className="button disabled:pointer-events-none disabled:opacity-50"
+                        className="button !py-3 disabled:pointer-events-none disabled:opacity-50"
                     >
                         {t("register")}
                     </button>

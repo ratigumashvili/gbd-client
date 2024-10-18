@@ -1,4 +1,3 @@
-import Link from "next/link"
 import Image from "next/image"
 
 import { Link as InternalLink } from "@/navigation"
@@ -10,6 +9,8 @@ import { getData, getPaginatedData } from "../_lib/apiCalls"
 import { detectLocale, sortPosition } from "../_lib/helpers"
 
 import Pagination from "../_components/Pagination"
+
+import { RESEARCHERS_PER_PAGE } from "../_lib/constants"
 
 const Blocks = ({ data = [] }) => {
   return (
@@ -27,9 +28,9 @@ const Blocks = ({ data = [] }) => {
           </div>
           <div>
             <h2 className="font-medium text-xl mb-1">
-              <InternalLink href={`/team/${item.id}`}>{item.title}</InternalLink>
+              <InternalLink href={`/team/${item.id}`} className="block hover:text-teal-700 transition-all duration-150">{item.title}</InternalLink>
             </h2>
-            <Link href={item.researchgate} target="blank" className="block mb-3 text-teal-600 transition hover:text-teal-600/75">ResearchGate</Link>
+            <span className="inline-block mb-3 mt-2 text-sm py-1 px-2 bg-teal-600 text-white rounded-md">{item.position}</span>
             <div
               dangerouslySetInnerHTML={{ __html: item.biography }}
               className="[&>p]:mb-3 font-firaGo text-sm [&>a]:underline"
@@ -50,7 +51,7 @@ const Team = async ({ params, searchParams }) => {
 
   const currentPage = searchParams.page || 1
   
-  const response = await getPaginatedData('researcher', params.locale, currentPage, 4)
+  const response = await getPaginatedData('researcher', params.locale, currentPage, RESEARCHERS_PER_PAGE)
 
   const { data: researchers } = await getData('researcher', params.locale)
   const { data: teamAppreciation } = await getData('static-page/researcher', params.locale)
@@ -64,9 +65,9 @@ const Team = async ({ params, searchParams }) => {
 
       <PageTitle locale={params.locale} />
 
-      <pre>{JSON.stringify(response, null, 2)}</pre>
+      <pre>{JSON.stringify(response?.data?.sort((a, b) => a.sort_weight - b.sort_weight), null, 2)}</pre>
 
-      {response?.recordsTotal > 4 && (
+      {response?.recordsTotal > RESEARCHERS_PER_PAGE && (
         <Pagination
           path={`team?page=`}
           currentPage={currentPage}

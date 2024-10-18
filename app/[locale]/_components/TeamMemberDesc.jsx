@@ -2,6 +2,8 @@
 
 import { Fragment } from 'react'
 
+import Link from 'next/link'
+
 import { Tab } from '@headlessui/react'
 
 import { useTranslations } from 'next-intl'
@@ -11,7 +13,11 @@ function TeamMemberDesc({ member }) {
     const t = useTranslations("Team")
 
     return (
-        <div>
+        <>
+            <h2 className="font-medium text-2xl mb-4">{member.title}</h2>
+            <p className="mb-6 text-teal-700">
+                <Link href={member.researchgate} target="blank">Researchgate</Link>
+            </p>
             <Tab.Group>
                 <Tab.List className="flex gap-2 font-firaGo">
                     <Tab as={Fragment}>
@@ -38,6 +44,17 @@ function TeamMemberDesc({ member }) {
                             )}
                         </Tab>
                     )}
+                    <Tab as={Fragment}>
+                        {({ selected }) => (
+                            <button
+                                className={
+                                    selected ? 'bg-teal-700 text-white px-2 py-1 rounded-sm focus:outline-none' : 'px-2 py-1 border border-teal-700 rounded-sm'
+                                }
+                            >
+                                {t("contacts")}
+                            </button>
+                        )}
+                    </Tab>
                 </Tab.List>
                 <Tab.Panels className="mt-4 text-gray-700">
                     <Tab.Panel>
@@ -54,9 +71,12 @@ function TeamMemberDesc({ member }) {
                             />
                         </Tab.Panel>
                     )}
+                    <Tab.Panel>
+                        Email: <Link href={`mailto:info@gbd.ge`}>info@gbd.ge</Link>
+                    </Tab.Panel>
                 </Tab.Panels>
             </Tab.Group>
-        </div>
+        </>
     )
 }
 

@@ -1,8 +1,8 @@
-import { redirect } from 'next/navigation'
-
 import { taxonomy } from '@/app/[locale]/_lib/data'
 
 import TaxonomyParent from '@/app/[locale]/_components/TaxonomyParent'
+
+import NothingFound from '../../_components/NothingFound'
 
 export default function page({ params }) {
 
@@ -10,7 +10,7 @@ export default function page({ params }) {
     const child = taxonomy[0].phylum.map((child) => child)
 
     if (data.length === 0) {
-        redirect('/taxonomy')
+        return <NothingFound />
     }
 
     return (

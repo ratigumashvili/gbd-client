@@ -137,3 +137,5 @@ export const AUTH_FORM_INITIAL_STATE = {
     zodErrors: null,
     message: null
 }
+
+export const RESEARCHERS_PER_PAGE = 4
