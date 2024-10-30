@@ -60,19 +60,21 @@ function TeamMemberDesc({ member }) {
                     <Tab.Panel>
                         <div
                             dangerouslySetInnerHTML={{ __html: member?.biography }}
-                            className="[&>p]:mb-3 font-firaGo [&>a]:underline"
+                            className="[&>p]:mb-3 font-firaGo [&>a]:underline dark:text-slate-400"
                         />
                     </Tab.Panel>
                     {member?.research_interests && (
                         <Tab.Panel>
                             <div
                                 dangerouslySetInnerHTML={{ __html: member?.research_interests }}
-                                className="[&>p]:mb-3 font-firaGo [&>a]:underline"
+                                className="[&>p]:mb-3 font-firaGo [&>a]:underline dark:text-slate-400"
                             />
                         </Tab.Panel>
                     )}
                     <Tab.Panel>
-                        Email: <Link href={`mailto:info@gbd.ge`}>info@gbd.ge</Link>
+                        <div className='dark:text-slate-400'>
+                            Email: <Link href={`mailto:info@gbd.ge`}>info@gbd.ge</Link>
+                        </div>
                     </Tab.Panel>
                 </Tab.Panels>
             </Tab.Group>

@@ -1,3 +1,4 @@
+import NothingFound from "@/app/[locale]/_components/NothingFound"
 import TaxonomyParent from "@/app/[locale]/_components/TaxonomyParent"
 import { taxonomy } from "@/app/[locale]/_lib/data"
 
@@ -5,6 +6,10 @@ function Phylum({params}) {
   
 const data = taxonomy[0].phylum.filter((item) => item.slug === params.phylum)
 const child = data[0]?.class?.map((item) => item)
+
+if (data.length === 0) {
+  return <NothingFound />
+}
 
   return (
     <>

@@ -1,4 +1,4 @@
-import Link from "next/link"
+import { Link } from "@/navigation"
 
 import { separator, checkObject } from "../../_lib/helpers"
 import { singleMetaInterface } from "@/app/[locale]/_lib/constants"

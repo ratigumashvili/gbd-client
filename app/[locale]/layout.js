@@ -13,9 +13,22 @@ import { arial, firaGo, bpg } from "./_lib/fonts";
 
 import './globals.css'
 
-export const metadata = {
-  title: 'Georgian Biodiversity Database',
-  description: 'This internet resource aims to introduce the world-wide scientific (and not only scientific) community to the biological diversity of Georgia (and, to certain extent, the Caucasus ecoregion).',
+export async function generateMetadata({params}) {
+
+  // const response = await ...
+
+  return {
+    title: "Georgian Biodiversity Database",
+    description: "description",
+    keywords: "keyword 1, keyword 2",
+    icons: {
+      icon: ['/favicon.ico'],
+    },
+    openGraph: {
+      images: ['']
+    },
+  }
+
 }
 
 export default async function RootLayout({ children, params: { locale } }) {
@@ -23,7 +36,7 @@ export default async function RootLayout({ children, params: { locale } }) {
 
   return (
     <html lang={locale}>
-      <body className={`${firaGo.variable} ${bpg.variable} ${arial.variable} flex flex-col h-screen`}>
+      <body className={`${firaGo.variable} ${bpg.variable} ${arial.variable} font-firaGo flex flex-col h-screen`}>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <ThemeProviders>
             <Header locale={locale} />
