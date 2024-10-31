@@ -14,7 +14,9 @@ import Copy from "./icons/Copy"
 export default function Cite({ name, id = undefined }) {
 
     const citeRef = useRef()
+
     const [citeElement, setCiteElement] = useState()
+
     const pathname = usePathname()
 
     const t = useTranslations("Common")
@@ -40,7 +42,7 @@ export default function Cite({ name, id = undefined }) {
                     <Copy width="18" height="18" />
                 </button>
 
-                <em><b>{t("citePage")}:</b></em> <span ref={citeRef}>{`${name}`}. Georgian Biodiversity Database (Tbilisi, {`${currentDate.slice(-4)}`}). Ilia State University, Institute of Ecology. {id !== undefined && `Record id: ${id};`} Available at: {`${baseUrl + pathname}`}. Date accessed: {`${currentDate}`}.</span>
+                <em><b>{t("citePage")}:</b></em> <span ref={citeRef}>{`${name}`}. {t("gbd")} ({t("tbilisi")}, {`${currentDate.slice(-4)}`}). {t("isu")}, {t("ecology_inst")}. {id !== undefined && `Record id: ${id};`} {t("available")}: {`${baseUrl + pathname}`}. {t("date_accessed")}: {`${currentDate}`}.</span>
 
             </div>
         </>

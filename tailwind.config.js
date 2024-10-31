@@ -14,9 +14,6 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
-    // fontFamily: {
-    //   firaGo: ['var(--font-firaGo)', 'var(--font-noto)', 'var-(--font-arial)', 'var-(--font-bpg)']
-    // }
     fontFamily: {
       noto: ['var(--font-noto)'],
       firaGo: ['var(--font-firaGo)'],

@@ -37,7 +37,12 @@
     "page": "Page",
     "errorTitle": "Oops! Something went wrong",
     "errorSubtitle": "Could not find requested page",
-    "errorGoHome": "Return Home"
+    "errorGoHome": "Return Home",
+    "gbd": "Georgian Biodiversity Database",
+    "tbilisi": "Tbilisi",
+    "ecology_inst": "Institute of Ecology",
+    "available": "Available at",
+    "date_accessed": "Date accessed"
   },
   "Header": {
     "isu": "Ilia State University",

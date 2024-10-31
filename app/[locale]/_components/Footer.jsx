@@ -141,7 +141,7 @@ const Footer = ({locale}) => {
 
                         <p className="text center text-xs text-gray-700 dark:text-slate-400">
                             Developed @
-                            <Link href={'mailto:dh@diliauni.edu.ge'} className="hover:text-teal-700">
+                            <Link href={'mailto:dh@iliauni.edu.ge'} className="hover:text-teal-700">
                                 ISU DH Lab
                             </Link>
                         </p>
