@@ -1415,6 +1415,8 @@ export const activityChartData = [
     { date: '2023-12-28', count: 6 },
     { date: '2024-01-14', count: 12 },
     { date: '2024-01-26', count: 21 },
+    { date: '2024-07-05', count: 3 },
+    { date: '2024-08-01', count: 19 },
 ]
 
 export const species = [

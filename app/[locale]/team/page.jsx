@@ -70,6 +70,7 @@ const Team = async ({ params, searchParams }) => {
       {response?.recordsTotal > RESEARCHERS_PER_PAGE && (
         <Pagination
           path={`team?page=`}
+          searchParams={null}
           currentPage={currentPage}
           total={response?.total_page}
         />)

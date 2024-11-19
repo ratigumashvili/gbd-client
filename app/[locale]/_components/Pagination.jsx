@@ -2,16 +2,23 @@
 
 import { useState, useEffect } from "react"
 
-import { useRouter } from "@/navigation"
+import { usePathname, useRouter } from "@/navigation"
 import { useTranslations } from "next-intl"
 
-function Pagination({ path, currentPage, total }) {
+function Pagination({ path, searchParams, currentPage, total }) {
     const [current, setCurrent] = useState(+currentPage || 1)
 
     const router = useRouter()
+    const pathname = usePathname()
+
+    const url = pathname + `?id=${searchParams?.id}&page=`
 
     useEffect(() => {
-        router.replace(path + current, { scroll: false })
+        if (path !== null) {
+            router.replace(path + current, { scroll: false })    
+        } else {
+            router.replace(url + current, { scroll: false })
+        }
     }, [current])
 
     const t = useTranslations("Common")

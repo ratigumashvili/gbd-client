@@ -18,7 +18,7 @@ export default function Home({params}) {
         <HomePageAbout locale={params.locale} />
         <PopularMenu locale={params.locale} />
       </div>
-      <BrowseByTaxonomy title={t("BrowseByTaxonomy")} />
+      <BrowseByTaxonomy title={t("BrowseByTaxonomy")} locale={params.locale} />
       <BrowseByGeography />
       <HomePageSlider />
       <Calendar />

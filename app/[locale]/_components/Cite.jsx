@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from "react"
-import { usePathname } from "next/navigation"
 
 import { useTranslations } from "next-intl"
 
@@ -17,7 +16,7 @@ export default function Cite({ name, id = undefined }) {
 
     const [citeElement, setCiteElement] = useState()
 
-    const pathname = usePathname()
+    const fullUrl = typeof window !== "undefined" && window.location.href
 
     const t = useTranslations("Common")
 
@@ -29,6 +28,8 @@ export default function Cite({ name, id = undefined }) {
         copyToClipboard(citeElement.innerText)
         toast.success(t("copied"), toastOptions)
     }
+
+    
 
     return (
         <>
@@ -42,7 +43,7 @@ export default function Cite({ name, id = undefined }) {
                     <Copy width="18" height="18" />
                 </button>
 
-                <em><b>{t("citePage")}:</b></em> <span ref={citeRef}>{`${name}`}. {t("gbd")} ({t("tbilisi")}, {`${currentDate.slice(-4)}`}). {t("isu")}, {t("ecology_inst")}. {id !== undefined && `Record id: ${id};`} {t("available")}: {`${baseUrl + pathname}`}. {t("date_accessed")}: {`${currentDate}`}.</span>
+                <em><b>{t("citePage")}:</b></em> <span ref={citeRef}>{`${name}`}. {t("gbd")} ({t("tbilisi")}, {`${currentDate.slice(-4)}`}). {t("isu")}, {t("ecology_inst")}. {id !== undefined && `Record id: ${id};`} {t("available")}: {`${fullUrl}`}. {t("date_accessed")}: {`${currentDate}`}.</span>
 
             </div>
         </>

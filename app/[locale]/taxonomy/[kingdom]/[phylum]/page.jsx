@@ -1,27 +1,33 @@
 import NothingFound from "@/app/[locale]/_components/NothingFound"
 import TaxonomyParent from "@/app/[locale]/_components/TaxonomyParent"
-import { taxonomy } from "@/app/[locale]/_lib/data"
+import TaxonomyChildNodes from "@/app/[locale]/_components/TaxonomyChildNodes"
+import Cite from "@/app/[locale]/_components/Cite"
 
-function Phylum({params}) {
-  
-const data = taxonomy[0].phylum.filter((item) => item.slug === params.phylum)
-const child = data[0]?.class?.map((item) => item)
+import { getData } from "@/app/[locale]/_lib/apiCalls"
 
-if (data.length === 0) {
-  return <NothingFound />
-}
+export default async function Phylum({ params, searchParams }) {
+
+  const { data } = await getData(`taxonomy/${searchParams.id}?type=Phylum`, params.locale)
+  const { data: child } = await getData(`taxonomy?type=TaxClass&parent_id=${searchParams.id}`, params.locale)
+
+  if (!data) {
+    return <NothingFound />
+  }
 
   return (
     <>
-        <TaxonomyParent
-            name={`Phylum ${data[0]?.name}`}
-            description={data[0]?.description}
-            photos={data[0]?.photos}
-            child={child}
-            locale={params.locale}
-        />
+      <TaxonomyParent
+        locale={params.locale}
+        data={data}
+        // description={data[0]?.description}
+        // photos={data[0]?.photos}
+      />
+      <TaxonomyChildNodes
+        data={child}
+        locale={params.locale}
+        taxonName={data?.metadata?.name}
+      />
+      <Cite name={data?.metadata?.name} />
     </>
   )
 }
-
-export default Phylum
