@@ -139,4 +139,4 @@ export const AUTH_FORM_INITIAL_STATE = {
 }
 
 export const RESEARCHERS_PER_PAGE = 4
-export const SPECIES_PER_PAGE = 1
+export const SPECIES_PER_PAGE = 5

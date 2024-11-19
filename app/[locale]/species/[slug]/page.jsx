@@ -2,9 +2,14 @@ import { species } from "@/app/[locale]/_lib/data"
 
 import SingleRecord from "@/app/[locale]/_components/singleTaxon/SingleRecord"
 
-export default function SingleSpecies({ params }) {
+export default async function SingleSpecies({ params }) {
 
   const record = species.filter((item) => item.slug === params.slug)
 
-  return <SingleRecord record={record} />
+  return (
+    <>
+    {JSON.stringify(params, null, 2)}
+    <SingleRecord record={record} />
+    </>
+  )
 }

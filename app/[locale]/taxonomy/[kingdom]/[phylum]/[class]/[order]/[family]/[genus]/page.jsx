@@ -23,7 +23,6 @@ export default async function Genus({ params, searchParams }) {
       <TaxonomyParent
         locale={params.locale}
         data={data}
-        // child={child}
         // description={data[0]?.description}
         // photos={data[0]?.photos}
       />
