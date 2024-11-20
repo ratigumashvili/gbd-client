@@ -11,7 +11,7 @@ import { copyToClipboard, currentDate, toastOptions } from "../_lib/helpers"
 
 import Copy from "./icons/Copy"
 
-export default function Cite({ name, id = undefined }) {
+export default function Cite({ name }) {
 
     const citeRef = useRef()
 
@@ -44,7 +44,7 @@ export default function Cite({ name, id = undefined }) {
             >
                 <Copy width="18" height="18" />
             </button>
-            <em><b>{t("citePage")}:</b></em> <span ref={citeRef}>{`${name}`}. {t("gbd")} ({t("tbilisi")}, {`${currentDate.slice(-4)}`}). {t("isu")}, {t("ecology_inst")}. {id !== undefined && `Record id: ${id};`} {t("available")}: {`${url}`}. {t("date_accessed")}: {`${currentDate}`}.</span>
+            <em><b>{t("citePage")}:</b></em> <span ref={citeRef}>{`${name}`}. {t("gbd")} ({t("tbilisi")}, {`${currentDate.slice(-4)}`}). {t("isu")}, {t("ecology_inst")}. {t("available")}: {`${url}`}. {t("date_accessed")}: {`${currentDate}`}.</span>
         </div>
     )
 }

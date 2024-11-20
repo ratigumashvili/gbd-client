@@ -1,128 +1,68 @@
-import { conservationStatusInterface } from "@/app/[locale]/_lib/constants"
 import { separator } from "../../_lib/helpers"
 
-export default function SingleTaxonConservation({ record }) {
-
-    const {
-        nationalRedLisStatus,
-        IUCNRedListStatus,
-        protectionStatus,
-        reason,
-        trend,
-        native_introduced,
-        comment,
-        georgianName,
-        englishName,
-        subSpecies,
-        synonyms,
-        taxonomyAccordingTo,
-        referencies,
-        evaluatedBy,
-        dateEvaluated
-    } = record[0]?.conservationStatus || conservationStatusInterface
+export default function SingleTaxonConservation({ data }) {
     return (
         <div className="flex-1 bg-slate-50 dark:bg-slate-700 rounded-md px-6 pb-6">
             <h2 className='mt-8 mb-2 block-title'>Conservation Status</h2>
             <dl className="data-list">
 
-                {nationalRedLisStatus && (
+                {data?.metadata?.national_red_list_status && (
                     <>
                         <dt>National Red List Status:</dt>
-                        <dd>{nationalRedLisStatus}</dd>
+                        <dd>{data?.metadata?.national_red_list_status}</dd>
                     </>
                 )}
 
-                {IUCNRedListStatus && (
+                {data?.metadata?.iucn_red_list_status && (
                     <>
                         <dt>IUCN Red List Status:</dt>
-                        <dd>{IUCNRedListStatus}</dd>
+                        <dd>{data?.metadata?.iucn_red_list_status}</dd>
                     </>
                 )}
 
-                {protectionStatus && (
+                {data?.metadata?.protection_status && (
                     <>
                         <dt>Protection status:</dt>
-                        <dd>{protectionStatus}</dd>
+                        <dd>{data?.metadata?.protection_status}</dd>
                     </>
                 )}
 
-                {reason && (
+                {data?.metadata?.reason && (
                     <>
                         <dt>Reason:</dt>
-                        <dd>{reason}</dd>
+                        <dd>{data?.metadata?.reason}</dd>
                     </>
                 )}
 
-                {trend && (
+                {data?.metadata?.trend && (
                     <>
                         <dt>Trend:</dt>
-                        <dd>{trend}</dd>
+                        <dd>{data?.metadata?.trend}</dd>
                     </>
                 )}
 
-                {/* {native_introduced && (
-                    <>
-                        <dt>Native/introduced:</dt>
-                        <dd>{native_introduced}</dd>
-                    </>
-                )} */}
-
-                {comment && (
+                {data?.metadata?.conversion_status_comment && (
                     <>
                         <dt>Comment:</dt>
-                        <dd>{comment}</dd>
+                        <dd>{data?.metadata?.conversion_status_comment}</dd>
                     </>
                 )}
 
-                {/* {georgianName && (
-                    <>
-                        <dt>Georgian Name:</dt>
-                        <dd>{georgianName}</dd>
-                    </>
-                )} */}
-
-                {/* {englishName && (
-                    <>
-                        <dt>English Name:</dt>
-                        <dd>{englishName}</dd>
-                    </>
-                )} */}
-
-                {/* {subSpecies && (
-                    <>
-                        <dt>SubSpecies:</dt>
-                        <dd>{subSpecies}</dd>
-                    </>
-                )} */}
-
-                {/* {synonyms && (
-                    <>
-                        <dt>Synonyms:</dt>
-                        <dd>{synonyms}</dd>
-                    </>
-                )} */}
-
-                {/* {taxonomyAccordingTo && (
-                    <>
-                        <dt>Taxonomy according to:</dt>
-                        <dd>{taxonomyAccordingTo}</dd>
-                    </>
-                )} */}
-
-                {referencies?.length !== 0 && (
+                {data?.metadata?.conversion_status_references && (
                     <>
                         <dt>References:</dt>
-                        <dd>
-                            {referencies?.map((reference, index) => (
-                                <div key={reference.id}>
-                                    <span>{reference.title}</span>{separator(index, referencies, "; ")}
-                                </div>
-                            ))}
-                        </dd>
+                        <dd>{data?.metadata?.conversion_status_references}</dd>
                     </>
                 )}
 
-                {evaluatedBy?.length !== 0 && (
+                {data?.metadata?.evaluated_by && (
+                    <>
+                        <dt>Evaluated by:</dt>
+                        <dd>{data?.metadata?.evaluated_by}</dd>
+                    </>
+                )}
+
+                {/* {evaluatedBy?.length !== 0 && (
                     <>
                         <dt>Evaluated by:</dt>
                         <dd>{evaluatedBy?.map((evaluator, index) => (
@@ -131,15 +71,14 @@ export default function SingleTaxonConservation({ record }) {
                             </div>
                         ))}</dd>
                     </>
-                )}
+                )} */}
 
-                {dateEvaluated && (
+                {data?.metadata?.date_evaluated && (
                     <>
                         <dt>Date evaluated:</dt>
-                        <dd>{dateEvaluated}</dd>
+                        <dd>{data?.metadata?.date_evaluated}</dd>
                     </>
                 )}
-
 
             </dl>
         </div>

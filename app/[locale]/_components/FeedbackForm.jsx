@@ -35,8 +35,7 @@ export default function FeedbackForm({ isOpen, closeModal, metaData }) {
             console.log({ issueTitle, description, metaData })
             closeModal()
             toast.success(t("feedbackSent"), toastOptions)
-        }
-        
+        }  
     }
 
     return (

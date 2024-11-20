@@ -1,88 +1,91 @@
 import { Link } from "@/navigation"
 
-import { separator, checkObject } from "../../_lib/helpers"
-import { singleMetaInterface } from "@/app/[locale]/_lib/constants"
-
-export default function SingleTaxonMeta({ record }) {
-
-  const {
-    scientificNameID,
-    nameAccordingTo,
-    species,
-    taxonRank,
-    scientificNameAuthorship,
-    vernacularName,
-    georgianName,
-    referenceOfOccurrenceInGeorgia,
-  } = record[0] || singleMetaInterface
+export default function SingleTaxonMeta({ data }) {
 
   return (
     <div className="flex-1">
       <h2 className='mt-8 mb-2 block-title'>Metadata</h2>
       <dl className="data-list">
 
-        {scientificNameID && (
+        {data?.metadata?.scientific_name_id && (
           <>
             <dt>Scientific Name ID:</dt>
-            <dd>{scientificNameID}</dd>
+            <dd>{data?.metadata?.scientific_name_id}</dd>
           </>
         )}
 
-        <>
-          <dt>Scientific name:</dt>
-          <dd><em>title</em></dd>
-        </>
+        {data?.metadata?.scientific_name && (
+          <>
+            <dt>Scientific name:</dt>
+            <dd><em>{data?.metadata?.scientific_name}</em></dd>
+          </>
+        )}
 
-        <>
-          <dt>Name according to:</dt>
-          <dd>Linnaeus 1958</dd>
-        </>
+        {data?.metadata?.according_title && (
+          <>
+            <dt>Name according to:</dt>
+            <dd>{data?.metadata?.according_title}</dd>
+          </>
+        )}
 
-
-        {georgianName && (
+        {data?.metadata?.georgian_name && (
           <>
             <dt>Georgian Name:</dt>
-            <dd>{georgianName}</dd>
+            <dd>{data?.metadata?.georgian_name}</dd>
           </>
         )}
 
-        {checkObject(vernacularName) && (
+        {data?.metadata?.english_name && (
           <>
             <dt>English Name:</dt>
             <dd>
-              <Link href={record[0].vernacularName.url}>
-                {record[0].vernacularName.title}
+              <Link href={'#'}>
+                {data?.metadata?.english_name}
               </Link>
             </dd>
           </>
         )}
 
-        <>
-          <dt>Synonyms:</dt>
-          <dd>text</dd>
-        </>
+        {data?.metadata?.synonyms && (
+          <>
+            <dt>Synonyms:</dt>
+            <dd>{data?.metadata?.synonyms}</dd>
+          </>
+        )}
 
-        <>
-          <dt>SubSpecies:</dt>
-          <dd><em>text</em></dd>
-        </>
+        {data?.metadata?.subspecies && (
+          <>
+            <dt>SubSpecies:</dt>
+            <dd><em>{data?.metadata?.subspecies}</em></dd>
+          </>
+        )}
 
-        <>
-          <dt>Taxonomy source:</dt>
-          <dd>link</dd>
-        </>
+        {data?.metadata?.taxonomy_source_name && (
+          <>
+            <dt>Taxonomy source:</dt>
+            <dd>
+              <Link href={data?.metadata?.taxonomy_source_url}>
+                {data?.metadata?.taxonomy_source_name}
+              </Link>
+            </dd>
+          </>
+        )}
 
-        <>
-          <dt>Native/Introduced:</dt>
-          <dd>Native (enum)</dd>
-        </>
+        {data?.metadata?.origin && (
+          <>
+            <dt>Native/Introduced:</dt>
+            <dd>{data?.metadata?.origin}</dd>
+          </>
+        )}
 
-        <>
-          <dt>Comment:</dt>
-          <dd>text</dd>
-        </>
+        {data?.metadata?.comment && (
+          <>
+            <dt>Comment:</dt>
+            <dd>{data?.metadata?.comment}</dd>
+          </>
+        )}
 
-        {referenceOfOccurrenceInGeorgia?.length !== 0 && (
+        {/* {referenceOfOccurrenceInGeorgia?.length !== 0 && (
           <>
             <dt>Reference of Occurrence in Georgia:</dt>
             <dd>
@@ -93,9 +96,16 @@ export default function SingleTaxonMeta({ record }) {
               ))}
             </dd>
           </>
+        )} */}
+
+        {data?.metadata?.reference_in_georgia && (
+          <>
+            <dt>Reference of Occurrence in Georgia:</dt>
+            <dd>{data?.metadata?.reference_in_georgia}</dd>
+          </>
         )}
 
-<>
+        <>
           <dt>Editor:</dt>
           <dd>name, surname, email</dd>
         </>
