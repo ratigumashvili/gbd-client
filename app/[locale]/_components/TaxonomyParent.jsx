@@ -84,7 +84,7 @@ export default function TaxonomyParent({ data, photos }) {
                         )}
                         <>
                             <dt>English Name:</dt>
-                            <dd><Link href={checkLink('#')} target="blank">title</Link></dd>
+                            <dd><Link href={checkLink(data?.metadata?.english_url)} target="blank">{data?.metadata?.english_name}</Link></dd>
                         </>
                         {data?.metadata?.georgian_name_title && (
                             <>
@@ -92,14 +92,18 @@ export default function TaxonomyParent({ data, photos }) {
                                 <dd>{data?.metadata?.georgian_name_title}</dd>
                             </>
                         )}
-                        <>
-                            <dt>GBD Remarks:</dt>
-                            <dd>
-                                {/* <div
-                                    dangerouslySetInnerHTML={{ __html: GBDRemarks }}
-                                /> */}
-                            </dd>
-                        </>
+
+                        {data?.metadata?.gbd_remarks && (
+                            <>
+                                <dt>GBD Remarks:</dt>
+                                <dd>
+                                    <div
+                                        dangerouslySetInnerHTML={{ __html: data?.metadata?.gbd_remarks }}
+                                    />
+                                </dd>
+                            </>
+                        )}
+
                         {/* {pageAuthors?.length !== 0 && (
                             <>
                                 <dt>{t("authors")}:</dt>

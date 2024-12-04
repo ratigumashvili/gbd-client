@@ -51,3 +51,7 @@ export const detectLocale = (language) => {
 export const sortPosition = (members, role) => {
     return members?.filter((member) => member.role === role).sort((a, b) => a.sort_weight - b.sort_weight)
 }
+
+export const sortChildren = (array) => {
+    return array && array?.length > 0 && array.sort((a, b) => a.title.localeCompare(b.title))
+}

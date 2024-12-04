@@ -138,7 +138,12 @@
     "pageTitle": "კავკასია"
   },
   "Gallery": {
-    "pageTitle": "გალერეა"
+    "pageTitle": "გალერეა",
+    "download": "სურათის ჩამოტვირთვა",
+    "comment": "კომენტარი",
+    "author": "ავტორი",
+    "uploadedBy": "ამტვირთავი",
+    "type": "გაფართოება"
   },
   "Registration": {
     "register": "რეგისტრაცია",
@@ -156,5 +161,34 @@
     "invalidEmail": "აღნიშნული ელფოსტა უკვე რეგისტრირებულია",
     "error": "დაფიქსირდა შეცდომა. გთხოვთ სცადოთ მოგვიანებით",
     "confirm": "გავეცანი და ვეთანხმები კონფიდენციალურობის პოლიტიკის პირობებს"
+  },
+  "Species": {
+    "metadata": "მეტამონაცემები",
+    "conservation_status": "კონსერვაციის სტატუსი",
+    "gallery": "გალერეა",
+    "map": "რუკა",
+    "scientific_name_id": "",
+    "scientific_name": "",
+    "name_according_to": "",
+    "georgian_name": "ქართული სახელწოდება",
+    "english_name": "ინგლისური სახელწოდება",
+    "synonyms": "სინონიმები",
+    "subspecies": "",
+    "taxonomy_source": "",
+    "native_introduced": "",
+    "comment": "კომენტარი",
+    "reference_of_occurrence": "",
+    "editor": "რედაქტორი",
+    "contributors": "კონტრიბუტორ(ებ)ი",
+    "references_list": "",
+    "red_list_status": "",
+    "iucn": "",
+    "protection_status": "",
+    "reason": "",
+    "trend": "ტრენდი",
+    "cs_comment": "კომენტარი",
+    "references": "",
+    "evaluated_by": "",
+    "date_evaluated": ""
   }
 }

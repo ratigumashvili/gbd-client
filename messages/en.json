@@ -84,77 +84,111 @@
     "LatinName": "Latin name",
     "NationalIUCNCategory": "National IUCN Category"
   },
-    "Index": {
-      "title": "Welcome to GBD",
-      "about_title": "About the database",
-      "popularEntries": "Popular entries",
-      "BrowseByTaxonomy": "Browse by taxonomy",
-      "BrowseByGeography": "Browse by geography",
-      "registeredRecords": "registered records",
-      "latestUploads": "Latest uploads",
-      "taxon": "Taxon",
-      "comment": "Comment",
-      "author": "Author",
-      "uploadedBy": "Uploaded by",
-      "GBDActivityCalendar": "GBD activity calendar",
-      "date": "Date",
-      "recordsRegistered": "Record(s) registered",
-      "legend": "Legend"
-    },
-    "Map": {
-      "clickOnMarkers": "Click on markers to load data",
-      "place": "Place",
-      "region": "Region",
-      "registeredGenus": "Registered Genus",
-      "speciesTotal": "Species total",
-      "loadData": "Load data",
-      "expand": "Expand",
-      "collapse": "Collapse",
-      "chartView": "Chart view",
-      "listView": "List view",
-      "species": "Species",
-      "distribution": "Distribution of species by rank Genus"
-    },
-    "About": {
-      "pageTitle": "About the database"
-    },
-    "Team": {
-      "pageTitle": "Team",
-      "editors": "Editors",
-      "authors": "Authors",
-      "contributors": "Contributors",
-      "thanks": "Special thanks",
-      "profile": "Researchgate profile",
-      "position": "Position",
-      "bio": "Biography",
-      "interests": "Interests",
-      "contacts": "Contacts",
-      "registered": "Registered records"
-    },
-    "Taxonomy": {
-      "pageTitle": "Taxonomy"
-    },
-    "Caucasus": {
-      "pageTitle": "Caucasus"
-    },
-    "Gallery": {
-      "pageTitle": "Gallery"
-    },
-    "Registration": {
-      "register": "Register",
-      "first_name": "First Name",
-      "last_name": "Last Name",
-      "email": "Email",
-      "password": "Password",
-      "institution": "Institution",
-      "interests": "Research interests",
-      "firstNameError": "Name must be between 3 and 20 characters",
-      "lastNameError": "Surname must be between 3 and 20 characters",
-      "emailError": "Plaease, use valid email address",
-      "passwordError": "Password must be between 6 and 12 characters",
-      "userRegistered": "You have successfully registered.",
-      "invalidEmail": "Email allready registered",
-      "error": "Problem occurred. Please, try again later",
-      "confirm": "I read, understand and accept Privacy and Legal Policy"
-    }
+  "Index": {
+    "title": "Welcome to GBD",
+    "about_title": "About the database",
+    "popularEntries": "Popular entries",
+    "BrowseByTaxonomy": "Browse by taxonomy",
+    "BrowseByGeography": "Browse by geography",
+    "registeredRecords": "registered records",
+    "latestUploads": "Latest uploads",
+    "taxon": "Taxon",
+    "comment": "Comment",
+    "author": "Author",
+    "uploadedBy": "Uploaded by",
+    "GBDActivityCalendar": "GBD activity calendar",
+    "date": "Date",
+    "recordsRegistered": "Record(s) registered",
+    "legend": "Legend"
+  },
+  "Map": {
+    "clickOnMarkers": "Click on markers to load data",
+    "place": "Place",
+    "region": "Region",
+    "registeredGenus": "Registered Genus",
+    "speciesTotal": "Species total",
+    "loadData": "Load data",
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "chartView": "Chart view",
+    "listView": "List view",
+    "species": "Species",
+    "distribution": "Distribution of species by rank Genus"
+  },
+  "About": {
+    "pageTitle": "About the database"
+  },
+  "Team": {
+    "pageTitle": "Team",
+    "editors": "Editors",
+    "authors": "Authors",
+    "contributors": "Contributors",
+    "thanks": "Special thanks",
+    "profile": "Researchgate profile",
+    "position": "Position",
+    "bio": "Biography",
+    "interests": "Interests",
+    "contacts": "Contacts",
+    "registered": "Registered records"
+  },
+  "Taxonomy": {
+    "pageTitle": "Taxonomy"
+  },
+  "Caucasus": {
+    "pageTitle": "Caucasus"
+  },
+  "Gallery": {
+    "pageTitle": "Gallery",
+    "download": "Download full size image",
+    "comment": "Comment",
+    "author": "Author",
+    "uploadedBy": "Uploaded by",
+    "type": "Type"
+  },
+  "Registration": {
+    "register": "Register",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "email": "Email",
+    "password": "Password",
+    "institution": "Institution",
+    "interests": "Research interests",
+    "firstNameError": "Name must be between 3 and 20 characters",
+    "lastNameError": "Surname must be between 3 and 20 characters",
+    "emailError": "Plaease, use valid email address",
+    "passwordError": "Password must be between 6 and 12 characters",
+    "userRegistered": "You have successfully registered.",
+    "invalidEmail": "Email allready registered",
+    "error": "Problem occurred. Please, try again later",
+    "confirm": "I read, understand and accept Privacy and Legal Policy"
+  },
+  "Species": {
+    "metadata": "Metadata",
+    "conservation_status": "Conservation Status",
+    "gallery": "Gallery",
+    "map": "Heatmap",
+    "scientific_name_id": "Scientific name ID",
+    "scientific_name": "Scientific name",
+    "name_according_to": "Name according to",
+    "georgian_name": "Georgian name",
+    "english_name": "English name",
+    "synonyms": "Synonyms",
+    "subspecies": "Subspecies",
+    "taxonomy_source": "Taxonomy source",
+    "native_introduced": "Native/Introduced",
+    "comment": "Comment",
+    "reference_of_occurrence": "Reference of occurrence in Georgia",
+    "editor": "Editor",
+    "contributors": "Contributor(s)",
+    "references_list": "References list",
+    "red_list_status": "National Red List Status",
+    "iucn": "IUCN Red List Status",
+    "protection_status": "Protection status",
+    "reason": "Reason",
+    "trend": "Trend",
+    "cs_comment": "Comment",
+    "references": "References",
+    "evaluated_by": "Evaluated by",
+    "date_evaluated": "Date evaluated"
   }
+}

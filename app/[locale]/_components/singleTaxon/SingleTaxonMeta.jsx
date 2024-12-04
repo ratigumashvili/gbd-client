@@ -1,43 +1,47 @@
 import { Link } from "@/navigation"
 
+import { useTranslations } from "next-intl"
+
 export default function SingleTaxonMeta({ data }) {
+
+  const t = useTranslations("Species")
 
   return (
     <div className="flex-1">
-      <h2 className='mt-8 mb-2 block-title'>Metadata</h2>
+      <h2 className='mt-8 mb-2 block-title'>{t("metadata")}</h2>
       <dl className="data-list">
 
         {data?.metadata?.scientific_name_id && (
           <>
-            <dt>Scientific Name ID:</dt>
+            <dt>{t("scientific_name_id")}:</dt>
             <dd>{data?.metadata?.scientific_name_id}</dd>
           </>
         )}
 
         {data?.metadata?.scientific_name && (
           <>
-            <dt>Scientific name:</dt>
+            <dt>{t("scientific_name")}:</dt>
             <dd><em>{data?.metadata?.scientific_name}</em></dd>
           </>
         )}
 
         {data?.metadata?.according_title && (
           <>
-            <dt>Name according to:</dt>
+            <dt>{t("name_according_to")}:</dt>
             <dd>{data?.metadata?.according_title}</dd>
           </>
         )}
 
         {data?.metadata?.georgian_name && (
           <>
-            <dt>Georgian Name:</dt>
+            <dt>{t("georgian_name")}:</dt>
             <dd>{data?.metadata?.georgian_name}</dd>
           </>
         )}
 
         {data?.metadata?.english_name && (
           <>
-            <dt>English Name:</dt>
+            <dt>{t("english_name")}:</dt>
             <dd>
               <Link href={'#'}>
                 {data?.metadata?.english_name}
@@ -48,21 +52,21 @@ export default function SingleTaxonMeta({ data }) {
 
         {data?.metadata?.synonyms && (
           <>
-            <dt>Synonyms:</dt>
+            <dt>{t("synonyms")}:</dt>
             <dd>{data?.metadata?.synonyms}</dd>
           </>
         )}
 
         {data?.metadata?.subspecies && (
           <>
-            <dt>SubSpecies:</dt>
+            <dt>{t("subspecies")}:</dt>
             <dd><em>{data?.metadata?.subspecies}</em></dd>
           </>
         )}
 
         {data?.metadata?.taxonomy_source_name && (
           <>
-            <dt>Taxonomy source:</dt>
+            <dt>{t("taxonomy_source")}:</dt>
             <dd>
               <Link href={data?.metadata?.taxonomy_source_url}>
                 {data?.metadata?.taxonomy_source_name}
@@ -73,14 +77,14 @@ export default function SingleTaxonMeta({ data }) {
 
         {data?.metadata?.origin && (
           <>
-            <dt>Native/Introduced:</dt>
+            <dt>{t("native_introduced")}:</dt>
             <dd>{data?.metadata?.origin}</dd>
           </>
         )}
 
         {data?.metadata?.comment && (
           <>
-            <dt>Comment:</dt>
+            <dt>{t("comment")}:</dt>
             <dd>{data?.metadata?.comment}</dd>
           </>
         )}
@@ -100,23 +104,23 @@ export default function SingleTaxonMeta({ data }) {
 
         {data?.metadata?.reference_in_georgia && (
           <>
-            <dt>Reference of Occurrence in Georgia:</dt>
+            <dt>{t("reference_of_occurrence")}:</dt>
             <dd>{data?.metadata?.reference_in_georgia}</dd>
           </>
         )}
 
         <>
-          <dt>Editor:</dt>
+          <dt>{t("editor")}:</dt>
           <dd>name, surname, email</dd>
         </>
 
         <>
-          <dt>Contributors:</dt>
+          <dt>{t("contributors")}:</dt>
           <dd>persons list</dd>
         </>
 
         <>
-          <dt>References list:</dt>
+          <dt>{t("references_list")}:</dt>
           <dd>text</dd>
         </>
 

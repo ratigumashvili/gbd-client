@@ -1,9 +1,10 @@
 import NothingFound from '@/app/[locale]/_components/NothingFound'
 import TaxonomyParent from '@/app/[locale]/_components/TaxonomyParent'
-import TaxonomyChildNodes from '../../_components/TaxonomyChildNodes';
+import TaxonomyChildNodes from '@/app/[locale]/_components/TaxonomyChildNodes';
 import Cite from "@/app/[locale]/_components/Cite";
 
 import { getData } from '../../_lib/apiCalls'
+import { sortChildren } from '../../_lib/helpers';
 
 export default async function Kingdom({ params, searchParams }) {
 
@@ -14,16 +15,22 @@ export default async function Kingdom({ params, searchParams }) {
         return <NothingFound />
     }
 
+    const sortedChildren = sortChildren(child)
+
     return (
         <>
+        {/* <pre>
+        {JSON.stringify(data.files, null, 2)}
+        <br />
+        </pre> */}
             <TaxonomyParent
-                locale={params.locale}
                 data={data}
+                photos={data?.files}
                 // description={data?.metadata}
                 // photos={data[0]?.photos}
             />
             <TaxonomyChildNodes
-                data={child}
+                data={sortedChildren}
                 locale={params.locale}
                 taxonName={data?.metadata?.name}
             />

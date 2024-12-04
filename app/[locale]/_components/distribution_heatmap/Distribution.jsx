@@ -1,6 +1,7 @@
 'use client'
 
 import { TileLayer, MapContainer } from "react-leaflet";
+import { useTranslations } from "next-intl";
 
 import { HeatmapLayer } from "react-leaflet-heatmap-layer-v3";
 
@@ -10,6 +11,8 @@ import { FullscreenControl } from "react-leaflet-fullscreen";
 import "react-leaflet-fullscreen/styles.css";
 
 export default function Distribution({ data }) {
+
+    const t = useTranslations("Species")
 
     const heatmapOptions = {
         radius: 20,
@@ -21,6 +24,7 @@ export default function Distribution({ data }) {
 
     return (
         <div className="my-4">
+            <h2 className='mt-8 mb-2 block-title'>{t("map")}</h2>
             <MapContainer
                 center={[18.54181410564795, 73.79118672935255]}
                 zoom={12}

@@ -18,7 +18,7 @@ export default async function TaxonClass({ params, searchParams }) {
   return (
     <>
       <TaxonomyParent
-        locale={params.locale}
+        // locale={params.locale}
         data={data}
         // description={data[0]?.description}
         // photos={data[0]?.photos}

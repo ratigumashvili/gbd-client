@@ -1,15 +1,21 @@
 "use client"
 
+import { Fragment, useState } from 'react'
+
 import Image from 'next/image'
-import Link from 'next/link'
+import { Link } from '@/navigation'
+
+import { useTranslations } from 'next-intl'
 
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
 
 import Close from './icons/Close'
 
-export default function TaxonomyParentImage({ url, title, id, taxon, taxonId, comment, author, authorId, uploadedBy }) {
+export default function TaxonomyParentImage({ file_url, name, metadata, extension, taxon, taxonId, comment, author, authorId, uploadedBy }) {
+    
     const [isOpen, setIsOpen] = useState(false)
+
+    const t = useTranslations("Gallery")
 
     function closeModal() {
         setIsOpen(false)
@@ -26,12 +32,12 @@ export default function TaxonomyParentImage({ url, title, id, taxon, taxonId, co
                 onClick={openModal}
             >
                 <Image
-                    src={url}
-                    alt={title}
+                    src={file_url}
+                    alt={name}
                     width={150}
                     height={150}
                     className='h-full max-h-[150px] object-cover'
-                    title={title}
+                    title={name}
                 />
             </button>
 
@@ -66,7 +72,7 @@ export default function TaxonomyParentImage({ url, title, id, taxon, taxonId, co
                                         className="text-lg font-medium leading-6 text-gray-900"
                                     >
                                         <div className='flex items-center justify-between dark:text-slate-400'>
-                                            {title}
+                                            {name}
 
                                             <button onClick={closeModal}>
                                                 <Close />
@@ -77,34 +83,37 @@ export default function TaxonomyParentImage({ url, title, id, taxon, taxonId, co
 
                                     <div className="mt-4 flex flex-col gap-4">
 
-                                        <Image src={url} width={500} height={500} alt={title} className='w-full h-auto object-cover z-[999999]' />
+                                        <Image src={file_url} width={500} height={500} alt={name} className='w-full h-auto object-cover z-[999999]' />
 
                                         <dl className="data-list">
-                                            <dt>Taxon:</dt>
-                                            <dd><Link href={`/taxonomy/${taxonId}`}>{taxon}</Link></dd>
+                                            {/* <dt>Taxon:</dt>
+                                            <dd><Link href={`/taxonomy/${taxonId}`}>{taxon}</Link></dd> */}
                                             {author && (
                                                 <>
-                                                    <dt>Author:</dt>
+                                                    <dt>{t("author")}:</dt>
                                                     <dd><Link href={`/authors/${authorId}`}>{author}</Link></dd>
                                                 </>
                                             )}
                                             {comment && (
                                                 <>
-                                                    <dt>Comment:</dt>
+                                                    <dt>{t("comment")}:</dt>
                                                     <dd>{comment}</dd>
                                                 </>
                                             )}
                                             {uploadedBy && (
                                                 <>
-                                                    <dt>Uploaded by:</dt>
+                                                    <dt>{t("uploadedBy")}:</dt>
                                                     <dd>{uploadedBy}</dd>
                                                 </>
                                             )}
                                         </dl>
 
-                                        <Link href={url} target='blank' className='text-sm text-teal-600 hover:text-teal-700 underline'>
-                                            Download full size image
-                                        </Link>
+                                        <div className="flex items-center justify-between gap-2">
+                                            <Link href={file_url} target='blank' className='text-sm text-teal-600 hover:text-teal-700 underline'>
+                                                {t("download")}
+                                            </Link>
+                                            <span className="text-xs">({Math.floor(metadata?.size * 0.001)} KB. {t("type")}: {extension})</span>
+                                        </div>
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>

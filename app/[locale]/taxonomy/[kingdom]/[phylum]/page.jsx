@@ -17,7 +17,7 @@ export default async function Phylum({ params, searchParams }) {
   return (
     <>
       <TaxonomyParent
-        locale={params.locale}
+        // locale={params.locale}
         data={data}
         // description={data[0]?.description}
         // photos={data[0]?.photos}

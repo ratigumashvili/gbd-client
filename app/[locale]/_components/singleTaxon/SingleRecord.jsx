@@ -7,6 +7,7 @@ import ActionsDropdown from "../ActionsDropdown"
 import SingleTaxonMeta from "./SingleTaxonMeta"
 import SingleTaxonConservation from "./SingleTaxonConservation"
 import Map from "../distribution_heatmap"
+import TaxonGallery from '../TaxonGallery';
 import Cite from '../Cite';
 
 export default function SingleRecord({ record, data }) {
@@ -32,7 +33,7 @@ export default function SingleRecord({ record, data }) {
             </div>
 
             <div className="flex flex-col gap-4">
-                GALLERY
+                <TaxonGallery data={data?.files} />
                 <div className='flex flex-col md:flex-row gap-4'>
                     <SingleTaxonMeta data={data} />
                     <SingleTaxonConservation data={data} />
@@ -46,7 +47,9 @@ export default function SingleRecord({ record, data }) {
                 </>
             )}
 
-            <Cite name={data?.metadata?.scientific_name} />
+            <div className='mt-8 mb-4'>
+                <Cite name={data?.metadata?.scientific_name} />
+            </div>
 
         </div>
     )
