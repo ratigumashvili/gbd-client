@@ -3,8 +3,21 @@ import TaxonomyParent from '@/app/[locale]/_components/TaxonomyParent'
 import TaxonomyChildNodes from '@/app/[locale]/_components/TaxonomyChildNodes';
 import Cite from "@/app/[locale]/_components/Cite";
 
-import { getData } from '../../_lib/apiCalls'
-import { sortChildren } from '../../_lib/helpers';
+import { getData } from '@/app/[locale]/_lib/apiCalls'
+import { htmlToPlainText, sortChildren } from '@/app/[locale]/_lib/helpers';
+
+export async function generateMetadata({ params, searchParams }) {
+    const { data } = await getData(`taxonomy/${searchParams.id}?type=Kingdom`, params.locale)
+
+    // console.log(data?.metadata?.seo)
+
+    return {
+        title: data?.metadata?.seo?.title,
+        keywords: htmlToPlainText(data?.metadata?.seo?.keywords),
+        description: htmlToPlainText(data?.metadata?.seo?.description),
+        robots: htmlToPlainText(data?.metadata?.seo?.robots),
+    }
+}
 
 export default async function Kingdom({ params, searchParams }) {
 
@@ -19,15 +32,10 @@ export default async function Kingdom({ params, searchParams }) {
 
     return (
         <>
-        {/* <pre>
-        {JSON.stringify(data.files, null, 2)}
-        <br />
-        </pre> */}
             <TaxonomyParent
                 data={data}
                 photos={data?.files}
-                // description={data?.metadata}
-                // photos={data[0]?.photos}
+            // description={data?.metadata}
             />
             <TaxonomyChildNodes
                 data={sortedChildren}

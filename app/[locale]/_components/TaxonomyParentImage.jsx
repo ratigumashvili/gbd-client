@@ -11,11 +11,17 @@ import { Dialog, Transition } from '@headlessui/react'
 
 import Close from './icons/Close'
 
-export default function TaxonomyParentImage({ file_url, name, metadata, extension, taxon, taxonId, comment, author, authorId, uploadedBy }) {
-    
+export default function TaxonomyParentImage({ title, file_url, name, metadata, extension, comment, author, authorId, uploadedBy }) {
+
     const [isOpen, setIsOpen] = useState(false)
+    const [dimensions, setDimensions] = useState({ height: 0, width: 0 })
 
     const t = useTranslations("Gallery")
+
+    function handleImageLoad(e) {
+        const { naturalHeight, naturalWidth } = e.target;
+        setDimensions({ height: naturalHeight, width: naturalWidth })
+    }
 
     function closeModal() {
         setIsOpen(false)
@@ -36,7 +42,7 @@ export default function TaxonomyParentImage({ file_url, name, metadata, extensio
                     alt={name}
                     width={150}
                     height={150}
-                    className='h-full max-h-[150px] object-cover'
+                    className='h-full w-full max-h-[150px] object-cover'
                     title={name}
                 />
             </button>
@@ -83,11 +89,24 @@ export default function TaxonomyParentImage({ file_url, name, metadata, extensio
 
                                     <div className="mt-4 flex flex-col gap-4">
 
-                                        <Image src={file_url} width={500} height={500} alt={name} className='w-full h-auto object-cover z-[999999]' />
+                                        <Image
+                                            src={file_url}
+                                            width={500}
+                                            height={500}
+                                            alt={name}
+                                            onLoad={handleImageLoad}
+                                            className='w-full h-auto object-cover z-[999999]'
+                                        />
 
-                                        <dl className="data-list">
-                                            {/* <dt>Taxon:</dt>
-                                            <dd><Link href={`/taxonomy/${taxonId}`}>{taxon}</Link></dd> */}
+                                        <dl className="data-list mb-4">
+                                            {title && (
+                                                <>
+                                                    <dt>{t("taxon")}:</dt>
+                                                    <dd>
+                                                        {title}
+                                                    </dd>
+                                                </>
+                                            )}
                                             {author && (
                                                 <>
                                                     <dt>{t("author")}:</dt>
@@ -110,7 +129,7 @@ export default function TaxonomyParentImage({ file_url, name, metadata, extensio
 
                                         <div className="flex items-center justify-between gap-2">
                                             <Link href={file_url} target='blank' className='text-sm text-teal-600 hover:text-teal-700 underline'>
-                                                {t("download")}
+                                                {t("download")} {`${dimensions.width}X${dimensions.height}`}
                                             </Link>
                                             <span className="text-xs">({Math.floor(metadata?.size * 0.001)} KB. {t("type")}: {extension})</span>
                                         </div>

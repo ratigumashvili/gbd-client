@@ -11,7 +11,6 @@ import { useReactToPrint } from 'react-to-print'
 import TaxonomyParentImage from './TaxonomyParentImage'
 import DynamicTaxonomyOrder from './taxonomyOrder'
 import ActionsDropdown from './ActionsDropdown'
-import TaxonomyChildNodes from './TaxonomyChildNodes'
 import GoBack from './icons/GoBack'
 
 import { checkLink, separator } from "@/app/[locale]/_lib/helpers"
@@ -126,15 +125,21 @@ export default function TaxonomyParent({ data, photos }) {
                     </dl>
                 </div>
                 <div className="flex-1">
+                    {photos.length !== 0 && (
+                        <>
+                            <h2 className='font-medium my-2 block-title'>{t("gallery")}</h2>
 
-                    <h2 className='font-medium my-2 block-title'>{t("gallery")}</h2>
-
-                    <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
-                        {photos?.map((image) => (
-                            <TaxonomyParentImage key={image.id} {...image} />
-                        ))}
-                    </div>
-
+                            <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
+                                {photos?.map((image) => (
+                                    <TaxonomyParentImage
+                                        key={image.id}
+                                        {...image}
+                                        title={data?.metadata?.name}
+                                    />
+                                ))}
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
 

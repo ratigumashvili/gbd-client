@@ -139,6 +139,7 @@
   },
   "Gallery": {
     "pageTitle": "Gallery",
+    "taxon": "Taxon",
     "download": "Download full size image",
     "comment": "Comment",
     "author": "Author",
@@ -189,6 +190,7 @@
     "cs_comment": "Comment",
     "references": "References",
     "evaluated_by": "Evaluated by",
-    "date_evaluated": "Date evaluated"
+    "date_evaluated": "Date evaluated",
+    "species_distribution": "Taxon distribution"
   }
 }

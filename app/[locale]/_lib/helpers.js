@@ -1,4 +1,7 @@
+import he from "he";
+
 import { Bounce } from "react-toastify"
+
 import { bpg } from "./fonts"
 
 export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
@@ -45,7 +48,7 @@ export const exportData = (dataObject) => {
 };
 
 export const detectLocale = (language) => {
-    return language === 'ka' ? bpg.className : 'font-arial uppercase' 
+    return language === 'ka' ? bpg.className : 'font-arial uppercase'
 }
 
 export const sortPosition = (members, role) => {
@@ -53,5 +56,12 @@ export const sortPosition = (members, role) => {
 }
 
 export const sortChildren = (array) => {
-    return array && array?.length > 0 && array.sort((a, b) => a.title.localeCompare(b.title))
+    return array && array?.length > 0 && array.sort((a, b) => a?.title?.localeCompare(b?.title))
+}
+
+export function htmlToPlainText(html) {
+    if (!html) return
+    
+    const decodedHtml = he.decode(html);
+    return decodedHtml.replace(/<\/?[^>]+(>|$)/g, "").trim();
 }

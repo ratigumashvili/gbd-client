@@ -9,16 +9,16 @@ export default async function SingleSpecies({ params }) {
 
   const { data } = await getData(`taxonomy/${params.id}/?type=Specie`, params.locale)
 
-  const record = species.filter((item) => item.id === params.id)
+  const coordinates = data?.metadata?.coordinates?.map?.length && data?.metadata?.coordinates?.map?.map((coord) => [coord.latitude, coord.longitude])
 
   if (!data) {
     return <NothingFound />
   }
 
   return (
-    <>
-      {/* {JSON.stringify(data, null, 2)} */}
-      <SingleRecord record={record} data={data} />
-    </>
+    <SingleRecord
+      data={data}
+      coordinates={coordinates}
+    />
   )
 }

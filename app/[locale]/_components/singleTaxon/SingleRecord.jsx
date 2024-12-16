@@ -10,7 +10,7 @@ import Map from "../distribution_heatmap"
 import TaxonGallery from '../TaxonGallery';
 import Cite from '../Cite';
 
-export default function SingleRecord({ record, data }) {
+export default function SingleRecord({ data, coordinates }) {
 
     const printContent = useRef();
 
@@ -33,19 +33,14 @@ export default function SingleRecord({ record, data }) {
             </div>
 
             <div className="flex flex-col gap-4">
-                <TaxonGallery data={data?.files} />
+                <TaxonGallery photos={data?.files} />
                 <div className='flex flex-col md:flex-row gap-4'>
                     <SingleTaxonMeta data={data} />
                     <SingleTaxonConservation data={data} />
                 </div>
             </div>
 
-            {record.length !== 0 && (
-                <>
-                    <h2 className='mt-8 mb-2 block-title'>Taxon distribution</h2>
-                    <Map data={record[0]?.speciesDistribution} className="-z-0" />
-                </>
-            )}
+            {coordinates !== 0 && <Map coordinates={coordinates} className="-z-0" />}
 
             <div className='mt-8 mb-4'>
                 <Cite name={data?.metadata?.scientific_name} />

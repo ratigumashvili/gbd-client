@@ -20,14 +20,10 @@ export default async function Genus({ params, searchParams }) {
 
   return (
     <>
-    <pre>
-      {JSON.stringify(params, null, 2)}
-    </pre>
       <TaxonomyParent
-        // locale={params.locale}
         data={data}
+        photos={data.files}
         // description={data[0]?.description}
-        // photos={data[0]?.photos}
       />
       <TaxonomyChildSpecies
         data={species}

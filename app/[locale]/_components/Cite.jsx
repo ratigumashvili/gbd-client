@@ -36,7 +36,7 @@ export default function Cite({ name }) {
     }
 
     return (
-        <div className='bg-slate-50 dark:bg-slate-600 rounded-md pt-6 pl-6 pb-6 pr-10 mt-4 text-xs relative'>
+        <div className='bg-slate-50 dark:bg-slate-600 rounded-md pt-6 pl-6 pb-6 pr-10 mt-8 text-xs relative'>
             <button
                 className="absolute right-6 top-6"
                 onClick={handleCopyCite}

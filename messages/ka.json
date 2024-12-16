@@ -139,6 +139,7 @@
   },
   "Gallery": {
     "pageTitle": "გალერეა",
+    "taxon": "ტაქსონი",
     "download": "სურათის ჩამოტვირთვა",
     "comment": "კომენტარი",
     "author": "ავტორი",
@@ -189,6 +190,7 @@
     "cs_comment": "კომენტარი",
     "references": "",
     "evaluated_by": "",
-    "date_evaluated": ""
+    "date_evaluated": "",
+    "species_distribution": "გავრცელების არეალი"
   }
 }

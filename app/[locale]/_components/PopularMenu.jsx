@@ -1,6 +1,6 @@
 import React from 'react'
 import { popularMenu } from '../_lib/data'
-import Link from 'next/link'
+import { Link } from '@/navigation'
 import { useTranslations } from 'next-intl'
 
 import { detectLocale } from '../_lib/helpers'

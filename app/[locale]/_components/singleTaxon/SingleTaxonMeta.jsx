@@ -8,6 +8,7 @@ export default function SingleTaxonMeta({ data }) {
 
   return (
     <div className="flex-1">
+
       <h2 className='mt-8 mb-2 block-title'>{t("metadata")}</h2>
       <dl className="data-list">
 
@@ -85,7 +86,9 @@ export default function SingleTaxonMeta({ data }) {
         {data?.metadata?.comment && (
           <>
             <dt>{t("comment")}:</dt>
-            <dd>{data?.metadata?.comment}</dd>
+            <dd>
+              <div dangerouslySetInnerHTML={{ __html: data?.metadata?.comment }} />
+            </dd>
           </>
         )}
 
@@ -119,10 +122,14 @@ export default function SingleTaxonMeta({ data }) {
           <dd>persons list</dd>
         </>
 
-        <>
-          <dt>{t("references_list")}:</dt>
-          <dd>text</dd>
-        </>
+        {data?.metadata?.references_list && (
+          <>
+            <dt>{t("references_list")}:</dt>
+            <dd>
+              <div dangerouslySetInnerHTML={{ __html: data?.metadata?.references_list }} />
+            </dd>
+          </>
+        )}
 
       </dl>
     </div>

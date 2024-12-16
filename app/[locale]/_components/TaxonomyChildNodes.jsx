@@ -10,9 +10,7 @@ export default function TaxonomyChildNodes({ data, locale, taxonName }) {
 
     const t = useTranslations("Common")
 
-    if (data.length === 0) {
-        return <></>
-    }
+    if(!data || data.length === 0) return <></>
 
     return (
         <div className="col-span-1 mt-8 mb-4">

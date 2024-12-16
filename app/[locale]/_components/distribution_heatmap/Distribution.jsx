@@ -10,7 +10,9 @@ import "leaflet/dist/leaflet.css";
 import { FullscreenControl } from "react-leaflet-fullscreen";
 import "react-leaflet-fullscreen/styles.css";
 
-export default function Distribution({ data }) {
+export default function Distribution({ coordinates }) {
+
+    if (!coordinates) return
 
     const t = useTranslations("Species")
 
@@ -23,8 +25,8 @@ export default function Distribution({ data }) {
     };
 
     return (
-        <div className="my-4">
-            <h2 className='mt-8 mb-2 block-title'>{t("map")}</h2>
+        <div className="my-12">
+            <h2 className='mt-8 mb-2 block-title'>{t("species_distribution")}</h2>
             <MapContainer
                 center={[18.54181410564795, 73.79118672935255]}
                 zoom={12}
@@ -33,7 +35,7 @@ export default function Distribution({ data }) {
                 <HeatmapLayer
                     fitBoundsOnLoad
                     fitBoundsOnUpdate
-                    points={data}
+                    points={coordinates}
                     longitudeExtractor={(point) => point[1]}
                     latitudeExtractor={(point) => point[0]}
                     intensityExtractor={(point) => parseFloat(point[2])}
