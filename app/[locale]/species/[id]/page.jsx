@@ -1,5 +1,3 @@
-import { species } from "@/app/[locale]/_lib/data"
-
 import SingleRecord from "@/app/[locale]/_components/singleTaxon/SingleRecord"
 import NothingFound from "@/app/[locale]/_components/NothingFound";
 

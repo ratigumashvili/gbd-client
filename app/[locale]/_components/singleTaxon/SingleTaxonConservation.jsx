@@ -48,7 +48,9 @@ export default function SingleTaxonConservation({ data }) {
                 {data?.metadata?.conversion_status_comment && (
                     <>
                         <dt>{t("cs_comment")}:</dt>
-                        <dd>{data?.metadata?.conversion_status_comment}</dd>
+                        <dd>
+                            <div dangerouslySetInnerHTML={{ __html: data?.metadata?.conversion_status_comment }} />
+                        </dd>
                     </>
                 )}
 

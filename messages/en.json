@@ -42,7 +42,11 @@
     "tbilisi": "Tbilisi",
     "ecology_inst": "Institute of Ecology",
     "available": "Available at",
-    "date_accessed": "Date accessed"
+    "date_accessed": "Date accessed",
+    "filter": "Filter by title",
+    "no_data": "Nothing found, please try other options.",
+    "show_filter": "Show Filter",
+    "hide_filter": "Hide Filter"
   },
   "Header": {
     "isu": "Ilia State University",

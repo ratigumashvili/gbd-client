@@ -30,7 +30,7 @@ export default async function Genus({ params, searchParams }) {
         locale={params.locale}
         taxonName={data?.metadata?.name}
       />
-      {species?.recordsTotal > SPECIES_PER_PAGE && (
+      {data?.metadata?.name && species?.recordsTotal > SPECIES_PER_PAGE && (
         <Pagination
           path={null}
           searchParams={searchParams}
