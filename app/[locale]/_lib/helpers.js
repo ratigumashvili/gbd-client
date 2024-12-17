@@ -47,6 +47,36 @@ export const exportData = (dataObject) => {
     link.click();
 };
 
+export const exportDataAsCSV = (dataObject) => {
+    // Convert the dataObject to a CSV string
+    const convertToCSV = (objArray) => {
+        const array = Array.isArray(objArray) ? objArray : [objArray];
+        const headers = Object.keys(array[0]).join(","); // Extract headers
+        const rows = array.map(row => 
+            Object.values(row)
+                .map(value => `"${value}"`) // Wrap values in quotes
+                .join(",")
+        ); // Convert each row to CSV
+
+        return [headers, ...rows].join("\n");
+    };
+
+    const csvString = convertToCSV(dataObject);
+    const csvBlob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
+
+    // Create a download link for the CSV file
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(csvBlob);
+    link.href = url;
+    link.download = "data.csv";
+
+    // Trigger the download
+    link.click();
+
+    // Clean up the URL object
+    URL.revokeObjectURL(url);
+};
+
 export const detectLocale = (language) => {
     return language === 'ka' ? bpg.className : 'font-arial uppercase'
 }

@@ -24,7 +24,8 @@ export default function TaxonomyChildSpecies({ data, locale, taxonName }) {
                             </li>
                         ))}
                     </ul>
-                </>)}
+                </>
+            )}
         </div>
     )
 }

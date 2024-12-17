@@ -17,6 +17,7 @@
     "print": "გვერდის დაბეჭდვა",
     "feedback": "უკუკავშირი",
     "download_json": "ჩამოტვირთეთ JSON",
+    "download_csv": "ჩამოტვირთეთ CSV",
     "desc": "აღწერა",
     "authors": "გვერდის ავტორები",
     "gallery": "გალერეა",

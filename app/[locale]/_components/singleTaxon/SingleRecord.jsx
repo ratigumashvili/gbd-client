@@ -28,6 +28,7 @@ export default function SingleRecord({ data, coordinates }) {
                 <ActionsDropdown
                     handlePrint={handlePrint}
                     data={data}
+                    coordinates={coordinates}
                     downloadContent={true}
                 />
             </div>

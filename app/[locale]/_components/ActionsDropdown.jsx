@@ -6,12 +6,12 @@ import { useTranslations } from 'next-intl'
 import { Menu, Transition } from '@headlessui/react'
 import { toast } from 'react-toastify'
 
-import { copyToClipboard, currentDate, exportData, toastOptions, baseUrl } from '../_lib/helpers'
+import { copyToClipboard, currentDate, exportData, exportDataAsCSV, toastOptions, baseUrl } from '../_lib/helpers'
 
 import FeedbackForm from './FeedbackForm'
 import Hamburger from './icons/Hamburger'
 
-export default function ActionsDropdown({ handlePrint = () => void(0), data, downloadContent = true }) {
+export default function ActionsDropdown({ handlePrint = () => void(0), data, coordinates = [], downloadContent = true }) {
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -33,7 +33,7 @@ export default function ActionsDropdown({ handlePrint = () => void(0), data, dow
         date: currentDate
     }
 
-    const json_data = {
+    const dataToDownload = {
         id: data?.metadata?.id,
         taxon_genera_id: data?.metadata?.tax_genera_id,
         origin: data?.metadata?.origin,
@@ -57,7 +57,8 @@ export default function ActionsDropdown({ handlePrint = () => void(0), data, dow
         conversion_status_comment: data?.metadata?.conversion_status_comment,
         conversion_status_references: data?.metadata?.conversion_status_references,
         evaluated_by: data?.metadata?.evaluated_by,
-        date_evaluated: data?.metadata?.date_evaluated
+        date_evaluated: data?.metadata?.date_evaluated,
+        coordinates: coordinates
     }
 
     const handleCopyToClipboard = () => {
@@ -87,7 +88,8 @@ export default function ActionsDropdown({ handlePrint = () => void(0), data, dow
                         <Menu.Item as="button" onClick={handleCopyToClipboard} className="actions-dropdown-item">{t("copyUrl")}</Menu.Item>
                         <Menu.Item as="button" onClick={handlePrint} className="actions-dropdown-item">{t("print")}</Menu.Item>
                         <Menu.Item as="button" onClick={openModal} className="actions-dropdown-item">{t("feedback")}</Menu.Item>
-                        {downloadContent && (<Menu.Item as="button" onClick={() => exportData(json_data)} className="actions-dropdown-item">{t("download_json")}</Menu.Item>)}
+                        {downloadContent && (<Menu.Item as="button" onClick={() => exportData(dataToDownload)} className="actions-dropdown-item">{t("download_json")}</Menu.Item>)}
+                        {downloadContent && (<Menu.Item as="button" onClick={() => exportDataAsCSV(dataToDownload)} className="actions-dropdown-item">{t("download_csv")}</Menu.Item>)}
                     </Menu.Items>
                 </Transition>
             </Menu>

@@ -17,6 +17,7 @@
     "print": "Print page",
     "feedback": "Send feedback",
     "download_json": "Download JSON",
+    "download_csv": "Download CSV",
     "desc": "Description",
     "authors": "Page Authors",
     "gallery": "Gallery",
