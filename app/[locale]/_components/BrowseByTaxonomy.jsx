@@ -2,16 +2,16 @@ import { Link } from '@/navigation'
 
 import { useTranslations } from 'next-intl'
 
-import {detectLocale} from "@/app/[locale]/_lib/helpers"
-import {getData} from "@/app/[locale]/_lib/apiCalls"
-import BrowseByTaxonomyBlock from './BrowseByTaxonomyBlock'
+import { detectLocale } from "@/app/[locale]/_lib/helpers"
+import { getData } from "@/app/[locale]/_lib/apiCalls"
+
 
 const Blocks = ({ id, title, slug }) => {
 
     const t = useTranslations("Index")
 
     return (
-        <Link href={`/taxonomy/${slug}?id=${id}`}
+        <Link href={`/kingdom/${slug}?id=${id}`}
             className='text-center flex-1 p-8 rounded-md border border-teal-600 bg-teal-600 text-white hover:bg-white hover:text-gray-900 transition-all ease-in'
         >
             <h4 className='font-medium text-xl mb-2'>{title}</h4>
@@ -21,8 +21,8 @@ const Blocks = ({ id, title, slug }) => {
 }
 
 async function BrowseByTaxonomy({ locale, title }) {
-    
-    const {data} = await getData('taxonomy?type=Kingdom', locale)
+
+    const { data } = await getData('taxonomy?type=Kingdom', locale)
 
     return (
         <div className="p-4 mb-4">
@@ -38,16 +38,8 @@ async function BrowseByTaxonomy({ locale, title }) {
                 ))}
             </div> */}
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
-                {/* {data?.map((item) => (
+                {data?.map((item) => (
                     <Blocks
-                        key={item.id}
-                        id={item.id}
-                        title={item.title}
-                        slug={item.metadata.slug}
-                    />
-                ))} */}
-                 {data?.map((item) => (
-                    <BrowseByTaxonomyBlock
                         key={item.id}
                         id={item.id}
                         title={item.title}

@@ -1,8 +1,10 @@
-import React from 'react'
-import { getData } from '../../_lib/apiCalls'
-import TaxonomyParent from '../../_components/TaxonomyParent'
-import TaxonomyChildNodes from '../../_components/TaxonomyChildNodes'
-import { sortChildren } from '../../_lib/helpers'
+import NothingFound from '@/app/[locale]/_components/NothingFound'
+import TaxonomyParent from '@/app/[locale]/_components/TaxonomyParent'
+import TaxonomyChildNodes from '@/app/[locale]/_components/TaxonomyChildNodes';
+import Cite from "@/app/[locale]/_components/Cite";
+
+import { getData } from '@/app/[locale]/_lib/apiCalls'
+import { htmlToPlainText, sortChildren } from '@/app/[locale]/_lib/helpers';
 
 export default async function TestKingdom({ params, searchParams }) {
     const { data } = await getData(`taxonomy/${searchParams.id}?type=Kingdom`, params.locale)
@@ -10,8 +12,12 @@ export default async function TestKingdom({ params, searchParams }) {
 
     const sortedChildren = sortChildren(child)
 
+    if (!data) {
+        return <NothingFound />
+    }
+
     return (
-        <div>
+        <>
             {/* {JSON.stringify(data, null, 2)} */}
 
             <TaxonomyParent
@@ -25,8 +31,11 @@ export default async function TestKingdom({ params, searchParams }) {
                 data={sortedChildren}
                 locale={params.locale}
                 taxonName={data?.metadata?.name}
+                pathToChildren="phylum"
             />
-        </div>
+
+            <Cite name={data?.metadata?.name} />
+        </>
     )
 }
 
