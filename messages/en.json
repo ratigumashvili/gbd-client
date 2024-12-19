@@ -150,7 +150,8 @@
     "comment": "Comment",
     "author": "Author",
     "uploadedBy": "Uploaded by",
-    "type": "Type"
+    "type": "Type",
+    "titleFallback": "Untitled"
   },
   "Registration": {
     "register": "Register",

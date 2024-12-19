@@ -8,7 +8,7 @@ import { useRouter } from '@/navigation'
 
 import { useReactToPrint } from 'react-to-print'
 
-import TaxonomyParentImage from './TaxonomyParentImage'
+import TaxonomyParentGallery from './TaxonomyParentGallery'
 import DynamicTaxonomyOrder from './taxonomyOrder'
 import ActionsDropdown from './ActionsDropdown'
 import GoBack from './icons/GoBack'
@@ -147,17 +147,8 @@ function TaxonomyParentBackup({ data, photos, species }) {
                 <div className="flex-1">
                     {photos && photos.length !== 0 && (
                         <>
-                            <h2 className='font-medium my-2 block-title'>{t("gallery")}</h2>
-
-                            <div className="grid grid-cols-3 md:grid-cols-4 gap-2">
-                                {photos?.map((image) => (
-                                    <TaxonomyParentImage
-                                        key={image.id}
-                                        {...image}
-                                        title={data?.metadata?.name}
-                                    />
-                                ))}
-                            </div>
+                            <h2 className='font-medium my-2 block-title'>{t("gallery")} ({photos?.length})</h2>
+                            <TaxonomyParentGallery photos={photos} />
                         </>
                     )}
                 </div>

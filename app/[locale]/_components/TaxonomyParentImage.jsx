@@ -10,18 +10,21 @@ import { useTranslations } from 'next-intl'
 import { Dialog, Transition } from '@headlessui/react'
 
 import Close from './icons/Close'
+import LoadingIcon from './icons/LoadingIcon'
 
 export default function TaxonomyParentImage({ title, file_url, name, metadata, extension, comment, author, authorId, uploadedBy }) {
 
     const [isOpen, setIsOpen] = useState(false)
     const [dimensions, setDimensions] = useState({ height: 0, width: 0 })
 
+    const [loading, setLoading] = useState(true)
+
     const t = useTranslations("Gallery")
 
-    function handleImageLoad(e) {
-        const { naturalHeight, naturalWidth } = e.target;
-        setDimensions({ height: naturalHeight, width: naturalWidth })
-    }
+    // function handleImageLoad(e) {
+    //     const { naturalHeight, naturalWidth } = e.target;
+    //     setDimensions({ height: naturalHeight, width: naturalWidth })
+    // }
 
     function closeModal() {
         setIsOpen(false)
@@ -79,7 +82,7 @@ export default function TaxonomyParentImage({ title, file_url, name, metadata, e
                                         className="text-lg font-medium leading-6 text-gray-900"
                                     >
                                         <div className='flex items-center justify-between dark:text-slate-400'>
-                                            {name}
+                                            {name ? name : t("titleFallback")}
 
                                             <button onClick={closeModal}>
                                                 <Close />
@@ -90,51 +93,67 @@ export default function TaxonomyParentImage({ title, file_url, name, metadata, e
 
                                     <div className="mt-4 flex flex-col gap-4">
 
+                                        {loading && (
+                                            <p className='text-teal-700 flex items-center justify-center' style={{height: 150}}>
+                                                <span className='animate-spin'>
+                                                    <LoadingIcon />
+                                                </span>
+                                            </p>
+                                        )}
+
                                         <Image
                                             src={file_url}
                                             width={500}
                                             height={500}
                                             alt={name}
-                                            onLoad={handleImageLoad}
+                                            // onLoad={handleImageLoad}
                                             className='w-full h-auto object-cover z-[999999]'
                                             loading='lazy'
+                                            onLoadingComplete={() => setLoading(false)}
                                         />
 
-                                        <dl className="data-list mb-4">
-                                            {title && (
-                                                <>
-                                                    <dt>{t("taxon")}:</dt>
-                                                    <dd>
-                                                        {title}
-                                                    </dd>
-                                                </>
-                                            )}
-                                            {author && (
-                                                <>
-                                                    <dt>{t("author")}:</dt>
-                                                    <dd><Link href={`/authors/${authorId}`}>{author}</Link></dd>
-                                                </>
-                                            )}
-                                            {comment && (
-                                                <>
-                                                    <dt>{t("comment")}:</dt>
-                                                    <dd>{comment}</dd>
-                                                </>
-                                            )}
-                                            {uploadedBy && (
-                                                <>
-                                                    <dt>{t("uploadedBy")}:</dt>
-                                                    <dd>{uploadedBy}</dd>
-                                                </>
-                                            )}
-                                        </dl>
+                                        {/* {!loading && */}
+                                            <dl className="data-list mb-4">
+                                                {title && (
+                                                    <>
+                                                        <dt>{t("taxon")}:</dt>
+                                                        <dd>
+                                                            {title}
+                                                        </dd>
+                                                    </>
+                                                )}
+                                                {author && (
+                                                    <>
+                                                        <dt>{t("author")}:</dt>
+                                                        <dd><Link href={`/authors/${authorId}`}>{author}</Link></dd>
+                                                    </>
+                                                )}
+                                                {comment && (
+                                                    <>
+                                                        <dt>{t("comment")}:</dt>
+                                                        <dd>{comment}</dd>
+                                                    </>
+                                                )}
+                                                {uploadedBy && (
+                                                    <>
+                                                        <dt>{t("uploadedBy")}:</dt>
+                                                        <dd>{uploadedBy}</dd>
+                                                    </>
+                                                )}
+                                            </dl>
+                                        {/* } */}
 
-                                        <div className="flex items-center justify-between gap-2">
-                                            <Link href={file_url} target='blank' className='text-sm text-teal-600 hover:text-teal-700 underline'>
-                                                {t("download")} {`${dimensions.width}X${dimensions.height}`}
-                                            </Link>
-                                            <span className="text-xs">({Math.floor(metadata?.size * 0.001)} KB. {t("type")}: {extension})</span>
-                                        </div>
+                                        {/* {!loading && */}
+                                            <div className="flex items-center justify-between gap-2">
+                                                <Link href={file_url} target='blank' className='text-sm text-teal-600 hover:text-teal-700 underline'>
+                                                    {t("download")} 
+                                                    {/* {`${dimensions.width}X${dimensions.height}`} */}
+                                                </Link>
+                                                {JSON.stringify(metadata, null, 2)}
+                                                {/* <span className="text-xs">({Math.floor(metadata?.size * 0.001)} KB. {t("type")}: {extension})</span> */}
+                                            </div>
+                                        {/* } */}
+
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>

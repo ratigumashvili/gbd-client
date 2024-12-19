@@ -149,8 +149,9 @@
     "download": "სურათის ჩამოტვირთვა",
     "comment": "კომენტარი",
     "author": "ავტორი",
-    "uploadedBy": "ამტვირთავი",
-    "type": "გაფართოება"
+    "uploadedBy": "ატვირთა",
+    "type": "გაფართოება",
+    "titleFallback": "უსათაურო"
   },
   "Registration": {
     "register": "რეგისტრაცია",
