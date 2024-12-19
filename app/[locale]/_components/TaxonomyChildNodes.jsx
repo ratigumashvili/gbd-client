@@ -8,13 +8,13 @@ import { useFilterByName } from "../_hooks/useFilterByName"
 
 export default function TaxonomyChildNodes({ data, locale, taxonName }) {
 
-    if (!data || data.length === 0) return <></>
-
     const { searchTerm, setSearchTerm, filteredData } = useFilterByName(data, "title")
-
+    
     const pathname = usePathname()
-
+    
     const t = useTranslations("Common")
+
+    if (!data || data.length === 0) return <></>
 
     return (
         <div className="col-span-1 mt-8 mb-4">

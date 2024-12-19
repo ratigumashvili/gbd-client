@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, Suspense } from 'react'
 
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
@@ -16,12 +16,25 @@ import GoBack from './icons/GoBack'
 import { checkLink, separator } from "@/app/[locale]/_lib/helpers"
 import { fungiTree } from '../_lib/data'
 
+export default function TaxonomyParent({ data, photos, species }) {
+    return (
+        <Suspense fallback={<div>Loading post...</div>}>
+            <TaxonomyParentBackup
+                data={data}
+                photos={photos}
+                species={species}
+            />
+        </Suspense>
+    )
+}
 
-export default function TaxonomyParent({ data, photos }) {
+
+function TaxonomyParentBackup({ data, photos, species }) {
 
     const router = useRouter()
 
     const t = useTranslations("Common")
+    const s = useTranslations("Species")
 
     const printContent = useRef();
 
@@ -30,6 +43,8 @@ export default function TaxonomyParent({ data, photos }) {
         documentTitle: `GBD - ${data?.metadata?.name}`,
         pageStyle: 'p-8'
     });
+
+    // Single Taxon page
 
     return (
         <div className='py-4' ref={printContent}>
@@ -40,8 +55,11 @@ export default function TaxonomyParent({ data, photos }) {
                         <GoBack width="22" heigth="22" />
                     </button>
                     <ActionsDropdown
-                        downloadContent={false}
                         handlePrint={handlePrint}
+                        data={data}
+                        species={species}
+                        isSpecie={false}
+                        downloadContent={true}
                     />
                 </div>
             </div>
@@ -53,48 +71,50 @@ export default function TaxonomyParent({ data, photos }) {
                     <dl className="data-list">
                         {data?.metadata?.scientific_name_id && (
                             <>
-                                <dt>Scientific Name ID:</dt>
+                                <dt>{s("scientific_name_id")}:</dt>
                                 <dd>{data?.metadata?.scientific_name_id}</dd>
                             </>
                         )}
                         {data?.metadata?.according_title && (
                             <>
-                                <dt>Name According to:</dt>
-                                <dd><Link href={checkLink(data?.metadata?.url)} target="blank">{data?.metadata?.according_title}</Link></dd>
+                                <dt>{s("name_according_to")}:</dt>
+                                <dd><Link href={checkLink(data?.metadata?.according_url)} target="blank">{data?.metadata?.according_title}</Link></dd>
                             </>
                         )}
                         {data?.metadata?.published_in_year && (
                             <>
-                                <dt>Name Published in Year:</dt>
+                                <dt>{s("name_published_in_year")}:</dt>
                                 <dd>{data?.metadata?.published_in_year}</dd>
                             </>
                         )}
                         {data?.metadata?.taxon_rank_title && (
                             <>
-                                <dt>Taxon Rank:</dt>
+                                <dt>{s("taxon_rank")}:</dt>
                                 <dd><Link href={checkLink(data?.metadata?.taxon_rank_url)} target="blank">{data?.metadata?.taxon_rank_title}</Link></dd>
                             </>
                         )}
                         {data?.metadata?.scientific_name_authorship_title && (
                             <>
-                                <dt>Scientific Name Authorship:</dt>
+                                <dt>{s("scientific_name_authorship")}:</dt>
                                 <dd><Link href={checkLink(data?.metadata?.scientific_name_authorship_url)} target="blank">{data?.metadata?.scientific_name_authorship_title}</Link></dd>
                             </>
                         )}
-                        <>
-                            <dt>English Name:</dt>
-                            <dd><Link href={checkLink(data?.metadata?.english_url)} target="blank">{data?.metadata?.english_name}</Link></dd>
-                        </>
+                        {data?.metadata?.english_name && (
+                            <>
+                                <dt>{s("english_name")}:</dt>
+                                <dd><Link href={checkLink(data?.metadata?.english_url)} target="blank">{data?.metadata?.english_name}</Link></dd>
+                            </>
+                        )}
                         {data?.metadata?.georgian_name_title && (
                             <>
-                                <dt>Gerogian Name:</dt>
+                                <dt>{s("georgian_name")}:</dt>
                                 <dd>{data?.metadata?.georgian_name_title}</dd>
                             </>
                         )}
 
                         {data?.metadata?.gbd_remarks && (
                             <>
-                                <dt>GBD Remarks:</dt>
+                                <dt>{s("gbd_remarks")}:</dt>
                                 <dd>
                                     <div
                                         dangerouslySetInnerHTML={{ __html: data?.metadata?.gbd_remarks }}
@@ -117,15 +137,15 @@ export default function TaxonomyParent({ data, photos }) {
                                 </dd>
                             </>
                         )} */}
-                        <dt>{t("authors")}:</dt>
+                        <dt>{s("authors")}:</dt>
                         <dd>authors list</dd>
 
-                        <dt>Contributors:</dt>
+                        <dt>{s("contributors")}:</dt>
                         <dd>persons list</dd>
                     </dl>
                 </div>
                 <div className="flex-1">
-                    {photos.length !== 0 && (
+                    {photos && photos.length !== 0 && (
                         <>
                             <h2 className='font-medium my-2 block-title'>{t("gallery")}</h2>
 

@@ -12,9 +12,9 @@ import "react-leaflet-fullscreen/styles.css";
 
 export default function Distribution({ coordinates }) {
 
-    if (!coordinates) return
-
     const t = useTranslations("Species")
+    
+    if (!coordinates) return
 
     const heatmapOptions = {
         radius: 20,

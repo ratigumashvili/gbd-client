@@ -23,6 +23,7 @@ export default async function Genus({ params, searchParams }) {
       <TaxonomyParent
         data={data}
         photos={data.files}
+        species={species.data}
         // description={data[0]?.description}
       />
       <TaxonomyChildSpecies

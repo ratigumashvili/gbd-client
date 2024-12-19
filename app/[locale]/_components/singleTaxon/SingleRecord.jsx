@@ -20,6 +20,8 @@ export default function SingleRecord({ data, coordinates }) {
         pageStyle: 'p-8'
     });
 
+    // Single Specie page
+
     return (
         <div className="py-4" ref={printContent}>
 
@@ -29,6 +31,7 @@ export default function SingleRecord({ data, coordinates }) {
                     handlePrint={handlePrint}
                     data={data}
                     coordinates={coordinates}
+                    isSpecie={true}
                     downloadContent={true}
                 />
             </div>

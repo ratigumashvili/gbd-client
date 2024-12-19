@@ -44,6 +44,7 @@ export default function TaxonomyParentImage({ title, file_url, name, metadata, e
                     height={150}
                     className='h-full w-full max-h-[150px] object-cover'
                     title={name}
+                    loading='lazy'
                 />
             </button>
 
@@ -96,6 +97,7 @@ export default function TaxonomyParentImage({ title, file_url, name, metadata, e
                                             alt={name}
                                             onLoad={handleImageLoad}
                                             className='w-full h-auto object-cover z-[999999]'
+                                            loading='lazy'
                                         />
 
                                         <dl className="data-list mb-4">

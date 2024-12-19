@@ -2,8 +2,9 @@ import { Link } from '@/navigation'
 
 import { useTranslations } from 'next-intl'
 
-import { detectLocale } from '../_lib/helpers'
-import { getData } from '../_lib/apiCalls'
+import {detectLocale} from "@/app/[locale]/_lib/helpers"
+import {getData} from "@/app/[locale]/_lib/apiCalls"
+import BrowseByTaxonomyBlock from './BrowseByTaxonomyBlock'
 
 const Blocks = ({ id, title, slug }) => {
 
@@ -26,9 +27,27 @@ async function BrowseByTaxonomy({ locale, title }) {
     return (
         <div className="p-4 mb-4">
             <h2 className={`text-2xl font-medium mb-4 ${detectLocale(locale)}`}>{title}</h2>
-            <div className='flex flex-col md:flex-row gap-4'>
+            {/* <div className='flex flex-col md:flex-row gap-4'>
                 {data?.reverse().map((item) => (
                     <Blocks
+                        key={item.id}
+                        id={item.id}
+                        title={item.title}
+                        slug={item.metadata.slug}
+                    />
+                ))}
+            </div> */}
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+                {/* {data?.map((item) => (
+                    <Blocks
+                        key={item.id}
+                        id={item.id}
+                        title={item.title}
+                        slug={item.metadata.slug}
+                    />
+                ))} */}
+                 {data?.map((item) => (
+                    <BrowseByTaxonomyBlock
                         key={item.id}
                         id={item.id}
                         title={item.title}

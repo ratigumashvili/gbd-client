@@ -47,7 +47,8 @@
     "filter": "Filter by title",
     "no_data": "Nothing found, please try other options.",
     "show_filter": "Show Filter",
-    "hide_filter": "Hide Filter"
+    "hide_filter": "Hide Filter",
+    "actions": "Actions"
   },
   "Header": {
     "isu": "Ilia State University",
@@ -196,6 +197,12 @@
     "references": "References",
     "evaluated_by": "Evaluated by",
     "date_evaluated": "Date evaluated",
-    "species_distribution": "Taxon distribution"
+    "species_distribution": "Taxon distribution",
+
+    "name_published_in_year:": "Name Published in Year",
+    "taxon_rank": "Taxon Rank",
+    "scientific_name_authorship": "Scientific Name Authorship",
+    "gbd_remarks": "GBD Remarks",
+    "authors": "Author(s)"
   }
 }

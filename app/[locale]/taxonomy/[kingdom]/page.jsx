@@ -9,8 +9,6 @@ import { htmlToPlainText, sortChildren } from '@/app/[locale]/_lib/helpers';
 export async function generateMetadata({ params, searchParams }) {
     const { data } = await getData(`taxonomy/${searchParams.id}?type=Kingdom`, params.locale)
 
-    // console.log(data?.metadata?.seo)
-
     return {
         title: data?.metadata?.seo?.title,
         keywords: htmlToPlainText(data?.metadata?.seo?.keywords),
@@ -35,6 +33,7 @@ export default async function Kingdom({ params, searchParams }) {
             <TaxonomyParent
                 data={data}
                 photos={data?.files}
+                species={child}
             // description={data?.metadata}
             />
             <TaxonomyChildNodes

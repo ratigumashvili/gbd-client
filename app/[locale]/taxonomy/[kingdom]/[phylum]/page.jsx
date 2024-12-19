@@ -4,6 +4,7 @@ import TaxonomyChildNodes from "@/app/[locale]/_components/TaxonomyChildNodes"
 import Cite from "@/app/[locale]/_components/Cite"
 
 import { getData } from "@/app/[locale]/_lib/apiCalls"
+import { sortChildren } from "@/app/[locale]/_lib/helpers"
 
 export default async function Phylum({ params, searchParams }) {
 
@@ -14,15 +15,18 @@ export default async function Phylum({ params, searchParams }) {
     return <NothingFound />
   }
 
+  const sortedChildren = sortChildren(child)
+
   return (
     <>
       <TaxonomyParent
         data={data}
         photos={data.files}
+        species={child}
         // description={data[0]?.description}
       />
       <TaxonomyChildNodes
-        data={child}
+        data={sortedChildren}
         locale={params.locale}
         taxonName={data?.metadata?.name}
       />
