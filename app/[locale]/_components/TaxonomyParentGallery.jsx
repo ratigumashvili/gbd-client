@@ -24,15 +24,25 @@ function TaxonomyParentGallery({ photos }) {
     }, [])
 
     const transformImageData = (data) =>
-        data.map((item) => ({
-            id: item.id,
-            src: item.file_url,
-            thumbnail: item.file_url,
-            caption: item.name,
-            comments: item.comments || "Lorem ipsum dolor",
-            author: item.author || "Author name",
-            uploadedBy: item.uploadedBy || "Uploaded by"
-        }));
+        data.map((item) => {
+            
+            const defaultWidth = 100;
+            const defaultHeight = 150;
+
+            return {
+                id: item.id,
+                src: item.file_url,
+                thumbnail: item.file_url,
+                thumbnailWidth: defaultWidth,
+                thumbnailHeight: defaultHeight,
+                width: item.metadata?.width || defaultWidth,
+                height: item.metadata?.height || defaultHeight,
+                caption: item.name,
+                comments: item.comments || "Lorem ipsum dolor",
+                author: item.author || "Author name",
+                uploadedBy: item.uploadedBy || "Uploaded by"
+            };
+        });
 
     const lightboxSlides = images.map((img) => (
         {
@@ -52,7 +62,7 @@ function TaxonomyParentGallery({ photos }) {
     const customThumbnailStyle = {
         width: "100%",
         height: "100px",
-        objectFit: "contain",
+        objectFit: "cover",
         cursor: "pointer",
     };
 
@@ -64,7 +74,7 @@ function TaxonomyParentGallery({ photos }) {
             <style>
                 {`
                     .react-grid-gallery .ReactGridGallery_tile {
-                        width: 100px !important; /* Match thumbnail width */
+                        width: 100% !important; /* Match thumbnail width */
                         height: 100px !important; /* Match thumbnail height */
                     }
                     .ReactGridGallery_tile-viewport {
@@ -94,40 +104,26 @@ function TaxonomyParentGallery({ photos }) {
                 index={currentIndex}
                 render={{
                     slide: ({ slide }) => (
-                        <div style={{ position: 'relative', textAlign: 'center' }}>
+                        <div className="relative text-center text-white">
                             <Image
                                 src={slide.src}
                                 alt={slide.title}
-                                width={500}
+                                width={1000}
                                 height={500}
-                                style={{ maxWidth: '100%', height: '80vh' }}
+                                style={{ maxWidth: '100%', height: '80vh', objectFit: 'contain' }}
                             />
-                            <div
-                                style={{
-                                    color: '#fff',
-                                    padding: '5px 10px',
-                                    borderRadius: '5px',
-                                }}
-                            >
-                                <h2 className="text-2xl italic">{slide.title}</h2>
-                            </div>
-                            <div
-                                style={{
-                                    color: '#fff',
-                                    padding: '5px 10px',
-                                    borderRadius: '5px',
-                                }}
-                            >
-                                <div className="flex flex-col gap-y-1 text-xs">
-                                    <div className="flex justify-center gap-2">
-                                        <p>{t("author")}: {slide.author}</p>
-                                        <p>{t("uploadedBy")}: {slide.uploadedBy}</p>
-                                    </div>
-                                    <p>{t("comment")}: {slide.comments}</p>
-                                    <Link href={slide.src} target="blank">
-                                        {t("download")}
-                                    </Link>
+
+                            <h2 className="text-2xl italic py-[5px] px-[10px]">{slide.title}</h2>
+
+                            <div className="flex flex-col gap-y-1 text-xs py-[5px] px-[10px]">
+                                <div className="flex justify-center gap-2">
+                                    <p>{t("author")}: {slide.author}</p>
+                                    <p>{t("uploadedBy")}: {slide.uploadedBy}</p>
                                 </div>
+                                <p>{t("comment")}: {slide.comments}</p>
+                                <Link href={slide.src} target="blank">
+                                    {t("download")}
+                                </Link>
                             </div>
                         </div>
                     ),

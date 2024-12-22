@@ -95,3 +95,5 @@ export function htmlToPlainText(html) {
     const decodedHtml = he.decode(html);
     return decodedHtml.replace(/<\/?[^>]+(>|$)/g, "").trim();
 }
+
+export const capitalize = (s) => (s && String(s[0]).toUpperCase() + String(s).slice(1)) || ""

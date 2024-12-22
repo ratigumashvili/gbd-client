@@ -48,7 +48,9 @@
     "no_data": "Nothing found, please try other options.",
     "show_filter": "Show Filter",
     "hide_filter": "Hide Filter",
-    "actions": "Actions"
+    "actions": "Actions",
+    "record": "Record",
+    "records": "Records"
   },
   "Header": {
     "isu": "Ilia State University",

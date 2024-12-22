@@ -1,10 +1,11 @@
 import NothingFound from "@/app/[locale]/_components/NothingFound";
 import TaxonomyParent from "@/app/[locale]/_components/TaxonomyParent"
-import TaxonomyChildSpecies from "@/app/[locale]/_components/TaxonomyChildSpecies";
+import TaxonomyChildNodes from "@/app/[locale]/_components/TaxonomyChildNodes";
 import Cite from "@/app/[locale]/_components/Cite";
 import Pagination from "@/app/[locale]/_components/Pagination";
 
 import { getData, getPaginatedData } from "@/app/[locale]/_lib/apiCalls";
+
 import { SPECIES_PER_PAGE } from "@/app/[locale]/_lib/constants";
 
 export default async function Genus({ params, searchParams }) {
@@ -24,14 +25,16 @@ export default async function Genus({ params, searchParams }) {
         data={data}
         photos={data.files}
         species={species.data}
-        // description={data[0]?.description}
+      // description={data[0]?.description}
       />
-      <TaxonomyChildSpecies
-        data={species}
+      <TaxonomyChildNodes
+        data={species?.data}
+        recordsTotal={species?.recordsTotal}
         locale={params.locale}
         taxonName={data?.metadata?.name}
-        // pathToChildren="species"
+        pathToChildren="species"
       />
+
       {data?.metadata?.name && species?.recordsTotal > SPECIES_PER_PAGE && (
         <Pagination
           path={null}

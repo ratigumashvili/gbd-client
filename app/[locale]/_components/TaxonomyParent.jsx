@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, Suspense } from 'react'
+import { useRef } from 'react'
 
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
@@ -16,20 +16,7 @@ import GoBack from './icons/GoBack'
 import { checkLink, separator } from "@/app/[locale]/_lib/helpers"
 import { fungiTree } from '../_lib/data'
 
-export default function TaxonomyParent({ data, photos, species }) {
-    return (
-        <Suspense fallback={<div>Loading post...</div>}>
-            <TaxonomyParentBackup
-                data={data}
-                photos={photos}
-                species={species}
-            />
-        </Suspense>
-    )
-}
-
-
-function TaxonomyParentBackup({ data, photos, species }) {
+export default function TaxonomyParentBackup({ data, photos, species }) {
 
     const router = useRouter()
 
@@ -78,7 +65,12 @@ function TaxonomyParentBackup({ data, photos, species }) {
                         {data?.metadata?.according_title && (
                             <>
                                 <dt>{s("name_according_to")}:</dt>
-                                <dd><Link href={checkLink(data?.metadata?.according_url)} target="blank">{data?.metadata?.according_title}</Link></dd>
+                                {/* <dd><Link href={checkLink(data?.metadata?.according_url)} target="blank">{data?.metadata?.according_title}</Link></dd> */}
+                                <dd>
+                                    {data?.metadata?.according_url
+                                        ? <Link href={data?.metadata?.according_url} target="blank">{data?.metadata?.according_title}</Link>
+                                        : <span>{data?.metadata?.according_title}</span>}
+                                </dd>
                             </>
                         )}
                         {data?.metadata?.published_in_year && (
@@ -90,19 +82,34 @@ function TaxonomyParentBackup({ data, photos, species }) {
                         {data?.metadata?.taxon_rank_title && (
                             <>
                                 <dt>{s("taxon_rank")}:</dt>
-                                <dd><Link href={checkLink(data?.metadata?.taxon_rank_url)} target="blank">{data?.metadata?.taxon_rank_title}</Link></dd>
+                                <dd>
+                                    {/* <Link href={checkLink(data?.metadata?.taxon_rank_url)} target="blank">{data?.metadata?.taxon_rank_title}</Link> */}
+                                    {data?.metadata?.taxon_rank_url
+                                        ? <Link href={data?.metadata?.taxon_rank_url} target="blank">{data?.metadata?.taxon_rank_title}</Link>
+                                        : <span>{data?.metadata?.taxon_rank_title}</span>}
+                                </dd>
                             </>
                         )}
                         {data?.metadata?.scientific_name_authorship_title && (
                             <>
                                 <dt>{s("scientific_name_authorship")}:</dt>
-                                <dd><Link href={checkLink(data?.metadata?.scientific_name_authorship_url)} target="blank">{data?.metadata?.scientific_name_authorship_title}</Link></dd>
+                                <dd>
+                                    {/* <Link href={checkLink(data?.metadata?.scientific_name_authorship_url)} target="blank">{data?.metadata?.scientific_name_authorship_title}</Link> */}
+                                    {data?.metadata?.scientific_name_authorship_url
+                                        ? <Link href={data?.metadata?.scientific_name_authorship_url} target="blank">{data?.metadata?.scientific_name_authorship_title}</Link>
+                                        : <span>{data?.metadata?.scientific_name_authorship_title}</span>}
+                                </dd>
                             </>
                         )}
                         {data?.metadata?.english_name && (
                             <>
                                 <dt>{s("english_name")}:</dt>
-                                <dd><Link href={checkLink(data?.metadata?.english_url)} target="blank">{data?.metadata?.english_name}</Link></dd>
+                                <dd>
+                                    {/* <Link href={checkLink(data?.metadata?.english_url)} target="blank">{data?.metadata?.english_name}</Link> */}
+                                    {data?.metadata?.english_url
+                                        ? <Link href={data?.metadata?.english_url} target="blank">{data?.metadata?.english_name}</Link>
+                                        : <span>{data?.metadata?.english_name}</span>}
+                                </dd>
                             </>
                         )}
                         {data?.metadata?.georgian_name_title && (
@@ -147,7 +154,7 @@ function TaxonomyParentBackup({ data, photos, species }) {
                 <div className="flex-1">
                     {photos && photos.length !== 0 && (
                         <>
-                            <h2 className='font-medium my-2 block-title'>{t("gallery")} ({photos?.length})</h2>
+                            <h2 className='font-medium my-2 block-title'>{t("gallery")}</h2>
                             <TaxonomyParentGallery photos={photos} />
                         </>
                     )}

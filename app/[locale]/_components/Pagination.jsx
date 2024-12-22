@@ -21,6 +21,12 @@ function Pagination({ path, searchParams, currentPage, total }) {
         }
     }, [current])
 
+    useEffect(() => {
+        if(current > total) {
+            setCurrent(total)
+        }
+    }, [])
+
     const t = useTranslations("Common")
 
     const handlePagionationClick = (direction) => direction === 'next' ? setCurrent((prev) => prev + 1) : setCurrent((prev) => prev - 1)

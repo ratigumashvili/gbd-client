@@ -1,22 +1,23 @@
 import NothingFound from '@/app/[locale]/_components/NothingFound'
 import TaxonomyParent from '@/app/[locale]/_components/TaxonomyParent'
 import TaxonomyChildNodes from '@/app/[locale]/_components/TaxonomyChildNodes'
+import Pagination from '@/app/[locale]/_components/Pagination'
 import Cite from '@/app/[locale]/_components/Cite'
 
-import { getData } from '@/app/[locale]/_lib/apiCalls'
-import { sortChildren } from '@/app/[locale]/_lib/helpers'
+import { getData, getPaginatedData } from '@/app/[locale]/_lib/apiCalls'
 
+import { TAXON_PER_PAGE } from '@/app/[locale]/_lib/constants'
 
 export default async function TaxonClass({ params, searchParams }) {
 
+  const currentPage = searchParams.page || 1
+
   const { data } = await getData(`taxonomy/${searchParams.id}?type=TaxClass`, params.locale)
-  const { data: child } = await getData(`taxonomy?type=TaxOrder&parent_id=${searchParams.id}`, params.locale)
+  const child = await getPaginatedData(`taxonomy?type=TaxOrder&parent_id=${searchParams.id}`, params.locale, currentPage, TAXON_PER_PAGE)
 
   if (!data) {
     return <NothingFound />
   }
-
-  const sortedChildren = sortChildren(child)
 
   return (
     <>
@@ -24,14 +25,23 @@ export default async function TaxonClass({ params, searchParams }) {
         data={data}
         photos={data.files}
         species={child}
-        // description={data[0]?.description}
+      // description={data[0]?.description}
       />
       <TaxonomyChildNodes
-        data={sortedChildren}
+        data={child?.data}
+        recordsTotal={child?.recordsTotal}
         locale={params.locale}
         taxonName={data?.metadata?.name}
         pathToChildren="order"
       />
+      {data?.metadata?.name && child?.recordsTotal > TAXON_PER_PAGE && (
+        <Pagination
+          path={null}
+          searchParams={searchParams}
+          currentPage={currentPage}
+          total={child?.total_page}
+        />)
+      }
       <Cite name={data?.metadata?.name} />
     </>
   )
