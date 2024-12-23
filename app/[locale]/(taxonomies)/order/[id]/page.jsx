@@ -34,7 +34,7 @@ export default async function Order({ params, searchParams }) {
         taxonName={data?.metadata?.name}
         pathToChildren="family"
       />
-      {data?.metadata?.name && child?.recordsTotal > TAXON_PER_PAGE && (
+      {child?.recordsTotal > TAXON_PER_PAGE && (
         <Pagination
           path={null}
           searchParams={searchParams}

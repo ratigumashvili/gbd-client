@@ -25,7 +25,7 @@ function Pagination({ path, searchParams, currentPage, total }) {
         if(current > total) {
             setCurrent(total)
         }
-    }, [])
+    }, [current])
 
     const t = useTranslations("Common")
 

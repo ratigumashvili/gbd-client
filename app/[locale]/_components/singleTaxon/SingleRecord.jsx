@@ -25,7 +25,7 @@ export default function SingleRecord({ data, coordinates }) {
     return (
         <div className="py-4" ref={printContent}>
             <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-medium">{data?.metadata?.scientific_name}</h2>
+                <h2 className="text-2xl font-medium">{data?.metadata?.georgian_name}</h2>
                 <ActionsDropdown
                     handlePrint={handlePrint}
                     data={data}

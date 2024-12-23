@@ -34,8 +34,7 @@ export default async function Genus({ params, searchParams }) {
         taxonName={data?.metadata?.name}
         pathToChildren="species"
       />
-
-      {data?.metadata?.name && species?.recordsTotal > SPECIES_PER_PAGE && (
+      {species?.recordsTotal > SPECIES_PER_PAGE && (
         <Pagination
           path={null}
           searchParams={searchParams}

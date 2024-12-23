@@ -1,34 +1,30 @@
 'use client'
 
 import { useEffect, useRef, useState } from "react"
-import { useSearchParams } from "next/navigation"
 
 import { useTranslations } from "next-intl"
 
 import { toast } from "react-toastify"
 
-import { copyToClipboard, currentDate, toastOptions } from "../_lib/helpers"
+import { useFullUrl } from "@/app/[locale]/_hooks/useFullUrl"
+
+import { copyToClipboard, currentDate, toastOptions } from "@/app/[locale]/_lib/helpers"
 
 import Copy from "./icons/Copy"
 
 export default function Cite({ name }) {
 
-    const citeRef = useRef()
-
     const [citeElement, setCiteElement] = useState()
-    const [url, setUrl] = useState("")
-
-    const searchParams = useSearchParams()
+    
+    const citeRef = useRef()
+    
+    const fullUrl = useFullUrl()
 
     const t = useTranslations("Common")
 
     useEffect(() => {
         setCiteElement(citeRef.current)
     }, [])
-
-    useEffect(() => {
-        setUrl(typeof window !== "undefined" && window.location.href)
-    }, [searchParams])
 
     const handleCopyCite = () => {
         copyToClipboard(citeElement.innerText)
@@ -44,7 +40,7 @@ export default function Cite({ name }) {
             >
                 <Copy width="18" height="18" />
             </button>
-            <em><b>{t("citePage")}:</b></em> <span ref={citeRef}>{`${name}`}. {t("gbd")} ({t("tbilisi")}, {`${currentDate.slice(-4)}`}). {t("isu")}, {t("ecology_inst")}. {t("available")}: {`${url}`}. {t("date_accessed")}: {`${currentDate}`}.</span>
+            <em><b>{t("citePage")}:</b></em> <span ref={citeRef}>{`${name}`}. {t("gbd")} ({t("tbilisi")}, {`${currentDate.slice(-4)}`}). {t("isu")}, {t("ecology_inst")}. {t("available")}: {`${fullUrl}`}. {t("date_accessed")}: {`${currentDate}`}.</span>
         </div>
     )
 }

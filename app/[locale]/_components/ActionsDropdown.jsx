@@ -1,14 +1,16 @@
 'use client'
 
 import { Fragment, useState } from 'react'
-import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { Menu, Transition } from '@headlessui/react'
 import { toast } from 'react-toastify'
 
-import { copyToClipboard, currentDate, exportData, exportDataAsCSV, toastOptions, baseUrl } from '../_lib/helpers'
+import { useFullUrl } from "@/app/[locale]/_hooks/useFullUrl"
+
+import { copyToClipboard, currentDate, exportData, exportDataAsCSV, toastOptions } from '../_lib/helpers'
 
 import FeedbackForm from './FeedbackForm'
+
 import Hamburger from './icons/Hamburger'
 
 export default function ActionsDropdown({ 
@@ -22,7 +24,7 @@ export default function ActionsDropdown({
 
     const [isOpen, setIsOpen] = useState(false)
 
-    const pathname = usePathname()
+    const url = useFullUrl()
 
     const t = useTranslations("Common")
 
@@ -36,7 +38,7 @@ export default function ActionsDropdown({
 
     const metaData = {
         title: data?.metadata?.scientific_name || "Feedback",
-        url: baseUrl + pathname,
+        url: url,
         date: currentDate
     }
 
@@ -83,7 +85,7 @@ export default function ActionsDropdown({
     }
 
     const handleCopyToClipboard = () => {
-        copyToClipboard(baseUrl + pathname)
+        copyToClipboard(url)
         toast.success(t("copied"), toastOptions)
     }
 

@@ -8,14 +8,12 @@ import { getData, getPaginatedData } from '@/app/[locale]/_lib/apiCalls'
 
 import { TAXON_PER_PAGE } from '@/app/[locale]/_lib/constants';
 
-export default async function TestKingdom({ params, searchParams }) {
+export default async function Kingdom({ params, searchParams }) {
 
     const currentPage = searchParams.page || 1
 
     const { data } = await getData(`taxonomy/${searchParams.id}?type=Kingdom`, params.locale)
     const child = await getPaginatedData(`taxonomy?type=Phylum&parent_id=${searchParams.id}`, params.locale, currentPage, TAXON_PER_PAGE)
-
-    // const sortedChildren = sortChildren(child)
 
     if (!data) {
         return <NothingFound />
@@ -37,8 +35,7 @@ export default async function TestKingdom({ params, searchParams }) {
                 taxonName={data?.metadata?.name}
                 pathToChildren="phylum"
             />
-
-            {data?.metadata?.name && child?.recordsTotal > TAXON_PER_PAGE && (
+            {child?.recordsTotal > TAXON_PER_PAGE && (
                 <Pagination
                     path={null}
                     searchParams={searchParams}

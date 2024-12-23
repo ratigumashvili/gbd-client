@@ -36,7 +36,7 @@ export default async function Phylum({ params, searchParams }) {
         taxonName={data?.metadata?.name}
         pathToChildren="class"
       />
-      {data?.metadata?.name && child?.recordsTotal > TAXON_PER_PAGE && (
+      {child?.recordsTotal > TAXON_PER_PAGE && (
         <Pagination
           path={null}
           searchParams={searchParams}
