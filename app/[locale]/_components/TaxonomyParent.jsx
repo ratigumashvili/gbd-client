@@ -3,20 +3,19 @@
 import { useRef } from 'react'
 
 import Link from 'next/link'
-import { useTranslations } from 'next-intl'
 import { useRouter } from '@/navigation'
-
 import { useReactToPrint } from 'react-to-print'
+import { useTranslations } from 'next-intl'
 
+import GoBack from './icons/GoBack'
+import ActionsDropdown from './ActionsDropdown'
 import TaxonomyParentGallery from './TaxonomyParentGallery'
 import DynamicTaxonomyOrder from './taxonomyOrder'
-import ActionsDropdown from './ActionsDropdown'
-import GoBack from './icons/GoBack'
 
 import { checkLink, separator } from "@/app/[locale]/_lib/helpers"
 import { fungiTree } from '../_lib/data'
 
-export default function TaxonomyParentBackup({ data, photos, species }) {
+export default function TaxonomyParentBackup({ data, photos, species, locale }) {
 
     const router = useRouter()
 
@@ -65,7 +64,6 @@ export default function TaxonomyParentBackup({ data, photos, species }) {
                         {data?.metadata?.according_title && (
                             <>
                                 <dt>{s("name_according_to")}:</dt>
-                                {/* <dd><Link href={checkLink(data?.metadata?.according_url)} target="blank">{data?.metadata?.according_title}</Link></dd> */}
                                 <dd>
                                     {data?.metadata?.according_url
                                         ? <Link href={data?.metadata?.according_url} target="blank">{data?.metadata?.according_title}</Link>
@@ -83,7 +81,6 @@ export default function TaxonomyParentBackup({ data, photos, species }) {
                             <>
                                 <dt>{s("taxon_rank")}:</dt>
                                 <dd>
-                                    {/* <Link href={checkLink(data?.metadata?.taxon_rank_url)} target="blank">{data?.metadata?.taxon_rank_title}</Link> */}
                                     {data?.metadata?.taxon_rank_url
                                         ? <Link href={data?.metadata?.taxon_rank_url} target="blank">{data?.metadata?.taxon_rank_title}</Link>
                                         : <span>{data?.metadata?.taxon_rank_title}</span>}
@@ -94,7 +91,6 @@ export default function TaxonomyParentBackup({ data, photos, species }) {
                             <>
                                 <dt>{s("scientific_name_authorship")}:</dt>
                                 <dd>
-                                    {/* <Link href={checkLink(data?.metadata?.scientific_name_authorship_url)} target="blank">{data?.metadata?.scientific_name_authorship_title}</Link> */}
                                     {data?.metadata?.scientific_name_authorship_url
                                         ? <Link href={data?.metadata?.scientific_name_authorship_url} target="blank">{data?.metadata?.scientific_name_authorship_title}</Link>
                                         : <span>{data?.metadata?.scientific_name_authorship_title}</span>}
@@ -105,7 +101,6 @@ export default function TaxonomyParentBackup({ data, photos, species }) {
                             <>
                                 <dt>{s("english_name")}:</dt>
                                 <dd>
-                                    {/* <Link href={checkLink(data?.metadata?.english_url)} target="blank">{data?.metadata?.english_name}</Link> */}
                                     {data?.metadata?.english_url
                                         ? <Link href={data?.metadata?.english_url} target="blank">{data?.metadata?.english_name}</Link>
                                         : <span>{data?.metadata?.english_name}</span>}
@@ -162,7 +157,7 @@ export default function TaxonomyParentBackup({ data, photos, species }) {
             </div>
 
             {/* <div className="col-span-2 my-4 border rounded-md print:hidden">
-                <h2 className='font-medium text-md my-4 px-4'>{locale === 'ka' ? `${name} - ${t("visualRepresentation")}` : `${t("visualRepresentation")} ${name}`}</h2>
+                <h2 className='font-medium text-md my-4 px-4'>{locale === 'ka' ? `${data?.metadata?.name} - ${t("visualRepresentation")}` : `${t("visualRepresentation")} ${data?.metadata?.name}`}</h2>
                 <hr className='shadow-sm' />
                 <DynamicTaxonomyOrder treeContent={fungiTree} />
             </div> */}

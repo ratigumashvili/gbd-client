@@ -79,7 +79,7 @@ export default function SingleTaxonMeta({ data }) {
         {data?.metadata?.origin && (
           <>
             <dt>{t("native_introduced")}:</dt>
-            <dd>{data?.metadata?.origin}</dd>
+            <dd>{data?.metadata?.origin === "native" ? t("native") : t("introduced")}</dd>
           </>
         )}
 

@@ -1,13 +1,28 @@
 import { useTranslations } from "next-intl"
-import { separator } from "../../_lib/helpers"
+import { isEmptyObj, separator } from "@/app/[locale]/_lib/helpers"
 
 export default function SingleTaxonConservation({ data }) {
 
+    const status = {
+        national_red_list_status: data?.metadata?.national_red_list_status,
+        iucn_red_list_status: data?.metadata?.iucn_red_list_status,
+        protection_status: data?.metadata?.protection_status,
+        reason: data?.metadata?.reason,
+        trend: data?.metadata?.trend,
+        conversion_status_comment: data?.metadata?.conversion_status_comment,
+        conversion_status_references: data?.metadata?.conversion_status_references,
+        evaluated_by: data?.metadata?.evaluated_by,
+        date_evaluated: data?.metadata?.date_evaluated
+    }
+
     const t = useTranslations("Species")
+
+    // if(isEmptyObj(status)) return 
 
     return (
         <div className="flex-1 bg-slate-50 dark:bg-slate-700 rounded-md px-6 pb-6">
             <h2 className='mt-8 mb-2 block-title'>{t("conservation_status")}</h2>
+
             <dl className="data-list">
 
                 {data?.metadata?.national_red_list_status && (

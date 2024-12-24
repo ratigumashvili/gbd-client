@@ -25,6 +25,7 @@ export default async function Kingdom({ params, searchParams }) {
                 data={data}
                 photos={data?.files}
                 species={child}
+                locale={params.locale}
             // description={data?.metadata}
             />
 

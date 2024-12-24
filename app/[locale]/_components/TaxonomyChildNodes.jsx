@@ -44,11 +44,3 @@ export default function TaxonomyChildNodes({ data, recordsTotal, locale, taxonNa
         </div>
     )
 }
-
-// {data?.map((item) => (
-                //     <li key={item.id} className="px-4 py-4 mb-4 bg-slate-50 dark:bg-slate-600 rounded-md hover:bg-teal-700 hover:text-white transition-all ease-in">
-                //         <Link href={`/${pathToChildren}/${item.metadata.slug}?id=${item.id}`} className="block">
-                //            <span className="capitalize">{pathToChildren}</span> {item.title}
-                //         </Link>
-                //     </li>
-                // ))}

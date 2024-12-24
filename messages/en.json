@@ -186,6 +186,8 @@
     "subspecies": "Subspecies",
     "taxonomy_source": "Taxonomy source",
     "native_introduced": "Native/Introduced",
+    "native": "Native",
+    "introduced": "Introduced",
     "comment": "Comment",
     "reference_of_occurrence": "Reference of occurrence in Georgia",
     "editor": "Editor",

@@ -19,8 +19,6 @@ export default async function Phylum({ params, searchParams }) {
     return <NothingFound />
   }
 
-  // const sortedChildren = sortChildren(child)
-
   return (
     <>
       <TaxonomyParent

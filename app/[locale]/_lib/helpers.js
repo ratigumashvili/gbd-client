@@ -4,7 +4,7 @@ import { Bounce } from "react-toastify"
 
 import { bpg } from "./fonts"
 
-export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+// export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
 
 export const separator = (index, array, separatorType = ', ') => index === array.length - 1 ? "." : separatorType
 
@@ -97,3 +97,7 @@ export function htmlToPlainText(html) {
 }
 
 export const capitalize = (s) => (s && String(s[0]).toUpperCase() + String(s).slice(1)) || ""
+
+export const isEmptyObj = (obj) => {
+    return Object.values(obj).every(val => !val); 
+}

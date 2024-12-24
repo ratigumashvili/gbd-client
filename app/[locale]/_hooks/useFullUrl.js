@@ -4,8 +4,10 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export const useFullUrl = () => {
+
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  
   const [fullUrl, setFullUrl] = useState("");
 
   useEffect(() => {

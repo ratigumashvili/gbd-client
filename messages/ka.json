@@ -186,6 +186,8 @@
     "subspecies": "ქვესახეობა",
     "taxonomy_source": "ტაქსონომია - წყარო",
     "native_introduced": "წარმოშობა",
+    "native": "მკვიდრი",
+    "introduced": "შემოტანილი",
     "comment": "კომენტარი",
     "reference_of_occurrence": "საფუძველი",
     "editor": "რედაქტორი",
