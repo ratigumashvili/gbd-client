@@ -153,7 +153,9 @@
     "author": "ავტორი",
     "uploadedBy": "ატვირთა",
     "type": "გაფართოება",
-    "titleFallback": "უსათაურო"
+    "titleFallback": "უსათაურო",
+    "place": "ადგილი",
+    "date": "თარიღი"
   },
   "Registration": {
     "register": "რეგისტრაცია",

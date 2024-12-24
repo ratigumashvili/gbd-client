@@ -25,7 +25,7 @@ function TaxonomyParentGallery({ photos }) {
 
     const transformImageData = (data) =>
         data.map((item) => {
-            
+
             const defaultWidth = 100;
             const defaultHeight = 150;
 
@@ -38,6 +38,8 @@ function TaxonomyParentGallery({ photos }) {
                 width: item.metadata?.width || defaultWidth,
                 height: item.metadata?.height || defaultHeight,
                 caption: item.name,
+                place: item.place || "Place",
+                date: item.date || 2024,
                 comments: item.comments || "Lorem ipsum dolor",
                 author: item.author || "Author name",
                 uploadedBy: item.uploadedBy || "Uploaded by"
@@ -48,6 +50,8 @@ function TaxonomyParentGallery({ photos }) {
         {
             src: img.src,
             title: img.caption,
+            place: img.place,
+            date: img.date,
             comments: img.comments,
             author: img.author,
             uploadedBy: img.uploadedBy
@@ -117,10 +121,14 @@ function TaxonomyParentGallery({ photos }) {
 
                             <div className="flex flex-col gap-y-1 text-xs py-[5px] px-[10px]">
                                 <div className="flex justify-center gap-2">
-                                    <p>{t("author")}: {slide.author}</p>
-                                    <p>{t("uploadedBy")}: {slide.uploadedBy}</p>
+                                    {slide.author && <p>{t("author")}: {slide.author}</p>}
+                                    {slide.uploadedBy && <p>{t("uploadedBy")}: {slide.uploadedBy}</p>}
                                 </div>
-                                <p>{t("comment")}: {slide.comments}</p>
+                                <div className="flex justify-center gap-2">
+                                    {slide.place && <p>{t("place")}: {slide.place}</p>}
+                                    {slide.date && <p>{t("date")}: {slide.date}</p>}
+                                </div>
+                                {slide.comments && <p>{t("comment")}: {slide.comments}</p>}
                                 <Link href={slide.src} target="blank">
                                     {t("download")}
                                 </Link>
