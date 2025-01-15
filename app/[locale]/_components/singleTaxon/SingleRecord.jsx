@@ -46,7 +46,7 @@ export default function SingleRecord({ data, coordinates }) {
             {coordinates !== 0 && <Map coordinates={coordinates} className="-z-0" />}
 
             <div className='mt-8 mb-4'>
-                <Cite name={data?.metadata?.scientific_name} />
+                <Cite name={data?.metadata?.georgian_name} />
             </div>
 
         </div>

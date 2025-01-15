@@ -24,11 +24,13 @@ async function BrowseByTaxonomy({ locale, title }) {
 
     const { data } = await getData('taxonomy?type=Kingdom', locale)
 
+    const filteredData = data && data.length > 0 && data.filter((item) => item.status === "active")
+
     return (
         <div className="p-4 mb-4">
             <h2 className={`text-2xl font-medium mb-4 ${detectLocale(locale)}`}>{title}</h2>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
-                {data?.reverse().map((item) => (
+                {filteredData?.reverse().map((item) => (
                     <Blocks
                         key={item.id}
                         id={item.id}

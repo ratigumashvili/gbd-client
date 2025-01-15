@@ -1,10 +1,7 @@
 import he from "he";
-
 import { Bounce } from "react-toastify"
 
 import { bpg } from "./fonts"
-
-// export const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
 
 export const separator = (index, array, separatorType = ', ') => index === array.length - 1 ? "." : separatorType
 

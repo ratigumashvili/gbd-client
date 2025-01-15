@@ -1,13 +1,10 @@
 'use client'
 
 import { useEffect, useRef, useState } from "react"
-
 import { useTranslations } from "next-intl"
-
 import { toast } from "react-toastify"
 
 import { useFullUrl } from "@/app/[locale]/_hooks/useFullUrl"
-
 import { copyToClipboard, currentDate, toastOptions } from "@/app/[locale]/_lib/helpers"
 
 import Copy from "./icons/Copy"
