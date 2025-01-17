@@ -65,16 +65,16 @@ const Team = async ({ params, searchParams }) => {
 
       <PageTitle locale={params.locale} />
 
-      <pre>{JSON.stringify(response?.data?.sort((a, b) => a.sort_weight - b.sort_weight), null, 2)}</pre>
+      {/* <pre>{JSON.stringify(response?.data?.sort((a, b) => a.sort_weight - b.sort_weight), null, 2)}</pre> */}
 
-      {response?.recordsTotal > RESEARCHERS_PER_PAGE && (
+      {/* {response?.recordsTotal > RESEARCHERS_PER_PAGE && (
         <Pagination
           path={`team?page=`}
           searchParams={null}
           currentPage={currentPage}
           total={response?.total_page}
         />)
-      }
+      } */}
 
       {editors && editors?.length !== 0 && <EditorsTranslate />}
 
