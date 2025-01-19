@@ -74,7 +74,6 @@ function TaxonomyParentGallery({ photos }) {
 
     return (
         <section>
-
             <style>
                 {`
                     .react-grid-gallery .ReactGridGallery_tile {
@@ -109,11 +108,16 @@ function TaxonomyParentGallery({ photos }) {
                 render={{
                     slide: ({ slide }) => (
                         <div className="relative text-center text-white">
-                            <Image
+                            {/* <Image
                                 src={slide.src}
                                 alt={slide.title}
                                 width={1000}
                                 height={500}
+                                style={{ maxWidth: '100%', height: '80vh', objectFit: 'contain' }}
+                            /> */}
+                            <img
+                                src={slide.src}
+                                alt={slide.title}
                                 style={{ maxWidth: '100%', height: '80vh', objectFit: 'contain' }}
                             />
 

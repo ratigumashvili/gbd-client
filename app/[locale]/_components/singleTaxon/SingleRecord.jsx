@@ -9,6 +9,7 @@ import SingleTaxonConservation from "./SingleTaxonConservation"
 import Map from "../distribution_heatmap"
 import TaxonGallery from '../TaxonGallery';
 import Cite from '../Cite';
+import TaxonomyParentGallery from '../TaxonomyParentGallery';
 
 export default function SingleRecord({ data, coordinates }) {
 
@@ -24,8 +25,12 @@ export default function SingleRecord({ data, coordinates }) {
 
     return (
         <div className="py-4" ref={printContent}>
+            {/* <pre>
+            {JSON.stringify(data, null, 2)}
+            </pre> */}
             <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-medium">{data?.metadata?.georgian_name}</h2>
+                {/* <TaxonomyParentGallery photos={data?.files} /> */}
                 <ActionsDropdown
                     handlePrint={handlePrint}
                     data={data}

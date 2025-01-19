@@ -11,6 +11,10 @@ const nextConfig = {
                 hostname: 'biodiversity.iliauni.edu.ge',
             },
             {
+                protocol: 'https',
+                hostname: 'api.biodiversity.iliauni.edu.ge'
+            },
+            {
                 protocol: 'http',
                 hostname: 'test-api.biodiversity.iliauni.edu.ge'
             },
