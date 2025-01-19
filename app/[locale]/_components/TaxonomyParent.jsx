@@ -15,7 +15,7 @@ import DynamicTaxonomyOrder from './taxonomyOrder'
 import { checkLink, separator } from "@/app/[locale]/_lib/helpers"
 import { fungiTree } from '../_lib/data'
 
-export default function TaxonomyParentBackup({ data, photos, species, locale }) {
+export default function TaxonomyParentBackup({ data, photos, species, rank, accordingTo, sna, vernakularName, locale }) {
 
     const router = useRouter()
 
@@ -63,7 +63,7 @@ export default function TaxonomyParentBackup({ data, photos, species, locale }) 
                         )}
                         {data?.metadata?.according_title && (
                             <>
-                                <dt>{s("name_according_to")}:</dt>
+                                <dt><Link href={`${accordingTo ?? "#"}`} target='blank' className='text-teal-700'>{s("name_according_to")}</Link>:</dt>
                                 <dd>
                                     {data?.metadata?.according_url
                                         ? <Link href={data?.metadata?.according_url} target="blank">{data?.metadata?.according_title}</Link>
@@ -79,7 +79,9 @@ export default function TaxonomyParentBackup({ data, photos, species, locale }) 
                         )}
                         {data?.metadata?.taxon_rank_title && (
                             <>
-                                <dt>{s("taxon_rank")}:</dt>
+                                <dt>
+                                    <Link href={`${rank ?? "#"}`} target='blank' className='text-teal-700'>{s("taxon_rank")}</Link>:
+                                    </dt>
                                 <dd>
                                     {data?.metadata?.taxon_rank_url
                                         ? <Link href={data?.metadata?.taxon_rank_url} target="blank">{data?.metadata?.taxon_rank_title}</Link>
@@ -89,7 +91,7 @@ export default function TaxonomyParentBackup({ data, photos, species, locale }) 
                         )}
                         {data?.metadata?.scientific_name_authorship_title && (
                             <>
-                                <dt>{s("scientific_name_authorship")}:</dt>
+                                <dt><Link href={`${sna ?? "#"}`} target='blank' className='text-teal-700'>{s("scientific_name_authorship")}</Link>:</dt>
                                 <dd>
                                     {data?.metadata?.scientific_name_authorship_url
                                         ? <Link href={data?.metadata?.scientific_name_authorship_url} target="blank">{data?.metadata?.scientific_name_authorship_title}</Link>
@@ -99,7 +101,8 @@ export default function TaxonomyParentBackup({ data, photos, species, locale }) 
                         )}
                         {data?.metadata?.english_name && (
                             <>
-                                <dt>{s("english_name")}:</dt>
+                                <dt><Link href={`${vernakularName ?? "#"}`} target='blank' className='text-teal-700'>{s("english_name")}</Link>:
+                                    </dt>
                                 <dd>
                                     {data?.metadata?.english_url
                                         ? <Link href={data?.metadata?.english_url} target="blank">{data?.metadata?.english_name}</Link>

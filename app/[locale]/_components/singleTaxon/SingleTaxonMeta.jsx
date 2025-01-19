@@ -2,7 +2,7 @@ import { Link } from "@/navigation"
 
 import { useTranslations } from "next-intl"
 
-export default function SingleTaxonMeta({ data }) {
+export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakularName }) {
 
   const t = useTranslations("Species")
 
@@ -21,17 +21,24 @@ export default function SingleTaxonMeta({ data }) {
 
         {data?.metadata?.scientific_name && (
           <>
-            <dt>{t("scientific_name")}:</dt>
+            <dt><Link href={`${sna}`} target="blank" className="text-teal-700">{t("scientific_name")}</Link>:</dt>
             <dd><em>{data?.metadata?.scientific_name}</em></dd>
           </>
         )}
 
         {data?.metadata?.according_title && (
           <>
-            <dt>{t("name_according_to")}:</dt>
+            <dt><Link href={`${accordingTo}`} target="blank" className="text-teal-700">{t("name_according_to")}</Link>:</dt>
             <dd>{data?.metadata?.according_title}</dd>
           </>
         )}
+
+        <>
+          <dt>
+            <Link href={`${rank ?? "#"}`} target='blank' className='text-teal-700'>{t("taxon_rank")}</Link>:
+          </dt>
+          <dd>Species</dd>
+        </>
 
         {data?.metadata?.georgian_name && (
           <>

@@ -36,9 +36,15 @@ export default function SingleRecord({ data, coordinates }) {
             </div>
 
             <div className="flex flex-col gap-4">
-                {data?.files?.length !==0 && <TaxonGallery photos={data?.files} />}
+                {data?.files?.length !== 0 && <TaxonGallery photos={data?.files} />}
                 <div className='flex flex-col md:flex-row gap-4'>
-                    <SingleTaxonMeta data={data} />
+                    <SingleTaxonMeta
+                        data={data}
+                        rank={"https://dwc.tdwg.org/list/#dwc_taxonRank"}
+                        accordingTo={`https://dwc.tdwg.org/list/#dwc_nameAccordingTo`}
+                        sna={`https://dwc.tdwg.org/list/#dwc_scientificNameAuthorship`}
+                        vernakularName={``}
+                    />
                     <SingleTaxonConservation data={data} />
                 </div>
             </div>

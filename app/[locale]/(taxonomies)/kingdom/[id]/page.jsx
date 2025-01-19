@@ -26,6 +26,10 @@ export default async function Kingdom({ params, searchParams }) {
                 photos={data?.files}
                 species={child}
                 locale={params.locale}
+                rank={`https://dwc.tdwg.org/list/#dwc_taxonRank`}
+                accordingTo={`https://dwc.tdwg.org/list/#dwc_nameAccordingTo`}
+                sna={`https://dwc.tdwg.org/list/#dwc_scientificNameAuthorship`}
+                vernakularName={`https://dwc.tdwg.org/list/#dwc_vernacularName`}
             // description={data?.metadata}
             />
 

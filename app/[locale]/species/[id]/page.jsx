@@ -17,6 +17,7 @@ export default async function SingleSpecies({ params }) {
     <SingleRecord
       data={data}
       coordinates={coordinates}
+      
     />
   )
 }

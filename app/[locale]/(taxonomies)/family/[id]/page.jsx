@@ -25,6 +25,10 @@ export default async function Family({ params, searchParams }) {
         data={data}
         photos={data.files}
         species={child}
+        rank={`https://dwc.tdwg.org/list/#dwc_taxonRank`}
+        accordingTo={``}
+        sna={`https://dwc.tdwg.org/list/#dwc_scientificNameAuthorship`}
+        vernakularName={``}
       // description={data[0]?.description}
       />
       <TaxonomyChildNodes
