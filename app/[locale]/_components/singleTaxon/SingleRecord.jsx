@@ -2,12 +2,12 @@
 
 import { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
+import { useTranslations } from 'next-intl';
 
 import ActionsDropdown from "../ActionsDropdown"
 import SingleTaxonMeta from "./SingleTaxonMeta"
 import SingleTaxonConservation from "./SingleTaxonConservation"
 import Map from "../distribution_heatmap"
-import TaxonGallery from '../TaxonGallery';
 import Cite from '../Cite';
 import TaxonomyParentGallery from '../TaxonomyParentGallery';
 
@@ -21,16 +21,17 @@ export default function SingleRecord({ data, coordinates }) {
         pageStyle: 'p-8'
     });
 
+    const t = useTranslations("Species")
+
     // Single Specie page
 
     return (
         <div className="py-4" ref={printContent}>
             {/* <pre>
-            {JSON.stringify(data, null, 2)}
+                {JSON.stringify(data, null, 2)}
             </pre> */}
             <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-medium">{data?.metadata?.georgian_name}</h2>
-                {/* <TaxonomyParentGallery photos={data?.files} /> */}
                 <ActionsDropdown
                     handlePrint={handlePrint}
                     data={data}
@@ -41,7 +42,12 @@ export default function SingleRecord({ data, coordinates }) {
             </div>
 
             <div className="flex flex-col gap-4">
-                {data?.files?.length !== 0 && <TaxonGallery photos={data?.files} />}
+                {data?.files?.length !== 0 &&
+                    <>
+                        <h2 className='mt-8 mb-2 font-medium block-title'>{t("gallery")}</h2>
+                        <TaxonomyParentGallery photos={data?.files} />
+                    </>
+                }
                 <div className='flex flex-col md:flex-row gap-4'>
                     <SingleTaxonMeta
                         data={data}

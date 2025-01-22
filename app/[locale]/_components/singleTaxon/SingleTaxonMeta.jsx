@@ -9,7 +9,7 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
   return (
     <div className="flex-1">
 
-      <h2 className='mt-8 mb-2 block-title'>{t("metadata")}</h2>
+      <h2 className='mt-8 mb-2 font-medium block-title'>{t("metadata")}</h2>
       <dl className="data-list">
 
         {data?.metadata?.scientific_name_id && (
@@ -29,7 +29,11 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
         {data?.metadata?.according_title && (
           <>
             <dt><Link href={`${accordingTo}`} target="blank" className="text-teal-700">{t("name_according_to")}</Link>:</dt>
-            <dd>{data?.metadata?.according_title}</dd>
+            <dd>
+              {data?.metadata?.according_title && data?.metadata?.according_title.startsWith('http') || data?.metadata?.according_title.startsWith('https')
+                ? <Link href={data?.metadata?.according_title} target="blank">{t("url")}</Link>
+                : <span>{data?.metadata?.according_title}</span>}
+            </dd>
           </>
         )}
 
@@ -50,11 +54,7 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
         {data?.metadata?.english_name && (
           <>
             <dt>{t("english_name")}:</dt>
-            <dd>
-              <Link href={'#'}>
-                {data?.metadata?.english_name}
-              </Link>
-            </dd>
+            <dd>{data?.metadata?.english_name}</dd>
           </>
         )}
 

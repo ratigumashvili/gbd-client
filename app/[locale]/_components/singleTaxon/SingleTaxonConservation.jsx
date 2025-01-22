@@ -21,7 +21,7 @@ export default function SingleTaxonConservation({ data }) {
 
     return (
         <div className="flex-1 bg-slate-50 dark:bg-slate-700 rounded-md px-6 pb-6">
-            <h2 className='mt-8 mb-2 block-title'>{t("conservation_status")}</h2>
+            <h2 className='mt-8 mb-2 font-medium block-title'>{t("conservation_status")}</h2>
 
             <dl className="data-list">
 

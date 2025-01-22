@@ -125,7 +125,7 @@ function Header({ locale }) {
                             {t("dashboard")}
                         </Link>
                         <Link href="/register" className="flex items-center gap-2 font-firaGo">
-                        <RightDoubleIcon />
+                            <RightDoubleIcon />
                             {t("register")}
                         </Link>
 
@@ -143,7 +143,14 @@ function Header({ locale }) {
             <div className="shadow-md text-white bg-teal-600">
                 <div className="container flex justify-between items-center flex-container mx-auto px-4 py-8">
                     <div className="flex items-center gap-3">
-                        <Image src="/iliauni-logo_eng.png" width={80} height={80} alt="logo" className="brightness-0 invert-[1]" />
+                        <Image
+                            src="/iliauni-logo_eng.png"
+                            width={80}
+                            height={80}
+                            alt="logo"
+                            priority
+                            className="brightness-0 invert-[1]"
+                        />
                         <h1 className={`text-xl w-[200px] ${detectLocale(locale)}`}>{c("isu")}</h1>
                     </div>
                     <div className="flex gap-3 items-center">

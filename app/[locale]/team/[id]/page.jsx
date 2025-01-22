@@ -16,7 +16,7 @@ const TeamMemberPage = async ({ params }) => {
 
     return (
         <div className="py-4">
-            <article className="flex gap-6">
+            <article className="flex flex-col md:flex-row gap-6">
                 <Image
                     src={member.image_url}
                     alt={member.title}

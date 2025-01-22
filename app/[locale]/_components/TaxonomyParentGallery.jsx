@@ -21,7 +21,7 @@ function TaxonomyParentGallery({ photos }) {
 
     useEffect(() => {
         setImages(transformImageData(photos))
-    }, [])
+    }, [photos])
 
     const transformImageData = (data) =>
         data.map((item) => {
@@ -38,11 +38,13 @@ function TaxonomyParentGallery({ photos }) {
                 width: item.metadata?.width || defaultWidth,
                 height: item.metadata?.height || defaultHeight,
                 caption: item.name,
-                place: item.place || "Place",
-                date: item.date || 2024,
-                comments: item.comments || "Lorem ipsum dolor",
-                author: item.author || "Author name",
-                uploadedBy: item.uploadedBy || "Uploaded by"
+                place: item.location,
+                date: item.date_meta,
+                comments: item.comment,
+                author: item.author_title,
+                uploadedBy: item.uploadedBy || null,
+                size: Number(item.metadata.size / 1000),
+                extension: item.extension
             };
         });
 
@@ -54,7 +56,9 @@ function TaxonomyParentGallery({ photos }) {
             date: img.date,
             comments: img.comments,
             author: img.author,
-            uploadedBy: img.uploadedBy
+            uploadedBy: img.uploadedBy,
+            size: img.size,
+            extension: img.extension
         }
     ));
 
@@ -108,33 +112,28 @@ function TaxonomyParentGallery({ photos }) {
                 render={{
                     slide: ({ slide }) => (
                         <div className="relative text-center text-white">
-                            {/* <Image
+                            <Image
                                 src={slide.src}
                                 alt={slide.title}
                                 width={1000}
                                 height={500}
-                                style={{ maxWidth: '100%', height: '80vh', objectFit: 'contain' }}
-                            /> */}
-                            <img
-                                src={slide.src}
-                                alt={slide.title}
-                                style={{ maxWidth: '100%', height: '80vh', objectFit: 'contain' }}
+                                style={{ maxWidth: '100%', height: '65vh', objectFit: 'contain' }}
                             />
 
                             <h2 className="text-2xl italic py-[5px] px-[10px]">{slide.title}</h2>
 
                             <div className="flex flex-col gap-y-1 text-xs py-[5px] px-[10px]">
                                 <div className="flex justify-center gap-2">
-                                    {slide.author && <p>{t("author")}: {slide.author}</p>}
-                                    {slide.uploadedBy && <p>{t("uploadedBy")}: {slide.uploadedBy}</p>}
+                                    {slide.author !== null && <p>{t("author")}: {slide.author}</p>}
+                                    {slide.uploadedBy !== null && <p>{t("uploadedBy")}: {slide.uploadedBy}</p>}
                                 </div>
                                 <div className="flex justify-center gap-2">
-                                    {slide.place && <p>{t("place")}: {slide.place}</p>}
-                                    {slide.date && <p>{t("date")}: {slide.date}</p>}
+                                    {slide.place !== null && <p>{t("place")}: {slide.place}</p>}
+                                    {slide.date !== null && <p>{t("date")}: {slide.date}</p>}
                                 </div>
-                                {slide.comments && <p>{t("comment")}: {slide.comments}</p>}
+                                {slide.comments !== null && <p>{t("comment")}: {slide.comments}</p>}
                                 <Link href={slide.src} target="blank">
-                                    {t("download")}
+                                    {t("download")} {slide.size !== 0 && slide.size + " MB"} | {t("type")}: {slide.extension}
                                 </Link>
                             </div>
                         </div>

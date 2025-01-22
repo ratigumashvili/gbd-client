@@ -34,6 +34,7 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
 
     return (
         <div className='py-4' ref={printContent}>
+            {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
             <div className="flex items-center justify-between  mb-6">
                 <h2 className="text-2xl font-medium">{data?.metadata?.name}</h2>
                 <div className='flex items-center gap-4'>
@@ -64,11 +65,16 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
                         {data?.metadata?.according_title && (
                             <>
                                 <dt><Link href={`${accordingTo ?? "#"}`} target='blank' className='text-teal-700'>{s("name_according_to")}</Link>:</dt>
-                                <dd>
+                                {/* <dd>
                                     {data?.metadata?.according_url
                                         ? <Link href={data?.metadata?.according_url} target="blank">{data?.metadata?.according_title}</Link>
                                         : <span>{data?.metadata?.according_title}</span>}
-                                </dd>
+                                </dd> */}
+                                {
+                                    data?.metadata?.according_title && data?.metadata?.according_title.startsWith('http') || data?.metadata?.according_title.startsWith('https') 
+                                    ? <Link href={data?.metadata?.according_title}>{s("url")}</Link>
+                                    : <span>{data?.metadata?.according_title}</span>
+                                }
                             </>
                         )}
                         {data?.metadata?.published_in_year && (
