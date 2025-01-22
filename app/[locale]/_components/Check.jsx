@@ -3,23 +3,30 @@
 import { Tooltip } from 'react-tooltip'
 import { useTranslations } from "next-intl"
 
-export const Check = ({checked}) => {
+export const Check = ({ status, evaluated }) => {
     const t = useTranslations("Species")
+
+    const tooltipContent = status === 1 ? ` ${t("cheked")} ${evaluated}` : `${t("not_cheked")}}`
+
     return (
         <>
-            <p className='inline' data-tooltip-id="my-tooltip" data-tooltip-content={checked ? t("cheked") : t("not_cheked")}>
-                {checked ? <span className='text-teal-700'>&#10003;</span> : <span className='text-red-700'>&#10007;</span>}
+            <p
+                className='inline cursor-pointer ml-2'
+                data-tooltip-id="species-check-tooltip"
+                data-tooltip-content={tooltipContent}
+            >
+                {status === 1 ? <sup className='text-teal-700 text-sm'>&#10003;</sup> : <sup className='text-red-700 text-sm'>&#10007;</sup>}
             </p>
-            <Tooltip 
-            id="my-tooltip" 
-            style={{ 
-                bopacity: 100,
-                fontSize: "14px",
-                backgroundColor: "black",
-                color: "white",
-                zIndex: 999,
-                padding: "2px 6px"
-            }}
+            <Tooltip
+                id="species-check-tooltip"
+                style={{
+                    bopacity: 100,
+                    fontSize: "14px",
+                    backgroundColor: "black",
+                    color: "white",
+                    zIndex: 999,
+                    padding: "2px 6px"
+                }}
             />
         </>
     )

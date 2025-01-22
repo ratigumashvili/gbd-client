@@ -4,12 +4,13 @@ import { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import { useTranslations } from 'next-intl';
 
-import ActionsDropdown from "../ActionsDropdown"
-import SingleTaxonMeta from "./SingleTaxonMeta"
-import SingleTaxonConservation from "./SingleTaxonConservation"
-import Map from "../distribution_heatmap"
-import Cite from '../Cite';
-import TaxonomyParentGallery from '../TaxonomyParentGallery';
+import SingleTaxonConservation from "@/app/[locale]/_components/singleTaxon/SingleTaxonConservation"
+import SingleTaxonMeta from "@/app/[locale]/_components/singleTaxon/SingleTaxonMeta"
+import ActionsDropdown from "@/app/[locale]/_components/ActionsDropdown"
+import Map from "@/app/[locale]/_components/distribution_heatmap"
+import Cite from '@/app/[locale]/_components/Cite';
+import TaxonomyParentGallery from '@/app/[locale]/_components/TaxonomyParentGallery';
+import { Check } from '@/app/[locale]/_components/Check';
  
 export default function SingleRecord({ data, coordinates }) {
 
@@ -27,12 +28,10 @@ export default function SingleRecord({ data, coordinates }) {
 
     return (
         <div className="py-4" ref={printContent}>
-            {/* <pre>
-                {JSON.stringify(data, null, 2)}
-            </pre> */}
-
             <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-medium">{data?.metadata?.name}</h2>
+                <h2 className="text-2xl font-medium">{data?.metadata?.name} 
+                    <Check status={data?.metadata?.conversation_status} evaluated={data?.metadata?.evaluated_by} />
+                </h2>
                 <ActionsDropdown
                     handlePrint={handlePrint}
                     data={data}
