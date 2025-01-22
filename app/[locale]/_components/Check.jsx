@@ -10,13 +10,13 @@ export const Check = ({ status, evaluated }) => {
 
     return (
         <>
-            <p
+            <button
                 className='inline cursor-pointer ml-2'
                 data-tooltip-id="species-check-tooltip"
                 data-tooltip-content={tooltipContent}
             >
                 {status === 1 ? <sup className='text-teal-700 text-sm'>&#10003;</sup> : <sup className='text-red-700 text-sm'>&#10007;</sup>}
-            </p>
+            </button>
             <Tooltip
                 id="species-check-tooltip"
                 style={{
