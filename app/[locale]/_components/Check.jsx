@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl"
 export const Check = ({ status, evaluated }) => {
     const t = useTranslations("Species")
 
-    const tooltipContent = status === 1 ? ` ${t("cheked")} ${evaluated}` : `${t("not_cheked")}}`
+    const tooltipContent = status === 1 ? ` ${t("cheked")} ${evaluated}` : `${t("not_cheked")}`
 
     return (
         <>
