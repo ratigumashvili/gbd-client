@@ -210,6 +210,9 @@
     "taxon_rank": "Taxon Rank",
     "scientific_name_authorship": "Scientific Name Authorship",
     "gbd_remarks": "GBD Remarks",
-    "authors": "Author(s)"
+    "authors": "Author(s)",
+    "specific_epithet": "Specific epithet",
+    "not_cheked": "Species have not been checked by expert, presence of species in Georgia might not be certain",
+    "cheked": "Species invalidated by:"
   }
 }

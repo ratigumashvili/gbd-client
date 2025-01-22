@@ -1,6 +1,8 @@
 import { Link } from "@/navigation"
 
 import { useTranslations } from "next-intl"
+import { Check } from "../Check"
+
 
 export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakularName }) {
 
@@ -9,7 +11,7 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
   return (
     <div className="flex-1">
 
-      <h2 className='mt-8 mb-2 font-medium block-title'>{t("metadata")}</h2>
+      <h2 className='mt-8 mb-2 font-medium block-title'>{t("metadata")} <Check checked={false} /></h2>
       <dl className="data-list">
 
         {data?.metadata?.scientific_name_id && (
@@ -80,6 +82,13 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
                 {data?.metadata?.taxonomy_source_name}
               </Link>
             </dd>
+          </>
+        )}
+
+        {data?.metadata?.specific_epithet && (
+          <>
+            <dt>{t("specific_epithet")}:</dt>
+            <dd>{data?.metadata?.specific_epithet}</dd>
           </>
         )}
 
