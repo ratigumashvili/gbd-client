@@ -31,8 +31,10 @@ export async function generateMetadata({params}) {
 
 }
 
-export default async function RootLayout({ children, params: { locale } }) {
+export default async function RootLayout({ children, params }) {
+  const locale = params.locale || "en"
   const messages = await getMessages();
+  console.log('RootLayout resolved locale:', locale);
 
   return (
     <html lang={locale}>

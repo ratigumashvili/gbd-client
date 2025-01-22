@@ -2,7 +2,7 @@
 
 import { Fragment } from 'react'
 
-import Link from 'next/link'
+import { Link } from '@/navigation'
 
 import { Tab } from '@headlessui/react'
 
