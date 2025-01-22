@@ -122,7 +122,7 @@ function TaxonomyParentGallery({ photos }) {
 
                             <h2 className="text-2xl italic py-[5px] px-[10px]">{slide.title}</h2>
 
-                            <div className="flex flex-col gap-y-1 text-xs py-[5px] px-[10px]">
+                            <div className="flex flex-col gap-y-2 text-xs py-[5px] px-[10px]">
                                 <div className="flex justify-center gap-2">
                                     {slide.author !== null && <p>{t("author")}: {slide.author}</p>}
                                     {slide.uploadedBy !== null && <p>{t("uploadedBy")}: {slide.uploadedBy}</p>}
@@ -131,7 +131,9 @@ function TaxonomyParentGallery({ photos }) {
                                     {slide.place !== null && <p>{t("place")}: {slide.place}</p>}
                                     {slide.date !== null && <p>{t("date")}: {slide.date}</p>}
                                 </div>
-                                {slide.comments !== null && <p>{t("comment")}: {slide.comments}</p>}
+                                {slide.comments && (
+                                    <p>{t("comment")}: {slide.comments}</p>
+                                )}
                                 <Link href={slide.src} target="blank">
                                     {t("download")} {slide.size !== 0 && slide.size + " MB"} | {t("type")}: {slide.extension}
                                 </Link>

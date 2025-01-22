@@ -10,7 +10,7 @@ import SingleTaxonConservation from "./SingleTaxonConservation"
 import Map from "../distribution_heatmap"
 import Cite from '../Cite';
 import TaxonomyParentGallery from '../TaxonomyParentGallery';
-
+ 
 export default function SingleRecord({ data, coordinates }) {
 
     const printContent = useRef();
@@ -30,8 +30,9 @@ export default function SingleRecord({ data, coordinates }) {
             {/* <pre>
                 {JSON.stringify(data, null, 2)}
             </pre> */}
+
             <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-medium">{data?.metadata?.georgian_name}</h2>
+                <h2 className="text-2xl font-medium">{data?.metadata?.name}</h2>
                 <ActionsDropdown
                     handlePrint={handlePrint}
                     data={data}
@@ -63,7 +64,7 @@ export default function SingleRecord({ data, coordinates }) {
             {coordinates !== 0 && <Map coordinates={coordinates} className="-z-0" />}
 
             <div className='mt-8 mb-4'>
-                <Cite name={data?.metadata?.georgian_name} />
+                <Cite name={data?.metadata?.name} />
             </div>
 
         </div>

@@ -1404,19 +1404,17 @@ export const heatmapData = [
 ];
 
 export const activityChartData = [
-    { date: '2023-04-01', count: 1 },
-    { date: '2023-05-22', count: 22 },
-    { date: '2023-06-1', count: 6 },
-    { date: '2023-06-27', count: 11 },
-    { date: '2023-06-28', count: 3 },
-    { date: '2023-06-29', count: 8 },
-    { date: '2023-11-03', count: 2 },
-    { date: '2023-11-04', count: 3 },
-    { date: '2023-12-28', count: 6 },
-    { date: '2024-01-14', count: 12 },
-    { date: '2024-01-26', count: 21 },
-    { date: '2024-07-05', count: 3 },
-    { date: '2024-08-01', count: 19 },
+    { date: '2024-04-01', count: 1 },
+    { date: '2024-05-22', count: 22 },
+    { date: '2024-06-1', count: 6 },
+    { date: '2024-06-27', count: 11 },
+    { date: '2024-06-28', count: 3 },
+    { date: '2025-06-29', count: 8 },
+    { date: '2025-11-03', count: 2 },
+    { date: '2025-11-04', count: 3 },
+    { date: '2024-12-28', count: 6 },
+    { date: '2025-01-14', count: 12 },
+    { date: '2025-01-26', count: 21 },
 ]
 
 export const species = [

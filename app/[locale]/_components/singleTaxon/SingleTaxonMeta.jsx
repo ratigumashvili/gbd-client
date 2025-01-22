@@ -39,7 +39,7 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
 
         <>
           <dt>
-            <Link href={`${rank ?? "#"}`} target='blank' className='text-teal-700'>{t("taxon_rank")}</Link>:
+            <Link href={`${rank}`} target='blank' className='text-teal-700'>{t("taxon_rank")}</Link>:
           </dt>
           <dd>Species</dd>
         </>
