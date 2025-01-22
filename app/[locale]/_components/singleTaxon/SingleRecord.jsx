@@ -28,9 +28,6 @@ export default function SingleRecord({ data, coordinates }) {
 
     return (
         <div className="py-4" ref={printContent}>
-            <pre>
-                {JSON.stringify(data,null,2)}
-            </pre>
             <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-medium">{data?.metadata?.name} 
                     <Check status={data?.metadata?.conversation_status} evaluated={data?.metadata?.evaluated_by} />
