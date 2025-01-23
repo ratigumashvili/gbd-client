@@ -33,23 +33,47 @@ export default function SearchModal() {
         setIsOpen(true)
     }
 
-    function handleSimpleSearch(FormData) {
-        const queryParamString = new URLSearchParams({
-            name: FormData.get("lge"),
-        }).toString();
-        router.push('/searchResults?' + queryParamString)
+    async function handleSimpleSearch (FormData) {
+
+        const queryParams = {}
+
+        if (FormData.get("lge").trim() !== "") {
+            queryParams.name = FormData.get("lge")
+        }
+
+        const queryParamasString = new URLSearchParams(queryParams).toString()
+
+        if (queryParamasString) {
+            router.push('/searchResults?' + queryParamasString)
+        }
         closeModal()
+        setSimpleSearchValue('')
     }
 
-    function handleAdvancedSearch(FormData) {
-        const queryParamString = new URLSearchParams({
-            taxon_rank: FormData.get("taxon_rank"),
-            latin_name: FormData.get("latin_name"),
-            iucn: FormData.get("iucn")
-        }).toString();
-        router.push('/searchResults?' + queryParamString)
-        closeModal()
+    const test = s("select_taxon_rank")
+
+    async function handleAdvancedSearch(FormData) {
+        const queryParams = {};
+    
+        if (FormData.get("taxon_rank") !== test) {
+            queryParams.taxon_rank = FormData.get("taxon_rank");
+        }
+        if (FormData.get("latin_name").trim() !== "") {
+            queryParams.latin_name = FormData.get("latin_name");
+        }
+        if (FormData.get("iucn") !== s("select_iucn")) {
+            queryParams.iucn = FormData.get("iucn");
+        }
+    
+        const queryParamString = new URLSearchParams(queryParams).toString();
+    
+        if (queryParamString) {
+            router.push('/searchResults?' + queryParamString);
+        }
+        closeModal();
+        setSimpleSearchValue('')
     }
+    
 
     return (
         <>
@@ -123,7 +147,7 @@ export default function SearchModal() {
                                                     </button>
 
                                                     <p className='text-sm'>
-                                                        <button onClick={() => setAdvancedSearch((prevState) => !prevState)} className='text-teal-600 hover:text-teal-700 underline'>
+                                                        <button type='button' onClick={() => setAdvancedSearch((prevState) => !prevState)} className='text-teal-600 hover:text-teal-700 underline'>
                                                             {!advancedSearch ? <>{s("AdvancedSearch")}</> : <>{s("SimpleSearchByName")}</>}
                                                         </button>
                                                     </p>
@@ -140,6 +164,7 @@ export default function SearchModal() {
                                                 <label htmlFor="taxon_rank" className='flex flex-col gap-2'>
                                                     {s("TaxonRank")}
                                                     <select name="taxon_rank" id="taxon_rank" className='p-2 bg-transparent border rounded-md outline-teal-500'>
+                                                        <option value={null}>{s("select_taxon_rank")}</option>
                                                         {taxonRank.map(({ id, value, name }) => <option key={id} value={value}>{name}</option>)}
                                                     </select>
                                                 </label>
@@ -152,6 +177,7 @@ export default function SearchModal() {
                                                 <label htmlFor="iucn" className='flex flex-col gap-2'>
                                                     {s("NationalIUCNCategory")}
                                                     <select name="iucn" id="iucn" className='p-2 bg-transparent border rounded-md outline-teal-500'>
+                                                        <option value={null}>{s("select_iucn")}</option>
                                                         {iucnCategory.map(({ id, value, name }) => <option key={id} value={value}>{name}</option>)}
                                                     </select>
                                                 </label>
@@ -166,7 +192,7 @@ export default function SearchModal() {
                                                     </button>
 
                                                     <p className='text-sm'>
-                                                        <button onClick={() => setAdvancedSearch((prevState) => !prevState)} className='text-teal-600 hover:text-teal-700 underline'>
+                                                        <button type='button' onClick={() => setAdvancedSearch((prevState) => !prevState)} className='text-teal-600 hover:text-teal-700 underline'>
                                                             {!advancedSearch ? <>{s("AdvancedSearch")}</> : <>{s("SimpleSearchByName")}</>}
                                                         </button>
                                                     </p>

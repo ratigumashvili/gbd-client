@@ -16,6 +16,7 @@
     "autoprefixer": "10.4.19",
     "axios": "^1.7.7",
     "bcryptjs": "^2.4.3",
+    "caniuse-lite": "^1.0.30001695",
     "eslint": "8.57.0",
     "eslint-config-next": "14.1.4",
     "he": "^1.2.0",

@@ -90,7 +90,9 @@
     "LGE": "Latin, Georgian or English name",
     "TaxonRank": "Taxon Rank",
     "LatinName": "Latin name",
-    "NationalIUCNCategory": "National IUCN Category"
+    "NationalIUCNCategory": "National IUCN Category",
+    "select_taxon_rank": "Select taxonomy",
+    "select_iucn": "Select IUCN Category"
   },
   "Index": {
     "title": "Welcome to GBD",

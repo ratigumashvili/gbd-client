@@ -1,6 +1,6 @@
 
 
-function SearchResults(params) {
+async function SearchResults(params) {
   return (
     <div>SearchResults: {JSON.stringify(params, null, 2)} 
     <br /><br />

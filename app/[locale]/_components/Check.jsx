@@ -10,7 +10,7 @@ export const Check = ({ status, evaluated }) => {
     return (
         <>
             <button
-                className='inline cursor-pointer ml-2 px-2 border'
+                className='inline cursor-pointer ml-2 px-2'
                 data-tooltip-id="species-check-tooltip"
                 data-tooltip-content={tooltipContent}
             >
@@ -19,13 +19,13 @@ export const Check = ({ status, evaluated }) => {
             <Tooltip
                 id="species-check-tooltip"
                 style={{
+                    zIndex: 999,
+                    width: isMobile ? "200px" : "auto",
+                    padding: "2px 6px",
                     bopacity: 100,
-                    fontSize: "14px",
                     backgroundColor: "black",
                     color: "white",
-                    zIndex: 999,
-                    padding: "2px 6px",
-                    width: isMobile ? "200px" : "auto",
+                    fontSize: "14px",
                     textAlign: "center"
                 }}
             />

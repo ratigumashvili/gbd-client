@@ -90,7 +90,9 @@
     "LGE": "ლათინური, ქართული ან ინგლისური სახელწოდება",
     "TaxonRank": "ტაქსონომიური დონე",
     "LatinName": "ლათინური სახელწოდება",
-    "NationalIUCNCategory": "ნაციონალური IUCN კატეგორია"
+    "NationalIUCNCategory": "ნაციონალური IUCN კატეგორია",
+    "select_taxon_rank": "აირჩიეთ ტაქსონომია",
+    "select_iucn": "აირჩიეთ IUCN კატეგორია"
   },
   "Index": {
     "title": "მოგესალმებით GBD-ში",
