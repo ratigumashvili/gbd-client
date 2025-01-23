@@ -44,7 +44,7 @@ export default function SingleRecord({ data, coordinates }) {
             <div className="flex flex-col gap-4">
                 {data?.files?.length !== 0 &&
                     <>
-                        <h2 className='mt-8 mb-2 font-medium block-title'>{t("gallery")}</h2>
+                        <h2 className='mt-8 mb-0 font-medium block-title'>{t("gallery")}</h2>
                         <TaxonomyParentGallery photos={data?.files} />
                     </>
                 }

@@ -112,3 +112,41 @@ export const openNewWindow = (locale, page, title) => {
       'width=800,height=600,scrollbars=yes,resizable=yes'
     );
 }
+
+export const getStatus = (value) => {
+
+    let fullStatus;
+
+    switch (value) {
+        case "EX":
+            fullStatus = "Extinct (EX)";
+            break;
+        case "EW":
+            fullStatus = "Extinct in the wild (EW)";
+            break;
+        case "CR":
+            fullStatus = "Critically endangered (CR)";
+            break;
+        case "EN":
+            fullStatus = "Endangered (EN)";
+            break;
+        case "VU":
+            fullStatus = "Vulnerable (VU)";
+            break;
+        case "NT":
+            fullStatus = "Near threatened (NT)";
+            break;
+        case "LC":
+            fullStatus = "Least concern (LC)";
+            break;
+        case "DD":
+            fullStatus = "Data deficient (DD)";
+            break;
+        case "NE":
+            fullStatus = "Not evaluated (NE)";
+            break;
+        default: break;
+    }
+
+    return fullStatus
+}

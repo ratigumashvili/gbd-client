@@ -77,7 +77,7 @@ function TaxonomyParentGallery({ photos }) {
     const t = useTranslations("Gallery")
 
     return (
-        <section>
+        <section className="mb-4">
             <style>
                 {`
                     .react-grid-gallery .ReactGridGallery_tile {

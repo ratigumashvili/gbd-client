@@ -1,6 +1,6 @@
 "use client"
 
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useState } from 'react'
 
 import { useRouter } from '@/navigation'
 

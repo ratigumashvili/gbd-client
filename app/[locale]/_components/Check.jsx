@@ -22,7 +22,7 @@ export const Check = ({ status, evaluated }) => {
                     zIndex: 999,
                     width: isMobile ? "200px" : "auto",
                     padding: "2px 6px",
-                    bopacity: 100,
+                    opacity: 100,
                     backgroundColor: "black",
                     color: "white",
                     fontSize: "14px",

@@ -214,8 +214,18 @@
     "gbd_remarks": "GBD Remarks",
     "authors": "Author(s)",
     "specific_epithet": "Specific epithet",
+    "endemism": "Endemism",
     "not_cheked": "Species have not been checked by expert, presence of species in Georgia might not be certain",
     "cheked": "Species invalidated by:",
-    "cheked_done": "Species invalidated"
+    "cheked_done": "Species invalidated",
+    "EX": "Extinct (EX)",
+    "EW": "Extinct in the wild (EW)",
+    "CR": "Critically endangered (CR)",
+    "EN": "Endangered (EN)",
+    "VU": "Vulnerable (VU)",
+    "NT": "Near threatened (NT)",
+    "LC": "Least concern (LC)",
+    "DD": "Data deficient (DD)",
+    "NE": "Not evaluated (NE)"
   }
 }
