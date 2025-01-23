@@ -1,13 +1,11 @@
 "use client"
 
 import { Tooltip } from 'react-tooltip'
-import { useTranslations } from "next-intl"
+
+import {useGetStatus} from "@/app/[locale]/_hooks/useGetStatus"
 
 export const Check = ({ status, evaluated }) => {
-    const t = useTranslations("Species")
-
-    const tooltipContent = status === 1 ? ` ${t("cheked")} ${evaluated !== null ? evaluated : ''}` : `${t("not_cheked")}`
-
+    const tooltipContent = useGetStatus(status, evaluated)
     return (
         <>
             <button
