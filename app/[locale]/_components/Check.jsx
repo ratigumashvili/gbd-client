@@ -1,6 +1,7 @@
 "use client"
 
 import { Tooltip } from 'react-tooltip'
+import {isMobile} from "react-device-detect"
 
 import {useGetStatus} from "@/app/[locale]/_hooks/useGetStatus"
 
@@ -9,7 +10,7 @@ export const Check = ({ status, evaluated }) => {
     return (
         <>
             <button
-                className='inline cursor-pointer ml-2'
+                className='inline cursor-pointer ml-2 px-2 border'
                 data-tooltip-id="species-check-tooltip"
                 data-tooltip-content={tooltipContent}
             >
@@ -23,7 +24,9 @@ export const Check = ({ status, evaluated }) => {
                     backgroundColor: "black",
                     color: "white",
                     zIndex: 999,
-                    padding: "2px 6px"
+                    padding: "2px 6px",
+                    width: isMobile ? "200px" : "auto",
+                    textAlign: "center"
                 }}
             />
         </>
