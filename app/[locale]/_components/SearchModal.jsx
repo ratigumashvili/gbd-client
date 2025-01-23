@@ -1,6 +1,6 @@
 "use client"
 
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 
 import { useRouter } from '@/navigation'
 
@@ -17,7 +17,7 @@ export default function SearchModal() {
     const [isOpen, setIsOpen] = useState(false)
     const [advancedSearch, setAdvancedSearch] = useState(false)
 
-    const [simpleSearchValue, setSimpleSearchValue] = useState('')
+    const [disabled, setDisabled] = useState(true)
 
     const router = useRouter()
 
@@ -30,10 +30,11 @@ export default function SearchModal() {
     }
 
     function openModal() {
+        setDisabled(true)
         setIsOpen(true)
     }
 
-    async function handleSimpleSearch (FormData) {
+    async function handleSimpleSearch(FormData) {
 
         const queryParams = {}
 
@@ -46,16 +47,15 @@ export default function SearchModal() {
         if (queryParamasString) {
             router.push('/searchResults?' + queryParamasString)
         }
+
         closeModal()
-        setSimpleSearchValue('')
     }
 
-    const test = s("select_taxon_rank")
-
     async function handleAdvancedSearch(FormData) {
+
         const queryParams = {};
-    
-        if (FormData.get("taxon_rank") !== test) {
+
+        if (FormData.get("taxon_rank") !== s("select_taxon_rank")) {
             queryParams.taxon_rank = FormData.get("taxon_rank");
         }
         if (FormData.get("latin_name").trim() !== "") {
@@ -64,16 +64,16 @@ export default function SearchModal() {
         if (FormData.get("iucn") !== s("select_iucn")) {
             queryParams.iucn = FormData.get("iucn");
         }
-    
+
         const queryParamString = new URLSearchParams(queryParams).toString();
-    
+
         if (queryParamString) {
             router.push('/searchResults?' + queryParamString);
         }
-        closeModal();
-        setSimpleSearchValue('')
+
+        closeModal()
     }
-    
+
 
     return (
         <>
@@ -132,22 +132,26 @@ export default function SearchModal() {
                                                     type="text"
                                                     placeholder={s("LGE")}
                                                     name='lge'
-                                                    value={simpleSearchValue}
-                                                    onChange={(e) => setSimpleSearchValue(e.target.value)}
+                                                    required
+                                                    onChange={(e) => e.target.value.trim() === "" ? setDisabled(true) : setDisabled(false)}
                                                     className='w-full p-2 bg-transparent border rounded-md outline-teal-500' />
 
                                                 <div className="mt-4 flex items-center justify-between">
 
                                                     <button
-                                                        disabled={!simpleSearchValue}
+                                                        disabled={disabled}
                                                         type="submit"
-                                                        className={`inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium bg-teal-600 text-white hover:bg-teal-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-900 focus-visible:ring-offset-2 ${!simpleSearchValue && 'opacity-50 pointer-events-none'}`}
+                                                        className={`inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium bg-teal-600 text-white hover:bg-teal-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-900 focus-visible:ring-offset-2 ${disabled && "opacity-50 pointer-events-none"}`}
                                                     >
                                                         {t("search")}
                                                     </button>
 
                                                     <p className='text-sm'>
-                                                        <button type='button' onClick={() => setAdvancedSearch((prevState) => !prevState)} className='text-teal-600 hover:text-teal-700 underline'>
+                                                        <button
+                                                            type='button'
+                                                            onClick={() => setAdvancedSearch((prevState) => !prevState)}
+                                                            className='text-teal-600 hover:text-teal-700 underline'
+                                                        >
                                                             {!advancedSearch ? <>{s("AdvancedSearch")}</> : <>{s("SimpleSearchByName")}</>}
                                                         </button>
                                                     </p>
@@ -163,7 +167,12 @@ export default function SearchModal() {
 
                                                 <label htmlFor="taxon_rank" className='flex flex-col gap-2'>
                                                     {s("TaxonRank")}
-                                                    <select name="taxon_rank" id="taxon_rank" className='p-2 bg-transparent border rounded-md outline-teal-500'>
+                                                    <select
+                                                        name="taxon_rank"
+                                                        id="taxon_rank"
+                                                        onChange={(e) => e.target.value.trim() === "" ? setDisabled(true) : setDisabled(false)}
+                                                        className='p-2 bg-transparent border rounded-md outline-teal-500'
+                                                    >
                                                         <option value={null}>{s("select_taxon_rank")}</option>
                                                         {taxonRank.map(({ id, value, name }) => <option key={id} value={value}>{name}</option>)}
                                                     </select>
@@ -171,12 +180,23 @@ export default function SearchModal() {
 
                                                 <div className='flex flex-col gap-2'>
                                                     <label htmlFor="latin_name">{s("LatinName")}</label>
-                                                    <input name="latin_name" type="text" id='latin_name' placeholder={s("LatinName")} className='w-full p-2 bg-transparent border rounded-md outline-teal-500' />
+                                                    <input
+                                                        name="latin_name"
+                                                        type="text"
+                                                        id='latin_name'
+                                                        onChange={(e) => e.target.value.trim() === "" ? setDisabled(true) : setDisabled(false)}
+                                                        placeholder={s("LatinName")}
+                                                        className='w-full p-2 bg-transparent border rounded-md outline-teal-500'
+                                                    />
                                                 </div>
 
                                                 <label htmlFor="iucn" className='flex flex-col gap-2'>
                                                     {s("NationalIUCNCategory")}
-                                                    <select name="iucn" id="iucn" className='p-2 bg-transparent border rounded-md outline-teal-500'>
+                                                    <select
+                                                        name="iucn"
+                                                        id="iucn"
+                                                        onChange={(e) => e.target.value.trim() === "" ? setDisabled(true) : setDisabled(false)}
+                                                        className='p-2 bg-transparent border rounded-md outline-teal-500'>
                                                         <option value={null}>{s("select_iucn")}</option>
                                                         {iucnCategory.map(({ id, value, name }) => <option key={id} value={value}>{name}</option>)}
                                                     </select>
@@ -186,7 +206,7 @@ export default function SearchModal() {
 
                                                     <button
                                                         type='submit'
-                                                        className="inline-flex justify-center rounded-md border border-transparent bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-900 focus-visible:ring-offset-2"
+                                                        className={`inline-flex justify-center rounded-md border border-transparent bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-900 focus-visible:ring-offset-2 ${disabled && "opacity-50 pointer-events-none"}`}
                                                     >
                                                         {t("search")}
                                                     </button>
