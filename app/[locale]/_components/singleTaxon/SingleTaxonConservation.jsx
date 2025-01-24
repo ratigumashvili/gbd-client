@@ -23,7 +23,7 @@ export default function SingleTaxonConservation({ data }) {
 
     const t = useTranslations("Species")
 
-    // if(isEmptyObj(status)) return 
+    // if(isEmptyObj(status)) return
 
     const iucnTooltipContent = data?.metadata?.iucn_red_list_status !== null && t(data?.metadata?.iucn_red_list_status)
     const redListTooltipContent = data?.metadata?.national_red_list_status !== null && t(data?.metadata?.national_red_list_status)
@@ -31,7 +31,7 @@ export default function SingleTaxonConservation({ data }) {
     return (
         <div className="flex-1 bg-slate-50 dark:bg-slate-700 rounded-md px-6 pb-6">
             {/* <pre>
-                {JSON.stringify(data, null, 2)}
+                {JSON.stringify(status, null, 2)}
             </pre> */}
             <h2 className='mt-8 mb-2 font-medium block-title'>{t("conservation_status")}</h2>
             <dl className="data-list">
@@ -158,17 +158,6 @@ export default function SingleTaxonConservation({ data }) {
                         <dd>{data?.metadata?.evaluated_by}</dd>
                     </>
                 )}
-
-                {/* {evaluatedBy?.length !== 0 && (
-                    <>
-                        <dt>Evaluated by:</dt>
-                        <dd>{evaluatedBy?.map((evaluator, index) => (
-                            <div key={evaluator.id}>
-                                <span>{evaluator.name}</span>{separator(index, evaluatedBy)}
-                            </div>
-                        ))}</dd>
-                    </>
-                )} */}
 
                 {data?.metadata?.date_evaluated && (
                     <>

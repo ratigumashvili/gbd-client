@@ -106,19 +106,6 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
           </>
         )}
 
-        {/* {referenceOfOccurrenceInGeorgia?.length !== 0 && (
-          <>
-            <dt>Reference of Occurrence in Georgia:</dt>
-            <dd>
-              {referenceOfOccurrenceInGeorgia.map((occurence, index) => (
-                <div key={occurence.id}>
-                  <span>{occurence.title}</span>{separator(index, referenceOfOccurrenceInGeorgia)}
-                </div>
-              ))}
-            </dd>
-          </>
-        )} */}
-
         {data?.metadata?.reference_in_georgia && (
           <>
             <dt>{t("reference_of_occurrence")}:</dt>

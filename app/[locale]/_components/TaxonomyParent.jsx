@@ -65,16 +65,13 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
                         {data?.metadata?.according_title && (
                             <>
                                 <dt><Link href={`${accordingTo ?? "#"}`} target='blank' className='text-teal-700'>{s("name_according_to")}</Link>:</dt>
-                                {/* <dd>
-                                    {data?.metadata?.according_url
-                                        ? <Link href={data?.metadata?.according_url} target="blank">{data?.metadata?.according_title}</Link>
-                                        : <span>{data?.metadata?.according_title}</span>}
-                                </dd> */}
-                                {
-                                    data?.metadata?.according_title && data?.metadata?.according_title.startsWith('http') || data?.metadata?.according_title.startsWith('https') 
-                                    ? <Link href={data?.metadata?.according_title}>{s("url")}</Link>
-                                    : <span>{data?.metadata?.according_title}</span>
-                                }
+                                <dd>
+                                    {
+                                        data?.metadata?.according_title && data?.metadata?.according_title.startsWith('http') || data?.metadata?.according_title.startsWith('https')
+                                            ? <Link href={data?.metadata?.according_title}>{s("url")}</Link>
+                                            : <span>{data?.metadata?.according_title}</span>
+                                    }
+                                </dd>
                             </>
                         )}
                         {data?.metadata?.published_in_year && (
@@ -87,7 +84,7 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
                             <>
                                 <dt>
                                     <Link href={`${rank ?? "#"}`} target='blank' className='text-teal-700'>{s("taxon_rank")}</Link>:
-                                    </dt>
+                                </dt>
                                 <dd>
                                     {data?.metadata?.taxon_rank_url
                                         ? <Link href={data?.metadata?.taxon_rank_url} target="blank">{data?.metadata?.taxon_rank_title}</Link>
@@ -108,7 +105,7 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
                         {data?.metadata?.english_name && (
                             <>
                                 <dt><Link href={`${vernakularName ?? "#"}`} target='blank' className='text-teal-700'>{s("english_name")}</Link>:
-                                    </dt>
+                                </dt>
                                 <dd>
                                     {data?.metadata?.english_url
                                         ? <Link href={data?.metadata?.english_url} target="blank">{data?.metadata?.english_name}</Link>
