@@ -49,7 +49,7 @@ export const exportDataAsCSV = (dataObject) => {
     const convertToCSV = (objArray) => {
         const array = Array.isArray(objArray) ? objArray : [objArray];
         const headers = Object.keys(array[0]).join(","); // Extract headers
-        const rows = array.map(row => 
+        const rows = array.map(row =>
             Object.values(row)
                 .map(value => `"${value}"`) // Wrap values in quotes
                 .join(",")
@@ -88,7 +88,7 @@ export const sortChildren = (array) => {
 
 export function htmlToPlainText(html) {
     if (!html) return
-    
+
     const decodedHtml = he.decode(html);
     return decodedHtml.replace(/<\/?[^>]+(>|$)/g, "").trim();
 }
@@ -96,20 +96,20 @@ export function htmlToPlainText(html) {
 export const capitalize = (s) => (s && String(s[0]).toUpperCase() + String(s).slice(1)) || ""
 
 export const isEmptyObj = (obj) => {
-    return Object.values(obj).every(val => !val); 
+    return Object.values(obj).every(val => !val);
 }
 
 export const openNewWindow = (locale, page, title) => {
     const baseUrl = `${window.location.origin}/${locale}/${page}`; // Fully resolved URL
     const params = new URLSearchParams({
-      title: title
+        title: title
     });
     const fullUrl = `${baseUrl}?${params.toString()}`;
 
     window.open(
-      fullUrl,
-      '_blank',
-      'width=800,height=600,scrollbars=yes,resizable=yes'
+        fullUrl,
+        '_blank',
+        'width=800,height=600,scrollbars=yes,resizable=yes'
     );
 }
 
@@ -144,6 +144,9 @@ export const getStatus = (value) => {
             break;
         case "NE":
             fullStatus = "Not evaluated (NE)";
+            break;
+        case "RE":
+            fullStatus = "Regionally Extinct (RE)";
             break;
         default: break;
     }

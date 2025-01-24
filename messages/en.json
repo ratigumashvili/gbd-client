@@ -179,6 +179,7 @@
   "Species": {
     "metadata": "Metadata",
     "conservation_status": "Conservation Status",
+    "conservation_status_for": "Conservation Status for Taxon",
     "gallery": "Gallery",
     "map": "Heatmap",
     "scientific_name_id": "Scientific name ID",
@@ -227,6 +228,7 @@
     "NT": "Near threatened (NT)",
     "LC": "Least concern (LC)",
     "DD": "Data deficient (DD)",
-    "NE": "Not evaluated (NE)"
+    "NE": "Not evaluated (NE)",
+    "RE": "Regionally Extinct (RE)"
   }
 }

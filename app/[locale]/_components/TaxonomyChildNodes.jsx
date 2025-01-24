@@ -13,7 +13,7 @@ export default function TaxonomyChildNodes({ data, recordsTotal, locale, taxonNa
     return (
         <div className="col-span-1 mt-8 mb-8">
             <div className="flex flex-col gap-y-4 md:flex-row items-center justify-between mb-6">
-                <h2 className='font-medium text-md flex-1'>{locale === 'ka' ? `${taxonName} - ${t("taxonomyOfThe")}` : `${t("taxonomyOfThe")} ${taxonName}`}</h2>
+                <h2 className='font-medium text-xl flex-1'>{locale === 'ka' ? `${taxonName} - ${t("taxonomyOfThe")}` : `${t("taxonomyOfThe")} ${taxonName}`}</h2>
                 <span>{recordsTotal} {locale !== 'ka' ? recordsTotal > 1 ? t("records") : t("record") : t("record")}</span>
             </div>
 

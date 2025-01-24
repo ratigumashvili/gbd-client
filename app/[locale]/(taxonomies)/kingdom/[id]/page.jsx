@@ -1,6 +1,7 @@
 import NothingFound from '@/app/[locale]/_components/NothingFound'
 import TaxonomyParent from '@/app/[locale]/_components/TaxonomyParent'
 import TaxonomyChildNodes from '@/app/[locale]/_components/TaxonomyChildNodes';
+import TaxonomyConservationStatus from '@/app/[locale]/_components/KingdomConservation/TaxonomyConservationStatus';
 import Pagination from '@/app/[locale]/_components/Pagination';
 import Cite from "@/app/[locale]/_components/Cite";
 
@@ -31,6 +32,11 @@ export default async function Kingdom({ params, searchParams }) {
                 sna={`https://dwc.tdwg.org/list/#dwc_scientificNameAuthorship`}
                 vernakularName={`https://dwc.tdwg.org/list/#dwc_vernacularName`}
             // description={data?.metadata}
+            />
+
+            <TaxonomyConservationStatus
+                taxonName={data?.metadata?.name}
+                totalCount={2637}
             />
 
             <TaxonomyChildNodes

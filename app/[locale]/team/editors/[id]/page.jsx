@@ -1,10 +1,10 @@
 import Image from "next/image"
 
-import { getData } from "../../_lib/apiCalls"
+import { getData } from "@/app/[locale]/_lib/apiCalls"
 
-import NothingFound from "../../_components/NothingFound"
-import TeamMemberDesc from "../../_components/TeamMemberDesc"
-import TeamMemberRecords from "../../_components/TeamMemberRecords"
+import NothingFound from "@/app/[locale]/_components/NothingFound"
+import TeamMemberDesc from "@/app/[locale]/_components/TeamMemberDesc"
+import TeamMemberRecords from "@/app/[locale]/_components/TeamMemberRecords"
 
 const TeamMemberPage = async ({ params }) => {
 

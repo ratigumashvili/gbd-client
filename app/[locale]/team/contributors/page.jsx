@@ -1,9 +1,9 @@
 import React from 'react'
 
-function contributors() {
+function Contributors() {
   return (
-    <div>contributors</div>
+    <div>Contributors</div>
   )
 }
 
-export default contributors
+export default Contributors
