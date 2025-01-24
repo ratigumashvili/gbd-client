@@ -21,9 +21,9 @@ export default function SingleTaxonConservation({ data }) {
         endemism: data?.metadata?.endemism
     }
 
+    if(isEmptyObj(status)) return <div className="flex-1"></div>
+    
     const t = useTranslations("Species")
-
-    // if(isEmptyObj(status)) return
 
     const iucnTooltipContent = data?.metadata?.iucn_red_list_status !== null && t(data?.metadata?.iucn_red_list_status)
     const redListTooltipContent = data?.metadata?.national_red_list_status !== null && t(data?.metadata?.national_red_list_status)
