@@ -1,13 +1,10 @@
-import { redirect } from 'next/navigation'
-import BrowseByTaxonomy from '../_components/BrowseByTaxonomy'
+"use client"
+
+import { useLocale } from 'next-intl';
+import { redirect } from 'next/navigation';
 
 export default function Species() {
-  const redirectTo = redirect()
+  const locale = useLocale();
 
-  console.log(redirectTo)
-  return ( 
-    <div>
-      <BrowseByTaxonomy />
-    </div>
-  )
+  return redirect(`/${locale}/taxonomy`)
 }
