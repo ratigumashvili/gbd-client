@@ -1,8 +1,9 @@
 "use client"
 
-import ApexCharts from './Chart';
-import { useLocale, useTranslations } from "next-intl"
 import { useEffect, useState } from 'react';
+import { useLocale, useTranslations } from "next-intl"
+
+import ApexCharts from './Chart';
 
 const codes = [
     {
