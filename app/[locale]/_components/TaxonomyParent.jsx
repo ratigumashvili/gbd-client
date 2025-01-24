@@ -34,7 +34,6 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
 
     return (
         <div className='py-4' ref={printContent}>
-            {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
             <div className="flex items-center justify-between  mb-6">
                 <h2 className="text-2xl font-medium">{data?.metadata?.name}</h2>
                 <div className='flex items-center gap-4'>
@@ -51,6 +50,9 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
                 </div>
             </div>
             <div className="flex flex-col md:flex-row gap-4">
+                {/* <pre>
+                    {JSON.stringify(data, null, 2)}
+                </pre> */}
                 <div className="flex-1">
 
                     <h2 className='font-medium my-2 block-title'>{t("desc")}</h2>
@@ -80,6 +82,7 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
                                 <dd>{data?.metadata?.published_in_year}</dd>
                             </>
                         )}
+
                         {data?.metadata?.taxon_rank_title && (
                             <>
                                 <dt>
@@ -145,7 +148,7 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
                                 </dd>
                             </>
                         )} */}
-                        <dt>{s("authors")}:</dt>
+                        <dt>{s("editors")}:</dt>
                         <dd>authors list</dd>
 
                         <dt>{s("contributors")}:</dt>
