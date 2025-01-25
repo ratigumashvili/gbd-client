@@ -12,7 +12,7 @@ import Cite from '@/src/app/[locale]/_components/Cite';
 import TaxonomyParentGallery from '@/src/app/[locale]/_components/TaxonomyParentGallery';
 import { Check } from '@/src/app/[locale]/_components/Check';
  
-export default function SingleRecord({ data, coordinates }) {
+export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinates }) {
 
     const printContent = useRef();
 
@@ -35,7 +35,7 @@ export default function SingleRecord({ data, coordinates }) {
                 <ActionsDropdown
                     handlePrint={handlePrint}
                     data={data}
-                    coordinates={coordinates}
+                    heatMapCoordinates={heatMapCoordinates}
                     isSpecie={true}
                     downloadContent={true}
                 />
@@ -60,7 +60,7 @@ export default function SingleRecord({ data, coordinates }) {
                 </div>
             </div>
 
-            {coordinates !== 0 && <Map coordinates={coordinates} className="-z-0" />}
+            {heatMapCoordinates !== 0 && <Map heatMapCoordinates={heatMapCoordinates} pinMapCoordinates={pinMapCoordinates} className="-z-0" />}
 
             <div className='mt-8 mb-4'>
                 <Cite name={data?.metadata?.name} />

@@ -7,11 +7,18 @@ export default async function SingleSpecies({ params }) {
 
   const { data } = await getData(`taxonomy/${params.id}/?type=Specie`, params.locale)
 
-  const initialCoordinates = data?.metadata?.coordinates?.map?.length && data?.metadata?.coordinates?.map?.map((coord) => [coord.latitude, coord.longitude])
+  const heatMapCoordinates = data?.metadata?.coordinates?.map?.length &&
+  data?.metadata?.coordinates?.map?.map((coord) => [coord.latitude, coord.longitude])
+  .filter((coord) => !(coord[0] === "" && coord[1] === ""));
 
-  const filteredCoordinates = initialCoordinates.filter(
-    (arr) => arr.some((value) => value.trim() !== "")
-  );
+  const pinMapCoordinates = data?.metadata?.coordinates?.map?.length && data?.metadata?.coordinates?.map?.map(item => ({
+    geocode: [parseFloat(item.latitude), parseFloat(item.longitude)],
+    popup: {
+      place: item.locality,
+      recorded_by: item.recorded_by
+    }
+  }))
+  .filter(item => !(item.geocode[0] === null || isNaN(item.geocode[0]) || item.geocode[1] === null || isNaN(item.geocode[1])));
 
   if (!data) {
     return <NothingFound />
@@ -21,7 +28,8 @@ export default async function SingleSpecies({ params }) {
     <>
     <SingleRecord
       data={data}
-      coordinates={filteredCoordinates}
+      heatMapCoordinates={heatMapCoordinates}
+      pinMapCoordinates={pinMapCoordinates}
     />
     </>
   )

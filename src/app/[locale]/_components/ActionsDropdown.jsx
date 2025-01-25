@@ -16,7 +16,7 @@ import Hamburger from './icons/Hamburger'
 export default function ActionsDropdown({ 
     handlePrint = () => void(0), 
     data, 
-    coordinates = [],
+    heatMapCoordinates = [],
     species = [],
     isSpecie = false, 
     downloadContent = true 
@@ -72,7 +72,7 @@ export default function ActionsDropdown({
         conversion_status_references: data?.metadata?.conversion_status_references,
         evaluated_by: data?.metadata?.evaluated_by,
         date_evaluated: data?.metadata?.date_evaluated,
-        coordinates: coordinates
+        heatMapCoordinates: heatMapCoordinates
     } : {
         scientific_name_id: data?.metadata?.scientific_name_id,
         name_according_to_title: data?.metadata?.according_title,
