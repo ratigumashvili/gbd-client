@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
 import { useState } from "react";
 import CalendarHeatmap from 'react-calendar-heatmap';
-import 'react-calendar-heatmap/dist/styles.css';
 import { useTranslations } from "next-intl";
+import 'react-calendar-heatmap/dist/styles.css';
 
 const activityChartData = [
     { date: '2024-04-01', count: 1 },
@@ -24,48 +24,50 @@ const activityChartData = [
 ];
 
 export default function Calendar() {
-    const [count, setCount] = useState('');
+    const [selectedData, setSelectedData] = useState(null);
+    const t = useTranslations("Index");
+
     const today = new Date();
     const startDate = new Date(today);
     startDate.setFullYear(today.getFullYear() - 1);
 
-    const t = useTranslations("Index");
-
     return (
         <div className="p-4 my-4 bg-slate-50 dark:bg-slate-600 rounded-md">
-            <h2 className='text-2xl font-medium mb-4'>
-                {t("GBDActivityCalendar")} ({`${startDate.toDateString()} - ${today.toDateString()}`})
+            <h2 className="text-2xl font-medium mb-4">
+                {t("GBDActivityCalendar")} ({startDate.toLocaleDateString().split('/').join('-')} - {today.toLocaleDateString().split('/').join('-')})
             </h2>
+
             <CalendarHeatmap
-                horizontal={true}
+                horizontal
                 classForValue={(value) => {
-                    if (!value) {
-                        return 'color-empty';
-                    }
-                    if (value.count >= 30) return `color-scale-30`
+                    if (!value) return 'color-empty';
+                    if (value.count >= 30) return 'color-scale-30';
                     return `color-scale-${value.count}`;
                 }}
-                onClick={(value) => setCount(value || '')}
+                onClick={(value) => setSelectedData(value || null)}
                 startDate={startDate}
                 endDate={today}
                 values={activityChartData}
             />
-            <div className='flex items-center justify-between my-2'>
-                <div>
-                    {count !== '' && (
-                        <span className="font-firaGo">{t("date")}: {count?.date}. {t("recordsRegistered")}: {count?.count}</span>
-                    )}
-                </div>
+
+            <div className="flex items-center justify-between my-2">
+                {selectedData && (
+                    <div>
+                        <span className="font-firaGo">
+                            {t("date")}: {selectedData.date}. {t("recordsRegistered")}: {selectedData.count}
+                        </span>
+                    </div>
+                )}
+
                 <div className="flex items-center gap-2">
                     <span className="font-firaGo">{t("legend")}: </span>
-                    <div className="legend-box" style={{ backgroundColor: "#d6e685", color: "black" }}>1-5</div>
-                    <div className="legend-box" style={{ backgroundColor: "#8cc665", color: "black" }}>5-10</div>
-                    <div className="legend-box" style={{ backgroundColor: "#44a340", color: "white" }}>10-20</div>
-                    <div className="legend-box" style={{ backgroundColor: "#1e6823", color: "white" }}>20-30</div>
-                    <div className="legend-box" style={{ backgroundColor: "#0a4a16", color: "white" }}>50+</div>
+                    <div className="legend-box bg-[#d6e685] text-black">1-5</div>
+                    <div className="legend-box bg-[#8cc665] text-black">5-10</div>
+                    <div className="legend-box bg-[#44a340] text-white">10-20</div>
+                    <div className="legend-box bg-[#1e6823] text-white">20-30</div>
+                    <div className="legend-box bg-[#0a4a16] text-white">50+</div>
                 </div>
             </div>
         </div>
     );
 }
-

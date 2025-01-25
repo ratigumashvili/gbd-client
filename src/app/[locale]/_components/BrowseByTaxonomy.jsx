@@ -31,7 +31,7 @@ async function BrowseByTaxonomy({ locale, title }) {
         <div className="p-4 mb-4">
             <h2 className={`text-2xl font-medium mb-4 ${detectLocale(locale)}`}>{title}</h2>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
-                {filteredData?.reverse().map((item) => (
+                {filteredData?.map((item) => (
                     <Blocks
                         key={item.id}
                         id={item.id}

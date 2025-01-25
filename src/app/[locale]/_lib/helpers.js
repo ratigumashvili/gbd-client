@@ -167,34 +167,34 @@ export const getChartColors = (value) => {
 
     switch (value) {
         case "EX":
-            color = "#7D7D7D";
+            color = "#646464";
             break;
         case "EW":
-            color = "#B194D7";
+            color = "#9269c7";
             break;
         case "CR":
-            color = "#D98888";
+            color = "#cd6161";
             break;
         case "EN":
-            color = "#E3A480";
+            color = "#da8656";
             break;
         case "VU":
-            color = "#E6C27A";
+            color = "#deae4f";
             break;
         case "NT":
-            color = "#E8D97F";
+            color = "#e0cc54";
             break;
         case "LC":
-            color = "#A3CC98";
+            color = "#85bb76";
             break;
         case "DD":
             color = "#838383";
             break;
         case "NE":
-            color = "#B5B5B5";
+            color = "#9c9c9c";
             break;
         case "RE":
-            color = "#8AB4D9";
+            color = "#649bcc";
             break;
         default: break;
     }
