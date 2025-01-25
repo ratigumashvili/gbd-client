@@ -7,17 +7,22 @@ export default async function SingleSpecies({ params }) {
 
   const { data } = await getData(`taxonomy/${params.id}/?type=Specie`, params.locale)
 
-  const coordinates = data?.metadata?.coordinates?.map?.length && data?.metadata?.coordinates?.map?.map((coord) => [coord.latitude, coord.longitude])
+  const initialCoordinates = data?.metadata?.coordinates?.map?.length && data?.metadata?.coordinates?.map?.map((coord) => [coord.latitude, coord.longitude])
+
+  const filteredCoordinates = initialCoordinates.filter(
+    (arr) => arr.some((value) => value.trim() !== "")
+  );
 
   if (!data) {
     return <NothingFound />
   }
 
   return (
+    <>
     <SingleRecord
       data={data}
-      coordinates={coordinates}
-      
+      coordinates={filteredCoordinates}
     />
+    </>
   )
 }
