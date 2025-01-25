@@ -17,6 +17,7 @@ export default function ActionsDropdown({
     handlePrint = () => void(0), 
     data, 
     heatMapCoordinates = [],
+    pinMapCoordinates = [],
     species = [],
     isSpecie = false, 
     downloadContent = true 
@@ -72,7 +73,8 @@ export default function ActionsDropdown({
         conversion_status_references: data?.metadata?.conversion_status_references,
         evaluated_by: data?.metadata?.evaluated_by,
         date_evaluated: data?.metadata?.date_evaluated,
-        heatMapCoordinates: heatMapCoordinates
+        heatMapCoordinates: heatMapCoordinates,
+        pinMapCoordinates: pinMapCoordinates
     } : {
         scientific_name_id: data?.metadata?.scientific_name_id,
         name_according_to_title: data?.metadata?.according_title,

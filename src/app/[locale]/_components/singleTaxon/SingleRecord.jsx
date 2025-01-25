@@ -36,6 +36,7 @@ export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinat
                     handlePrint={handlePrint}
                     data={data}
                     heatMapCoordinates={heatMapCoordinates}
+                    pinMapCoordinates={pinMapCoordinates}
                     isSpecie={true}
                     downloadContent={true}
                 />

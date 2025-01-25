@@ -46,7 +46,7 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
                                         selected ? 'bg-teal-700 text-white px-2 py-1 rounded-sm focus:outline-none' : 'px-2 py-1 border border-teal-700 rounded-sm'
                                     }
                                 >
-                                    {t("heatmap")}
+                                    {t("pinmap")}
                                 </button>
                             )}
                         </Tab>
@@ -57,7 +57,7 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
                                         selected ? 'bg-teal-700 text-white px-2 py-1 rounded-sm focus:outline-none' : 'px-2 py-1 border border-teal-700 rounded-sm'
                                     }
                                 >
-                                    {t("pinmap")}
+                                    {t("heatmap")}
                                 </button>
                             )}
                         </Tab>
@@ -67,8 +67,41 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
                     <Tab.Panel>
 
                         <MapContainer
+                            center={[41.945963247270214, 43.87883890700455]}
+                            zoom={7}
+                            style={{ height: "450px", width: "100%", zIndex: '10' }}
+                        >
+                            <TileLayer
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            />
+                            <MarkerClusterGroup chunkedLoading>
+                                {pinMapCoordinates?.map((marker, index) => (
+                                    <Marker
+                                        key={index}
+                                        position={marker.geocode}
+                                        icon={customIcon}
+                                    >
+                                        <Popup>
+                                            <h3 className='text-base'>
+                                                <span className='font-medium'>{t("place")}</span>: {marker?.popup?.place}
+                                            </h3>
+                                            {marker?.popup?.recorded_by && (
+                                                <p><span className='font-medium'>{t("recorded_by")}:</span> {recorded_by}</p>
+                                            )}
+                                        </Popup>
+                                    </Marker>
+                                ))}
+                            </MarkerClusterGroup>
+                            <FullscreenControl position="topright" title="Toggle fulscreen" forceSeparateButton={true} />
+                        </MapContainer>
+
+                    </Tab.Panel>
+                    <Tab.Panel>
+
+                    <MapContainer
                             center={[41.99515909778738, 43.8193140872058]}
-                            zoom={9}
+                            zoom={8}
                             style={{ height: "450px", width: "100%", zIndex: '10' }}
                         >
                             <HeatmapLayer
@@ -85,38 +118,6 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
 
-                            <FullscreenControl position="topright" title="Toggle fulscreen" forceSeparateButton={true} />
-                        </MapContainer>
-
-                    </Tab.Panel>
-                    <Tab.Panel>
-
-                        <MapContainer
-                            center={[41.69529844295701, 44.64207321992462]}
-                            zoom={8}
-                            style={{ height: "450px", width: "100%", zIndex: '10' }}
-                        >
-                            <TileLayer
-                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            />
-                            <MarkerClusterGroup>
-                                {pinMapCoordinates?.map((marker) => (
-                                    <Marker
-                                        position={marker.geocode}
-                                        icon={customIcon}
-                                    >
-                                        <Popup>
-                                            <h3 className='text-base'>
-                                                <span className='font-medium'>{t("place")}</span>: {marker?.popup?.place}
-                                            </h3>
-                                            {marker?.popup?.recorded_by && (
-                                                <p><span className='font-medium'>{t("recorded_by")}:</span> {recorded_by}</p>
-                                            )}
-                                        </Popup>
-                                    </Marker>
-                                ))}
-                            </MarkerClusterGroup>
                             <FullscreenControl position="topright" title="Toggle fulscreen" forceSeparateButton={true} />
                         </MapContainer>
 
