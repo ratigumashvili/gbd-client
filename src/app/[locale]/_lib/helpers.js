@@ -160,3 +160,44 @@ export const sanitize = (value) => {
         return sanitizeHtml(value || '')
     }
 }
+
+export const getChartColors = (value) => {
+
+    let color;
+
+    switch (value) {
+        case "EX":
+            color = "#7D7D7D";
+            break;
+        case "EW":
+            color = "#B194D7";
+            break;
+        case "CR":
+            color = "#D98888";
+            break;
+        case "EN":
+            color = "#E3A480";
+            break;
+        case "VU":
+            color = "#E6C27A";
+            break;
+        case "NT":
+            color = "#E8D97F";
+            break;
+        case "LC":
+            color = "#A3CC98";
+            break;
+        case "DD":
+            color = "#838383";
+            break;
+        case "NE":
+            color = "#B5B5B5";
+            break;
+        case "RE":
+            color = "#8AB4D9";
+            break;
+        default: break;
+    }
+
+    return color
+}

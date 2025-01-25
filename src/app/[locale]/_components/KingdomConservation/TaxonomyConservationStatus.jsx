@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useLocale, useTranslations } from "next-intl"
 
 import ApexCharts from './Chart';
+import { getChartColors } from "@/src/app/[locale]/_lib/helpers"
 
 const codes = [
     {
@@ -61,6 +62,15 @@ const options = {
         type: 'pie',
     },
     labels: labels,
+    colors: codes.map((item) => getChartColors(item.code)),
+    states: {
+        hover: {
+          filter: {
+            type: 'darken',
+            value: 0.15,
+          },
+        },
+      },
     responsive: [
         {
             breakpoint: 1200,
@@ -105,9 +115,9 @@ const ComponentTitle = ({ taxonName, totalCount }) => {
         <div className="text-center mb-6">
             <h2 className="text-xl font-medium mb-2">{t("conservation_status_for")} {taxonName}</h2>
             {locale === 'ka' ? (
-                <p className="text-base text-gray-600">{taxonName}-ში შეფასებულია <span className='text-medium text-teal-700'>{totalCount}</span> სახეობა</p>
+                <p className="text-base text-gray-600 italic">{taxonName}-ში შეფასებულია <span className='text-medium text-teal-700'>{totalCount}</span> სახეობა</p>
             ) : (
-                <p className="text-base text-gray-600"><span className='text-medium text-teal-700'>{totalCount}</span> Species are evaluated within {taxonName}</p>
+                <p className="text-base text-gray-600 italic"><span className='text-medium text-teal-700'>{totalCount}</span> Species are evaluated within {taxonName}</p>
             )}
         </div>
     )
@@ -118,9 +128,9 @@ const StatusCodes = () => {
     return (
         codes.map((item) => (
             <div key={item.id} className="grid grid-cols-6 hover:bg-gray-100">
-                <span className="col-span-1 p-2">{item.code}</span>
-                <span className="col-span-4 p-2">{t(item.code)}</span>
-                <span className="col-span-1 p-2">{item.count}</span>
+                <span className="col-span-1 px-3 py-2">{item.code}</span>
+                <span className="col-span-4 px-3 py-2">{t(item.code)}</span>
+                <span className="col-span-1 px-3 py-2">{item.count}</span>
             </div>
         ))
     )
@@ -143,7 +153,7 @@ const TaxonomyConservationStatus = ({ taxonName, totalCount }) => {
             <ComponentTitle taxonName={taxonName} totalCount={totalCount} />
             <div className="flex flex-col gap-8 lg:grid lg:grid-cols-3">
                 <div className="lg:col-span-2">
-                    <div className="overflow-x-auto border">
+                    <div className="overflow-x-auto border border-slate-100 bg-white rounded-md">
                         <StatusCodes />
                     </div>
                 </div>
