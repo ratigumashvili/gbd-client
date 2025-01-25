@@ -83,9 +83,13 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
                                         icon={customIcon}
                                     >
                                         <Popup>
-                                            <h3 className='text-base'>
+                                            <h3 className='text-base mb-2'>
                                                 <span className='font-medium'>{t("place")}</span>: {marker?.popup?.place}
                                             </h3>
+                                            <div>
+                                            <p className='!my-1'><span>{t("latitude")}</span>: {marker.geocode[0]}</p>
+                                            <p className='!my-1'><span>{t("longitude")}</span>: {marker.geocode[1]}</p>
+                                            </div>
                                             {marker?.popup?.recorded_by && (
                                                 <p><span className='font-medium'>{t("recorded_by")}:</span> {recorded_by}</p>
                                             )}

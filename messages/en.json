@@ -223,6 +223,8 @@
     "place": "Place",
     "heatmap": "Heat map",
     "pinmap": "Locations",
+    "latitude": "Decimal Latitude",
+    "longitude": "Decimal Longitude",
     "recorded_by": "Recorder by",
     "EX": "Extinct (EX)",
     "EW": "Extinct in the wild (EW)",
