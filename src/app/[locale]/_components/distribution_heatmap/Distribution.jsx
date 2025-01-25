@@ -1,9 +1,10 @@
 'use client'
 
 import { Fragment } from 'react'
-import { TileLayer, MapContainer, Marker, Popup } from "react-leaflet";
-import { Icon } from 'leaflet';
 import { useTranslations } from "next-intl";
+import { Icon } from 'leaflet';
+import { TileLayer, MapContainer, Marker, Popup } from "react-leaflet";
+import MarkerClusterGroup from 'react-leaflet-cluster';
 import { HeatmapLayer } from "react-leaflet-heatmap-layer-v3";
 import { Tab } from '@headlessui/react'
 
@@ -99,21 +100,23 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
                                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
-                            {pinMapCoordinates?.map((marker) => (
-                                <Marker
-                                    position={marker.geocode}
-                                    icon={customIcon}
-                                >
-                                    <Popup>
-                                        <h3 className='text-base'>
-                                            <span className='font-medium'>{t("place")}</span>: {marker?.popup?.place}
-                                        </h3>
-                                        {marker?.popup?.recorded_by && (
-                                            <p><span className='font-medium'>{t("recorded_by")}:</span> {recorded_by}</p>
-                                        )}
-                                    </Popup>
-                                </Marker>
-                            ))}
+                            <MarkerClusterGroup>
+                                {pinMapCoordinates?.map((marker) => (
+                                    <Marker
+                                        position={marker.geocode}
+                                        icon={customIcon}
+                                    >
+                                        <Popup>
+                                            <h3 className='text-base'>
+                                                <span className='font-medium'>{t("place")}</span>: {marker?.popup?.place}
+                                            </h3>
+                                            {marker?.popup?.recorded_by && (
+                                                <p><span className='font-medium'>{t("recorded_by")}:</span> {recorded_by}</p>
+                                            )}
+                                        </Popup>
+                                    </Marker>
+                                ))}
+                            </MarkerClusterGroup>
                             <FullscreenControl position="topright" title="Toggle fulscreen" forceSeparateButton={true} />
                         </MapContainer>
 
