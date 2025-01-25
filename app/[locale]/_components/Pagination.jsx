@@ -19,13 +19,13 @@ function Pagination({ path, searchParams, currentPage, total }) {
         } else {
             router.replace(url + current, { scroll: false })
         }
-    }, [current])
+    }, [current ])
 
     useEffect(() => {
         if(current > total) {
             setCurrent(total)
         }
-    }, [current])
+    }, [current, total])
 
     const t = useTranslations("Common")
 

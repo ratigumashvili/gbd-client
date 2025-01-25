@@ -105,9 +105,9 @@ const ComponentTitle = ({ taxonName, totalCount }) => {
         <div className="text-center mb-6">
             <h2 className="text-xl font-medium mb-2">{t("conservation_status_for")} {taxonName}</h2>
             {locale === 'ka' ? (
-                <p className="text-lg text-gray-600">{taxonName}-ში შეფასებულია {totalCount} სახეობა</p>
+                <p className="text-base text-gray-600">{taxonName}-ში შეფასებულია <span className='text-medium text-teal-700'>{totalCount}</span> სახეობა</p>
             ) : (
-                <p className="text-lg text-gray-600">{totalCount} Species are evaluated within {taxonName}</p>
+                <p className="text-base text-gray-600"><span className='text-medium text-teal-700'>{totalCount}</span> Species are evaluated within {taxonName}</p>
             )}
         </div>
     )
@@ -140,7 +140,6 @@ const TaxonomyConservationStatus = ({ taxonName, totalCount }) => {
 
     return (
         <section className="border bg-slate-50/50 dark:bg-slate-600 rounded-md my-8 p-6">
-
             <ComponentTitle taxonName={taxonName} totalCount={totalCount} />
             <div className="flex flex-col gap-8 lg:grid lg:grid-cols-3">
                 <div className="lg:col-span-2">

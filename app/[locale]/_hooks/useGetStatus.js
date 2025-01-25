@@ -19,7 +19,7 @@ export const useGetStatus = (status, evaluated) => {
         if (status !== 1) {
             setMessage(`${t("not_cheked")}`)
         }
-    }, [status, evaluated])
+    }, [status, evaluated, t])
 
         return message
 }
