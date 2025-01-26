@@ -57,7 +57,7 @@ function HomePageSearch() {
                         id="latin_name"
                         onChange={(e) => (e.target.value.trim() === "" ? setDisabled(true) : setDisabled(false))}
                         placeholder={s("LatinName")}
-                        className="w-full p-2 bg-white border rounded-md outline-teal-500"
+                        className="w-full p-2 bg-white border rounded-md outline-teal-500 placeholder:text-black dark:placeholder:text-gray-300"
                     />
                 </div>
 

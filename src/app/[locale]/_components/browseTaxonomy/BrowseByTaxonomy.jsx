@@ -26,7 +26,7 @@ async function BrowseByTaxonomy({ locale, title }) {
     const filteredData = data && data.length > 0 && data.filter((item) => item.status === "active")
 
     return (
-        <div className="py-4 px-0 mb-4">
+        <div className="py-4 px-0">
             <ComponentTitle title={title} />
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                 {filteredData?.map((item) => (

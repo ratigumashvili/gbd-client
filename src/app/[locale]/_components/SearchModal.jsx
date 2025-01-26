@@ -113,7 +113,7 @@ export default function SearchModal() {
                                                     name='lge'
                                                     required
                                                     onChange={(e) => e.target.value.trim() === "" ? setDisabled(true) : setDisabled(false)}
-                                                    className='w-full p-2 bg-transparent border rounded-md outline-teal-500' />
+                                                    className='w-full p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-black' />
 
                                                 <div className="mt-4 flex items-center justify-between">
 
@@ -165,7 +165,7 @@ export default function SearchModal() {
                                                         id='latin_name'
                                                         onChange={(e) => e.target.value.trim() === "" ? setDisabled(true) : setDisabled(false)}
                                                         placeholder={s("LatinName")}
-                                                        className='w-full p-2 bg-transparent border rounded-md outline-teal-500'
+                                                        className='w-full p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-black'
                                                     />
                                                 </div>
 
