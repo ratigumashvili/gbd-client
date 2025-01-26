@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import SingleTaxonConservation from "@/src/app/[locale]/_components/singleTaxon/SingleTaxonConservation"
 import SingleTaxonMeta from "@/src/app/[locale]/_components/singleTaxon/SingleTaxonMeta"
 import ActionsDropdown from "@/src/app/[locale]/_components/ActionsDropdown"
-import Map from "@/src/app/[locale]/_components/distribution_heatmap"
+import Map from "@/src/app/[locale]/_components/distribution_map"
 import Cite from '@/src/app/[locale]/_components/Cite';
 import TaxonomyParentGallery from '@/src/app/[locale]/_components/TaxonomyParentGallery';
 import { Check } from '@/src/app/[locale]/_components/Check';

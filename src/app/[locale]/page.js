@@ -1,4 +1,3 @@
-import BrowseByGeography from "./_components/BrowseByGeography"
 import HomePageAbout from "./_components/HomePageAbout"
 import PopularMenu from "./_components/PopularMenu"
 import BrowseByTaxonomy from "./_components/browseTaxonomy/BrowseByTaxonomy"
@@ -22,7 +21,6 @@ export default function Home({params}) {
       </div>
       <BrowseByTaxonomy title={t("BrowseByTaxonomy")} locale={params.locale} />
       <HomePageSearch />
-      {/* <BrowseByGeography /> */}
       <HomePageSlider />
       <Calendar />
     </div>

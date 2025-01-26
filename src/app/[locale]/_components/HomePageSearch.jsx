@@ -1,13 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "@/src/i18n/routing";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import {handleAdvancedSearch} from "@/src/app/[locale]/_lib/actions/search-actions"
 
 import SearchIcon from "./icons/SearchIcon";
 
 import { iucnCategory, taxonRank } from "../_lib/data";
-import {handleAdvancedSearch} from "@/src/app/[locale]/_lib/actions/search-actions"
 
 
 function HomePageSearch() {
