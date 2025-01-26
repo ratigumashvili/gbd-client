@@ -92,7 +92,8 @@
     "LatinName": "ლათინური სახელწოდება",
     "NationalIUCNCategory": "IUCN კატეგორია",
     "select_taxon_rank": "აირჩიეთ ტაქსონომია",
-    "select_iucn": "აირჩიეთ IUCN კატეგორია"
+    "select_iucn": "აირჩიეთ IUCN კატეგორია",
+    "submit": "ძიება"
   },
   "Index": {
     "title": "საქართელოს ბიომრავალფეროვნების მონაცემთა ბაზა",

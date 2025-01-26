@@ -92,7 +92,8 @@
     "LatinName": "Latin name",
     "NationalIUCNCategory": "IUCN Category",
     "select_taxon_rank": "Select taxonomy",
-    "select_iucn": "Select IUCN Category"
+    "select_iucn": "Select IUCN Category",
+    "submit": "Submit"
   },
   "Index": {
     "title": "Georgian Biodiversity Database",

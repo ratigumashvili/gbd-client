@@ -1,11 +1,11 @@
 import React from "react";
 
-function SearchIcon() {
+function SearchIcon({width="17", height="17"}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="17"
-      height="17"
+      width={width}
+      height={height}
       fill="none"
       stroke="currentColor"
       strokeLinecap="round"

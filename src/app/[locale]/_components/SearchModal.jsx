@@ -1,12 +1,11 @@
 "use client"
 
 import { Fragment, useState } from 'react'
-
 import { useRouter } from '@/src/i18n/routing'
-
 import { Dialog, Transition } from '@headlessui/react'
-
 import { useTranslations } from 'next-intl'
+
+import { handleAdvancedSearch, handleSimpleSearch } from "@/src/app/[locale]/_lib/actions/search-actions"
 
 import { iucnCategory, taxonRank } from '../_lib/data'
 
@@ -34,40 +33,20 @@ export default function SearchModal() {
         setIsOpen(true)
     }
 
-    async function handleSimpleSearch(FormData) {
+    async function handleSimpleFormSubmit(formData) {
+        const queryParamString = await handleSimpleSearch(formData)
 
-        const queryParams = {}
-
-        if (FormData.get("lge").trim() !== "") {
-            queryParams.name = FormData.get("lge")
-        }
-
-        const queryParamasString = new URLSearchParams(queryParams).toString()
-
-        if (queryParamasString) {
-            router.push('/searchResults?' + queryParamasString)
+        if (queryParamString) {
+            router.push('/searchResults?' + queryParamString);
         }
 
         closeModal()
     }
 
-    async function handleAdvancedSearch(FormData) {
+    async function handleAdvancedFormSubmit(formData) {
+        const queryParamString = await handleAdvancedSearch(formData)
 
-        const queryParams = {};
-
-        if (FormData.get("taxon_rank") !== s("select_taxon_rank")) {
-            queryParams.taxon_rank = FormData.get("taxon_rank");
-        }
-        if (FormData.get("latin_name").trim() !== "") {
-            queryParams.latin_name = FormData.get("latin_name");
-        }
-        if (FormData.get("iucn") !== s("select_iucn")) {
-            queryParams.iucn = FormData.get("iucn");
-        }
-
-        const queryParamString = new URLSearchParams(queryParams).toString();
-
-        if (queryParamString) {
+        if(queryParamString) {
             router.push('/searchResults?' + queryParamString);
         }
 
@@ -127,7 +106,7 @@ export default function SearchModal() {
                                     {!advancedSearch ? (
                                         <div className="my-8">
 
-                                            <form action={handleSimpleSearch}>
+                                            <form action={handleSimpleFormSubmit}>
                                                 <input
                                                     type="text"
                                                     placeholder={s("LGE")}
@@ -163,7 +142,7 @@ export default function SearchModal() {
                                     ) :
                                         <div className='my-8'>
 
-                                            <form action={handleAdvancedSearch} className='space-y-4'>
+                                            <form action={handleAdvancedFormSubmit} className='space-y-4'>
 
                                                 <label htmlFor="taxon_rank" className='flex flex-col gap-2'>
                                                     {s("TaxonRank")}
@@ -173,7 +152,7 @@ export default function SearchModal() {
                                                         onChange={(e) => e.target.value.trim() === "" ? setDisabled(true) : setDisabled(false)}
                                                         className='p-2 bg-transparent border rounded-md outline-teal-500'
                                                     >
-                                                        <option value={null}>{s("select_taxon_rank")}</option>
+                                                        <option value="">{s("select_taxon_rank")}</option>
                                                         {taxonRank.map(({ id, value, name }) => <option key={id} value={value}>{name}</option>)}
                                                     </select>
                                                 </label>
@@ -197,7 +176,7 @@ export default function SearchModal() {
                                                         id="iucn"
                                                         onChange={(e) => e.target.value.trim() === "" ? setDisabled(true) : setDisabled(false)}
                                                         className='p-2 bg-transparent border rounded-md outline-teal-500'>
-                                                        <option value={null}>{s("select_iucn")}</option>
+                                                        <option value="">{s("select_iucn")}</option>
                                                         {iucnCategory.map(({ id, value, name }) => <option key={id} value={value}>{name}</option>)}
                                                     </select>
                                                 </label>
