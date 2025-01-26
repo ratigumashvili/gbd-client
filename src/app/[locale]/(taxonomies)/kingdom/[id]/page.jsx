@@ -1,7 +1,7 @@
 import NothingFound from '@/src/app/[locale]/_components/NothingFound'
 import TaxonomyParent from '@/src/app/[locale]/_components/TaxonomyParent'
 import TaxonomyChildNodes from '@/src/app/[locale]/_components/TaxonomyChildNodes';
-import TaxonomyConservationStatus from '@/src/app/[locale]/_components/KingdomConservation/TaxonomyConservationStatus';
+import TaxonomyConservationStatus from '@/src/app/[locale]/_components/TaxonomyConservationStatus';
 import Pagination from '@/src/app/[locale]/_components/Pagination';
 import Cite from "@/src/app/[locale]/_components/Cite";
 
