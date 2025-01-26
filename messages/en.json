@@ -90,7 +90,7 @@
     "LGE": "Latin, Georgian or English name",
     "TaxonRank": "Taxon Rank",
     "LatinName": "Latin name",
-    "NationalIUCNCategory": "National IUCN Category",
+    "NationalIUCNCategory": "IUCN Category",
     "select_taxon_rank": "Select taxonomy",
     "select_iucn": "Select IUCN Category"
   },
@@ -109,7 +109,8 @@
     "GBDActivityCalendar": "GBD activity calendar",
     "date": "Date",
     "recordsRegistered": "Record(s) registered",
-    "legend": "Legend"
+    "legend": "Legend",
+    "search": "Advanced Search"
   },
   "Map": {
     "clickOnMarkers": "Click on markers to load data",

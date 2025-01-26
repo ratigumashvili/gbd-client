@@ -2,40 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+:root {
+    @apply text-gray-800
+}
+
 .toast-custom {
-    @apply font-firaGo text-sm
+    @apply font-firaGo text-sm;
 }
 
 .flex-container {
-    @apply max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] 2xl:max-w-[1536px]
+    @apply max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px] 2xl:max-w-[1536px];
 }
 
 .button {
-    @apply bg-teal-600 hover:bg-teal-700 text-white px-3 py-2 rounded-md text-sm inline-block transition-all ease-in
+    @apply bg-teal-600 hover:bg-teal-700 text-white px-3 py-2 rounded-md text-sm inline-block transition-all ease-in;
 }
 
 .button-danger {
-    @apply bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md text-sm inline-block transition-all ease-in
+    @apply bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md text-sm inline-block transition-all ease-in;
 }
 
 .link {
-    @apply text-teal-600 hover:text-teal-700 transition-all ease-in
+    @apply text-teal-600 hover:text-teal-700 transition-all ease-in;
 }
 
 .apexcharts-title-text {
-    @apply dark:fill-slate-50 fill-slate-700
+    @apply dark:fill-slate-50 fill-slate-700;
 }
 
 .apexcharts-text tspan {
-    @apply fill-slate-700 dark:fill-slate-50 
+    @apply fill-slate-700 dark:fill-slate-50;
 }
 
 .apexcharts-menu-item {
-    @apply dark:text-slate-700
+    @apply dark:text-slate-700;
 }
 
 .apexcharts-tooltip {
-    @apply dark:text-slate-700
+    @apply dark:text-slate-700;
 }
 
 /* .apexcharts-menu-item {
@@ -45,9 +51,28 @@
     }
 } */
 
-.block-title {
+.main-title {
     @apply 
-        relative 
+    w-max
+    text-2xl 
+    sm:text-3xl
+    md:text-4xl
+    text-center 
+    sm:text-left 
+    font-bold
+    mb-10
+    relative 
+    before:absolute 
+    before:-bottom-2 
+    before:content-[''] 
+    before:w-full 
+    before:h-[5px] 
+    before:bg-teal-700
+    print:font-semibold;
+}
+
+.block-title {
+    @apply relative 
         pl-7 
         text-xl 
         before:absolute 
@@ -58,103 +83,163 @@
         before:w-5 
         before:h-[2px] 
         before:bg-teal-700
-        print:font-semibold
+        print:font-semibold;
 }
 
 .actions-dropdown-item {
-    @apply px-4 py-2 text-left hover:bg-teal-700 hover:text-white rounded-sm hover:cursor-pointer transition-all ease-in
+    @apply px-4 py-2 text-left hover:bg-teal-700 hover:text-white rounded-sm hover:cursor-pointer transition-all ease-in;
 }
 
 .data-list {
-    @apply grid grid-cols-1 sm:grid-cols-2 gap-2 [&>dt]:font-medium [&>dt]:col-span-1 [&>dd]:col-span-1 [&>dd>a]:text-teal-600 [&>dd>a:hover]:text-teal-700
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-2 [&>dt]:font-medium [&>dt]:col-span-1 [&>dd]:col-span-1 [&>dd>a]:text-teal-600 [&>dd>a:hover]:text-teal-700;
 }
 
 .tree-parent-node {
-    @apply inline-block p-3 rounded-md text-white bg-teal-700
+    @apply inline-block p-3 rounded-md text-white bg-teal-700;
 }
 
 .tree-node {
-    @apply border border-teal-700 rounded-md p-3 inline-block bg-teal-700 text-white hover:bg-white hover:text-gray-800 hover:cursor-pointer transition-all ease-in
+    @apply border border-teal-700 rounded-md p-3 inline-block bg-teal-700 text-white hover:bg-white hover:text-gray-800 hover:cursor-pointer transition-all ease-in;
 }
 
 .fullscreen-enabled {
-    @apply bg-white overflow-auto py-2
-  }
+    @apply bg-white overflow-auto py-2;
+}
 
 .radio-group {
-    @apply flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3  hover:bg-teal-600 hover:text-white cursor-pointer
+    @apply flex bg-gray-100 text-gray-700 rounded-md px-3 py-2 my-3  hover:bg-teal-600 hover:text-white cursor-pointer;
 }
 
 .text-content p {
-    @apply mb-3
+    @apply mb-3;
 }
 
 .text-content img {
-    @apply max-h-96 object-contain
+    @apply max-h-96 object-contain;
 }
 
 .text-content figure {
-    @apply flex flex-col items-center my-4
+    @apply flex flex-col items-center my-4;
 }
 
 .text-content figcaption {
-    @apply text-sm italic mt-4
+    @apply text-sm italic mt-4;
 }
 
 .react-calendar-heatmap {
-    @apply h-72 md:h-60 w-full
+    @apply h-72 md:h-60 w-full;
 }
 
 .color-empty {
     /* @apply fill-late-300 */
-    @apply dark:!fill-slate-200
+    @apply dark:!fill-slate-200;
 }
 
 .react-calendar-heatmap-month-label {
-    @apply !text-[8px]
+    @apply !text-[8px];
 }
 
 .legend-box {
-    @apply w-8 h-8 border flex items-center justify-center text-[10px]
+    @apply w-8 h-8 border flex items-center justify-center text-[10px];
 }
 
-.react-calendar-heatmap .color-scale-1 { @apply fill-[#d6e685] }
-.react-calendar-heatmap .color-scale-2 { @apply fill-[#d6e685] }
-.react-calendar-heatmap .color-scale-3 { @apply fill-[#d6e685] }
-.react-calendar-heatmap .color-scale-4 { @apply fill-[#d6e685] }
-.react-calendar-heatmap .color-scale-5 { @apply fill-[#8cc665] }
-.react-calendar-heatmap .color-scale-6 { @apply fill-[#8cc665] }
-.react-calendar-heatmap .color-scale-7 { @apply fill-[#8cc665] }
-.react-calendar-heatmap .color-scale-8 { @apply fill-[#8cc665] }
-.react-calendar-heatmap .color-scale-9 { @apply fill-[#8cc665] }
-.react-calendar-heatmap .color-scale-10 { @apply fill-[#44a340] }
-.react-calendar-heatmap .color-scale-11 { @apply fill-[#44a340] }
-.react-calendar-heatmap .color-scale-12 { @apply fill-[#44a340] }
-.react-calendar-heatmap .color-scale-13 { @apply fill-[#44a340] }
-.react-calendar-heatmap .color-scale-14 { @apply fill-[#44a340] }
-.react-calendar-heatmap .color-scale-15 { @apply fill-[#44a340] }
-.react-calendar-heatmap .color-scale-16 { @apply fill-[#44a340] }
-.react-calendar-heatmap .color-scale-17 { @apply fill-[#44a340] }
-.react-calendar-heatmap .color-scale-18 { @apply fill-[#44a340] }
-.react-calendar-heatmap .color-scale-19 { @apply fill-[#44a340] }
-.react-calendar-heatmap .color-scale-20 { @apply fill-[#1e6823] }
-.react-calendar-heatmap .color-scale-21 { @apply fill-[#1e6823] }
-.react-calendar-heatmap .color-scale-22 { @apply fill-[#1e6823] }
-.react-calendar-heatmap .color-scale-23 { @apply fill-[#1e6823] }
-.react-calendar-heatmap .color-scale-24 { @apply fill-[#1e6823] }
-.react-calendar-heatmap .color-scale-25 { @apply fill-[#1e6823] }
-.react-calendar-heatmap .color-scale-26 { @apply fill-[#1e6823] }
-.react-calendar-heatmap .color-scale-27 { @apply fill-[#1e6823] }
-.react-calendar-heatmap .color-scale-28 { @apply fill-[#1e6823] }
-.react-calendar-heatmap .color-scale-29 { @apply fill-[#1e6823] }
-.react-calendar-heatmap .color-scale-30 { @apply fill-[#1e6823] }
+.react-calendar-heatmap .color-scale-1 {
+    @apply fill-[#d6e685];
+}
+.react-calendar-heatmap .color-scale-2 {
+    @apply fill-[#d6e685];
+}
+.react-calendar-heatmap .color-scale-3 {
+    @apply fill-[#d6e685];
+}
+.react-calendar-heatmap .color-scale-4 {
+    @apply fill-[#d6e685];
+}
+.react-calendar-heatmap .color-scale-5 {
+    @apply fill-[#8cc665];
+}
+.react-calendar-heatmap .color-scale-6 {
+    @apply fill-[#8cc665];
+}
+.react-calendar-heatmap .color-scale-7 {
+    @apply fill-[#8cc665];
+}
+.react-calendar-heatmap .color-scale-8 {
+    @apply fill-[#8cc665];
+}
+.react-calendar-heatmap .color-scale-9 {
+    @apply fill-[#8cc665];
+}
+.react-calendar-heatmap .color-scale-10 {
+    @apply fill-[#44a340];
+}
+.react-calendar-heatmap .color-scale-11 {
+    @apply fill-[#44a340];
+}
+.react-calendar-heatmap .color-scale-12 {
+    @apply fill-[#44a340];
+}
+.react-calendar-heatmap .color-scale-13 {
+    @apply fill-[#44a340];
+}
+.react-calendar-heatmap .color-scale-14 {
+    @apply fill-[#44a340];
+}
+.react-calendar-heatmap .color-scale-15 {
+    @apply fill-[#44a340];
+}
+.react-calendar-heatmap .color-scale-16 {
+    @apply fill-[#44a340];
+}
+.react-calendar-heatmap .color-scale-17 {
+    @apply fill-[#44a340];
+}
+.react-calendar-heatmap .color-scale-18 {
+    @apply fill-[#44a340];
+}
+.react-calendar-heatmap .color-scale-19 {
+    @apply fill-[#44a340];
+}
+.react-calendar-heatmap .color-scale-20 {
+    @apply fill-[#1e6823];
+}
+.react-calendar-heatmap .color-scale-21 {
+    @apply fill-[#1e6823];
+}
+.react-calendar-heatmap .color-scale-22 {
+    @apply fill-[#1e6823];
+}
+.react-calendar-heatmap .color-scale-23 {
+    @apply fill-[#1e6823];
+}
+.react-calendar-heatmap .color-scale-24 {
+    @apply fill-[#1e6823];
+}
+.react-calendar-heatmap .color-scale-25 {
+    @apply fill-[#1e6823];
+}
+.react-calendar-heatmap .color-scale-26 {
+    @apply fill-[#1e6823];
+}
+.react-calendar-heatmap .color-scale-27 {
+    @apply fill-[#1e6823];
+}
+.react-calendar-heatmap .color-scale-28 {
+    @apply fill-[#1e6823];
+}
+.react-calendar-heatmap .color-scale-29 {
+    @apply fill-[#1e6823];
+}
+.react-calendar-heatmap .color-scale-30 {
+    @apply fill-[#1e6823];
+}
 
 .switch {
-    @apply w-[40px] h-[20px] border rounded-full flex items-center relative p-[1px] cursor-pointer
+    @apply w-[40px] h-[20px] border rounded-full flex items-center relative p-[1px] cursor-pointer;
 }
 
 .switch-circle {
-    @apply w-[16px] h-[16px] rounded-full bg-white
+    @apply w-[16px] h-[16px] rounded-full bg-white;
 }
 
 .chart-container {

@@ -90,7 +90,7 @@
     "LGE": "ლათინური, ქართული ან ინგლისური სახელწოდება",
     "TaxonRank": "ტაქსონომიური დონე",
     "LatinName": "ლათინური სახელწოდება",
-    "NationalIUCNCategory": "ნაციონალური IUCN კატეგორია",
+    "NationalIUCNCategory": "IUCN კატეგორია",
     "select_taxon_rank": "აირჩიეთ ტაქსონომია",
     "select_iucn": "აირჩიეთ IUCN კატეგორია"
   },
@@ -109,7 +109,8 @@
     "GBDActivityCalendar": "GBD აქტივობის კალენდარი",
     "date": "თარიღი",
     "recordsRegistered": "რეგისტრირებული ჩანაწერი",
-    "legend": "ლეგენდა"
+    "legend": "ლეგენდა",
+    "search": "გაფართოებული ძებნა"
   },
   "Map": {
     "clickOnMarkers": "მონაცემთა ჩატვირთვისათვის დააწკაპუნეთ რუკაზე არსებულ მარკერებს",
