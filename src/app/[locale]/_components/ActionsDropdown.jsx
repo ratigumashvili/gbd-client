@@ -79,7 +79,6 @@ export default function ActionsDropdown({
         scientific_name_id: data?.metadata?.scientific_name_id,
         name_according_to_title: data?.metadata?.according_title,
         name_according_to_url: data?.metadata?.according_url,
-        published_in_year: data?.metadata?.published_in_year,
         taxon_rank_title: data?.metadata?.taxon_rank_title,
         taxon_rank_url: data?.metadata?.taxon_rank_url,
         scientific_name_authorship_title: data?.metadata?.scientific_name_authorship_title,

@@ -77,12 +77,6 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
                                 </dd>
                             </>
                         )}
-                        {data?.metadata?.published_in_year && (
-                            <>
-                                <dt>{s("name_published_in_year")}:</dt>
-                                <dd>{data?.metadata?.published_in_year}</dd>
-                            </>
-                        )}
 
                         {data?.metadata?.taxon_rank_title && (
                             <>

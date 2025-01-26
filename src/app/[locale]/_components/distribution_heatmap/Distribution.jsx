@@ -36,8 +36,8 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
         <div className="my-12">
 
             <Tab.Group>
-                <div className='flex items-center justify-between'>
-                    <h2 className='mt-8 mb-2 block-title'>{t("species_distribution")}</h2>
+                <div className='flex sm:flex-row flex-col gap-4 items-center justify-between mt-8 mb-6'>
+                    <h2 className='block-title !translate-y-[0%]'>{t("species_distribution")}</h2>
                     <Tab.List className="flex gap-2 font-firaGo">
                         <Tab as={Fragment}>
                             {({ selected }) => (
