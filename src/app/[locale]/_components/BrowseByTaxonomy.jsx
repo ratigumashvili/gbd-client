@@ -3,7 +3,7 @@ import { Link } from '@/src/i18n/routing'
 
 import { useTranslations } from 'next-intl'
 
-import { detectLocale } from "@/src/app/[locale]/_lib/helpers"
+import { detectLocale, detectPathname } from "@/src/app/[locale]/_lib/helpers"
 import { getData } from "@/src/app/[locale]/_lib/apiCalls"
 
 
