@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 
-import BrowseByTaxonomy from "@/src/app/[locale]/_components/BrowseByTaxonomy"
+import BrowseByTaxonomy from "@/src/app/[locale]/_components/browseTaxonomy/BrowseByTaxonomy"
 
 function Taxonomy({params}) {
   

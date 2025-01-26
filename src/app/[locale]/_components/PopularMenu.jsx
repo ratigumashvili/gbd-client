@@ -1,17 +1,17 @@
-import React from 'react'
-import { popularMenu } from '../_lib/data'
 import { Link } from '@/src/i18n/routing'
 import { useTranslations } from 'next-intl'
 
-import { detectLocale } from '../_lib/helpers'
+import { popularMenu } from '../_lib/data'
 
-function PopularMenu({locale}) {
-  const t = useTranslations("Index")
+const ComponentTitle = () => {
+  const t = useTranslations('Index');
+  return <h2 className="text-2xl font-medium mb-4">{t("popularEntries")}</h2> 
+}
+
+async function PopularMenu() {
   return (
     <div className='p-4 bg-slate-50 dark:bg-slate-700 rounded-md col-span-1'>
-      <h2 className={`text-2xl font-medium mb-4 ${detectLocale(locale)}`}>
-        {t("popularEntries")}
-      </h2>
+      <ComponentTitle />
       <ul>
         {popularMenu.map((menuitem) => (
           <li key={menuitem.id} className='font-firaGo'>

@@ -16,6 +16,22 @@ export default async function Kingdom({ params, searchParams }) {
     const { data } = await getData(`taxonomy/${searchParams.id}?type=Kingdom`, params.locale)
     const child = await getPaginatedData(`taxonomy?type=Phylum&parent_id=${searchParams.id}`, params.locale, currentPage, TAXON_PER_PAGE)
 
+    // temporary data
+
+    const codes = [
+        { id: 1, code: "EX", count: 4 },
+        { id: 2, code: "CR", count: 7 },
+        { id: 3, code: "EN", count: 49 },
+        { id: 4, code: "VU", count: 89 },
+        { id: 5, code: "NT", count: 78 },
+        { id: 6, code: "LC", count: 1177 },
+        { id: 7, code: "NE", count: 611 },
+        { id: 8, code: "DD", count: 608 },
+        { id: 9, code: "RE", count: 4 },
+      ];
+
+    // end temporary data
+
     if (!data) {
         return <NothingFound />
     }
@@ -37,6 +53,8 @@ export default async function Kingdom({ params, searchParams }) {
             <TaxonomyConservationStatus
                 taxonName={data?.metadata?.name}
                 totalCount={2637}
+                codes={codes}
+
             />
 
             <TaxonomyChildNodes

@@ -1,11 +1,9 @@
 
 import { Link } from '@/src/i18n/routing'
-
 import { useTranslations } from 'next-intl'
 
-import { detectLocale, detectPathname } from "@/src/app/[locale]/_lib/helpers"
 import { getData } from "@/src/app/[locale]/_lib/apiCalls"
-
+import ComponentTitle from './ComponentTitle'
 
 const Blocks = ({ id, title, slug }) => {
 
@@ -29,7 +27,7 @@ async function BrowseByTaxonomy({ locale, title }) {
 
     return (
         <div className="p-4 mb-4">
-            <h2 className={`text-2xl font-medium mb-4 ${detectLocale(locale)}`}>{title}</h2>
+            <ComponentTitle title={title} />
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                 {filteredData?.map((item) => (
                     <Blocks
