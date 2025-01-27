@@ -6,6 +6,19 @@ import { Link, usePathname } from "@/src/i18n/routing"
 
 import { detectLocale, sanitize } from "@/src/app/[locale]/_lib/helpers"
 
+const routes = [
+    {
+        id: 1,
+        title: "editors",
+        path: "/team/editors"
+    },
+    {
+        id: 2,
+        title: "contributors",
+        path: '/team/contributors'
+    }
+]
+
 export const Blocks = ({ data = [] }) => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -22,7 +35,7 @@ export const Blocks = ({ data = [] }) => {
                     </div>
                     <div>
                         <h2 className="font-medium text-xl mb-1 font-firaGo">
-                            <Link href={`/team/${item.id}`} className="block hover:text-teal-700 transition-all duration-150">{item.title}</Link>
+                            <Link href={`/team/editors/${item.id}`} className="block hover:text-teal-700 transition-all duration-150">{item.title}</Link>
                         </h2>
                         <span className="inline-block mb-3 mt-2 text-sm py-1 px-2 bg-teal-600 text-white rounded-md">{item.position}</span>
                         <div
@@ -37,21 +50,33 @@ export const Blocks = ({ data = [] }) => {
 }
 
 export const PageTitle = () => {
-    
+
     const locale = useLocale()
     const t = useTranslations("Team")
 
     return <h2 className={`text-2xl font-medium mb-4 ${detectLocale(locale)}`}>{t("pageTitle")}</h2>
 }
 
-export const RoleTranslate = (data) => {
+export const RoleTranslate = () => {
 
     const pathName = usePathname()
     const t = useTranslations("Team")
 
-    return (
-        <Link href={`${data.path}`} className={pathName === data.path ? "font-medium text-teal-700" : "font-normal text-black"}>
-            <h3 className="text-xl">{t(data.title)}</h3>
-        </Link>
-    )
+    const existingPaths = routes.map((item) => item.path)
+
+    if (existingPaths.includes(pathName)) {
+        return (
+            <div className="flex gap-x-4 mb-8">
+                {routes.map((item) => (
+                    <Link
+                        href={`${item.path}`}
+                        className={pathName === item.path ? "font-medium text-teal-700" : "font-normal text-black"}
+                    >
+                        <h3 className="text-xl">{t(item.title)}</h3>
+                    </Link>
+                ))}
+            </div>
+        )
+    }
 }
+

@@ -54,7 +54,6 @@ export default async function Kingdom({ params, searchParams }) {
                 taxonName={data?.metadata?.name}
                 totalCount={2637}
                 codes={codes}
-
             />
 
             <TaxonomyChildNodes

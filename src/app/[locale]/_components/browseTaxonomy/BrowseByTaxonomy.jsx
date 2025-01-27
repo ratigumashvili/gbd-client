@@ -15,10 +15,12 @@ const Blocks = ({ id, title, slug }) => {
         <Link href={`/kingdom/${slug}?id=${id}`}
             className='text-center flex-1 p-8 rounded-md border border-teal-600 bg-teal-600 text-white hover:bg-white hover:text-gray-900 transition-all ease-in'
         >
-            <h4 className='font-medium text-xl mb-2'>{title}</h4>
+            <h4 className='font-medium text-2xl mb-2'>{title}</h4>
             <div className='flex flex-col items-center gap-2'>
                 <span className='font-firaGo'>{t("registeredRecords")}</span>
-                <Counter total={1234567} />
+                <span className='text-2xl'>
+                    <Counter total={1234567} />
+                </span>
             </div>
         </Link>
     )

@@ -12,12 +12,15 @@ import Lightbox from "yet-another-react-lightbox";
 
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/captions.css";
+import { useRouter } from "@/src/i18n/routing";
 
-function TaxonomyParentGallery({ photos }) {
+function TaxonomyParentGallery({ photos, taxon }) {
 
     const [images, setImages] = useState([])
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    const router = useRouter()
 
     useEffect(() => {
         setImages(transformImageData(photos))
@@ -66,6 +69,13 @@ function TaxonomyParentGallery({ photos }) {
         setCurrentIndex(index);
         setLightboxOpen(true);
     };
+
+    const handleNavigate = () => {
+        setLightboxOpen(false);
+        router.push(taxon.path, {
+            scroll: false
+        })
+    }
 
     const customThumbnailStyle = {
         width: "100%",
@@ -120,7 +130,16 @@ function TaxonomyParentGallery({ photos }) {
                                 style={{ maxWidth: '100%', height: '65vh', objectFit: 'contain' }}
                             />
 
-                            <h2 className="text-2xl italic py-[5px] px-[10px]">{slide.title}</h2>
+                            <h2 className="text-3xl italic py-[5px] px-[10px] mb-1">{slide.title}</h2>
+
+                            {taxon?.path && (
+                                <div className="flex items-center justify-center gap-x-2 mb-3 text-lg">
+                                    <span>{t("taxon")}:</span>
+                                    <button onClick={handleNavigate}>
+                                        {taxon.name}
+                                    </button>
+                                </div>
+                            )}
 
                             <div className="flex flex-col gap-y-2 text-xs py-[5px] px-[10px]">
                                 <div className="flex justify-center gap-2">

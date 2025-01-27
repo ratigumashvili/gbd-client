@@ -15,10 +15,18 @@ import DynamicTaxonomyOrder from './taxonomyOrder'
 import { checkLink, separator } from "@/src/app/[locale]/_lib/helpers"
 import { fungiTree } from '../_lib/data'
 import { sanitize } from '@/src/app/[locale]/_lib/helpers'
+import { useFullUrl } from '@/src/app/[locale]/_hooks/useFullUrl'
 
 export default function TaxonomyParentBackup({ data, photos, species, rank, accordingTo, sna, vernakularName, locale }) {
 
     const router = useRouter()
+
+    const fullUrl = useFullUrl()
+
+    const taxon = {
+        name: data?.metadata?.name,
+        path: fullUrl
+    }   
 
     const t = useTranslations("Common")
     const s = useTranslations("Species")
@@ -154,7 +162,7 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
                     {photos && photos.length !== 0 && (
                         <>
                             <h2 className='font-medium my-2 block-title'>{t("gallery")}</h2>
-                            <TaxonomyParentGallery photos={photos} />
+                            <TaxonomyParentGallery photos={photos} taxon={taxon} />
                         </>
                     )}
                 </div>

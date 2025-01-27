@@ -11,6 +11,7 @@ import Map from "@/src/app/[locale]/_components/distribution_map"
 import Cite from '@/src/app/[locale]/_components/Cite';
 import TaxonomyParentGallery from '@/src/app/[locale]/_components/TaxonomyParentGallery';
 import { Check } from '@/src/app/[locale]/_components/Check';
+import { useFullUrl } from '@/src/app/[locale]/_hooks/useFullUrl';
  
 export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinates }) {
 
@@ -21,6 +22,13 @@ export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinat
         documentTitle: `GBD - ${data?.metadata?.scientific_name}`,
         pageStyle: 'p-8'
     });
+
+    const fullUrl = useFullUrl()
+
+    const taxon = {
+        name: data?.metadata?.name,
+        path: fullUrl
+    }
 
     const t = useTranslations("Species")
 
@@ -46,7 +54,7 @@ export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinat
                 {data?.files?.length !== 0 &&
                     <>
                         <h2 className='mt-8 mb-0 font-medium block-title'>{t("gallery")}</h2>
-                        <TaxonomyParentGallery photos={data?.files} />
+                        <TaxonomyParentGallery photos={data?.files} taxon={taxon} />
                     </>
                 }
                 <div className='flex flex-col md:flex-row gap-4'>
