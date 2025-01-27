@@ -30,6 +30,10 @@ const activityChartData = [
     { date: "2024-11-29", count: 11 },
     { date: "2025-01-03", count: 2 },
     { date: "2025-01-04", count: 3 },
+    { date: "2025-01-08", count: 1 },
+    { date: "2025-01-10", count: 10 },
+    { date: "2025-01-16", count: 2 },
+    { date: "2025-01-17", count: 3 },
 ];
 
 export default function Calendar() {
@@ -62,7 +66,7 @@ export default function Calendar() {
     const t = useTranslations("Index");
 
     return (
-        <div className="p-4 my-4 bg-slate-50 dark:bg-slate-600 rounded-md">
+        <div className="p-4 my-4 min-h-[400px] bg-slate-50 dark:bg-slate-600 rounded-md">
             <h2 className="text-xl font-medium mb-4">
                 {t("GBDActivityCalendar")} ({formattedStartDate} - {endDate})
             </h2>
@@ -76,6 +80,7 @@ export default function Calendar() {
                         theme={explicitTheme}
                         fontSize={16}
                         hideColorLegend={true}
+                        hideTotalCount={false}
                         eventHandlers={{
                             onClick: (event) => (activity) => setSelectedData(activity)
                         }}
@@ -101,7 +106,7 @@ export default function Calendar() {
                 <CustomLegend />
             </div>
 
-            <div className="flex items-center justify-between my-2">
+            <div className="flex items-center justify-between mt-10 sm:my-4">
                 {selectedData && selectedData?.count !== 0 && (
                     <div>
                         <span className="font-firaGo">

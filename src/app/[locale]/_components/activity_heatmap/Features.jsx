@@ -32,8 +32,9 @@ export const legendItems = [
 
 function CustomLegend() {
     const t = useTranslations("Index")
+
     return (
-        <div className="absolute -bottom-2 right-0">
+        <div className="absolute -bottom-8 sm:-bottom-[6px] right-0">
             <div className="flex items-center gap-1">
                 <p>{t("legend")}</p>
                     <div className="flex items-center gap-1">

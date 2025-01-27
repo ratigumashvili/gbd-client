@@ -239,3 +239,11 @@ body,
 .chart-container {
     @apply w-full max-w-[500px] mx-auto my-0;
 }
+
+.react-activity-calendar__count {
+    @apply hidden sm:block
+}
+
+.leaflet-popup-content {
+    @apply !font-firaGo
+}
