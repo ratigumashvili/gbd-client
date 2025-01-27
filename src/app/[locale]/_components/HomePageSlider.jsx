@@ -25,7 +25,7 @@ function HomePageSlider() {
 
   return (
     <div className='p-4 bg-slate-50 dark:bg-slate-600 rounded-md'>
-      <h2 className='text-2xl font-medium mb-4'>{t("latestUploads")}</h2>
+      <h2 className='text-xl font-medium mb-4'>{t("latestUploads")}</h2>
       <div className="slide-container font-firaGo">
         <Slide {...properties}>
           {homePageSlider.map(({ id, recordTitle, taxonId, taxonTitle, comment, photoAuthor, authorId, uploadedBy, imageUrl }) => (

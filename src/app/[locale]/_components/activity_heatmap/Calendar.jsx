@@ -33,7 +33,7 @@ export default function Calendar() {
 
     return (
         <div className="p-4 my-4 bg-slate-50 dark:bg-slate-600 rounded-md">
-            <h2 className="text-2xl font-medium mb-4">
+            <h2 className="text-xl font-medium mb-4">
                 {t("GBDActivityCalendar")} ({startDate.toLocaleDateString().split('/').join('-')} - {today.toLocaleDateString().split('/').join('-')})
             </h2>
 

@@ -5,7 +5,7 @@ import { popularMenu } from '../_lib/data'
 
 const ComponentTitle = () => {
   const t = useTranslations('Index');
-  return <h2 className="text-2xl font-medium mb-4">{t("popularEntries")}</h2> 
+  return <h2 className="text-xl font-medium mb-4">{t("popularEntries")}</h2> 
 }
 
 async function PopularMenu() {

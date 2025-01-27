@@ -10,7 +10,7 @@ export default function ComponentTitle({ title }) {
     return (
         <>
             {pathName === '/' ? (
-                <h2 className='text-2xl font-medium mb-4'>{title}</h2>
+                <h2 className='text-xl font-medium mb-4'>{title}</h2>
             ) : (
                 <h2 className={`text-2xl font-medium mb-4 ${detectLocale(locale)}`}>{title}</h2>
             )}

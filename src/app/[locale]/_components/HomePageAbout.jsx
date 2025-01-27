@@ -8,7 +8,7 @@ import { sanitize } from '@/src/app/[locale]/_lib/helpers';
 
 const ComponentTitle = () => {
   const t = useTranslations('Index');
-  return <h2 className="text-2xl font-medium mb-4">{t("about_title")}</h2> 
+  return <h2 className="text-xl font-medium mb-4">{t("about_title")}</h2> 
 }
 
 const ReadMore = () => {
