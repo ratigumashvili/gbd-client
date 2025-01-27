@@ -3,6 +3,7 @@ import { Link } from '@/src/i18n/routing'
 import { useTranslations } from 'next-intl'
 
 import { getData } from "@/src/app/[locale]/_lib/apiCalls"
+
 import ComponentTitle from './ComponentTitle'
 import { Counter } from './Counter'
 
@@ -15,7 +16,7 @@ const Blocks = ({ id, title, slug }) => {
             className='text-center flex-1 p-8 rounded-md border border-teal-600 bg-teal-600 text-white hover:bg-white hover:text-gray-900 transition-all ease-in'
         >
             <h4 className='font-medium text-xl mb-2'>{title}</h4>
-            <div className='flex items-center gap-2'>
+            <div className='flex flex-col items-center gap-2'>
                 <span className='font-firaGo'>{t("registeredRecords")}</span>
                 <Counter total={1234567} />
             </div>
