@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 import ActivityCalendar from "react-activity-calendar";
 import { Tooltip } from "react-tooltip";
 import { isMobile } from "react-device-detect";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { getValue } from "@/src/app/[locale]/_lib/helpers"
 import useDates from "@/src/app/[locale]/_hooks/useDates"
+
+import CustomLegend from "./Features";
+import { legendItems } from "./Features";
 
 const activityChartData = [
     { date: "2022-12-01", count: 0 },
@@ -34,20 +37,20 @@ export default function Calendar() {
 
     const { formattedStartDate, endDate } = useDates()
 
+    const locale = useLocale()
+
     const data = activityChartData.map((item) => {
         return {
             count: item.count,
             date: item.date,
-            level: getValue(item.count)
+            level: getValue(item.count),
         }
     }).filter(d => d.date >= formattedStartDate && d.date <= endDate)
 
     const explicitTheme = {
-        light: ['#f2f2f2', '#8cc665', '#44a340', '#1e6823', '#0a4a16'],
-        dark: ['#f2f2f2', '#8cc665', '#44a340', '#1e6823', '#0a4a16'],
+        light: legendItems.map((item) => (item.bg)),
+        dark: legendItems.map((item) => item.bg)
     };
-
-    const t = useTranslations("Index");
 
     useEffect(() => {
         const scrollable = document.querySelector('.react-activity-calendar__scroll-container');
@@ -56,54 +59,47 @@ export default function Calendar() {
         }
     }, [data]);
 
+    const t = useTranslations("Index");
+
     return (
         <div className="p-4 my-4 bg-slate-50 dark:bg-slate-600 rounded-md">
             <h2 className="text-xl font-medium mb-4">
                 {t("GBDActivityCalendar")} ({formattedStartDate} - {endDate})
             </h2>
 
-            {data && data.length !== 0 && (
-                <ActivityCalendar
-                    data={data}
-                    blockSize={20}
-                    blockGap={3}
-                    theme={explicitTheme}
-                    fontSize={16}
-                    eventHandlers={{
-                        onClick: (event) => (activity) => setSelectedData(activity)
-                    }}
-                    renderColorLegend={(block, level) => (
-                        <button
-                            title={`${t("level")}: ${level}`}
-                            data-tooltip-id="nrls-check-tooltip"
-                            data-tooltip-content={`${t("level")}: ${level}`}
-                        >
-                            {block}
-                        </button>
-                    )}
-                    labels={{
-                        legend: {
-                            less: t("less"),
-                            more: t("more"),
-                        },
-                        months: [
-                            t("jan"),
-                            t("feb"),
-                            t("mar"),
-                            t("apr"),
-                            t("may"),
-                            t("jun"),
-                            t("jul"),
-                            t("aug"),
-                            t("sep"),
-                            t("oct"),
-                            t("nov"),
-                            t("dec")
-                        ],
-                        totalCount: `{{count}} ${t("total")}`,
-                    }}
-                />
-            )}
+            <div className="relative">
+                {data && data.length !== 0 && (
+                    <ActivityCalendar
+                        data={data}
+                        blockSize={20}
+                        blockGap={3}
+                        theme={explicitTheme}
+                        fontSize={16}
+                        hideColorLegend={true}
+                        eventHandlers={{
+                            onClick: (event) => (activity) => setSelectedData(activity)
+                        }}
+                        labels={{
+                            months: [
+                                t("jan"),
+                                t("feb"),
+                                t("mar"),
+                                t("apr"),
+                                t("may"),
+                                t("jun"),
+                                t("jul"),
+                                t("aug"),
+                                t("sep"),
+                                t("oct"),
+                                t("nov"),
+                                t("dec")
+                            ],
+                            totalCount: locale === "ka" ? `${t("total")} {{count}} ${t("record")}` : `{{count}} ${t("total")}`,
+                        }}
+                    />
+                )}
+                <CustomLegend />
+            </div>
 
             <div className="flex items-center justify-between my-2">
                 {selectedData && selectedData?.count !== 0 && (
