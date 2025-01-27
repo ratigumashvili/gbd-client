@@ -201,3 +201,28 @@ export const getChartColors = (value) => {
 
     return color
 }
+
+export const getValue = (value) => {
+    let level;
+    switch (true) {
+      case value === 0:
+        level = 0;
+        break;
+      case value === 1 || value === 2:
+        level = 1;
+        break;
+      case value >= 3 && value < 5:
+        level = 2;
+        break;
+      case value >= 5 && value < 7:
+        level = 3;
+        break;
+      case value >= 7:
+        level = 4;
+        break;
+      default:
+        level = 0;
+    }
+    return level;
+  };
+  

@@ -62,12 +62,6 @@ body,
     font-bold
     mb-10
     relative 
-    before:absolute 
-    before:-bottom-2 
-    before:content-[''] 
-    before:w-full 
-    before:h-[5px] 
-    before:bg-teal-700
     print:font-semibold;
 }
 
