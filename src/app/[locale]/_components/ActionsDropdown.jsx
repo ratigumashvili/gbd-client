@@ -101,7 +101,7 @@ export default function ActionsDropdown({
             {isOpen && <FeedbackForm isOpen={isOpen} closeModal={closeModal} metaData={metaData} />}
 
             <Menu as="div" className="relative inline-block text-left dark:text-slate-700">
-                <Menu.Button title={t("actions")} className="dark:text-slate-300">
+                <Menu.Button title={t("actions")} className="dark:text-slate-300 mt-2">
                     <Hamburger />
                 </Menu.Button>
                 <Transition

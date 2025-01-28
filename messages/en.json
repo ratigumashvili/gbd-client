@@ -50,7 +50,13 @@
     "hide_filter": "Hide Filter",
     "actions": "Actions",
     "record": "Record",
-    "records": "Records"
+    "records": "Records",
+    "goBack": "Go back",
+    "bookmarkAdd": "Add to bookmarks",
+    "bookmarkRemove": "Remove from bookmarks",
+    "bookmark_added": "Record has been added to bookmarks",
+    "bookmark_removed": "Remove from bookmarks",
+    "no_bookmarks": "You have not saved any bookmark"
   },
   "Header": {
     "isu": "Ilia State University",

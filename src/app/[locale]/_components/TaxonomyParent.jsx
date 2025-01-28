@@ -3,13 +3,13 @@
 import { useRef } from 'react'
 
 import Link from 'next/link'
-import { useRouter } from '@/src/i18n/routing'
 import { useReactToPrint } from 'react-to-print'
 import { useTranslations } from 'next-intl'
+import { v4 as uuidv4 } from 'uuid';
 
-import GoBack from './icons/GoBack'
 import ActionsDropdown from './ActionsDropdown'
 import TaxonomyParentGallery from './TaxonomyParentGallery'
+import TaxonHeading from './TaxonHeading'
 import DynamicTaxonomyOrder from './taxonomyOrder'
 
 import { checkLink, separator } from "@/src/app/[locale]/_lib/helpers"
@@ -19,14 +19,12 @@ import { useFullUrl } from '@/src/app/[locale]/_hooks/useFullUrl'
 
 export default function TaxonomyParentBackup({ data, photos, species, rank, accordingTo, sna, vernakularName, locale }) {
 
-    const router = useRouter()
-
     const fullUrl = useFullUrl()
 
     const taxon = {
         name: data?.metadata?.name,
         path: fullUrl
-    }   
+    }
 
     const t = useTranslations("Common")
     const s = useTranslations("Species")
@@ -41,27 +39,27 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
 
     // Single Taxon page
 
+    const headingData = {
+        id: data?.metadata?.scientific_name_id || uuidv4(),
+        title: data?.metadata?.name,
+        scienttificId: data?.metadata?.scientific_name_id,
+        rank: data?.metadata?.taxon_rank_title,
+        url: fullUrl
+    }
+
     return (
         <div className='py-4' ref={printContent}>
-            <div className="flex items-center justify-between  mb-6">
-                <h2 className="text-2xl font-medium">{data?.metadata?.name}</h2>
-                <div className='flex items-center gap-4'>
-                    <button onClick={() => router.back()} title='Go back'>
-                        <GoBack width="22" heigth="22" />
-                    </button>
-                    <ActionsDropdown
-                        handlePrint={handlePrint}
-                        data={data}
-                        species={species}
-                        isSpecie={false}
-                        downloadContent={true}
-                    />
-                </div>
+            <div className="flex items-center justify-between mb-6">
+                <TaxonHeading headingData={headingData} />
+                <ActionsDropdown
+                    handlePrint={handlePrint}
+                    data={data}
+                    species={species}
+                    isSpecie={false}
+                    downloadContent={true}
+                />
             </div>
             <div className="flex flex-col md:flex-row gap-4">
-                {/* <pre>
-                    {JSON.stringify(data, null, 2)}
-                </pre> */}
                 <div className="flex-1">
 
                     <h2 className='font-medium my-2 block-title'>{t("desc")}</h2>

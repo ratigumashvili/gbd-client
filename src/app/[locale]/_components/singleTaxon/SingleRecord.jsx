@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import { useTranslations } from 'next-intl';
+import { v4 as uuidv4 } from 'uuid';
 
 import SingleTaxonConservation from "@/src/app/[locale]/_components/singleTaxon/SingleTaxonConservation"
 import SingleTaxonMeta from "@/src/app/[locale]/_components/singleTaxon/SingleTaxonMeta"
@@ -10,7 +11,8 @@ import ActionsDropdown from "@/src/app/[locale]/_components/ActionsDropdown"
 import Map from "@/src/app/[locale]/_components/distribution_map"
 import Cite from '@/src/app/[locale]/_components/Cite';
 import TaxonomyParentGallery from '@/src/app/[locale]/_components/TaxonomyParentGallery';
-import { Check } from '@/src/app/[locale]/_components/Check';
+import TaxonHeading from '@/src/app/[locale]/_components/TaxonHeading';
+
 import { useFullUrl } from '@/src/app/[locale]/_hooks/useFullUrl';
  
 export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinates }) {
@@ -32,14 +34,23 @@ export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinat
 
     const t = useTranslations("Species")
 
+    const headingData = {
+        id: data?.metadata?.scientific_name_id || uuidv4(),
+        title: data?.metadata?.name,
+        scienttificId: data?.metadata?.scientific_name_id,
+        rank: data?.metadata?.taxon_rank_title || "Species",
+        url: fullUrl,
+        isSpecie: true,
+        status: data?.metadata?.conversation_status,
+        evaluatedBy: data?.metadata?.evaluated_by
+    }
+
     // Single Specie page
 
     return (
         <div className="py-4" ref={printContent}>
             <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-medium">{data?.metadata?.name} 
-                    <Check status={data?.metadata?.conversation_status} evaluated={data?.metadata?.evaluated_by} />
-                </h2>
+                <TaxonHeading headingData={headingData} />
                 <ActionsDropdown
                     handlePrint={handlePrint}
                     data={data}
