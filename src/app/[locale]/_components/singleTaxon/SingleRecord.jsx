@@ -25,10 +25,10 @@ export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinat
 
     const fullUrl = useFullUrl()
 
-    const taxon = {
-        name: data?.metadata?.name,
-        path: fullUrl
-    }
+    // const taxon = {
+    //     name: data?.metadata?.name,
+    //     path: fullUrl
+    // }
 
     const t = useTranslations("Species")
 
@@ -54,7 +54,10 @@ export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinat
                 {data?.files?.length !== 0 &&
                     <>
                         <h2 className='mt-8 mb-0 font-medium block-title'>{t("gallery")}</h2>
-                        <TaxonomyParentGallery photos={data?.files} taxon={taxon} />
+                        <TaxonomyParentGallery 
+                            photos={data?.files} 
+                            // taxon={taxon} 
+                        />
                     </>
                 }
                 <div className='flex flex-col md:flex-row gap-4'>

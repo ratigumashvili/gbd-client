@@ -85,6 +85,9 @@ export default function TaxonomyConservationStatus({ taxonName, totalCount, code
                 },
             },
         },
+        stroke: {
+            show: false
+        },
         labels,
         states: {
             normal: { filter: { type: "none", value: 0 } },

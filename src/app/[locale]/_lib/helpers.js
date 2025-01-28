@@ -191,7 +191,7 @@ export const getChartColors = (value) => {
             color = "#838383";
             break;
         case "NE":
-            color = "#9c9c9c";
+            color = "#b6b6b6";
             break;
         case "RE":
             color = "#649bcc";
