@@ -26,8 +26,15 @@ export default function BookmarksProvider({ children }) {
   const [bookmarks, setBookmarks] = useState(() => getStoredData("gbd-bookmarked", []));
   const [isBookmarked, setIsBookmarked] = useState(() => getStoredData("gbd-isBookmarked", []));
 
+  const LIMIT = 10
+
   const handleAddBookmark = useCallback((record) => {
     if (isBookmarked.includes(record.id)) return;
+
+    if (bookmarks.length >= LIMIT) {
+        toast.error(t("maximum_items"));
+        return;
+      }
 
     setBookmarks((prev) => [...prev, record]);
     setIsBookmarked((prev) => [...prev, record.id]);

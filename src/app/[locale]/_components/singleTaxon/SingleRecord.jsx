@@ -40,6 +40,10 @@ export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinat
         scienttificId: data?.metadata?.scientific_name_id,
         rank: data?.metadata?.taxon_rank_title || "Species",
         url: fullUrl,
+        thumbnail: data && data?.files?.length !== 0 && {
+            url: data?.files[0].file_url,
+            author: data?.files[0].author_title,
+        },
         isSpecie: true,
         status: data?.metadata?.conversation_status,
         evaluatedBy: data?.metadata?.evaluated_by

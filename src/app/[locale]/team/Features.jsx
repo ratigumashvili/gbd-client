@@ -69,6 +69,7 @@ export const RoleTranslate = () => {
             <div className="flex gap-x-4 mb-8">
                 {routes.map((item) => (
                     <Link
+                        key={item.id}
                         href={`${item.path}`}
                         className={pathName === item.path ? "font-medium text-teal-700" : "font-normal text-black"}
                     >

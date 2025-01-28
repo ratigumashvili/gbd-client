@@ -10,6 +10,8 @@ import BookmarkMinus from "./icons/BookmarkMinus"
 import BookmarkPlus from "./icons/BookmarkPlus"
 import { Check } from "./Check"
 
+import thumb from "@/public/logo.svg"
+
 function TaxonHeading({ headingData }) {
 
     const {
@@ -20,7 +22,8 @@ function TaxonHeading({ headingData }) {
         url,
         isSpecie = false,
         status = null,
-        evaluatedBy = null
+        evaluatedBy = null,
+        thumbnail = thumb
     } = headingData
 
     const storageInfo = {
@@ -29,6 +32,7 @@ function TaxonHeading({ headingData }) {
         title,
         rank,
         url,
+        thumbnail
     }
 
     const { handleAddBookmark, handleRemoveBookmark, isBookmarked } = useBookmarks()
@@ -38,6 +42,8 @@ function TaxonHeading({ headingData }) {
 
     return (
         <div className='flex flex-1 items-center justify-between pr-4 gap-4'>
+            {/* {JSON.stringify(thumb, null, 2)}
+            <img src={thumb.src} />???????????? */}
             {isSpecie ? (
                 <h2 className="text-2xl font-medium">{title}
                     <Check status={status} evaluated={evaluatedBy} />

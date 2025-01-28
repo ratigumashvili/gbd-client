@@ -1,9 +1,9 @@
-function Alert() {
+function Alert({width="18", height="18"}) {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="18"
-        height="18"
+        width={width}
+        height={height}
         fill="none"
         stroke="currentColor"
         strokeLinecap="round"

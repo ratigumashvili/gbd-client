@@ -56,7 +56,9 @@
     "bookmarkRemove": "Remove from bookmarks",
     "bookmark_added": "Record has been added to bookmarks",
     "bookmark_removed": "Remove from bookmarks",
-    "no_bookmarks": "You have not saved any bookmark"
+    "no_bookmarks": "You have not saved any bookmark",
+    "bookmarkedPageTitle": "Bookmarked records",
+    "maximum_items": "The maximum record storage limit has been reached. Please clear the bookmarked data."
   },
   "Header": {
     "isu": "Ilia State University",
