@@ -13,8 +13,6 @@ import RemoveFromFolderIcon from "@/src/app/[locale]/_components/icons/RemoFromF
 import BookmarksModal from "@/src/app/[locale]/_components/BookmarksModal"
 import BookmarksDeleteAll from "@/src/app/[locale]/_components/BookmarksDeleteAll"
 
-
-
 const taxonomy = [
     {
         id: 1,
@@ -51,10 +49,9 @@ const taxonomy = [
 ]
 
 function Bookmarked() {
-    const { 
-        bookmarks, 
-        handleRemoveBookmark, 
-        // clearAlldItems 
+    const {
+        bookmarks,
+        handleRemoveBookmark,
     } = useBookmarks()
 
     const locale = useLocale()
@@ -122,11 +119,6 @@ function Bookmarked() {
         setSearchValue("")
     }
 
-    // const handleRemoveAll = () => {
-    //     clearAlldItems()
-    //     router.push('/bookmarked')
-    // }
-
     if (!isMounted) {
         return
     }
@@ -136,18 +128,6 @@ function Bookmarked() {
             <div className="mb-6 sm:mb-4 flex flex-col sm:flex-row items-center justify-between">
                 <h2 className={`text-2xl font-medium ${detectLocale(locale)}`}>{t("bookmarkedPageTitle")}</h2>
                 <div className="flex items-center gap-3 my-4 sm:my-0">
-                    {/* <button
-                        className="button-danger !flex items-center gap-2 disabled:opacity-65 disabled:pointer-events-none"
-                        onClick={handleRemoveAll}
-                        disabled={!bookmarks.length}
-                    >
-                        <span>
-                            <TrashIcon width="20" height="20" />
-                        </span>
-                        <span>
-                            {t("deleteAll")}
-                        </span>
-                    </button> */}
                     <BookmarksDeleteAll />
                     <BookmarksModal />
                 </div>
@@ -171,8 +151,20 @@ function Bookmarked() {
                                 className="border w-full rounded-sm px-3 py-2 focus:ring-0 focus:outline-teal-600"
                             />
                             <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-4">
-                                <button onClick={handleSubmit} className="button w-full">{t("search_btn")}</button>
-                                <button onClick={handleReset} className="button-secondary w-full whitespace-nowrap">{t("search_reset_btn")}</button>
+                                <button
+                                    onClick={handleSubmit}
+                                    className="button w-full disabled:opacity-65 disabled:pointer-events-none"
+                                    disabled={searchValue.trim() === ""}
+                                >
+                                    {t("search_btn")}
+                                </button>
+                                <button
+                                    onClick={handleReset}
+                                    className="button-secondary w-full whitespace-nowrap disabled:opacity-65 disabled:pointer-events-none"
+                                    disabled={!data.length}
+                                >
+                                    {t("search_reset_btn")}
+                                </button>
                             </div>
                         </form>
 
@@ -233,7 +225,7 @@ function Bookmarked() {
 
                         {data?.length === 0 && (
                             <p className={`${!bookmarks.length && "hidden"} font-medium`}>
-                                {t("nothing_found")}    
+                                {t("nothing_found")}
                             </p>
                         )}
 
