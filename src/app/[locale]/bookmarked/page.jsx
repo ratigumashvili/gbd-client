@@ -74,9 +74,11 @@ function Bookmarked() {
     }
 
     useLayoutEffect(() => {
-        router.push(pathname + "?rank=" + "All")
-        router.refresh()
-        setSelectedRank("All")
+        if (uniqueRanks.length !== 0) {
+            router.push(pathname + "?rank=" + "All")
+            router.refresh()
+            setSelectedRank("All")
+        }
     }, [])
 
     useEffect(() => {
@@ -109,19 +111,24 @@ function Bookmarked() {
         setSearchValue("")
     }
 
+    const handleRemoveAll = () => {
+        clearAlldItems()
+        router.push('/bookmarked')
+    }
+
     if (!isMounted) {
         return
     }
 
     return (
         <section className="py-4">
-            <div className="mb-4 flex items-center justify-between">
-                <h2 className={`text-2xl font-medium ${detectLocale(locale)}`}>{t("bookmarkedPageTitle")}</h2>
+            <div className="mb-6 sm:mb-4 flex flex-col sm:flex-row gap-y-2 items-center justify-between">
+                <h2 className={`text-2xl font-medium pt-2 ${detectLocale(locale)}`}>{t("bookmarkedPageTitle")}</h2>
                 <div className="flex items center gap-3">
                     <button
                         className="button-danger !flex items-center gap-2 disabled:opacity-65 disabled:pointer-events-none"
-                        onClick={() => clearAlldItems()}
-                        disabled={!data.length}
+                        onClick={handleRemoveAll}
+                        disabled={!bookmarks.length}
                     >
                         <span>
                             <TrashIcon width="20" height="20" />
@@ -134,68 +141,86 @@ function Bookmarked() {
                 </div>
             </div>
 
-            {/* <pre>
-                {JSON.stringify(data, null, 2)}
-            </pre> */}
+            <div className="flex flex-col md:grid md:grid-cols-6 gap-4">
 
-            <div className="grid grid-cols-6 gap-4">
+                <div className="col-span-2">
 
-                <div className="col-span-1">
+                    <div className="flex flex-col gap-4">
 
-                    <div className="flex flex-col gap-y-4">
-
-                        <div>
-                            <label htmlFor="title"></label>
+                        <div className="flex flex-col sm:flex-row md:flex-col gap-4 bg-slate-50 dark:bg-slate-600 rounded-md p-4">
+                            <label htmlFor="title" className="hidden md:block text-lg font-medium">{t("search")}</label>
                             <input
                                 type="text"
                                 name="title"
                                 id="title"
                                 value={searchValue}
                                 onChange={(e) => setSearchValue(e.target.value)}
-                                placeholder={t("search")}
-                                className="border w-full px-2 py-1"
+                                placeholder={t("english_name")}
+                                className="border w-full rounded-sm px-3 py-2 focus:ring-0"
                             />
-                            <button onClick={handleButtonClick}>Search</button>
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <button onClick={handleButtonClick} className="button w-full">{t("search_btn")}</button>
+                                <button onClick={() => setData(bookmarks)} className="button-secondary w-full">{t("search_reset_btn")}</button>
+                            </div>
                         </div>
 
-                        <label className="flex items-center gap-x-2">
-                            <input
-                                type="radio"
-                                name="rank"
-                                value="All"
-                                checked={selectedRank === "All"}
-                                onChange={handleChange}
-                            />
-                            <span className={`cursor-pointer ${selectedRank === "All" ? "text-teal-700" : "text-black"}`}>
-                                {t("all")}
-                            </span>
-                        </label>
-
-                        {taxonomy.map((item) => (
-                            <label key={item.id} className="flex items-center gap-x-2">
+                        <div className="flex flex-row flex-wrap gap-4 bg-slate-50 dark:bg-slate-600 rounded-md p-4">
+                            <p className="hidden md:block text-lg font-medium">{t("filter_taxon")}</p>
+                            <label className="flex items-center gap-x-2">
                                 <input
                                     type="radio"
                                     name="rank"
-                                    value={item.title}
-                                    checked={selectedRank === item.title}
+                                    value="All"
+                                    checked={selectedRank === "All" && uniqueRanks.length !== 0}
                                     onChange={handleChange}
-                                    disabled={!uniqueRanks.includes(item.title)}
+                                    disabled={uniqueRanks.length === 0}
+                                    className="accent-teal-700"
                                 />
-                                <span
-                                    className={`cursor-pointer ${selectedRank === item.title ? "text-teal-700" : "text-black dark:text-gray-100"} 
-                                    ${!uniqueRanks.includes(item.title) ? "opacity-50 cursor-not-allowed" : ""}`}
+                                <span className={`cursor-pointer ${selectedRank === "All" && uniqueRanks.length !== 0 ? "text-teal-700" : "text-black dark:text-gray-100"}
+                            ${uniqueRanks.length === 0 ? "opacity-50 cursor-not-allowed" : ""}`}
+
                                 >
-                                    {item.title}
+                                    {t("all")}
                                 </span>
                             </label>
-                        ))}
+
+                            {taxonomy.map((item) => (
+                                <label key={item.id} className="flex items-center gap-x-2">
+                                    <input
+                                        type="radio"
+                                        name="rank"
+                                        value={item.title}
+                                        checked={selectedRank === item.title}
+                                        onChange={handleChange}
+                                        disabled={!uniqueRanks.includes(item.title)}
+                                        className="accent-teal-700"
+                                    />
+                                    <span
+                                        className={`cursor-pointer ${selectedRank === item.title ? "text-teal-700" : "text-black dark:text-gray-100"} 
+                                    ${!uniqueRanks.includes(item.title) ? "opacity-50 cursor-not-allowed" : ""}`}
+                                    >
+                                        {item.title}
+                                    </span>
+                                </label>
+                            ))}
+                        </div>
+
                     </div>
 
                 </div>
 
-                <div className="col-span-5">
+                <div className="col-span-4">
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+
+                        {bookmarks?.length === 0 && (
+                            <p>{t("no_bookmarks")}</p>
+                        )}
+
+                        {data?.length === 0 && (
+                            <p className={`${!bookmarks.length && "hidden"}`}>nothing found</p>
+                        )}
+
                         {data && data.length !== 0 && [...data]
                             .sort((a, b) => a?.title?.localeCompare(b?.title))
                             .map((item) => (
