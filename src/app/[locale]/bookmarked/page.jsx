@@ -11,8 +11,9 @@ import { useBookmarks } from "@/src/app/[locale]/_hooks/useBookmarks"
 import useIsMounted from "@/src/app/[locale]/_hooks/useIsMounted"
 import RemoveFromFolderIcon from "@/src/app/[locale]/_components/icons/RemoFromFolderIcon"
 import BookmarksModal from "@/src/app/[locale]/_components/BookmarksModal"
-import TrashIcon from "@/src/app/[locale]/_components/icons/TrashIcon"
-import SearchNotFound from "@/src/app/[locale]/_components/SearchNotFound"
+import BookmarksDeleteAll from "@/src/app/[locale]/_components/BookmarksDeleteAll"
+
+
 
 const taxonomy = [
     {
@@ -50,7 +51,11 @@ const taxonomy = [
 ]
 
 function Bookmarked() {
-    const { bookmarks, handleRemoveBookmark, clearAlldItems } = useBookmarks()
+    const { 
+        bookmarks, 
+        handleRemoveBookmark, 
+        // clearAlldItems 
+    } = useBookmarks()
 
     const locale = useLocale()
 
@@ -117,10 +122,10 @@ function Bookmarked() {
         setSearchValue("")
     }
 
-    const handleRemoveAll = () => {
-        clearAlldItems()
-        router.push('/bookmarked')
-    }
+    // const handleRemoveAll = () => {
+    //     clearAlldItems()
+    //     router.push('/bookmarked')
+    // }
 
     if (!isMounted) {
         return
@@ -131,7 +136,7 @@ function Bookmarked() {
             <div className="mb-6 sm:mb-4 flex flex-col sm:flex-row items-center justify-between">
                 <h2 className={`text-2xl font-medium ${detectLocale(locale)}`}>{t("bookmarkedPageTitle")}</h2>
                 <div className="flex items-center gap-3 my-4 sm:my-0">
-                    <button
+                    {/* <button
                         className="button-danger !flex items-center gap-2 disabled:opacity-65 disabled:pointer-events-none"
                         onClick={handleRemoveAll}
                         disabled={!bookmarks.length}
@@ -142,7 +147,8 @@ function Bookmarked() {
                         <span>
                             {t("deleteAll")}
                         </span>
-                    </button>
+                    </button> */}
+                    <BookmarksDeleteAll />
                     <BookmarksModal />
                 </div>
             </div>

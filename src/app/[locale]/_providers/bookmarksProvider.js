@@ -50,7 +50,7 @@ export default function BookmarksProvider({ children }) {
     toast.success(t("bookmark_removed"));
   }, [t]);
 
-  const clearAlldItems = () => {
+  const clearAllItems = () => {
     localStorage.setItem("gbd-bookmarked", JSON.stringify([]));
     localStorage.setItem("gbd-isBookmarked", JSON.stringify([]));
     setBookmarks([])
@@ -66,7 +66,7 @@ export default function BookmarksProvider({ children }) {
   }, [bookmarks, isBookmarked]);
 
   return (
-    <BookmarksContext.Provider value={{ bookmarks, isBookmarked, handleAddBookmark, handleRemoveBookmark, clearAlldItems }}>
+    <BookmarksContext.Provider value={{ bookmarks, isBookmarked, handleAddBookmark, handleRemoveBookmark, clearAllItems }}>
       {children}
     </BookmarksContext.Provider>
   );
