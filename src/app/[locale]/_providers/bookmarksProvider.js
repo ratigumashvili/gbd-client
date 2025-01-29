@@ -33,9 +33,9 @@ export default function BookmarksProvider({ children }) {
     if (isBookmarked.includes(record.id)) return;
 
     if (bookmarks.length >= BOKMARK_LIMIT) {
-        toast.error(t("maximum_items"));
-        return;
-      }
+      toast.error(t("maximum_items"));
+      return;
+    }
 
     setBookmarks((prev) => [...prev, record]);
     setIsBookmarked((prev) => [...prev, record.id]);
@@ -50,6 +50,14 @@ export default function BookmarksProvider({ children }) {
     toast.success(t("bookmark_removed"));
   }, [t]);
 
+  const clearAlldItems = () => {
+    localStorage.setItem("gbd-bookmarked", JSON.stringify([]));
+    localStorage.setItem("gbd-isBookmarked", JSON.stringify([]));
+    setBookmarks([])
+    setIsBookmarked([])
+    toast.success(t("all_bookmarks_removed"));
+  };
+
   useEffect(() => {
     if (isClient) {
       localStorage.setItem("gbd-bookmarked", JSON.stringify(bookmarks));
@@ -58,7 +66,7 @@ export default function BookmarksProvider({ children }) {
   }, [bookmarks, isBookmarked]);
 
   return (
-    <BookmarksContext.Provider value={{ bookmarks, isBookmarked, handleAddBookmark, handleRemoveBookmark }}>
+    <BookmarksContext.Provider value={{ bookmarks, isBookmarked, handleAddBookmark, handleRemoveBookmark, clearAlldItems }}>
       {children}
     </BookmarksContext.Provider>
   );

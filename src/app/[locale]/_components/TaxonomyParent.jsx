@@ -44,11 +44,7 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
         title: data?.metadata?.name,
         scienttificId: data?.metadata?.scientific_name_id,
         rank: data?.metadata?.taxon_rank_title,
-        url: fullUrl,
-        thumbnail: photos && photos.length !== 0 && {
-            url: photos[0].file_url,
-            author: photos[0].author_title
-        }
+        url: fullUrl
     }
 
     return (

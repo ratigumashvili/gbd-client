@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useLayoutEffect } from "react"
 import { Link, usePathname, useRouter } from "@/src/i18n/routing"
 import Image from "next/image"
 import { useSearchParams } from "next/navigation"
@@ -10,8 +10,9 @@ import { useBookmarks } from "@/src/app/[locale]/_hooks/useBookmarks"
 import useIsMounted from "@/src/app/[locale]/_hooks/useIsMounted"
 import { detectLocale } from "@/src/app/[locale]/_lib/helpers"
 import thumbnail from "@/public/logo.svg"
-import RemoFromFolderIcon from "@/src/app/[locale]/_components/icons/RemoFromFolderIcon"
+import RemoveFromFolderIcon from "@/src/app/[locale]/_components/icons/RemoFromFolderIcon"
 import BookmarksModal from "../_components/BookmarksModal"
+import TrashIcon from "../_components/icons/TrashIcon"
 
 const taxonomy = [
     {
@@ -49,7 +50,7 @@ const taxonomy = [
 ]
 
 function Bookmarked() {
-    const { bookmarks, handleRemoveBookmark } = useBookmarks()
+    const { bookmarks, handleRemoveBookmark, clearAlldItems } = useBookmarks()
 
     const locale = useLocale()
 
@@ -62,6 +63,7 @@ function Bookmarked() {
 
     const [data, setData] = useState(bookmarks)
     const [selectedRank, setSelectedRank] = useState(searchParams.get("rank") || "All")
+    const [searchValue, setSearchValue] = useState("")
 
     const uniqueRanks = [... new Set(bookmarks.map((item) => item.rank))]
 
@@ -70,6 +72,12 @@ function Bookmarked() {
         setSelectedRank(selectedValue);
         router.push(pathname + "?rank=" + selectedValue)
     }
+
+    useLayoutEffect(() => {
+        router.push(pathname + "?rank=" + "All")
+        router.refresh()
+        setSelectedRank("All")
+    }, [])
 
     useEffect(() => {
         const rankFilter = searchParams.get("rank")
@@ -88,6 +96,24 @@ function Bookmarked() {
         }
     }, [handleRemoveBookmark, bookmarks])
 
+    useEffect(() => {
+        setSelectedRank(searchParams.get("rank"))
+    }, [router])
+
+
+
+    const handleButtonClick = () => {
+        if (!searchValue.toLowerCase().trim()) return
+        setData(bookmarks.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase())))
+        setSelectedRank("All")
+        setSearchValue("")
+
+    }
+
+    const handleClearAllItems = () => {
+        clearAlldItems();
+    }
+
     if (!isMounted) {
         return
     }
@@ -96,8 +122,26 @@ function Bookmarked() {
         <section className="py-4">
             <div className="mb-4 flex items-center justify-between">
                 <h2 className={`text-2xl font-medium ${detectLocale(locale)}`}>{t("bookmarkedPageTitle")}</h2>
-                <BookmarksModal />
+                <div className="flex items center gap-3">
+                    <button
+                        className="button-danger !flex items-center gap-2 disabled:opacity-65 disabled:pointer-events-none"
+                        onClick={handleClearAllItems}
+                        disabled={!data.length}
+                    >
+                        <span>
+                            <TrashIcon width="20" height="20" />
+                        </span>
+                        <span>
+                            {t("deleteAll")}
+                        </span>
+                    </button>
+                    <BookmarksModal />
+                </div>
             </div>
+
+            {/* <pre>
+                {JSON.stringify(data, null, 2)}
+            </pre> */}
 
             <div className="grid grid-cols-6 gap-4">
 
@@ -111,9 +155,12 @@ function Bookmarked() {
                                 type="text"
                                 name="title"
                                 id="title"
+                                value={searchValue}
+                                onChange={(e) => setSearchValue(e.target.value)}
                                 placeholder={t("search")}
                                 className="border w-full px-2 py-1"
                             />
+                            <button onClick={handleButtonClick}>Search</button>
                         </div>
 
                         <label className="flex items-center gap-x-2">
@@ -155,31 +202,34 @@ function Bookmarked() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {data && data.length !== 0 && [...data]
-                            .sort((a, b) => a.title.localeCompare(b.title))
+                            .sort((a, b) => a?.title?.localeCompare(b?.title))
                             .map((item) => (
-                                <div key={item.id} className="col-span-1 border rounded-md">
-                                    <div className="flex gap-2">
-                                        {t("english_name")}: <h2 className="font-lg font-medium">{item.title}</h2>
-                                    </div>
-                                    <div className="flex gap-2">
-                                        <p>{t("scientific_name_id")}: {item.scienttificId}</p>
-                                    </div>
-                                    <div className="flex gap-2">
-                                        <p>{t("taxon_rank")}: {item.rank}</p>
+                                <article key={item.id} className="col-span-1 border rounded-md">
+
+                                    <div className="p-3 flex flex-col gap-y-3">
+                                        <div className="flex gap-2">
+                                            {t("english_name")}: <h2 className="font-lg font-medium">{item.title}</h2>
+                                        </div>
+                                        <div className="flex gap-2">
+                                            <p>{t("scientific_name_id")}: {item.scienttificId}</p>
+                                        </div>
+                                        <div className="flex gap-2">
+                                            <p>{t("taxon_rank")}: {item.rank}</p>
+                                        </div>
                                     </div>
 
-                                    <div className="flex items-center gap-x-4">
+                                    <div className="flex gap-x-2 items-center justify-end border-t p-3">
                                         <Link href={item.url} className="button">{t("view")}</Link>
                                         <button
                                             onClick={() => handleRemoveBookmark(item.id)}
                                             className="button-danger !flex"
+                                            title={t("remove")}
                                         >
-                                            <RemoFromFolderIcon width="20" height="20" />
-                                            <span className="pl-2">{t("remove")}</span>
+                                            <RemoveFromFolderIcon width="20" height="20" />
                                         </button>
                                     </div>
 
-                                </div>
+                                </article>
                             ))
                         }
                     </div>
@@ -193,3 +243,4 @@ function Bookmarked() {
 }
 
 export default Bookmarked
+

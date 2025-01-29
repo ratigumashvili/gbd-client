@@ -48,7 +48,7 @@ function BookmarksModal() {
     return (
         <>
             <button type="button" onClick={openModal}>
-                <QuestionIcon />
+                <QuestionIcon width='30' height='30' />
             </button>
 
             <Transition appear show={isOpen} as={Fragment}>

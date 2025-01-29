@@ -1,4 +1,4 @@
-const RemoFromFolderIcon = ({width="24", height="24"}) => (
+const RemoveFromFolderIcon = ({width="24", height="24"}) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width}
@@ -15,4 +15,4 @@ const RemoFromFolderIcon = ({width="24", height="24"}) => (
     </svg>
   );
   
-  export default RemoFromFolderIcon;
+  export default RemoveFromFolderIcon;
