@@ -21,30 +21,15 @@ function BookmarksCart() {
     }
 
     return (
-        <>
-            {/* {bookmarks && bookmarks?.length !== 0 && (
-                <div className="flex items-center gap-2 font-firaGo">
-                    <span className="relative">
-                        <FolderIcon width="20" height="20" />
-                        <span className={`absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center text-[10px] ${cartColor}`}>
-                            {bookmarks.length}
-                        </span>
-                    </span>
-                    <Link href={'/bookmarked'}>{t("bookmark")} </Link>
-                </div>
-            )} */}
-
-            <div className="flex items-center gap-2 font-firaGo">
-                <span className="relative">
-                    <FolderIcon width="20" height="20" />
-                    <span className={`absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center text-[10px] ${cartColor}`}>
-                        {bookmarks.length}
-                    </span>
+        <div className="flex items-center gap-2 font-firaGo">
+            <span className="relative">
+                <FolderIcon width="20" height="20" />
+                <span className={`absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center text-[10px] ${cartColor}`}>
+                    {bookmarks.length}
                 </span>
-                <Link href={'/bookmarked'}>{t("bookmark")} </Link>
-            </div>
-
-        </>
+            </span>
+            <Link href={'/bookmarked'}>{t("bookmark")} </Link>
+        </div>
     )
 }
 

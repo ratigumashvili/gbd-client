@@ -5,7 +5,7 @@ import { sanitize } from "@/src/app/[locale]/_lib/helpers"
 async function TeamLayout({ children, params }) {
     const { data: teamAppreciation } = await getData('static-page/researcher', params.locale)
     return (
-        <section>
+        <section className="py-4">
             <PageTitle />
             <RoleTranslate />
             {children}

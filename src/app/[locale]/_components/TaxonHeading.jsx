@@ -22,8 +22,7 @@ function TaxonHeading({ headingData }) {
         url,
         isSpecie = false,
         status = null,
-        evaluatedBy = null,
-        thumbnail = thumb
+        evaluatedBy = null
     } = headingData
 
     const storageInfo = {
@@ -31,8 +30,7 @@ function TaxonHeading({ headingData }) {
         scienttificId,
         title,
         rank,
-        url,
-        thumbnail
+        url
     }
 
     const { handleAddBookmark, handleRemoveBookmark, isBookmarked } = useBookmarks()

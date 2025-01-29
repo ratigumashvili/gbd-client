@@ -93,4 +93,4 @@ export const RESEARCHERS_PER_PAGE = 100
 export const SPECIES_PER_PAGE = 5
 export const TAXON_PER_PAGE = 4
 
-export const BOKMARK_LIMIT = 10
+export const BOKMARK_LIMIT = 30
