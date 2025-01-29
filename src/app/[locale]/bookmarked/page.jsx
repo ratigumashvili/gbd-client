@@ -107,11 +107,6 @@ function Bookmarked() {
         setData(bookmarks.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase())))
         setSelectedRank("All")
         setSearchValue("")
-
-    }
-
-    const handleClearAllItems = () => {
-        clearAlldItems();
     }
 
     if (!isMounted) {
@@ -125,7 +120,7 @@ function Bookmarked() {
                 <div className="flex items center gap-3">
                     <button
                         className="button-danger !flex items-center gap-2 disabled:opacity-65 disabled:pointer-events-none"
-                        onClick={handleClearAllItems}
+                        onClick={() => clearAlldItems()}
                         disabled={!data.length}
                     >
                         <span>
