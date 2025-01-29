@@ -5,10 +5,12 @@ import { createContext, useState, useEffect, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { toast } from "react-toastify";
 
+import { BOKMARK_LIMIT } from "@/src/app/[locale]/_lib/constants";
+
 export const BookmarksContext = createContext(null);
 
 export default function BookmarksProvider({ children }) {
-  const general = useTranslations("Common");
+  const t = useTranslations("Common");
 
   const isClient = typeof window !== "undefined";
 
@@ -26,12 +28,11 @@ export default function BookmarksProvider({ children }) {
   const [bookmarks, setBookmarks] = useState(() => getStoredData("gbd-bookmarked", []));
   const [isBookmarked, setIsBookmarked] = useState(() => getStoredData("gbd-isBookmarked", []));
 
-  const LIMIT = 10
 
   const handleAddBookmark = useCallback((record) => {
     if (isBookmarked.includes(record.id)) return;
 
-    if (bookmarks.length >= LIMIT) {
+    if (bookmarks.length >= BOKMARK_LIMIT) {
         toast.error(t("maximum_items"));
         return;
       }
@@ -39,15 +40,15 @@ export default function BookmarksProvider({ children }) {
     setBookmarks((prev) => [...prev, record]);
     setIsBookmarked((prev) => [...prev, record.id]);
 
-    toast.success(general("bookmark_added"));
-  }, [isBookmarked, general]);
+    toast.success(t("bookmark_added"));
+  }, [isBookmarked, t]);
 
   const handleRemoveBookmark = useCallback((idToDelete) => {
     setBookmarks((prev) => prev.filter((item) => item.id !== idToDelete));
     setIsBookmarked((prev) => prev.filter((item) => item !== idToDelete));
 
-    toast.success(general("bookmark_removed"));
-  }, [general]);
+    toast.success(t("bookmark_removed"));
+  }, [t]);
 
   useEffect(() => {
     if (isClient) {

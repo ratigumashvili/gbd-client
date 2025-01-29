@@ -10,6 +10,8 @@ import { useBookmarks } from "@/src/app/[locale]/_hooks/useBookmarks"
 import useIsMounted from "@/src/app/[locale]/_hooks/useIsMounted"
 import { detectLocale } from "@/src/app/[locale]/_lib/helpers"
 import thumbnail from "@/public/logo.svg"
+import RemoFromFolderIcon from "@/src/app/[locale]/_components/icons/RemoFromFolderIcon"
+import BookmarksModal from "../_components/BookmarksModal"
 
 const taxonomy = [
     {
@@ -49,19 +51,19 @@ const taxonomy = [
 function Bookmarked() {
     const { bookmarks, handleRemoveBookmark } = useBookmarks()
 
-    const [data, setData] = useState(bookmarks)
-    const [selectedRank, setSelectedRank] = useState("All")
-
-
     const locale = useLocale()
+
+    const searchParams = useSearchParams()
 
     const router = useRouter()
     const pathname = usePathname()
-    const searchParams = useSearchParams()
-
     const t = useTranslations("Common")
-
     const { isMounted } = useIsMounted()
+
+    const [data, setData] = useState(bookmarks)
+    const [selectedRank, setSelectedRank] = useState(searchParams.get("rank") || "All")
+
+    // const selectedRadio = searchParams.get("rank")
 
     const uniqueRanks = [... new Set(bookmarks.map((item) => item.rank))]
 
@@ -79,7 +81,7 @@ function Bookmarked() {
                 ? bookmarks
                 : bookmarks.filter((item) => item.rank === rankFilter)
         )
-    }, [bookmarks, searchParams])
+    }, [router, bookmarks, searchParams])
 
     if (!isMounted) {
         return
@@ -87,17 +89,28 @@ function Bookmarked() {
 
     return (
         <section className="py-4">
-            <h2 className={`text-2xl font-medium mb-4 ${detectLocale(locale)}`}>{t("bookmarkedPageTitle")}</h2>
-            {/* {JSON.stringify(searchParams.get("rank"), null, 2)} */}
-            {/* <pre>
-                {JSON.stringify(test, null, 2)}
-            </pre> */}
+            <div className="mb-4 flex items-center justify-between">
+                <h2 className={`text-2xl font-medium ${detectLocale(locale)}`}>{t("bookmarkedPageTitle")}</h2>
+                <BookmarksModal />
+            </div>
 
-            <div className="grid grid-cols-6">
+            <div className="grid grid-cols-6 gap-4">
 
                 <div className="col-span-2">
 
                     <div className="flex flex-col gap-y-4">
+
+                        <div>
+                            <label htmlFor="title"></label>
+                            <input
+                                type="text"
+                                name="title"
+                                id="title"
+                                placeholder={t("search")}
+                                className="border w-full px-2 py-1"
+                            />
+                        </div>
+
                         <label className="flex items-center gap-x-2">
                             <input
                                 type="radio"
@@ -107,7 +120,7 @@ function Bookmarked() {
                                 onChange={handleChange}
                             />
                             <span className={`cursor-pointer ${selectedRank === "All" ? "text-teal-700" : "text-black"}`}>
-                                Show all
+                                {t("all")}
                             </span>
                         </label>
 
@@ -122,7 +135,7 @@ function Bookmarked() {
                                     disabled={!uniqueRanks.includes(item.title)}
                                 />
                                 <span
-                                    className={`cursor-pointer ${selectedRank === item.title ? "text-teal-700" : "text-black"} 
+                                    className={`cursor-pointer ${selectedRank === item.title ? "text-teal-700" : "text-black dark:text-gray-100"} 
                                     ${!uniqueRanks.includes(item.title) ? "opacity-50 cursor-not-allowed" : ""}`}
                                 >
                                     {item.title}
@@ -141,15 +154,26 @@ function Bookmarked() {
                             .map((item) => (
                                 <div key={item.id} className="col-span-1 border rounded-md">
                                     <div className="flex gap-2">
-                                        Name: <h2 className="font-lg font-medium">{item.title}</h2>
+                                        {t("english_name")}: <h2 className="font-lg font-medium">{item.title}</h2>
                                     </div>
                                     <div className="flex gap-2">
-                                        <p>Scientific name id: {item.scienttificId}</p>
+                                        <p>{t("scientific_name_id")}: {item.scienttificId}</p>
                                     </div>
                                     <div className="flex gap-2">
-                                        <p>Taxon rank: {item.rank}</p>
+                                        <p>{t("taxon_rank")}: {item.rank}</p>
                                     </div>
-                                    <Link href={item.url} className="button">View record</Link>
+
+                                    <div className="flex items-center gap-x-4">
+                                        <Link href={item.url} className="button">{t("view")}</Link>
+                                        <button
+                                            onClick={() => handleRemoveBookmark(item.id)}
+                                            className="button-danger !flex"
+                                        >
+                                            <RemoFromFolderIcon width="20" height="20" />
+                                            <span className="pl-2">{t("remove")}</span>
+                                        </button>
+                                    </div>
+
                                 </div>
                             ))
                         }
@@ -159,9 +183,6 @@ function Bookmarked() {
 
             </div>
 
-            <pre>
-                {JSON.stringify(bookmarks, null, 2)}
-            </pre>
         </section>
     )
 }

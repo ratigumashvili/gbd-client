@@ -11,6 +11,7 @@ import { TopMenu } from "../_lib/constants"
 import AuthModal from "./AuthModal"
 import SearchModal from "./SearchModal"
 import ThemeChangeBtn from "./ThemeChangeBtn"
+import BookmarksCart from "./BookmarksCart"
 
 import Hamburger from "./icons/Hamburger"
 import Close from "./icons/Close"
@@ -133,6 +134,7 @@ function Header({ locale }) {
 
                         <LanguageSwitcher locale={locale} />
                         <ThemeChangeBtn />
+                        <BookmarksCart />
                         <SearchModal />
 
                     </div>

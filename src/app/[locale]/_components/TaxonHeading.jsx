@@ -42,8 +42,6 @@ function TaxonHeading({ headingData }) {
 
     return (
         <div className='flex flex-1 items-center justify-between pr-4 gap-4'>
-            {/* {JSON.stringify(thumb, null, 2)}
-            <img src={thumb.src} />???????????? */}
             {isSpecie ? (
                 <h2 className="text-2xl font-medium">{title}
                     <Check status={status} evaluated={evaluatedBy} />
