@@ -83,6 +83,13 @@ function Bookmarked() {
         )
     }, [router, bookmarks, searchParams])
 
+    useEffect(() => {
+        const rankFilter = searchParams.get("rank")
+        if (!uniqueRanks.includes(rankFilter)) {
+            setSelectedRank("All")
+        }
+    }, [handleRemoveBookmark, bookmarks])
+
     if (!isMounted) {
         return
     }
@@ -96,7 +103,7 @@ function Bookmarked() {
 
             <div className="grid grid-cols-6 gap-4">
 
-                <div className="col-span-2">
+                <div className="col-span-1">
 
                     <div className="flex flex-col gap-y-4">
 
@@ -146,7 +153,7 @@ function Bookmarked() {
 
                 </div>
 
-                <div className="col-span-4">
+                <div className="col-span-5">
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {data && data.length !== 0 && [...data]
