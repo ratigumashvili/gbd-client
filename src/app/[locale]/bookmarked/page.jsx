@@ -63,8 +63,6 @@ function Bookmarked() {
     const [data, setData] = useState(bookmarks)
     const [selectedRank, setSelectedRank] = useState(searchParams.get("rank") || "All")
 
-    // const selectedRadio = searchParams.get("rank")
-
     const uniqueRanks = [... new Set(bookmarks.map((item) => item.rank))]
 
     const handleChange = (event) => {

@@ -91,7 +91,7 @@ function BookmarksModal() {
                                         </div>
                                     </Dialog.Title>
                                     <Dialog.Description className='leading-8 mb-8'>
-                                        {t("ls_message")} {confirm ? "true" : "false"}
+                                        {t("ls_message")}
                                     </Dialog.Description>
                                     <div className='flex items-center justify-end gap-2'>
                                         <button onClick={closeModal} className='button px-2 py-3'>
