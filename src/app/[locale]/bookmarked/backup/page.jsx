@@ -70,10 +70,6 @@ function Bookmarked() {
 
     const uniqueRanks = [... new Set(bookmarks.map((item) => item.rank))]
 
-    const handleReset = () => {
-        setData(bookmarks)
-    }
-
     useEffect(() => {
         const rankFilter = searchParams.get("rank");
         const titleFilter = searchParams.get("title");
@@ -113,7 +109,7 @@ function Bookmarked() {
             skipEmptyStrings: true
         })
 
-        router.push(pathname + "?" + result)
+        router.push(pathname + "?" + result, { scroll: false })
 
         event.target.reset()
     }
@@ -165,24 +161,25 @@ function Bookmarked() {
                                     >
                                         {t("search_btn")}
                                     </button>
-                                    <button
-                                        onClick={handleReset}
+                                    <Link
+                                        href={'/bookmarked/backup'}
                                         className="button-secondary w-full whitespace-nowrap disabled:opacity-65 disabled:pointer-events-none"
-                                        disabled={!data.length}
                                     >
                                         {t("search_reset_btn")}
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div className="col-span-4">
-                    <div className="col-span-4 mb-4">
-                        {searchParams?.size !== 0 && (
+
+                    {searchParams?.size !== 0 && (
+                        <div className="col-span-4 mb-4">
                             <SearchParameters length={data?.length} />
-                        )}
-                    </div>
+                        </div>
+                    )}
+
                     <div className="col-span-4">
                         {bookmarks?.length === 0 && (
                             <p className="font-medium">{t("no_bookmarks")}</p>
