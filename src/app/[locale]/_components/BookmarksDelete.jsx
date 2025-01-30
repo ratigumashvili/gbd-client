@@ -2,7 +2,6 @@
 
 import { useState, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import TrashIcon from "@/src/app/[locale]/_components/icons/TrashIcon"
 
 import { useBookmarks } from "@/src/app/[locale]/_hooks/useBookmarks"
 import { useRouter } from "@/src/i18n/routing";
@@ -11,8 +10,16 @@ import { useTranslations } from "next-intl";
 import Alert from "./icons/Alert";
 import Close from "./icons/Close";
 
-export default function BookmarksDeleteAll() {
-    const { bookmarks, clearAllItems } = useBookmarks();
+export default function BookmarksDelete({ 
+    deleteAll = false, 
+    id = null, 
+    disabled = false, 
+    title = "", 
+    btnTitle = "", 
+    icon, 
+    message 
+}) {
+    const { clearAllItems, handleRemoveBookmark } = useBookmarks();
     const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
     const t = useTranslations("Common")
@@ -24,7 +31,7 @@ export default function BookmarksDeleteAll() {
     const handleRemoveAll = () => {
         clearAllItems();
         closeModal();
-        router.push("/bookmarked");
+        router.push("/bookmarked", {scroll: false});
     };
 
     return (
@@ -32,14 +39,17 @@ export default function BookmarksDeleteAll() {
             <button
                 className="button-danger !flex items-center gap-2 disabled:opacity-65 disabled:pointer-events-none"
                 onClick={openModal}
-                disabled={!bookmarks.length}
+                disabled={disabled}
+                title={btnTitle}
             >
                 <span>
-                    <TrashIcon width="20" height="20" />
+                    {icon}
                 </span>
-                <span>
-                    {t("deleteAll")}
-                </span>
+                {title && (
+                    <span>
+                        {title}
+                    </span>
+                )}
             </button>
 
             <Transition appear show={isOpen} as={Fragment}>
@@ -82,15 +92,21 @@ export default function BookmarksDeleteAll() {
                                         </div>
                                     </Dialog.Title>
                                     <Dialog.Description className='leading-8 mb-8'>
-                                        {t("deleteAllMessage")}
+                                        {message}
                                     </Dialog.Description>
                                     <div className='flex items-center justify-end gap-2'>
                                         <button onClick={closeModal} className="button-secondary">
                                             {t("close")}
                                         </button>
-                                        <button onClick={handleRemoveAll} className="button-danger">
-                                            {t("confirm")}
-                                        </button>
+                                        {deleteAll ? (
+                                            <button onClick={handleRemoveAll} className="button-danger">
+                                                {t("confirm")}
+                                            </button>
+                                        ) : (
+                                            <button onClick={() => handleRemoveBookmark(id)} className="button-danger">
+                                                {t("confirm")}
+                                            </button>
+                                        )}
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>

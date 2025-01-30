@@ -78,6 +78,7 @@
     "filter_taxon": "Filter by taxonomy",
     "nothing_found": "Nothing was found with the given name, please try other search options.",
     "deleteAllMessage": "Are you sure you want to perform this action? This will completely delete your previously saved records from the browser's local memory.",
+    "deleteBookmark": "Are you sure you want to perform this action? This will delete this entrie from your local browser history.",
     "cancel": "Cancel",
     "confirm": "Confirm",
     "filter_title": "Records filter"
