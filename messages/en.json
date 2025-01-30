@@ -293,6 +293,7 @@
     "LC": "Least concern (LC)",
     "DD": "Data deficient (DD)",
     "NE": "Not evaluated (NE)",
-    "RE": "Regionally Extinct (RE)"
+    "RE": "Regionally Extinct (RE)",
+    "NA": "Not Applicable (NA)"
   }
 }

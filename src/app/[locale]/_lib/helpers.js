@@ -149,6 +149,9 @@ export const getStatus = (value) => {
         case "RE":
             fullStatus = "Regionally Extinct (RE)";
             break;
+        case "NA":
+            fullStatus = "Not Applicable (NA)";
+            break;
         default: break;
     }
 
@@ -167,34 +170,37 @@ export const getChartColors = (value) => {
 
     switch (value) {
         case "EX":
-            color = "#646464";
+            color = "#000000";
             break;
         case "EW":
-            color = "#9269c7";
+            color = "#542344";
             break;
         case "CR":
-            color = "#cd6161";
+            color = "#D81E05";
             break;
         case "EN":
-            color = "#da8656";
+            color = "#FC7F3F";
             break;
         case "VU":
-            color = "#deae4f";
+            color = "#F9E814";
             break;
         case "NT":
-            color = "#e0cc54";
+            color = "#CCE226";
             break;
         case "LC":
-            color = "#85bb76";
+            color = "#60C659";
             break;
         case "DD":
-            color = "#838383";
+            color = "#D1D1C6";
             break;
         case "NE":
-            color = "#b6b6b6";
+            color = "#fffff9";
             break;
         case "RE":
-            color = "#649bcc";
+            color = "#9B4F96";
+            break;
+        case "NA":
+            color = "#C1B5A5";
             break;
         default: break;
     }
@@ -205,24 +211,23 @@ export const getChartColors = (value) => {
 export const getValue = (value) => {
     let level;
     switch (true) {
-      case value === 0:
-        level = 0;
-        break;
-      case value === 1 || value === 2:
-        level = 1;
-        break;
-      case value >= 3 && value < 5:
-        level = 2;
-        break;
-      case value >= 5 && value < 7:
-        level = 3;
-        break;
-      case value >= 7:
-        level = 4;
-        break;
-      default:
-        level = 0;
+        case value === 0:
+            level = 0;
+            break;
+        case value === 1 || value === 2:
+            level = 1;
+            break;
+        case value >= 3 && value < 5:
+            level = 2;
+            break;
+        case value >= 5 && value < 7:
+            level = 3;
+            break;
+        case value >= 7:
+            level = 4;
+            break;
+        default:
+            level = 0;
     }
     return level;
-  };
-  
+};
