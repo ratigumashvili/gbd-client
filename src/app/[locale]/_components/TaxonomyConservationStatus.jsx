@@ -167,7 +167,7 @@ export default function TaxonomyConservationStatus({ taxonName, totalCount, code
     if (!isMounted) return null;
 
     return (
-        <section className="border bg-slate-50/50 dark:bg-slate-600 rounded-md my-8 p-6">
+        <section className="border bg-slate-50 dark:bg-slate-600 rounded-md my-8 p-6">
             <ComponentTitle taxonName={taxonName} totalCount={totalCount} />
 
             <div className="flex flex-col gap-8 lg:grid lg:grid-cols-3">
