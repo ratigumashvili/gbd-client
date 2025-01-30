@@ -17,15 +17,15 @@ body,
 }
 
 .button {
-    @apply border border-teal-600 bg-teal-600 hover:bg-teal-700 hover:border-teal-700 text-white px-3 py-2 rounded-md text-sm inline-block transition-all ease-in;
+    @apply border border-teal-600 bg-teal-600 hover:bg-teal-700 hover:border-teal-700 text-white px-4 py-2 rounded-md text-sm inline-block transition-all ease-in;
 }
 
 .button-secondary {
-    @apply border border-teal-600 bg-white hover:bg-teal-700 text-teal-700 hover:text-white px-3 py-2 rounded-md text-sm inline-block transition-all ease-in;
+    @apply border bg-gray-200 text-gray-800 hover:bg-gray-300 px-4 py-2 rounded-md text-sm inline-block transition-all ease-in;
 }
 
 .button-danger {
-    @apply bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md text-sm inline-block transition-all ease-in;
+    @apply bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm inline-block transition-all ease-in;
 }
 
 .link {

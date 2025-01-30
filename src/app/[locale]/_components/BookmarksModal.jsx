@@ -94,13 +94,13 @@ function BookmarksModal() {
                                         {t("ls_message")}
                                     </Dialog.Description>
                                     <div className='flex items-center justify-end gap-2'>
-                                        <button onClick={closeModal} className='button px-2 py-3'>
+                                        <button onClick={closeModal} className='button-secondary px-2 py-3'>
                                             {t("close")}
                                         </button>
                                         {!confirm && (
                                             <button
                                                 onClick={handleClick}
-                                                className='button-danger px-2 py-3'
+                                                className='button px-2 py-3'
                                             >
                                                 {t("do_not_show")}
                                             </button>

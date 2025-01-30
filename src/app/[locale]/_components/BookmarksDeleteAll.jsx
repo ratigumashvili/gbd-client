@@ -85,10 +85,10 @@ export default function BookmarksDeleteAll() {
                                         {t("deleteAllMessage")}
                                     </Dialog.Description>
                                     <div className='flex items-center justify-end gap-2'>
-                                        <button onClick={closeModal} className="px-4 py-2 bg-gray-200 text-gray-800 rounded">
+                                        <button onClick={closeModal} className="button-secondary">
                                             {t("close")}
                                         </button>
-                                        <button onClick={handleRemoveAll} className="px-4 py-2 bg-red-600 text-white rounded">
+                                        <button onClick={handleRemoveAll} className="button-danger">
                                             {t("confirm")}
                                         </button>
                                     </div>
