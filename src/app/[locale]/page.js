@@ -18,7 +18,7 @@ export default function Home({ params }) {
         <h1 className={`main-title ${detectLocale(params.locale)}`}>{t('title')}</h1>
         <sup className="text-xs">Vers. 2.0</sup>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-y-4 sm:gap-y-4 mb-4">
         <HomePageAbout locale={params.locale} />
         <PopularMenu locale={params.locale} />
       </div>

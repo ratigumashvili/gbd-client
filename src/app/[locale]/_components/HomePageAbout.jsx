@@ -8,7 +8,7 @@ import { sanitize } from '@/src/app/[locale]/_lib/helpers';
 
 const ComponentTitle = () => {
   const t = useTranslations('Index');
-  return <h2 className="text-xl font-medium mb-4">{t("about_title")}</h2> 
+  return <h2 className="text-2xl font-medium mb-4">{t("about_title")}</h2> 
 }
 
 const ReadMore = () => {
@@ -21,7 +21,7 @@ const HomePageAbout = async ({locale}) => {
   const {data} = await getData('static-page/about', locale)
   
   return (
-    <div className="p-4 bg-slate-50 dark:bg-slate-700 rounded-md col-span-2">
+    <div className="p-4 bg-slate-50 dark:bg-slate-700 rounded-md col-span-2 md:mr-4">
       <ComponentTitle />
       <div
         dangerouslySetInnerHTML={{ __html: sanitize(data?.meta_data_localized?.intro)}}
