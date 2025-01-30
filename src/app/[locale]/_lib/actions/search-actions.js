@@ -1,37 +1,37 @@
+import qs from 'qs';
+
 export async function handleSimpleSearch(formData) {
 
-  const queryParams = {}
+  const name = formData.get("lge").trim()
 
-  if (formData.get("lge").trim() !== "") {
-    queryParams.name = formData.get("lge")
+  const queryParams = {
+    name: name || undefined
   }
 
-  const queryParamString = new URLSearchParams(queryParams).toString()
+  const result = qs.stringify(queryParams, {
+    skipNulls: true,
+    skipEmptyStrings: true
+  })
 
-  return queryParamString
+  return result
 }
 
 export async function handleAdvancedSearch(formData) {
 
-  const queryParams = {};
-
   const taxonRankValue = formData.get("taxon_rank")?.trim();
-
-  if (taxonRankValue) {
-    queryParams.taxon_rank = taxonRankValue;
-  }
-
   const latinNameValue = formData.get("latin_name")?.trim();
-  if (latinNameValue) {
-    queryParams.latin_name = latinNameValue;
-  }
-
   const iucnValue = formData.get("iucn")?.trim();
-  if (iucnValue) {
-    queryParams.iucn = iucnValue;
-  }
+  
+  const queryParams = {
+    rank: taxonRankValue || undefined,
+    name: latinNameValue || undefined,
+    iucn: iucnValue || undefined
+  };
 
-  const queryParamString = new URLSearchParams(queryParams).toString();
+  const result = qs.stringify(queryParams, {
+    skipNulls: true,
+    skipEmptyStrings: true
+  })
 
-  return queryParamString
+  return result
 }
