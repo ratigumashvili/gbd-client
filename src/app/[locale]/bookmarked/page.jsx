@@ -217,7 +217,7 @@ function Bookmarked() {
                                             id={item.id}
                                             disabled={!bookmarks.length}
                                             btnTitle={t("remove")}
-                                            icon={<RemoveFromFolderIcon />}
+                                            icon={<RemoveFromFolderIcon width="22" height="22" />}
                                             message={t("deleteBookmark")}
                                         />
                                     </div>

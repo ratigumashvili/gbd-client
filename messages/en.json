@@ -73,7 +73,7 @@
     "ls_message": "Please note that the bookmarked data is stored in your browser's local memory and is only accessible in the browser of the device with which the specific entry was marked.",
     "close": "close",
     "do_not_show": "Do not show this message again",
-    "search_btn": "Search",
+    "search_btn": "Filter",
     "search_reset_btn": "Reset",
     "filter_taxon": "Filter by taxonomy",
     "nothing_found": "Nothing was found with the given name, please try other search options.",
