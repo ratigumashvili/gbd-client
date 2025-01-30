@@ -79,7 +79,8 @@
     "nothing_found": "Nothing was found with the given name, please try other search options.",
     "deleteAllMessage": "Are you sure you want to perform this action? This will completely delete your previously saved records from the browser's local memory.",
     "cancel": "Cancel",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "filter_title": "Records filter"
   },
   "Header": {
     "isu": "Ilia State University",
@@ -123,7 +124,14 @@
     "select_taxon_rank": "Select taxonomy",
     "select_iucn": "Select IUCN Category",
     "submit": "Submit",
-    "nothing_found": "Nothing found, please try other search options."
+    "nothing_found": "Nothing found, please try other search options.",
+    "parameters": "Search parameters",
+    "rank": "Taxon",
+    "english_name": "English Name",
+    "scientific_name_id": "Scientific Name ID",
+    "title": "English Name",
+    "found": "Found",
+    "records": "Records"
   },
   "Index": {
     "title": "Georgian Biodiversity Database",

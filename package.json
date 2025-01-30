@@ -26,6 +26,7 @@
     "next-intl": "^3.26.3",
     "next-themes": "^0.3.0",
     "postcss": "8.4.38",
+    "qs": "^6.9.5",
     "react": "18.2.0",
     "react-activity-calendar": "^2.7.7",
     "react-apexcharts": "^1.7.0",
