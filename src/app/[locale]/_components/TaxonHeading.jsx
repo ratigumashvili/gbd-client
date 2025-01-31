@@ -64,7 +64,8 @@ function TaxonHeading({ headingData }) {
                 {orgChartData && (
                     <button
                         onClick={() => { }}
-                        className="disabled:opacity-50 disabled:pointer-events-none"
+                        className="disabled:opacity-50 disabled:cursor-not-allowed"
+                        disabled
                         title={t("taxOrder")}
                     >
                         <OrgChartIcon width="25" height="25" />
