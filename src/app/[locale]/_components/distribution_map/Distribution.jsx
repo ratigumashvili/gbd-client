@@ -6,6 +6,7 @@ import { Icon } from 'leaflet';
 import { TileLayer, MapContainer, Marker, Popup } from "react-leaflet";
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import { HeatmapLayer } from "react-leaflet-heatmap-layer-v3";
+import L from "leaflet";
 import { Tab } from '@headlessui/react'
 
 import "leaflet/dist/leaflet.css";
@@ -72,6 +73,7 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
                             center={[41.945963247270214, 43.87883890700455]}
                             zoom={7}
                             style={{ height: "450px", width: "100%", zIndex: '10' }}
+                            renderer={L.canvas({ willReadFrequently: true })}
                         >
                             <TileLayer
                                 // attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -112,6 +114,7 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
                             center={[41.99515909778738, 43.8193140872058]}
                             zoom={8}
                             style={{ height: "450px", width: "100%", zIndex: '10' }}
+                            renderer={L.canvas({ willReadFrequently: true })}
                         >
                             <HeatmapLayer
                                 fitBoundsOnLoad

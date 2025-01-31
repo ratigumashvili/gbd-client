@@ -20,7 +20,6 @@ const Footer = ({locale}) => {
                 <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                     <div>
                         <FooterSubscribe />
-
                         <ul className="mt-8 flex justify-center gap-6 sm:justify-start md:gap-8">
                             <li>
                                 <Link

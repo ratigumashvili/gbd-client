@@ -4,6 +4,7 @@ import { useRouter } from "@/src/i18n/routing"
 import { useTranslations } from "next-intl"
 
 import { useBookmarks } from "@/src/app/[locale]/_hooks/useBookmarks"
+import useIsMounted from "@/src/app/[locale]/_hooks/useIsMounted"
 
 import GoBack from "./icons/GoBack"
 import BookmarkMinus from "./icons/BookmarkMinus"
@@ -11,6 +12,7 @@ import BookmarkPlus from "./icons/BookmarkPlus"
 import { Check } from "./Check"
 
 import thumb from "@/public/logo.svg"
+import OrgChartIcon from "./icons/OrgChartIcon"
 
 function TaxonHeading({ headingData }) {
 
@@ -22,7 +24,8 @@ function TaxonHeading({ headingData }) {
         url,
         isSpecie = false,
         status = null,
-        evaluatedBy = null
+        evaluatedBy = null,
+        orgChartData
     } = headingData
 
     const storageInfo = {
@@ -33,10 +36,16 @@ function TaxonHeading({ headingData }) {
         url
     }
 
-    const { handleAddBookmark, handleRemoveBookmark, isBookmarked } = useBookmarks()
-    const router = useRouter()
+    const { isMounted } = useIsMounted()
 
+    const router = useRouter()
     const t = useTranslations("Common")
+
+    const { handleAddBookmark, handleRemoveBookmark, isBookmarked } = useBookmarks()
+
+    if (!isMounted) {
+        return
+    }
 
     return (
         <div className='flex flex-1 items-center justify-between pr-4 gap-4'>
@@ -51,6 +60,17 @@ function TaxonHeading({ headingData }) {
                 <button onClick={() => router.back()} title={t("goBack")}>
                     <GoBack width="22" heigth="22" />
                 </button>
+
+                {orgChartData && (
+                    <button
+                        onClick={() => { }}
+                        className="disabled:opacity-50 disabled:pointer-events-none"
+                        title={t("taxOrder")}
+                    >
+                        <OrgChartIcon width="25" height="25" />
+                    </button>
+                )}
+
                 {isBookmarked.includes(scienttificId) ? (
                     <button title={t("bookmarkRemove")} onClick={() => handleRemoveBookmark(storageInfo.id)}>
                         <BookmarkMinus />

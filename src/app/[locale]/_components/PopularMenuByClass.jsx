@@ -113,7 +113,7 @@ function PopularMenuByClass({ locale }) {
                   width={70}
                   height={70}
                   alt={item.title}
-                  className='opacity-60 group-hover:opacity-80 w-16 h-16 md:w-[50px] md:h-[50px] lg:w-16 lg:h-16'
+                  className='opacity-60 group-hover:opacity-80 w-14 h-14 md:w-[50px] md:h-[50px] lg:w-14 lg:h-14'
                 />
               </div>
             </div>

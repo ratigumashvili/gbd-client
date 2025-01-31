@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "@/src/i18n/routing";
 import { useTranslations } from "next-intl";
+import { useRouter } from "@/src/i18n/routing";
 import {handleAdvancedSearch} from "@/src/app/[locale]/_lib/actions/search-actions"
 
 import SearchIcon from "./icons/SearchIcon";

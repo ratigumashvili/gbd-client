@@ -16,15 +16,13 @@ import { checkLink, separator } from "@/src/app/[locale]/_lib/helpers"
 import { fungiTree } from '../_lib/data'
 import { sanitize } from '@/src/app/[locale]/_lib/helpers'
 import { useFullUrl } from '@/src/app/[locale]/_hooks/useFullUrl'
+import { usePathname } from '@/src/i18n/routing'
 
 export default function TaxonomyParentBackup({ data, photos, species, rank, accordingTo, sna, vernakularName, locale }) {
 
+    const path = usePathname()
+    
     const fullUrl = useFullUrl()
-
-    const taxon = {
-        name: data?.metadata?.name,
-        path: fullUrl
-    }
 
     const t = useTranslations("Common")
     const s = useTranslations("Species")
@@ -39,12 +37,18 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
 
     // Single Taxon page
 
+    const taxon = {
+        name: data?.metadata?.name,
+        path: fullUrl
+    }
+
     const headingData = {
         id: data?.metadata?.scientific_name_id || uuidv4(),
         title: data?.metadata?.name,
         scienttificId: data?.metadata?.scientific_name_id,
         rank: data?.metadata?.taxon_rank_title,
-        url: fullUrl
+        url: fullUrl,
+        orgChartData: []
     }
 
     return (
