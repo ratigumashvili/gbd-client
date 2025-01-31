@@ -164,43 +164,87 @@ export const sanitize = (value) => {
     }
 }
 
+// export const getChartColors = (value) => {
+
+//     let color;
+
+//     switch (value) {
+//         case "EX":
+//             color = "#000000";
+//             break;
+//         case "EW":
+//             color = "#542344";
+//             break;
+//         case "CR":
+//             color = "#D81E05";
+//             break;
+//         case "EN":
+//             color = "#FC7F3F";
+//             break;
+//         case "VU":
+//             color = "#F9E814";
+//             break;
+//         case "NT":
+//             color = "#CCE226";
+//             break;
+//         case "LC":
+//             color = "#60C659";
+//             break;
+//         case "DD":
+//             color = "#D1D1C6";
+//             break;
+//         case "NE":
+//             color = "#fffff9";
+//             break;
+//         case "RE":
+//             color = "#9B4F96";
+//             break;
+//         case "NA":
+//             color = "#C1B5A5";
+//             break;
+//         default: break;
+//     }
+
+//     return color
+// }
+
 export const getChartColors = (value) => {
 
     let color;
 
     switch (value) {
         case "EX":
-            color = "#000000";
+            color = "#262626";
             break;
         case "EW":
-            color = "#542344";
+            color = "#6E4F65";
             break;
         case "CR":
-            color = "#D81E05";
+            color = "#A04242";
             break;
         case "EN":
-            color = "#FC7F3F";
+            color = "#C47248";
             break;
         case "VU":
-            color = "#F9E814";
+            color = "#B8A933";
             break;
         case "NT":
-            color = "#CCE226";
+            color = "#9CAC47";
             break;
         case "LC":
-            color = "#60C659";
+            color = "#5E8B5A";
             break;
         case "DD":
-            color = "#D1D1C6";
+            color = "#9A9A89";
             break;
         case "NE":
-            color = "#fffff9";
+            color = "#CFCFBD";
             break;
         case "RE":
-            color = "#9B4F96";
+            color = "#8B5C82";
             break;
         case "NA":
-            color = "#C1B5A5";
+            color = "#9E8772";
             break;
         default: break;
     }

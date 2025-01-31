@@ -107,13 +107,15 @@ function PopularMenuByClass({ locale }) {
                   {locale === "ka" ? "რეგისტრირებული სახეობა" : "Of registered species"}
                 </p>
               </div>
-              <Image
-                src={item.icon}
-                width={70}
-                height={70}
-                alt={item.title}
-                className='opacity-60 group-hover:opacity-80 w-16 h-16 md:w-[50px] md:h-[50px] lg:w-16 lg:h-16'
-              />
+              <div className='min-w-20 min-h-20 flex items-center justify-center ml-4'>
+                <Image
+                  src={item.icon}
+                  width={70}
+                  height={70}
+                  alt={item.title}
+                  className='opacity-60 group-hover:opacity-80 w-16 h-16 md:w-[50px] md:h-[50px] lg:w-16 lg:h-16'
+                />
+              </div>
             </div>
           </Link>
         ))}

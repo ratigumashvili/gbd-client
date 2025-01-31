@@ -1,12 +1,12 @@
-import HomePageAbout from "./_components/HomePageAbout"
-import PopularMenu from "./_components/PopularMenu"
-import PopularMenuByClass from "./_components/PopularMenuByClass"
-import BrowseByTaxonomy from "./_components/browseTaxonomy/BrowseByTaxonomy"
-import HomePageSearch from "./_components/HomePageSearch"
-import HomePageSlider from "./_components/HomePageSlider"
-import Calendar from "./_components/activity_heatmap"
-
 import { useTranslations } from 'next-intl';
+
+import HomePageAbout from "@/src/app/[locale]/_components/HomePageAbout"
+import PopularMenuByClass from "@/src/app/[locale]/_components/PopularMenuByClass"
+import BrowseByTaxonomy from "@/src/app/[locale]/_components/browseTaxonomy/BrowseByTaxonomy"
+import HomePageSearch from "@/src/app/[locale]/_components/HomePageSearch"
+import HomePageSlider from "@/src/app/[locale]/_components/HomePageSlider"
+import Calendar from "@/src/app/[locale]/_components/activity_heatmap"
+
 import { detectLocale } from "@/src/app/[locale]/_lib/helpers"
 
 export default function Home({ params }) {
@@ -21,7 +21,6 @@ export default function Home({ params }) {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-5 gap-y-4 sm:gap-y-4 mb-4">
         <HomePageAbout locale={params.locale} />
-        {/* <PopularMenu locale={params.locale} /> */}
         <PopularMenuByClass locale={params.locale} />
       </div>
       <div className="flex flex-col gap-y-5">
