@@ -21,7 +21,7 @@ const HomePageAbout = async ({locale}) => {
   const {data} = await getData('static-page/about', locale)
   
   return (
-    <div className="p-4 bg-slate-50 dark:bg-slate-700 rounded-md col-span-2 md:mr-4">
+    <div className="p-4 bg-slate-50 dark:bg-slate-700 rounded-md col-span-3 md:mr-4">
       <ComponentTitle />
       <div
         dangerouslySetInnerHTML={{ __html: sanitize(data?.meta_data_localized?.intro)}}
