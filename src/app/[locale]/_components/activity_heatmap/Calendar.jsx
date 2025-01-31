@@ -34,6 +34,10 @@ const activityChartData = [
     { date: "2025-01-10", count: 10 },
     { date: "2025-01-16", count: 2 },
     { date: "2025-01-17", count: 3 },
+    { date: "2025-01-20", count: 1 },
+    { date: "2025-01-23", count: 3 },
+    { date: "2025-01-29", count: 1 },
+    { date: "2025-01-31", count: 6 },
 ];
 
 export default function Calendar() {
