@@ -2,11 +2,11 @@
 
 import { Fragment } from 'react'
 import { useTranslations } from "next-intl";
+import L from "leaflet";
 import { Icon } from 'leaflet';
 import { TileLayer, MapContainer, Marker, Popup } from "react-leaflet";
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import { HeatmapLayer } from "react-leaflet-heatmap-layer-v3";
-import L from "leaflet";
 import { Tab } from '@headlessui/react'
 
 import "leaflet/dist/leaflet.css";
@@ -78,9 +78,8 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
                     </Tab.List>
                 </div>
                 <Tab.Panels>
-
+                    
                     <Tab.Panel>
-
                         <MapContainer
                             center={[41.945963247270214, 43.87883890700455]}
                             zoom={7}
@@ -121,11 +120,9 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
                             </MarkerClusterGroup>
                             <FullscreenControl position="topright" title="Toggle fulscreen" forceSeparateButton={true} />
                         </MapContainer>
-
                     </Tab.Panel>
 
                     <Tab.Panel>
-
                         <MapContainer
                             center={[41.99515909778738, 43.8193140872058]}
                             zoom={8}
@@ -151,7 +148,6 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
 
                             <FullscreenControl position="topright" title="Toggle fulscreen" forceSeparateButton={true} />
                         </MapContainer>
-
                     </Tab.Panel>
 
                     <Tab.Panel>
