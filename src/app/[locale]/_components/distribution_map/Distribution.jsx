@@ -64,9 +64,21 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
                                 </button>
                             )}
                         </Tab>
+                        <Tab as={Fragment}>
+                            {({ selected }) => (
+                                <button
+                                    className={
+                                        selected ? 'bg-teal-700 text-white px-2 py-1 rounded-sm focus:outline-none' : 'px-2 py-1 border border-teal-700 rounded-sm'
+                                    }
+                                >
+                                    {t("table")}
+                                </button>
+                            )}
+                        </Tab>
                     </Tab.List>
                 </div>
                 <Tab.Panels>
+
                     <Tab.Panel>
 
                         <MapContainer
@@ -94,11 +106,14 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
                                                 <span className='font-medium'>{t("place")}</span>: {marker?.popup?.place}
                                             </h3>
                                             <div>
-                                            <p className='!my-1'><span>{t("latitude")}</span>: {marker.geocode[0]}</p>
-                                            <p className='!my-1'><span>{t("longitude")}</span>: {marker.geocode[1]}</p>
+                                                <p className='!my-1'><span>{t("latitude")}</span>: {marker.geocode[0]}</p>
+                                                <p className='!my-1'><span>{t("longitude")}</span>: {marker.geocode[1]}</p>
                                             </div>
                                             {marker?.popup?.recorded_by && (
                                                 <p><span className='font-medium'>{t("recorded_by")}:</span> {recorded_by}</p>
+                                            )}
+                                            {marker?.popup?.date && (
+                                                <p><span className='font-medium'>{t("date")}:</span> {date}</p>
                                             )}
                                         </Popup>
                                     </Marker>
@@ -108,9 +123,10 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
                         </MapContainer>
 
                     </Tab.Panel>
+
                     <Tab.Panel>
 
-                    <MapContainer
+                        <MapContainer
                             center={[41.99515909778738, 43.8193140872058]}
                             zoom={8}
                             style={{ height: "450px", width: "100%", zIndex: '10' }}
@@ -137,30 +153,47 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
                         </MapContainer>
 
                     </Tab.Panel>
+
+                    <Tab.Panel>
+                        <div className='w-full overflow-x-auto'>
+                            <div className='h-[450px] w-full min-w-[1000px] z-10 overflow-y-auto'>
+                                <div className='grid grid-cols-5'>
+                                    <div className="col-span-1 border-r border-t border-l border-b bg-slate-50 text-center text-base py-2 px-3 font-medium">{t("place")}</div>
+                                    <div className="col-span-1 border-r border-t border-l border-b bg-slate-50 text-center text-base py-2 px-3 font-medium">{t("recorded_by")}</div>
+                                    <div className="col-span-1 border-r border-t border-l border-b bg-slate-50 text-center text-base py-2 px-3 font-medium">{t("date")}</div>
+                                    <div className="col-span-1 border-r border-t border-l border-b bg-slate-50 text-center text-base py-2 px-3 font-medium">{t("latitude")}</div>
+                                    <div className="col-span-1 border-b border-t border-r bg-slate-50 text-center text-base py-2 px-3 font-medium">{t("longitude")}</div>
+                                </div>
+
+                                <div className='w-full overflow-x-auto'>
+                                    <div className='min-w-[1000px] overflow-y-auto'>
+                                        {pinMapCoordinates.map((item, index) => (
+                                            <div key={index} className='grid grid-cols-5 hover:bg-slate-100/30'>
+                                                <div className='col-span-1 border-r border-l border-b text-center text-base py-2 px-3'>
+                                                    {item.popup.place}
+                                                </div>
+                                                <div className='col-span-1 border-r border-b text-center text-base py-2 px-3'>
+                                                    {item.popup.recorder_by}
+                                                </div>
+                                                <div className='col-span-1 border-r border-b text-center text-base py-2 px-3'>
+                                                    {item.popup.date}
+                                                </div>
+                                                <div className='col-span-1 border-r border-b text-center text-base py-2 px-3'>
+                                                    {item.geocode[0]}
+                                                </div>
+                                                <div className='col-span-1 border-b border-r text-center text-base py-2 px-3'>
+                                                    {item.geocode[1]}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Tab.Panel>
+
                 </Tab.Panels>
             </Tab.Group>
-
-            {/* <MapContainer
-                center={[18.54181410564795, 73.79118672935255]}
-                zoom={12}
-                style={{ height: "350px", width: "100%", zIndex: '10' }}
-            >
-                <HeatmapLayer
-                    fitBoundsOnLoad
-                    fitBoundsOnUpdate
-                    points={heatMapCoordinates}
-                    longitudeExtractor={(point) => point[1]}
-                    latitudeExtractor={(point) => point[0]}
-                    intensityExtractor={(point) => parseFloat(point[2])}
-                    {...heatmapOptions}
-                />
-                <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-
-                <FullscreenControl position="topright" title="Toggle fulscreen" forceSeparateButton={true} />
-            </MapContainer> */}
         </div>
     )
 }
