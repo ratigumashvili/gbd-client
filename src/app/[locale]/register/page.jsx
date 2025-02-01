@@ -2,9 +2,9 @@
 
 import { useState } from "react"
 
-import Link from "next/link"
 
-import { useRouter } from "@/src/i18n/routing"
+
+import { Link, useRouter } from "@/src/i18n/routing"
 
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -153,13 +153,16 @@ export default function RegisterPage({ params }) {
                             </Link>
                         </label>
                     </div>
-                    <button
-                        type="submit"
-                        disabled={isSubmitting || !isChecked}
-                        className="button !py-3 disabled:pointer-events-none disabled:opacity-50"
-                    >
-                        {t("register")}
-                    </button>
+                    <div className="flex items-center gap-2">
+                        <Link href={"/"} className="button-danger !py-3">{t("reset")}</Link>
+                        <button
+                            type="submit"
+                            disabled={isSubmitting || !isChecked}
+                            className="button !py-3 disabled:pointer-events-none disabled:opacity-50"
+                        >
+                            {t("register")}
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>

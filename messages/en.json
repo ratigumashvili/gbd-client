@@ -233,7 +233,8 @@
     "userRegistered": "You have successfully registered.",
     "invalidEmail": "Email allready registered",
     "error": "Problem occurred. Please, try again later",
-    "confirm": "I read, understand and accept Privacy and Legal Policy"
+    "confirm": "I read, understand and accept Privacy and Legal Policy",
+    "reset": "Reset"
   },
   "Species": {
     "metadata": "Metadata",
