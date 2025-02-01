@@ -28,7 +28,7 @@ function BookmarksModal() {
         if (isClient) {
             localStorage.setItem("gbd-message-confirmed", JSON.stringify(confirm));
         }
-    }, [confirm]);
+    }, [confirm, isClient]);
 
     const [isOpen, setIsOpen] = useState(!confirm)
 

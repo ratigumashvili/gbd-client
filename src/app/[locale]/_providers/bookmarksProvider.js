@@ -41,7 +41,7 @@ export default function BookmarksProvider({ children }) {
     setIsBookmarked((prev) => [...prev, record.id]);
 
     toast.success(t("bookmark_added"));
-  }, [isBookmarked, t]);
+  }, [isBookmarked, bookmarks.length, t]);
 
   const handleRemoveBookmark = useCallback((idToDelete) => {
     setBookmarks((prev) => prev.filter((item) => item.id !== idToDelete));
@@ -63,7 +63,7 @@ export default function BookmarksProvider({ children }) {
       localStorage.setItem("gbd-bookmarked", JSON.stringify(bookmarks));
       localStorage.setItem("gbd-isBookmarked", JSON.stringify(isBookmarked));
     }
-  }, [bookmarks, isBookmarked]);
+  }, [bookmarks, isBookmarked, isClient]);
 
   return (
     <BookmarksContext.Provider value={{ bookmarks, isBookmarked, handleAddBookmark, handleRemoveBookmark, clearAllItems }}>

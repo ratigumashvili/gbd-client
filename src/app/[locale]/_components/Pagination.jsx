@@ -19,7 +19,7 @@ function Pagination({ path, searchParams, currentPage, total }) {
         } else {
             router.replace(url + current, { scroll: false })
         }
-    }, [current ])
+    }, [current, path, router, url])
 
     useEffect(() => {
         if(current > total) {

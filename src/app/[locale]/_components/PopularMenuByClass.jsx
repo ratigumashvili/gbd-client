@@ -82,6 +82,7 @@ function PopularMenuByClass({ locale }) {
 
   useEffect(() => {
     locale === "ka" ? setData(dataGeo) : setData(dataEng)
+    // eslint-disable-next-line
   }, [locale])
 
   if (!isMounted) {
