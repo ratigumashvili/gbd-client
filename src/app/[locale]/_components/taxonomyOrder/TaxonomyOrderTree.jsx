@@ -38,26 +38,26 @@ export default function TaxonomyOrderTree({ treeContent }) {
     const [scale, setScale] = useState(1)
     const targetRef = useRef(null)
 
-    const minScale = 0.5;  // Minimum scale (default size)
-    const maxScale = 1.1; // Maximum scale (+10% increase)
+    const minScale = 0.5;
+    const maxScale = 1.1;
 
     const t = useTranslations("Common")
 
     const handleFullScreen = useFullScreenHandle();
 
     useEffect(() => {
-        targetRef.current = document.querySelector(".css-1os1rnu");
+        targetRef.current = document.querySelector(".tree-container");
         if (targetRef.current) {
-            targetRef.current.style.transition = "transform 0.3s ease"; // Smooth scaling
+            targetRef.current.style.transition = "transform 0.3s ease";
         }
     }, []);
 
     const increaseSize = () => {
-        setScale((prevScale) => Math.min(prevScale + 0.05, maxScale)); // Max scale = 1.1
+        setScale((prevScale) => Math.min(prevScale + 0.05, maxScale));
     };
 
     const decreaseSize = () => {
-        setScale((prevScale) => Math.max(prevScale - 0.05, minScale)); // Min scale = 1
+        setScale((prevScale) => Math.max(prevScale - 0.05, minScale));
     };
 
     useEffect(() => {
@@ -67,7 +67,7 @@ export default function TaxonomyOrderTree({ treeContent }) {
     }, [scale]);
 
     return (
-        <>
+        <div className="relative">
             <div className="sticky top-0 left-0 z-10">
                 <div className="flex gap-2">
                     <button
@@ -110,6 +110,6 @@ export default function TaxonomyOrderTree({ treeContent }) {
                     </Tree>
                 </FullScreen>
             </div>
-        </>
+        </div>
     )
 }

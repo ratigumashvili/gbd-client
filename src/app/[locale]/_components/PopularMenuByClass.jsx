@@ -21,7 +21,6 @@ function PopularMenuByClass({ locale }) {
       title: "Mammals",
       slug: "mammalia",
       icon: "/icons/mammals.svg",
-      url: "http://localhost:3000/ka/class/mammalia?id=14&page=1",
       percentage: 26,
     },
     {
@@ -29,7 +28,6 @@ function PopularMenuByClass({ locale }) {
       title: "Aves",
       slug: "aves",
       icon: "/icons/birds.svg",
-      url: "http://localhost:3000/ka/class/aves?id=4&page=1",
       percentage: 12,
     },
     {
@@ -37,7 +35,6 @@ function PopularMenuByClass({ locale }) {
       title: "Insects",
       slug: "insecta",
       icon: "/icons/insects.svg",
-      url: "http://localhost:3000/ka/class/insecta?id=12&page=1",
       percentage: 36,
     },
     {
@@ -45,7 +42,6 @@ function PopularMenuByClass({ locale }) {
       title: "Reptiles",
       slug: "reptilia",
       icon: "/icons/reptiles.svg",
-      url: "http://localhost:3000/ka/class/reptilia?id=17",
       percentage: 26,
     }
   ]
@@ -55,7 +51,6 @@ function PopularMenuByClass({ locale }) {
       title: "ძუძუმწოვრები",
       slug: "mammalia",
       icon: "/icons/mammals.svg",
-      url: "http://localhost:3000/ka/class/mammalia?id=14&page=1",
       percentage: 26,
     },
     {
@@ -63,7 +58,6 @@ function PopularMenuByClass({ locale }) {
       title: "ფრინველები",
       slug: "aves",
       icon: "/icons/birds.svg",
-      url: "http://localhost:3000/ka/class/aves?id=4&page=1",
       percentage: 12,
     },
     {
@@ -71,7 +65,6 @@ function PopularMenuByClass({ locale }) {
       title: "მწერები",
       slug: "insecta",
       icon: "/icons/insects.svg",
-      url: "http://localhost:3000/ka/class/insecta?id=12&page=1",
       percentage: 36,
     },
     {
@@ -79,7 +72,6 @@ function PopularMenuByClass({ locale }) {
       title: "ქვეწარმავლები, რეპტილიები",
       slug: "reptilia",
       icon: "/icons/reptiles.svg",
-      url: "http://localhost:3000/ka/class/reptilia?id=17",
       percentage: 26,
     }
   ]
@@ -101,7 +93,8 @@ function PopularMenuByClass({ locale }) {
       <ComponentTitle />
       <div className='grid grid-rows-4 h-[calc(100%-56px)] '>
         {data?.map((item) => (
-          <Link href={item.url}
+          <Link 
+            href={`/class/${item.slug}?id=${item.id}`}
             key={item.id}
             className='col-span-1 border-b last:border-b-0'
           >
