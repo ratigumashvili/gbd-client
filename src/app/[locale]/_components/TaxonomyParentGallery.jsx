@@ -4,17 +4,17 @@ import { useEffect, useState } from "react";
 
 import Link from "next/link";
 import Image from "next/image";
-
 import { useTranslations } from "next-intl";
-
 import { Gallery } from "react-grid-gallery";
 import Lightbox from "yet-another-react-lightbox";
 
+import { useRouter } from "@/src/i18n/routing";
+import SkeletonLoader from "@/src/app/[locale]/_components/SkeletonLoader";
+
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/captions.css";
-import { useRouter } from "@/src/i18n/routing";
 
-function TaxonomyParentGallery({ photos, taxon }) {
+function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
 
     const [images, setImages] = useState([])
     const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -107,12 +107,22 @@ function TaxonomyParentGallery({ photos, taxon }) {
                 `}
             </style>
 
-            <Gallery
-                images={images}
-                thumbnailStyle={customThumbnailStyle}
-                enableImageSelection={false}
-                onClick={(index, e) => handleImageClick(index, e)}
-            />
+            {componentTitle && (<h2 className='mt-8 mb-0 font-medium block-title'>{componentTitle}</h2>)}
+
+            {images.length === 0 ? (
+                <div className="flex flex-wrap gap-2">
+                    {Array.from({ length: photos.length }).map((_, idx) => (
+                        <SkeletonLoader key={idx} className={"w-full max-w-[120px] h-[100px]"} />
+                    ))}
+                </div>
+            ) : (
+                <Gallery
+                    images={images}
+                    thumbnailStyle={customThumbnailStyle}
+                    enableImageSelection={false}
+                    onClick={(index, e) => handleImageClick(index, e)}
+                />
+            )}
 
             <Lightbox
                 open={lightboxOpen}
