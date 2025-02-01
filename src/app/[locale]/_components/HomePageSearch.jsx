@@ -26,7 +26,7 @@ function HomePageSearch() {
     }
 
     return (
-        <div className="px-4 py-12 bg-slate-50 dark:bg-slate-600 border rounded-md mb-4">
+        <section className="px-4 py-12 bg-slate-50 dark:bg-slate-600 border rounded-md mb-4">
             <form action={handleFormSubmit} className="flex flex-col gap-y-6 lg:flex-row items-end gap-4">
                 <div className="flex-1 w-full">
                     <label htmlFor="taxon_rank" className="flex flex-col gap-2 text-base">
@@ -91,7 +91,7 @@ function HomePageSearch() {
                     </button>
                 </div>
             </form>
-        </div>
+        </section>
     );
 }
 

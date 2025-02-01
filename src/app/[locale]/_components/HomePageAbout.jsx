@@ -23,7 +23,7 @@ const HomePageAbout = async ({locale}) => {
   return (
     <div className="p-4 bg-slate-50 dark:bg-slate-700 rounded-md col-span-3 md:mr-4">
       <ComponentTitle />
-      <div
+      <article
         dangerouslySetInnerHTML={{ __html: sanitize(data?.meta_data_localized?.intro)}}
         className="[&>p]:mb-3 font-firaGo line-clamp-[12]"
       />

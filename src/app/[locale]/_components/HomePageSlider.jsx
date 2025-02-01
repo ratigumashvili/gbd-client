@@ -24,7 +24,7 @@ function HomePageSlider() {
   const t = useTranslations("Index")
 
   return (
-    <div className='p-4 bg-slate-50 dark:bg-slate-600 rounded-md'>
+    <section className='p-4 bg-slate-50 dark:bg-slate-600 rounded-md'>
       <h2 className='text-xl font-medium mb-4'>{t("latestUploads")}</h2>
       <div className="slide-container font-firaGo">
         <Slide {...properties}>
@@ -51,7 +51,7 @@ function HomePageSlider() {
           ))}
         </Slide>
       </div>
-    </div>
+    </section>
   )
 }
 

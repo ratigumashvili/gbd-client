@@ -70,7 +70,7 @@ export default function Calendar() {
     const t = useTranslations("Index");
 
     return (
-        <div className="p-4 my-4 min-h-[400px] bg-slate-50 dark:bg-slate-600 rounded-md">
+        <section className="p-4 my-4 min-h-[400px] bg-slate-50 dark:bg-slate-600 rounded-md">
             <h2 className="text-xl font-medium mb-4">
                 {t("GBDActivityCalendar")} ({formattedStartDate} - {endDate})
             </h2>
@@ -134,6 +134,6 @@ export default function Calendar() {
                     }}
                 />
             </div>
-        </div>
+        </section>
     );
 }
