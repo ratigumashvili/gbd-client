@@ -10,6 +10,7 @@ import Lightbox from "yet-another-react-lightbox";
 
 import { useRouter } from "@/src/i18n/routing";
 import SkeletonLoader from "@/src/app/[locale]/_components/SkeletonLoader";
+import CustomThumbnail from "@/src/app/[locale]/_components/CustomThumbnail";
 
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/captions.css";
@@ -22,12 +23,8 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
 
     const router = useRouter()
 
-    useEffect(() => {
-        setImages(transformImageData(photos))
-    }, [photos])
-
     const transformImageData = (data) =>
-        data.map((item) => {
+        data.map((item, index) => {
 
             const defaultWidth = 100;
             const defaultHeight = 150;
@@ -47,9 +44,14 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
                 author: item.author_title,
                 uploadedBy: item.uploadedBy || null,
                 size: Number(item.metadata.size / 1000),
-                extension: item.extension
+                extension: item.extension,
+                priority: index < 3
             };
         });
+
+    useEffect(() => {
+        setImages(transformImageData(photos))
+    }, [photos])
 
     const lightboxSlides = images.map((img) => (
         {
@@ -76,13 +78,6 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
             scroll: false
         })
     }
-
-    const customThumbnailStyle = {
-        width: "100%",
-        height: "100px",
-        objectFit: "cover",
-        cursor: "pointer",
-    };
 
     const t = useTranslations("Gallery")
 
@@ -118,9 +113,14 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
             ) : (
                 <Gallery
                     images={images}
-                    thumbnailStyle={customThumbnailStyle}
                     enableImageSelection={false}
-                    onClick={(index, e) => handleImageClick(index, e)}
+                    thumbnailImageComponent={({ index }) => (
+                        <CustomThumbnail
+                            image={images[index]}
+                            index={index}
+                            onClick={(index) => handleImageClick(index)}
+                        />
+                    )}
                 />
             )}
 
@@ -131,14 +131,15 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
                 index={currentIndex}
                 render={{
                     slide: ({ slide }) => (
-                        <div className="relative text-center text-white">
-                            <Image
-                                src={slide.src}
-                                alt={slide.title}
-                                width={1000}
-                                height={500}
-                                style={{ maxWidth: '100%', height: '65vh', objectFit: 'contain' }}
-                            />
+                        <div className="text-center text-white w-full">
+                            <div style={{ position: "relative", width: "100%", height: "65vh" }}>
+                                <Image
+                                    src={slide.src}
+                                    alt={slide.title}
+                                    fill
+                                    style={{ objectFit: 'contain' }}
+                                />
+                            </div>
 
                             <h2 className="text-3xl italic py-[5px] px-[10px] mb-1">{slide.title}</h2>
 
@@ -167,6 +168,7 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
                                     {t("download")} {slide.size !== 0 && slide.size + " MB"} | {t("type")}: {slide.extension}
                                 </Link>
                             </div>
+
                         </div>
                     ),
                 }}
