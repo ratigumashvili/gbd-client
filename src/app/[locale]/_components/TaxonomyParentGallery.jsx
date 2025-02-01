@@ -110,9 +110,9 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
             {componentTitle && (<h2 className='mt-8 mb-0 font-medium block-title'>{componentTitle}</h2>)}
 
             {images.length === 0 ? (
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1">
                     {Array.from({ length: photos.length }).map((_, idx) => (
-                        <SkeletonLoader key={idx} className={"w-full max-w-[120px] h-[100px]"} />
+                        <SkeletonLoader key={idx} classNames={"w-full max-w-[120px] h-[100px]"} />
                     ))}
                 </div>
             ) : (

@@ -1,8 +1,8 @@
 import React from 'react'
 
-function SkeletonLoader({className}) {
+function SkeletonLoader({classNames}) {
   return (
-    <div className={`${className} bg-gray-200 animate-pulse rounded-md`}></div>
+    <div className={`${classNames} bg-gray-200 animate-pulse rounded-md`}></div>
   )
 }
 
