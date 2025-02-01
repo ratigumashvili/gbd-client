@@ -14,7 +14,7 @@ export default function Home({ params }) {
   const t = useTranslations('Index');
 
   return (
-    <section className="py-4">
+    <div className="py-4">
       <div className="flex items-start gap-2">
         <h1 className={`main-title ${detectLocale(params.locale)}`}>{t('title')}</h1>
         <sup className="text-xs">Vers. 2.0</sup>
@@ -29,6 +29,6 @@ export default function Home({ params }) {
         <HomePageSlider />
         <Calendar />
       </div>
-    </section>
+    </div>
   )
 }
