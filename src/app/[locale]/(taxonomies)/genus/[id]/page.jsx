@@ -1,11 +1,12 @@
 import NothingFound from "@/src/app/[locale]/_components/NothingFound";
 import TaxonomyParent from "@/src/app/[locale]/_components/TaxonomyParent"
 import TaxonomyChildNodes from "@/src/app/[locale]/_components/TaxonomyChildNodes";
+import TaxonomyConservationStatus from '@/src/app/[locale]/_components/TaxonomyConservationStatus'
 import Cite from "@/src/app/[locale]/_components/Cite";
 import Pagination from "@/src/app/[locale]/_components/Pagination";
 
 import { getData, getPaginatedData } from "@/src/app/[locale]/_lib/apiCalls";
-
+import { formatCodes, formatCodesTotal } from '@/src/app/[locale]/_lib/helpers'
 import { SPECIES_PER_PAGE } from "@/src/app/[locale]/_lib/constants";
 
 export default async function Genus({ params, searchParams }) {
@@ -14,6 +15,11 @@ export default async function Genus({ params, searchParams }) {
 
   const { data } = await getData(`taxonomy/${searchParams.id}?type=Genus`, params.locale)
   const species = await getPaginatedData(`taxonomy?type=Specie&parent_id=${searchParams.id}`, params.locale, currentPage, SPECIES_PER_PAGE)
+
+  const codesObject = data?.national_red_list_status_counts
+
+  const formattedCodes = formatCodes(codesObject)
+  const codesCountTotal = formatCodesTotal(formattedCodes)
 
   if (!data) {
     return <NothingFound />
@@ -31,6 +37,13 @@ export default async function Genus({ params, searchParams }) {
         vernakularName={``}
       // description={data[0]?.description}
       />
+
+      <TaxonomyConservationStatus
+        taxonName={data?.metadata?.name}
+        totalCount={codesCountTotal}
+        codes={formattedCodes}
+      />
+
       <TaxonomyChildNodes
         data={species?.data}
         recordsTotal={species?.recordsTotal}
@@ -38,6 +51,7 @@ export default async function Genus({ params, searchParams }) {
         taxonName={data?.metadata?.name}
         pathToChildren="species"
       />
+
       {species?.recordsTotal > SPECIES_PER_PAGE && (
         <Pagination
           path={null}

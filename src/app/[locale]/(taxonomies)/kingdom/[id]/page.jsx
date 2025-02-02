@@ -6,7 +6,7 @@ import Pagination from '@/src/app/[locale]/_components/Pagination';
 import Cite from "@/src/app/[locale]/_components/Cite";
 
 import { getData, getPaginatedData } from '@/src/app/[locale]/_lib/apiCalls'
-
+import { formatCodes, formatCodesTotal } from '@/src/app/[locale]/_lib/helpers';
 import { TAXON_PER_PAGE } from '@/src/app/[locale]/_lib/constants';
 
 export default async function Kingdom({ params, searchParams }) {
@@ -16,21 +16,10 @@ export default async function Kingdom({ params, searchParams }) {
     const { data } = await getData(`taxonomy/${searchParams.id}?type=Kingdom`, params.locale)
     const child = await getPaginatedData(`taxonomy?type=Phylum&parent_id=${searchParams.id}`, params.locale, currentPage, TAXON_PER_PAGE)
 
-    // temporary data
-
-    const codes = [
-        { id: 1, code: "EX", count: 4 },
-        { id: 2, code: "CR", count: 7 },
-        { id: 3, code: "EN", count: 49 },
-        { id: 4, code: "VU", count: 89 },
-        { id: 5, code: "NT", count: 78 },
-        { id: 6, code: "LC", count: 1177 },
-        { id: 7, code: "NE", count: 611 },
-        { id: 8, code: "DD", count: 608 },
-        { id: 9, code: "RE", count: 4 },
-      ];
-
-    // end temporary data
+    const codesObject = data?.national_red_list_status_counts
+    
+    const formattedCodes = formatCodes(codesObject)
+    const codesCountTotal = formatCodesTotal(formattedCodes)
 
     if (!data) {
         return <NothingFound />
@@ -52,8 +41,8 @@ export default async function Kingdom({ params, searchParams }) {
 
             <TaxonomyConservationStatus
                 taxonName={data?.metadata?.name}
-                totalCount={2637}
-                codes={codes}
+                totalCount={codesCountTotal}
+                codes={formattedCodes}
             />
 
             <TaxonomyChildNodes

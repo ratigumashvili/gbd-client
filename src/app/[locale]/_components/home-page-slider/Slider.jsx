@@ -23,7 +23,6 @@ function Slider({ data }) {
 
     return (
         <>
-            <h2 className='text-xl font-medium mb-4'>{t("latestUploads")}</h2>
             <div className="slide-container font-firaGo">
                 <Slide {...properties}>
                     {data && data.length !== 0 && data?.map((item) => (

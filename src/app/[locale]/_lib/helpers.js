@@ -275,3 +275,21 @@ export const getValue = (value) => {
     }
     return level;
 };
+
+export const formatCodes = (object) => {
+    return Object.keys(object).length
+        ? Object.entries(object).map(([key, value], index) => ({
+            id: index + 1,
+            code: key,
+            count: parseInt(value, 10),
+        })).filter((item) => item.count !== 0)
+        : [];
+}
+
+export const formatCodesTotal = (array) => {
+    if (!array || array?.length === 0) return
+    const totalCount = array.reduce((accumulator, current) => accumulator + current.count, 0);
+    return totalCount
+}
+
+
