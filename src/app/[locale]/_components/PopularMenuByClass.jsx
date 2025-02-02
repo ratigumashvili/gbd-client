@@ -8,9 +8,13 @@ import { useTranslations } from 'next-intl'
 import useIsMounted from "@/src/app/[locale]/_hooks/useIsMounted"
 import { detectLocale } from '@/src/app/[locale]/_lib/helpers'
 
-const ComponentTitle = () => {
+const ComponentTranslation = () => {
   const t = useTranslations('Index');
-  return <h2 className="text-xl font-medium mb-4 p-4 h-10">{t("popularEntries")}</h2>
+
+  return {
+    title: t("popularEntries"),
+    views: t("views")
+  }
 }
 
 function PopularMenuByClass({ locale }) {
@@ -20,6 +24,7 @@ function PopularMenuByClass({ locale }) {
       id: 14,
       title: "Mammals",
       slug: "mammalia",
+      views: Math.floor(Math.random() * 10000),
       icon: "/icons/mammals.svg",
       percentage: 26,
     },
@@ -27,6 +32,7 @@ function PopularMenuByClass({ locale }) {
       id: 4,
       title: "Aves",
       slug: "aves",
+      views: Math.floor(Math.random() * 10000),
       icon: "/icons/birds.svg",
       percentage: 12,
     },
@@ -34,6 +40,7 @@ function PopularMenuByClass({ locale }) {
       id: 12,
       title: "Insects",
       slug: "insecta",
+      views: Math.floor(Math.random() * 10000),
       icon: "/icons/insects.svg",
       percentage: 36,
     },
@@ -41,6 +48,7 @@ function PopularMenuByClass({ locale }) {
       id: 17,
       title: "Reptiles",
       slug: "reptilia",
+      views: Math.floor(Math.random() * 10000),
       icon: "/icons/reptiles.svg",
       percentage: 26,
     }
@@ -50,6 +58,7 @@ function PopularMenuByClass({ locale }) {
       id: 14,
       title: "ძუძუმწოვრები",
       slug: "mammalia",
+      views: Math.floor(Math.random() * 10000),
       icon: "/icons/mammals.svg",
       percentage: 26,
     },
@@ -57,6 +66,7 @@ function PopularMenuByClass({ locale }) {
       id: 4,
       title: "ფრინველები",
       slug: "aves",
+      views: Math.floor(Math.random() * 10000),
       icon: "/icons/birds.svg",
       percentage: 12,
     },
@@ -64,6 +74,7 @@ function PopularMenuByClass({ locale }) {
       id: 12,
       title: "მწერები",
       slug: "insecta",
+      views: Math.floor(Math.random() * 10000),
       icon: "/icons/insects.svg",
       percentage: 36,
     },
@@ -71,6 +82,7 @@ function PopularMenuByClass({ locale }) {
       id: 17,
       title: "ქვეწარმავლები, რეპტილიები",
       slug: "reptilia",
+      views: Math.floor(Math.random() * 10000),
       icon: "/icons/reptiles.svg",
       percentage: 26,
     }
@@ -85,13 +97,15 @@ function PopularMenuByClass({ locale }) {
     // eslint-disable-next-line
   }, [locale])
 
+  const translations = ComponentTranslation()
+
   if (!isMounted) {
     return
   }
 
   return (
     <section className=' dark:bg-slate-700 rounded-md col-span-2 bg-slate-50 overflow-hidden'>
-      <ComponentTitle />
+      <h2 className="text-xl font-medium mb-4 p-4 h-10">{translations.title}</h2>
       <div className='grid grid-rows-4 h-[calc(100%-56px)] '>
         {data?.map((item) => (
           <Link 
@@ -102,12 +116,12 @@ function PopularMenuByClass({ locale }) {
             <div className='flex h-full items-center justify-between px-4 py-3 hover:cursor-pointer hover:bg-teal-600 hover:text-white transition group'>
               <div>
                 <h2 className={`text-xl sm:text-xl lg:text-xl font-bold line-clamp-1 ${detectLocale(locale)}`}>{item.title}</h2>
+                {locale === "ka" && <p className='text-sm'>რეგისტრირებული სახეობის</p>}
                 <p className='text-3xl font-medium flex items-end gap-2'>
                   <span className='text-teal-700 group-hover:text-white'>{item.percentage}%</span>
                 </p>
-                <p className='text-sm'>
-                  {locale === "ka" ? "რეგისტრირებული სახეობა" : "Of registered species"}
-                </p>
+                {locale === "en" && <p className='text-sm'>Of registered species</p>}
+                <p className='text-xs'><span className='font-medium'>{translations.views}</span>: {item.views}</p>
               </div>
               <div className='min-w-20 min-h-20 flex items-center justify-center ml-4'>
                 <Image
