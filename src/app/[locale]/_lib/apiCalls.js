@@ -23,3 +23,14 @@ export const getPaginatedData = async (endpoint, locale, currentPage, perPage) =
       'per_page': perPage
     }
   }).then((response) => response.data).catch((error) => error.message)
+
+export const getRecentSpecies = async (locale, quantity) => axios.get(`${apiUrl}/taxonomy/recent-species?recent_count=${quantity}`, {
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Accept-Language': locale
+  },
+  params : {
+    'recent_count': quantity
+  }
+}).then((response) => response.data).catch((error) => error.message)

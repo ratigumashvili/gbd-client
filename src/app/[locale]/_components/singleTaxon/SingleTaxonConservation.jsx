@@ -18,7 +18,8 @@ export default function SingleTaxonConservation({ data }) {
         conversion_status_references: data?.metadata?.conversion_status_references,
         evaluated_by: data?.metadata?.evaluated_by,
         date_evaluated: data?.metadata?.date_evaluated,
-        endemism: data?.metadata?.endemism
+        endemism: data?.metadata?.endemism,
+        specific_information: data?.metadata?.specific_information
     }
 
     const t = useTranslations("Species")
@@ -116,14 +117,14 @@ export default function SingleTaxonConservation({ data }) {
 
                 {data?.metadata?.eoo && (
                     <>
-                        <dt>EOO:</dt>
+                        <dt>{t("eoo")}:</dt>
                         <dd>{data?.metadata?.eoo}</dd>
                     </>
                 )}
 
                 {data?.metadata?.aoo && (
                     <>
-                        <dt>AOO:</dt>
+                        <dt>{t("aoo")}:</dt>
                         <dd>{data?.metadata?.aoo}</dd>
                     </>
                 )}
@@ -162,6 +163,13 @@ export default function SingleTaxonConservation({ data }) {
                     <>
                         <dt>{t("date_evaluated")}:</dt>
                         <dd>{data?.metadata?.date_evaluated}</dd>
+                    </>
+                )}
+
+                {data?.metadata?.specific_information && (
+                    <>
+                        <dt>info</dt>
+                        <dd>{data?.metadata?.specific_information}</dd>
                     </>
                 )}
 

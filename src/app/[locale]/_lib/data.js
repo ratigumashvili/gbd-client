@@ -48,64 +48,64 @@
 //     }
 // ]
 
-export const homePageSlider = [
-    {
-        id: 1,
-        recordTitle: "Eresus lavrosiae",
-        taxonTitle: "Eresus lavrosiae",
-        taxonId: 1,
-        comment: "Tetrobi Managed Reserve, female, home-reared 27 March 2023",
-        photoAuthor: "Armen Seropian",
-        uploadedBy: "Armen Seropian",
-        authorId: 1,
-        imageUrl: "https://biodiversity.iliauni.edu.ge/DBImages/21/64247019561701680109593.jpg",
+// export const homePageSlider = [
+//     {
+//         id: 1,
+//         recordTitle: "Eresus lavrosiae",
+//         taxonTitle: "Eresus lavrosiae",
+//         taxonId: 1,
+//         comment: "Tetrobi Managed Reserve, female, home-reared 27 March 2023",
+//         photoAuthor: "Armen Seropian",
+//         uploadedBy: "Armen Seropian",
+//         authorId: 1,
+//         imageUrl: "https://biodiversity.iliauni.edu.ge/DBImages/21/64247019561701680109593.jpg",
 
-    },
-    {
-        id: 2,
-        recordTitle: "Gyromitra parma",
-        taxonTitle: "Fungi",
-        taxonId: 2,
-        comment: "Sabaduri forest in Tbilisi National Park. Under Fagus orientalis.",
-        photoAuthor: "Diego Rodriguez",
-        uploadedBy: "Diego Rodriguez",
-        authorId: 2,
-        imageUrl: "https://biodiversity.iliauni.edu.ge/DBImages/New/f2012112923.jpg"
-    },
-    {
-        id: 3,
-        recordTitle: "liver moss",
-        taxonTitle: "Bryophyta",
-        taxonId: 3,
-        comment: "",
-        photoAuthor: "David Tarkhnishvili",
-        authorId: 3,
-        uploadedBy: "David Tarkhnishvili",
-        imageUrl: "https://biodiversity.iliauni.edu.ge/DBImages/livermoth-baniskhevi-12-09-04.jpg"
-    },
-    {
-        id: 4,
-        recordTitle: "Boletus luridus",
-        taxonTitle: "Fungi",
-        taxonId: 4,
-        comment: "Tbilisi",
-        photoAuthor: "Diego Rodriguez",
-        authorId: 4,
-        uploadedBy: "Diego Rodriguez",
-        imageUrl: "https://biodiversity.iliauni.edu.ge/DBImages/New/f2012075749.jpg"
-    },
-    {
-        id: 5,
-        recordTitle: "Gloeophyllum sepiarium",
-        taxonTitle: "Fungi",
-        taxonId: 5,
-        comment: "On dead wood of Pinus sp. Betania.",
-        photoAuthor: "Diego Rodriguez",
-        authorId: 5,
-        uploadedBy: "Diego Rodriguez",
-        imageUrl: "https://biodiversity.iliauni.edu.ge/DBImages/New/f2012033445.jpg"
-    }
-]
+//     },
+//     {
+//         id: 2,
+//         recordTitle: "Gyromitra parma",
+//         taxonTitle: "Fungi",
+//         taxonId: 2,
+//         comment: "Sabaduri forest in Tbilisi National Park. Under Fagus orientalis.",
+//         photoAuthor: "Diego Rodriguez",
+//         uploadedBy: "Diego Rodriguez",
+//         authorId: 2,
+//         imageUrl: "https://biodiversity.iliauni.edu.ge/DBImages/New/f2012112923.jpg"
+//     },
+//     {
+//         id: 3,
+//         recordTitle: "liver moss",
+//         taxonTitle: "Bryophyta",
+//         taxonId: 3,
+//         comment: "",
+//         photoAuthor: "David Tarkhnishvili",
+//         authorId: 3,
+//         uploadedBy: "David Tarkhnishvili",
+//         imageUrl: "https://biodiversity.iliauni.edu.ge/DBImages/livermoth-baniskhevi-12-09-04.jpg"
+//     },
+//     {
+//         id: 4,
+//         recordTitle: "Boletus luridus",
+//         taxonTitle: "Fungi",
+//         taxonId: 4,
+//         comment: "Tbilisi",
+//         photoAuthor: "Diego Rodriguez",
+//         authorId: 4,
+//         uploadedBy: "Diego Rodriguez",
+//         imageUrl: "https://biodiversity.iliauni.edu.ge/DBImages/New/f2012075749.jpg"
+//     },
+//     {
+//         id: 5,
+//         recordTitle: "Gloeophyllum sepiarium",
+//         taxonTitle: "Fungi",
+//         taxonId: 5,
+//         comment: "On dead wood of Pinus sp. Betania.",
+//         photoAuthor: "Diego Rodriguez",
+//         authorId: 5,
+//         uploadedBy: "Diego Rodriguez",
+//         imageUrl: "https://biodiversity.iliauni.edu.ge/DBImages/New/f2012033445.jpg"
+//     }
+// ]
 
 // export const about = {
 //     data:

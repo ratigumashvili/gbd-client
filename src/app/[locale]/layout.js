@@ -15,6 +15,7 @@ import Header from './_components/Header'
 import { arial, firaGo, bpg } from "./_lib/fonts";
 
 import 'react-tooltip/dist/react-tooltip.css'
+import 'react-slideshow-image/dist/styles.css'
 import './globals.css'
 
 export async function generateMetadata({ params }) {
