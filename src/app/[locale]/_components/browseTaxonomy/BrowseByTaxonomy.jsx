@@ -7,7 +7,7 @@ import { getData } from "@/src/app/[locale]/_lib/apiCalls"
 import ComponentTitle from './ComponentTitle'
 import { Counter } from './Counter'
 
-const Blocks = ({ id, title, slug }) => {
+const Blocks = ({ id, title, slug, count }) => {
 
     const t = useTranslations("Index")
 
@@ -19,7 +19,7 @@ const Blocks = ({ id, title, slug }) => {
             <div className='flex flex-col items-center gap-2'>
                 <span className='font-firaGo'>{t("registeredRecords")}</span>
                 <span className='text-2xl'>
-                    <Counter total={1234567} />
+                    <Counter total={count} />
                 </span>
             </div>
         </Link>
@@ -42,6 +42,7 @@ async function BrowseByTaxonomy({ locale, title }) {
                         id={item.id}
                         title={item.title}
                         slug={item.metadata.slug}
+                        count={item.metadata.species_count}
                     />
                 ))}
             </div>
