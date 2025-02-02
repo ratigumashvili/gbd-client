@@ -6,29 +6,48 @@ import ComponentTitle from "./ComponentTitle"
 
 async function HomePageSlider({ locale }) {
 
-  const { data } = await getRecentSpecies(locale, 2)
+  const { data } = await getRecentSpecies(locale, 20)
 
-  const test = data && data.length !== 0 && data.map((item) => (
+  const genusArray = data && data.length !== 0 && data.map((item) => (
     item.genus
   ))
+
+  const nameCounts = genusArray && genusArray?.length !== 0 && genusArray.reduce((acc, item) => {
+    acc[item.name] = (acc[item.name] || 0) + 1;
+    return acc;
+  }, {});
+
+  const result = Object.entries(nameCounts).map(([name, count]) => ({
+    name,
+    count
+  }));
 
   return (
     <>
     
     {/* <pre>
-      {JSON.stringify(test, null, 2)}
+      {JSON.stringify(data[0], null, 2)}
     </pre> */}
     
-    <section className=" p-4 bg-slate-50 dark:bg-slate-600 rounded-md">
-      <ComponentTitle />
-      <div className="grid grid-cols-6 gap-4 ">
+    <section className="grid grid-cols-6 gap-4">
+      {/* <div className="grid grid-cols-6 gap-4 ">
         <div className="col-span-6 md:col-span-3">
           <Slider data={data} />
         </div>
         <div className="col-span-6 md:col-span-3">
           <FeaturedSpecie />
         </div>
-      </div>
+      </div> */}
+      
+        <div className="col-span-3 md:col-span-3 bg-slate-50 dark:bg-slate-600 rounded-md p-4">
+        <ComponentTitle />
+          <Slider data={data} />
+        </div>
+        <div className="col-span-3 md:col-span-3 bg-slate-50 dark:bg-slate-600 rounded-md p-4">
+        {/* <ComponentTitle /> */}
+          <FeaturedSpecie />
+        </div>
+      
     </section>
     </>
   )

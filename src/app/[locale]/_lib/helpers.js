@@ -293,4 +293,6 @@ export const formatCodesTotal = (array) => {
     return totalCount
 }
 
-
+export const formatDateToYMD = (dateString) => {
+    return new Date(dateString).toISOString().split("T")[0];
+  }

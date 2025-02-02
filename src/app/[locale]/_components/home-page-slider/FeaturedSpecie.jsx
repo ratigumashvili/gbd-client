@@ -66,14 +66,34 @@ export default function FeaturedSpecie() {
         //         ResearchGate Profile
         //     </a>
         // </div>
-        <div className="w-full h-full relative">
-            <Image 
+        <div className="w-full h-full relative group">
+            <Image
                 src={"https://biodiversity.iliauni.edu.ge/DBImages/New/f2011041150.JPG"}
                 fill
                 alt="text"
                 objectFit="cover"
+                className="rounded-md overflow-hidden"
             />
-
+            <div className={`
+            h-24 
+            w-full 
+            rounded-b-md
+            bg-teal-700 
+            text-white
+            absolute 
+            bottom-0 
+            left-0 
+            flex 
+            items-center 
+            justify-center
+            opacity-0 
+            group-hover:opacity-90 
+            transition
+            `}>
+                <h2 className="text-xl">
+                    Specie of the day: Hyaena
+                </h2>
+            </div>
         </div>
     );
 }
