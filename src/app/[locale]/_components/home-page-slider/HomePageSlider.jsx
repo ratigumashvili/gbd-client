@@ -8,7 +8,7 @@ async function HomePageSlider({ locale }) {
 
   return (
     <section className="grid grid-cols-6 p-4 bg-slate-50 dark:bg-slate-600 rounded-md">
-      <div className="col-span-4">
+      <div className="col-span-6 md:col-span-3">
       <Slider data={data} />
       </div>
     </section>
