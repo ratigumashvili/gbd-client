@@ -422,6 +422,16 @@ export const iucnCategory = [
         id: 9,
         value: "NE",
         name: "Not evaluated (NE)"
+    },
+    {
+        id: 10,
+        value: "RE",
+        name: "Regionally Extinct (RE)"
+    },
+    {
+        id: 11,
+        value: "NA",
+        name: "Not Applicable (NA)"
     }
 ]
 
