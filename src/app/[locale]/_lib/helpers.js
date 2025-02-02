@@ -277,7 +277,8 @@ export const getValue = (value) => {
 };
 
 export const formatCodes = (object) => {
-    return Object.keys(object).length
+    if(!object) return
+    return  Object.keys(object).length
         ? Object.entries(object).map(([key, value], index) => ({
             id: index + 1,
             code: key,

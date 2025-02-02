@@ -6,15 +6,17 @@ import ComponentTitle from "./ComponentTitle"
 
 async function HomePageSlider({ locale }) {
 
-  const { data } = await getRecentSpecies(locale, 10)
+  const { data } = await getRecentSpecies(locale, 2)
 
-
+  const test = data && data.length !== 0 && data.map((item) => (
+    item.genus
+  ))
 
   return (
     <>
     
     {/* <pre>
-      {JSON.stringify(data, null, 2)}
+      {JSON.stringify(test, null, 2)}
     </pre> */}
     
     <section className=" p-4 bg-slate-50 dark:bg-slate-600 rounded-md">
