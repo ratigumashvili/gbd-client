@@ -6,7 +6,7 @@ import ComponentTitle from "./ComponentTitle"
 
 async function HomePageSlider({ locale }) {
 
-  const { data } = await getRecentSpecies(locale, 20)
+  const { data } = await getRecentSpecies(locale, 10)
 
   const genusArray = data && data.length !== 0 && data.map((item) => (
     item.genus
@@ -26,7 +26,7 @@ async function HomePageSlider({ locale }) {
     <>
     
     {/* <pre>
-      {JSON.stringify(data[0], null, 2)}
+      {JSON.stringify(data, null, 2)}
     </pre> */}
     
     <section className="grid grid-cols-6 gap-4">
@@ -38,6 +38,7 @@ async function HomePageSlider({ locale }) {
           <FeaturedSpecie />
         </div>
       </div> */}
+
       
         <div className="col-span-3 md:col-span-3 bg-slate-50 dark:bg-slate-600 rounded-md p-4">
         <ComponentTitle />

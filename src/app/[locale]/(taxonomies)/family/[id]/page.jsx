@@ -38,11 +38,11 @@ export default async function Family({ params, searchParams }) {
       // description={data[0]?.description}
       />
 
-      <TaxonomyConservationStatus
-        taxonName={data?.metadata?.name}
-        totalCount={codesCountTotal}
-        codes={formattedCodes}
-      />
+        <TaxonomyConservationStatus
+          taxonName={data?.metadata?.name}
+          totalCount={codesCountTotal}
+          codes={formattedCodes}
+        />
 
       <TaxonomyChildNodes
         data={child?.data}

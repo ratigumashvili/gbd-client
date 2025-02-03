@@ -164,7 +164,7 @@ export default function TaxonomyConservationStatus({ taxonName, totalCount, code
         setSelectedIndex(null);
     };
 
-    if (!isMounted) return null;
+    if (!isMounted || codes?.length === 0) return null;
 
     return (
         <section className="border bg-slate-50/80 dark:bg-slate-600 rounded-md my-8 p-6">

@@ -29,6 +29,7 @@ function Slider({ data }) {
 
     return (
         <>
+
             <div className="slide-container font-firaGo">
                 <Slide {...properties}>
                     {data && data.length !== 0 && data?.map((item) => (
@@ -41,9 +42,11 @@ function Slider({ data }) {
                                 <CalendarIcon />
                             </button>
                             <div>
-                                <h2 className='font-medium text-xl mb-4'>
-                                    {item.title}
-                                </h2>
+                                <Link hrefLang={`/species/${item.id}`} className='text-teal-600 hover:text-teal-700 transition'>
+                                    <h2 className='font-medium text-xl mb-4'>
+                                        {item.title}
+                                    </h2>
+                                </Link>
                                 <div className='flex flex-col gap-y-2 text-base'>
 
                                     {item?.metadata?.scientific_name_id && (
@@ -52,6 +55,15 @@ function Slider({ data }) {
 
                                     {item?.metadata?.scientific_name && (
                                         <p className='line-clamp-1'><span className='font-medium pr-1'>{t("scientific_name")}:</span>{item?.metadata?.scientific_name}</p>
+                                    )}
+
+                                    {item?.genus?.name && (
+                                        <p className='line-clamp-1'>
+                                            <span className='font-medium pr-1'>{t("genus")}:</span>
+                                            <Link href={`/genus/${item?.genus?.slug}?id=${item?.metadata?.tax_genera_id}`}>
+                                                {item?.genus?.name}
+                                            </Link>
+                                        </p>
                                     )}
 
                                     {item?.metadata?.according_title && (
@@ -63,7 +75,7 @@ function Slider({ data }) {
                                     )}
                                 </div>
                             </div>
-                            <Link href={`/species/${item.id}`} className='button w-max mt-4'>{t("read_more")}</Link>
+                            {/* <Link href={`/species/${item.id}`} className='button w-max mt-4'>{t("read_more")}</Link> */}
                         </div>
                     ))}
                 </Slide>

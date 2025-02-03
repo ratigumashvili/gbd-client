@@ -181,7 +181,8 @@
     "introduced": "Introduced",
     "editor": "Editor",
     "contributor": "Contributor",
-    "read_more": "Read more"
+    "read_more": "Read more",
+    "genus": "Genus"
   },
   "Map": {
     "clickOnMarkers": "Click on markers to load data",
