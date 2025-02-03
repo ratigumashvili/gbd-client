@@ -1,9 +1,8 @@
 "use client"
 
-import { useState, useEffect } from 'react'
 import { Link } from '@/src/i18n/routing'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 
 import useIsMounted from "@/src/app/[locale]/_hooks/useIsMounted"
 import { detectLocale } from '@/src/app/[locale]/_lib/helpers'
@@ -17,85 +16,10 @@ const ComponentTranslation = () => {
   }
 }
 
-function PopularMenuByClass({ locale }) {
-  // start temporary data
-  const dataEng = [
-    {
-      id: 14,
-      title: "Mammals",
-      slug: "mammalia",
-      views: Math.floor(Math.random() * 10000),
-      icon: "/icons/mammals.svg",
-      percentage: 26,
-    },
-    {
-      id: 4,
-      title: "Aves",
-      slug: "aves",
-      views: Math.floor(Math.random() * 10000),
-      icon: "/icons/birds.svg",
-      percentage: 12,
-    },
-    {
-      id: 12,
-      title: "Insects",
-      slug: "insecta",
-      views: Math.floor(Math.random() * 10000),
-      icon: "/icons/insects.svg",
-      percentage: 36,
-    },
-    {
-      id: 17,
-      title: "Reptiles",
-      slug: "reptilia",
-      views: Math.floor(Math.random() * 10000),
-      icon: "/icons/reptiles.svg",
-      percentage: 26,
-    }
-  ]
-  const dataGeo = [
-    {
-      id: 14,
-      title: "ძუძუმწოვრები",
-      slug: "mammalia",
-      views: Math.floor(Math.random() * 10000),
-      icon: "/icons/mammals.svg",
-      percentage: 26,
-    },
-    {
-      id: 4,
-      title: "ფრინველები",
-      slug: "aves",
-      views: Math.floor(Math.random() * 10000),
-      icon: "/icons/birds.svg",
-      percentage: 12,
-    },
-    {
-      id: 12,
-      title: "მწერები",
-      slug: "insecta",
-      views: Math.floor(Math.random() * 10000),
-      icon: "/icons/insects.svg",
-      percentage: 36,
-    },
-    {
-      id: 17,
-      title: "ქვეწარმავლები, რეპტილიები",
-      slug: "reptilia",
-      views: Math.floor(Math.random() * 10000),
-      icon: "/icons/reptiles.svg",
-      percentage: 26,
-    }
-  ]
-  // end temporary data
-
-  const [data, setData] = useState([])
+function PopularMenuByClass({ data }) {
+  
+  const locale = useLocale()
   const { isMounted } = useIsMounted()
-
-  useEffect(() => {
-    locale === "ka" ? setData(dataGeo) : setData(dataEng)
-    // eslint-disable-next-line
-  }, [locale])
 
   const translations = ComponentTranslation()
 
@@ -108,14 +32,21 @@ function PopularMenuByClass({ locale }) {
       <h2 className="text-xl font-medium mb-4 p-4 h-10">{translations.title}</h2>
       <div className='grid grid-rows-4 h-[calc(100%-56px)] '>
         {data?.map((item) => (
-          <Link 
+          <Link
             href={`/class/${item.slug}?id=${item.id}`}
             key={item.id}
             className='col-span-1 border-b last:border-b-0'
           >
             <div className='flex h-full items-center justify-between px-4 py-3 hover:cursor-pointer hover:bg-teal-600 hover:text-white transition group'>
               <div>
-                <h2 className={`text-xl sm:text-xl lg:text-xl font-bold line-clamp-1 ${detectLocale(locale)}`}>{item.title}</h2>
+                <h2 className={`text-xl sm:text-xl lg:text-xl font-bold line-clamp-1 ${detectLocale(locale)}`}>
+                  {locale === "ka" && item.georgian_name
+                    ? item.georgian_name
+                    : locale === "en" && item.english_name
+                      ? item.english_name
+                      : item.title}
+
+                </h2>
                 {locale === "ka" && <p className='text-sm'>რეგისტრირებული სახეობის</p>}
                 <p className='text-3xl font-medium flex items-end gap-2'>
                   <span className='text-teal-700 group-hover:text-white'>{item.percentage}%</span>
@@ -125,7 +56,8 @@ function PopularMenuByClass({ locale }) {
               </div>
               <div className='min-w-20 min-h-20 flex items-center justify-center ml-4'>
                 <Image
-                  src={item.icon}
+                  // src={item.icon}
+                  src={'/icons/mammals.svg'}
                   width={70}
                   height={70}
                   alt={item.title}

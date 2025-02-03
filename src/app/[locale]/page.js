@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl';
 
 import HomePageAbout from "@/src/app/[locale]/_components/HomePageAbout"
-import PopularMenuByClass from "@/src/app/[locale]/_components/PopularMenuByClass"
+import PopularMenuByClass from "@/src/app/[locale]/_components/home-page-popula-classes/"
 import BrowseByTaxonomy from "@/src/app/[locale]/_components/browseTaxonomy/BrowseByTaxonomy"
 import HomePageSearch from "@/src/app/[locale]/_components/HomePageSearch"
 import HomePageSlider from "@/src/app/[locale]/_components/home-page-slider/HomePageSlider"
@@ -21,7 +21,7 @@ export default function Home({ params }) {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-5 gap-y-4 sm:gap-y-4 mb-4">
         <HomePageAbout locale={params.locale} />
-        <PopularMenuByClass locale={params.locale} />
+        <PopularMenuByClass />
       </div>
       <div className="flex flex-col gap-y-5">
         <BrowseByTaxonomy title={t("BrowseByTaxonomy")} locale={params.locale} />

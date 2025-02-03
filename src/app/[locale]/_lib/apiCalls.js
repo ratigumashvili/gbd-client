@@ -30,7 +30,16 @@ export const getRecentSpecies = async (locale, quantity) => axios.get(`${apiUrl}
     'Accept': 'application/json',
     'Accept-Language': locale
   },
-  params : {
+  params: {
     'recent_count': quantity
   }
+}).then((response) => response.data).catch((error) => error.message)
+
+export const getPopularSpecies = async (locale, quantity) => axios.get(`${apiUrl}/taxonomy?sort_item=views&type=TaxClass&per_page=${quantity}`, {
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Accept-Language': locale,
+    'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' 
+  },
 }).then((response) => response.data).catch((error) => error.message)
