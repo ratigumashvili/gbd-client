@@ -1,7 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useLocale, useTranslations } from "next-intl";
+import { detectLocale } from "../../_lib/helpers";
 
 const featuredOrders = [
     {
@@ -44,6 +46,9 @@ export default function FeaturedSpecie() {
         setFeaturedOrders(featuredOrders[index]);
     }, []);
 
+    const t = useTranslations("Index")
+    const locale = useLocale()
+
     if (!currentFeaturedOrder) return <p>Loading contributor...</p>;
 
     return (
@@ -66,15 +71,18 @@ export default function FeaturedSpecie() {
         //         ResearchGate Profile
         //     </a>
         // </div>
-        <div className="w-full h-full relative group">
-            <Image
-                src={"https://biodiversity.iliauni.edu.ge/DBImages/New/f2011041150.JPG"}
-                fill
-                alt="text"
-                objectFit="cover"
-                className="rounded-md overflow-hidden"
-            />
-            <div className={`
+        <>
+            {/* <h2 className='text-xl font-medium mb-4'>{t("specieOfTheDay")}</h2> */}
+            <div className="group w-full min-h-[300px] md:h-full relative">
+            <h2 className={`text-3xl absolute top-2 left-2 z-10 text-white font-bold ${detectLocale(locale)}`}>{t("specieOfTheDay")}</h2>
+                <Image
+                    src={"https://biodiversity.iliauni.edu.ge/DBImages/New/f2011041150.JPG"}
+                    fill
+                    alt="text"
+                    objectFit="cover"
+                    className="rounded-md overflow-hidden"
+                />
+                <div className={`
             h-24 
             w-full 
             rounded-b-md
@@ -90,10 +98,11 @@ export default function FeaturedSpecie() {
             group-hover:opacity-90 
             transition
             `}>
-                <h2 className="text-xl">
-                    Specie of the day: Hyaena
-                </h2>
+                    <h2 className="text-xl">
+                        Specie of the day:
+                    </h2>
+                </div>
             </div>
-        </div>
+        </>
     );
 }

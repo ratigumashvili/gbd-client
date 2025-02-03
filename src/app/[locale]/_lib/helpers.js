@@ -164,50 +164,6 @@ export const sanitize = (value) => {
     }
 }
 
-// export const getChartColors = (value) => {
-
-//     let color;
-
-//     switch (value) {
-//         case "EX":
-//             color = "#000000";
-//             break;
-//         case "EW":
-//             color = "#542344";
-//             break;
-//         case "CR":
-//             color = "#D81E05";
-//             break;
-//         case "EN":
-//             color = "#FC7F3F";
-//             break;
-//         case "VU":
-//             color = "#F9E814";
-//             break;
-//         case "NT":
-//             color = "#CCE226";
-//             break;
-//         case "LC":
-//             color = "#60C659";
-//             break;
-//         case "DD":
-//             color = "#D1D1C6";
-//             break;
-//         case "NE":
-//             color = "#fffff9";
-//             break;
-//         case "RE":
-//             color = "#9B4F96";
-//             break;
-//         case "NA":
-//             color = "#C1B5A5";
-//             break;
-//         default: break;
-//     }
-
-//     return color
-// }
-
 export const getChartColors = (value) => {
 
     let color;

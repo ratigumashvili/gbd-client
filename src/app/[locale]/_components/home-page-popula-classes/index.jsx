@@ -22,6 +22,7 @@ async function index({ locale }) {
 
     return (
         <>
+        {/* <pre>{JSON.stringify(response, null, 2)}</pre> */}
             <PopularMenuByClass locale={locale} data={formattedSpecies} />
         </>
     )
