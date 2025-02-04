@@ -19,14 +19,12 @@ export async function handleSimpleSearch(formData) {
 export async function handleAdvancedSearch(formData) {
 
   const taxonRankValue = formData.get("taxon_rank")?.trim();
-  const latinNameValue = formData.get("latin_name")?.trim();
-  const speciesName = formData.get("species_name")
+  const taxonLatinName = formData.get("taxonLatinName")
   const iucnValue = formData.get("iucn")?.trim();
   
   const queryParams = {
     rank: taxonRankValue || undefined,
-    name: latinNameValue || undefined,
-    species: speciesName || undefined,
+    taxonLatinName: taxonLatinName || undefined,
     iucn: iucnValue || undefined
   };
 

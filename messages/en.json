@@ -83,7 +83,8 @@
     "cancel": "Cancel",
     "confirm": "Confirm",
     "filter_title": "Records filter",
-    "specie": "Species"
+    "specie": "Species",
+    "latin_name": "Latin name"
   },
   "Header": {
     "isu": "Ilia State University",
@@ -124,7 +125,7 @@
     "TaxonRank": "Taxon Rank",
     "LatinNamePlaceholder": "Taxon Latin name",
     "LatinName": "Latin name",
-    "speciesName": "Specie Latin name",
+    "speciesName": "Taxon Latin name",
     "speciesNamePlaceholder": "Name",
     "NationalIUCNCategory": "IUCN Category",
     "select_taxon_rank": "Select taxonomy",
@@ -135,9 +136,13 @@
     "rank": "Taxon",
     "english_name": "English Name",
     "scientific_name_id": "Scientific name ID",
-    "title": "English Name",
+    "title": "Latin Name",
     "found": "Found",
-    "records": "Records"
+    "records": "Records",
+    "taxonomy": "Taxonomy",
+    "taxonName": "Title",
+    "taxonLatinName": "Latin name",
+    "iucn": "IUCN Red List Status"
   },
   "Index": {
     "title": "Georgian Biodiversity Database",

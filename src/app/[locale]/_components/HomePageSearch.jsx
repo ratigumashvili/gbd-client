@@ -14,8 +14,8 @@ function HomePageSearch() {
     const [disabled, setDisabled] = useState(true);
     const [formData, setFormData] = useState({
         taxon_rank: "",
-        latin_name: "",
-        species_name: "",
+        // latin_name: "",
+        taxonLatinName: "",
         iucn: ""
     });
 
@@ -23,14 +23,14 @@ function HomePageSearch() {
     const s = useTranslations("Search");
     const t = useTranslations("Species")
 
-    useEffect(() => {
-        if (!formData.taxon_rank) {
-            setFormData((prev) => ({ ...prev, latin_name: "" })); // Clear `latin_name`
-        }
-        // if (!formData.iucn) {
-        //     setFormData((prev) => ({ ...prev, species_name: "" })); // Clear `species_name`
-        // }
-    }, [formData.taxon_rank]);
+    // useEffect(() => {
+    //     if (!formData.taxon_rank) {
+    //         setFormData((prev) => ({ ...prev, latin_name: "" })); // Clear `latin_name`
+    //     }
+    //     // if (!formData.iucn) {
+    //     //     setFormData((prev) => ({ ...prev, species_name: "" })); // Clear `species_name`
+    //     // }
+    // }, [formData.taxon_rank]);
 
     useEffect(() => {
         const allFieldsEmpty = Object.values(formData).every(
@@ -77,7 +77,7 @@ function HomePageSearch() {
                     </label>
                 </div>
 
-                <div className="flex flex-col gap-2 flex-1 w-full">
+                {/* <div className="flex flex-col gap-2 flex-1 w-full">
                     <label htmlFor="latin_name" className="text-base">
                         {s("LatinNamePlaceholder")}
                         <button
@@ -99,17 +99,17 @@ function HomePageSearch() {
                         className={`w-full p-[8.5px] bg-white border rounded-md outline-teal-500 placeholder:text-black dark:placeholder:text-gray-300 ${disabled && "opacity-50 cursor-not-allowed"}`}
                         disabled={!formData.taxon_rank}
                     />
-                </div>
+                </div> */}
 
                 <div className="flex flex-col gap-2 flex-1 w-full">
-                    <label htmlFor="species_name" className="text-base">
+                    <label htmlFor="taxonLatinName" className="text-base">
                         {s("speciesNamePlaceholder")}
                     </label>
                     <input
-                        name="species_name"
+                        name="taxonLatinName"
                         type="text"
-                        id="species_name"
-                        value={formData.species_name}
+                        id="taxonLatinName"
+                        value={formData.taxonLatinName}
                         onChange={handleChange}
                         placeholder={s("speciesName")}
                         className="w-full p-[8.5px] bg-white border rounded-md outline-teal-500 placeholder:text-black dark:placeholder:text-gray-300"
@@ -150,7 +150,7 @@ function HomePageSearch() {
                 </div>
             </form>
 
-            <Tooltip
+            {/* <Tooltip
                 id="latin_name_tooltip"
                 style={{
                     zIndex: 999,
@@ -161,7 +161,7 @@ function HomePageSearch() {
                     fontSize: "14px",
                     textAlign: "center"
                 }}
-            />
+            /> */}
 
         </section>
     );

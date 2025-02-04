@@ -1,11 +1,19 @@
+import SearchParameters from "../_components/SearchParameters"
 
 
-async function SearchResults(params) {
+async function SearchResults({ params, searchParams }) {
+
+  const data = []
+
+  const rank = searchParams.rank
+  const latinName = searchParams.taxonLatinName
+  const iucn = searchParams.iucn
+
   return (
-    <div>SearchResults: {JSON.stringify(params, null, 2)} 
-    <br /><br />
-  
-    </div>
+    <section className="py-4">
+      SearchResults:
+      <SearchParameters length={data.length} />
+    </section>
   )
 }
 

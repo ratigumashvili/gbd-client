@@ -13,12 +13,12 @@ async function About({params}) {
 const {data} = await getData('static-page/about', params.locale)
 
   return (
-    <div className="py-4">
+    <section className="py-4">
       <PageTitle locale={params.locale} />
       <div className="[&>p]:mb-3 font-firaGo"
         dangerouslySetInnerHTML={{ __html: sanitize(data?.meta_data_localized?.text) }}
       />
-    </div>
+    </section>
   )
 }
 

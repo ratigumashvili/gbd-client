@@ -158,11 +158,11 @@ export default function SearchModal() {
                                                 </label>
 
                                                 <div className='flex flex-col gap-2'>
-                                                    <label htmlFor="latin_name">{s("LatinName")}</label>
+                                                    <label htmlFor="taxonLatinName">{s("title")}</label>
                                                     <input
-                                                        name="latin_name"
+                                                        name="taxonLatinName"
                                                         type="text"
-                                                        id='latin_name'
+                                                        id='taxonLatinName'
                                                         onChange={(e) => e.target.value.trim() === "" ? setDisabled(true) : setDisabled(false)}
                                                         placeholder={s("LatinName")}
                                                         className='w-full p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-black'

@@ -155,7 +155,7 @@ function Bookmarked() {
                                 <input
                                     type="text"
                                     name="title"
-                                    placeholder={t("english_name")}
+                                    placeholder={t("latin_name")}
                                     className="border w-full rounded-sm px-3 py-2 focus:ring-0 focus:outline-teal-600"
                                 />
                                 <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-4 mt-2">
