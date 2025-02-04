@@ -7,15 +7,16 @@ import { Tooltip } from "react-tooltip"
 import { isMobile } from "react-device-detect"
 
 import SearchIcon from "./icons/SearchIcon";
+import QuestionIcon from "./icons/QuestionIcon";
+
 import { iucnCategory, taxonRank } from "../_lib/data";
-import { handleAdvancedSearch } from "@/src/app/[locale]/_lib/actions/search-actions";
+import { handleAdvancedSpeciesSearch } from "@/src/app/[locale]/_lib/actions/search-actions";
 
 function HomePageSearch() {
     const [disabled, setDisabled] = useState(true);
     const [formData, setFormData] = useState({
         taxon_rank: "",
-        // latin_name: "",
-        taxonLatinName: "",
+        specieLatinName: "",
         iucn: ""
     });
 
@@ -25,7 +26,7 @@ function HomePageSearch() {
 
     // useEffect(() => {
     //     if (!formData.taxon_rank) {
-    //         setFormData((prev) => ({ ...prev, latin_name: "" })); // Clear `latin_name`
+    //         setFormData((prev) => ({ ...prev, specieLatinName: "" })); // Clear `latin_name`
     //     }
     //     // if (!formData.iucn) {
     //     //     setFormData((prev) => ({ ...prev, species_name: "" })); // Clear `species_name`
@@ -36,7 +37,7 @@ function HomePageSearch() {
         const allFieldsEmpty = Object.values(formData).every(
             (value) => value.trim() === ""
         );
-        setDisabled(allFieldsEmpty);
+        setDisabled(allFieldsEmpty || formData.specieLatinName === "");
     }, [formData]);
 
     const handleChange = (e) => {
@@ -45,14 +46,20 @@ function HomePageSearch() {
     };
 
     async function handleFormSubmit(formData) {
-        const queryParamString = await handleAdvancedSearch(formData);
+        const queryParamString = await handleAdvancedSpeciesSearch(formData);
         if (queryParamString) {
             router.push("/searchResults?" + queryParamString);
         }
     }
 
     return (
-        <section className="px-4 py-12 bg-slate-50 dark:bg-slate-600 border rounded-md mb-4">
+        <section className="px-4 pb-12 pt-8 bg-slate-50 dark:bg-slate-600 border rounded-md mb-4">
+            <div className="flex items-center justify-between mb-6">
+                <p className="text-xl font-medium">Species search</p>
+                <button>
+                    <QuestionIcon />
+                </button>
+            </div>
             <form
                 action={handleFormSubmit}
                 className="flex flex-col gap-y-6 xl:flex-row items-end gap-4"
@@ -77,43 +84,18 @@ function HomePageSearch() {
                     </label>
                 </div>
 
-                {/* <div className="flex flex-col gap-2 flex-1 w-full">
-                    <label htmlFor="latin_name" className="text-base">
-                        {s("LatinNamePlaceholder")}
-                        <button
-                            type="button"
-                            data-tooltip-id="latin_name_tooltip"
-                            data-tooltip-content={"To activate this field the taxon rank must be selected"}
-                            className="m-0 p-0"
-                        >
-                            <sup className="text-base p-2 text-red-700">*</sup>
-                        </button>
-                    </label>
-                    <input
-                        name="latin_name"
-                        type="text"
-                        id="latin_name"
-                        value={formData.latin_name}
-                        onChange={handleChange}
-                        placeholder={s("LatinName")}
-                        className={`w-full p-[8.5px] bg-white border rounded-md outline-teal-500 placeholder:text-black dark:placeholder:text-gray-300 ${disabled && "opacity-50 cursor-not-allowed"}`}
-                        disabled={!formData.taxon_rank}
-                    />
-                </div> */}
-
                 <div className="flex flex-col gap-2 flex-1 w-full">
-                    <label htmlFor="taxonLatinName" className="text-base">
-                        {s("speciesNamePlaceholder")}
+                    <label htmlFor="specieLatinName" className="text-base">
+                        {s("speciesNamePlaceholder")} <sup className="text-red-700 font-medium">*</sup>
                     </label>
                     <input
-                        name="taxonLatinName"
+                        name="specieLatinName"
                         type="text"
-                        id="taxonLatinName"
-                        value={formData.taxonLatinName}
+                        id="specieLatinName"
+                        value={formData.specieLatinName}
                         onChange={handleChange}
                         placeholder={s("speciesName")}
                         className="w-full p-[8.5px] bg-white border rounded-md outline-teal-500 placeholder:text-black dark:placeholder:text-gray-300"
-                    // disabled={!formData.iucn} // ✅ Disable when no `iucn` is selected
                     />
                 </div>
 

@@ -127,7 +127,7 @@
     "TaxonRank": "Taxon Rank",
     "LatinNamePlaceholder": "Taxon Latin name",
     "LatinName": "Latin name",
-    "speciesName": "Taxon Latin name",
+    "speciesName": "Specie Latin name",
     "speciesNamePlaceholder": "Name",
     "NationalIUCNCategory": "IUCN Category",
     "select_taxon_rank": "Select taxonomy",
@@ -150,7 +150,8 @@
     "type": "Name type",
     "latinName": "Latin",
     "englishName": "English",
-    "georgianName": "Georgian"
+    "georgianName": "Georgian",
+    "specieLatinName": "Latin name"
   },
   "Index": {
     "title": "Georgian Biodiversity Database",

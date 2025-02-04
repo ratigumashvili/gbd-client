@@ -127,7 +127,7 @@
     "TaxonRank": "ტაქსონომიური დონე",
     "LatinName": "ტაქსონის ლათინური სახელწოდება",
     "LatinNamePlaceholder": "სახელწოდება",
-    "speciesName": "ტაქსონის ლათინური სახელწოდება",
+    "speciesName": "სახეობის ლათინური სახელწოდება",
     "speciesNamePlaceholder": "სახელწოდება",
     "NationalIUCNCategory": "IUCN კატეგორია",
     "select_taxon_rank": "აირჩიეთ ტაქსონომია",
@@ -150,7 +150,8 @@
     "type": "სახელწოდების ტიპი",
     "latinName": "ლათინური",
     "englishName": "ინგლისური",
-    "georgianName": "ქართული"
+    "georgianName": "ქართული",
+    "specieLatinName": "ლათინური სახელწოდება"
   },
   "Index": {
     "title": "საქართველოს ბიომრავალფეროვნების მონაცემთა ბაზა",

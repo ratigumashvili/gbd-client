@@ -5,7 +5,7 @@ import { useRouter } from '@/src/i18n/routing'
 import { Dialog, Transition } from '@headlessui/react'
 import { useTranslations } from 'next-intl'
 
-import { handleAdvancedSearch, handleSimpleSearch } from "@/src/app/[locale]/_lib/actions/search-actions"
+import { handleAdvancedSpeciesSearch, handleGeneralSearch } from "@/src/app/[locale]/_lib/actions/search-actions"
 
 import { iucnCategory, taxonRank } from '../_lib/data'
 
@@ -14,6 +14,11 @@ import Close from './icons/Close'
 
 export default function SearchModal() {
     const [isOpen, setIsOpen] = useState(false)
+    const [formData, setFormData] = useState({
+        taxon_rank: "",
+        specieLatinName: "",
+        iucn: ""
+    });
     const [advancedSearch, setAdvancedSearch] = useState(false)
     const [disabled, setDisabled] = useState(true)
 
@@ -21,6 +26,18 @@ export default function SearchModal() {
 
     const t = useTranslations("Header")
     const s = useTranslations("Search")
+
+    useEffect(() => {
+        const allFieldsEmpty = Object.values(formData).every(
+            (value) => value.trim() === ""
+        );
+        setDisabled(allFieldsEmpty || formData.specieLatinName === "");
+    }, [formData]);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
 
     function closeModal() {
         setIsOpen(false)
@@ -32,8 +49,8 @@ export default function SearchModal() {
         setIsOpen(true)
     }
 
-    async function handleSimpleFormSubmit(formData) {
-        const queryParamString = await handleSimpleSearch(formData)
+    async function handleGeneralFormSubmit(formData) {
+        const queryParamString = await handleGeneralSearch(formData)
 
         if (queryParamString) {
             router.push('/searchResults?' + queryParamString);
@@ -42,8 +59,8 @@ export default function SearchModal() {
         closeModal()
     }
 
-    async function handleAdvancedFormSubmit(formData) {
-        const queryParamString = await handleAdvancedSearch(formData)
+    async function handleSpeciesFormSubmit(formData) {
+        const queryParamString = await handleAdvancedSpeciesSearch(formData)
 
         if (queryParamString) {
             router.push('/searchResults?' + queryParamString);
@@ -105,14 +122,14 @@ export default function SearchModal() {
                                     {!advancedSearch ? (
                                         <div className="my-8">
 
-                                            <form action={handleSimpleFormSubmit}>
+                                            <form action={handleGeneralFormSubmit}>
                                                 <input
                                                     type="text"
                                                     placeholder={s("LGE")}
                                                     name='lge'
                                                     required
                                                     onChange={(e) => e.target.value.trim() === "" ? setDisabled(true) : setDisabled(false)}
-                                                    className='w-full p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-black' 
+                                                    className='w-full p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-black'
                                                 />
 
                                                 <div className="mt-4 flex items-center justify-between">
@@ -142,7 +159,7 @@ export default function SearchModal() {
                                     ) :
                                         <div className='my-8'>
 
-                                            <form action={handleAdvancedFormSubmit} className='space-y-4'>
+                                            <form action={handleSpeciesFormSubmit} className='space-y-4'>
 
                                                 <label htmlFor="taxon_rank" className='flex flex-col gap-2'>
                                                     {s("TaxonRank")}

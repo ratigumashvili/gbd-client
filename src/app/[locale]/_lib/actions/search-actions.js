@@ -1,6 +1,6 @@
 import qs from 'qs';
 
-export async function handleSimpleSearch(formData) {
+export async function handleGeneralSearch(formData) {
 
   const name = formData.get("lge").trim()
 
@@ -16,15 +16,15 @@ export async function handleSimpleSearch(formData) {
   return result
 }
 
-export async function handleAdvancedSearch(formData) {
+export async function handleAdvancedSpeciesSearch(formData) {
 
   const taxonRankValue = formData.get("taxon_rank")?.trim();
-  const taxonLatinName = formData.get("taxonLatinName")
+  const specieLatinName = formData.get("specieLatinName")
   const iucnValue = formData.get("iucn")?.trim();
   
   const queryParams = {
     rank: taxonRankValue || undefined,
-    taxonLatinName: taxonLatinName || undefined,
+    specieLatinName: specieLatinName || undefined,
     iucn: iucnValue || undefined
   };
 
