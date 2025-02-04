@@ -31,19 +31,7 @@ function HomePageSearch() {
     //     // }
     // }, [formData.taxon_rank]);
 
-    useEffect(() => {
-        const allFieldsEmpty = Object.values(formData).every(
-            (value) => value.trim() === ""
-        );
-        setDisabled(allFieldsEmpty || formData.specieLatinName === "");
-    }, [formData]);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
-    };
-
-    async function handleFormSubmit(formData) {
+    async function handleSpeciesFormSubmit(formData) {
         const queryParamString = await handleAdvancedSpeciesSearch(formData);
         if (queryParamString) {
             router.push("/searchResults?" + queryParamString);
@@ -59,12 +47,14 @@ function HomePageSearch() {
                 </button>
             </div>
             <form
-                action={handleFormSubmit}
+                action={handleSpeciesFormSubmit}
                 className="flex flex-col gap-y-6 xl:flex-row items-end gap-4"
             >
                 <SpeciesSearchFields
                     formData={formData}
-                    handleChange={handleChange}
+                    setFormData={setFormData}
+                    setDisabled={setDisabled}
+                    isModal={false}
                 />
 
                 <div className="mt-4 flex items-center justify-between">

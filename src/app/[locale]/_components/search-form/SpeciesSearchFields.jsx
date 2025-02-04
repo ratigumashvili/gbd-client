@@ -1,13 +1,26 @@
 "use client"
 
+import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 
 import { iucnCategory, taxonRank } from "@/src/app/[locale]/_lib/data";
 
-function SpeciesSearchFields({formData, handleChange}) {
+function SpeciesSearchFields({ formData, setFormData, setDisabled }) {
 
   const s = useTranslations("Search");
   const t = useTranslations("Species")
+
+  useEffect(() => {
+    const allFieldsEmpty = Object.values(formData).every(
+      (value) => value.trim() === ""
+    );
+    setDisabled(allFieldsEmpty || formData.specieLatinName === "");
+  }, [formData]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   return (
     <>

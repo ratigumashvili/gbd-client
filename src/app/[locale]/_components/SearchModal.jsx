@@ -17,6 +17,7 @@ export default function SearchModal() {
         specieLatinName: "",
         iucn: ""
     });
+
     const [advancedSearch, setAdvancedSearch] = useState(false)
     const [disabled, setDisabled] = useState(true)
 
@@ -24,18 +25,6 @@ export default function SearchModal() {
 
     const t = useTranslations("Header")
     const s = useTranslations("Search")
-
-    useEffect(() => {
-        const allFieldsEmpty = Object?.values(formData).every(
-            (value) => value.trim() === ""
-        );
-        setDisabled(allFieldsEmpty || formData.specieLatinName === "");
-    }, [formData]);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
-    };
 
     function closeModal() {
         setIsOpen(false)
@@ -115,7 +104,7 @@ export default function SearchModal() {
                                         className="text-lg font-medium leading-6 text-gray-900"
                                     >
                                         <div className='flex items-center justify-between'>
-                                            {!advancedSearch ? <>{s("generalSearch")}</> : <>{s("speciesSearch")}</>}
+                                            {!advancedSearch ? (<>{s("generalSearch")}</>) : <>{s("speciesSearch")}</>}
                                             <button onClick={closeModal}>
                                                 <Close />
                                             </button>
@@ -166,7 +155,9 @@ export default function SearchModal() {
 
                                                 <SpeciesSearchFields
                                                     formData={formData}
-                                                    handleChange={handleChange}
+                                                    setFormData={setFormData}
+                                                    setDisabled={setDisabled}
+                                                    isModal={true}
                                                 />
 
                                                 <div className="mt-4 flex items-center justify-between">
