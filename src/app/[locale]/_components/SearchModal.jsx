@@ -1,16 +1,14 @@
 "use client"
 
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { useRouter } from '@/src/i18n/routing'
 import { Dialog, Transition } from '@headlessui/react'
 import { useTranslations } from 'next-intl'
 
+import SpeciesSearchFields from "@/src/app/[locale]/_components/search-form/SpeciesSearchFields"
 import { handleAdvancedSpeciesSearch, handleGeneralSearch } from "@/src/app/[locale]/_lib/actions/search-actions"
-
-import { iucnCategory, taxonRank } from '../_lib/data'
-
-import SearchIcon from './icons/SearchIcon'
-import Close from './icons/Close'
+import SearchIcon from "@/src/app/[locale]/_components/icons/SearchIcon"
+import Close from "@/src/app/[locale]/_components/icons/Close"
 
 export default function SearchModal() {
     const [isOpen, setIsOpen] = useState(false)
@@ -28,7 +26,7 @@ export default function SearchModal() {
     const s = useTranslations("Search")
 
     useEffect(() => {
-        const allFieldsEmpty = Object.values(formData).every(
+        const allFieldsEmpty = Object?.values(formData).every(
             (value) => value.trim() === ""
         );
         setDisabled(allFieldsEmpty || formData.specieLatinName === "");
@@ -47,6 +45,11 @@ export default function SearchModal() {
     function openModal() {
         setDisabled(true)
         setIsOpen(true)
+        setFormData({
+            taxon_rank: "",
+            specieLatinName: "",
+            iucn: ""
+        })
     }
 
     async function handleGeneralFormSubmit(formData) {
@@ -161,42 +164,10 @@ export default function SearchModal() {
 
                                             <form action={handleSpeciesFormSubmit} className='space-y-4'>
 
-                                                <label htmlFor="taxon_rank" className='flex flex-col gap-2'>
-                                                    {s("TaxonRank")}
-                                                    <select
-                                                        name="taxon_rank"
-                                                        id="taxon_rank"
-                                                        onChange={(e) => e.target.value.trim() === "" ? setDisabled(true) : setDisabled(false)}
-                                                        className='p-2 bg-transparent border rounded-md outline-teal-500'
-                                                    >
-                                                        <option value="">{s("select_taxon_rank")}</option>
-                                                        {taxonRank.map(({ id, value, name }) => <option key={id} value={value}>{name}</option>)}
-                                                    </select>
-                                                </label>
-
-                                                <div className='flex flex-col gap-2'>
-                                                    <label htmlFor="taxonLatinName">{s("title")}</label>
-                                                    <input
-                                                        name="taxonLatinName"
-                                                        type="text"
-                                                        id='taxonLatinName'
-                                                        onChange={(e) => e.target.value.trim() === "" ? setDisabled(true) : setDisabled(false)}
-                                                        placeholder={s("LatinName")}
-                                                        className='w-full p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-black'
-                                                    />
-                                                </div>
-
-                                                <label htmlFor="iucn" className='flex flex-col gap-2'>
-                                                    {s("NationalIUCNCategory")}
-                                                    <select
-                                                        name="iucn"
-                                                        id="iucn"
-                                                        onChange={(e) => e.target.value.trim() === "" ? setDisabled(true) : setDisabled(false)}
-                                                        className='p-2 bg-transparent border rounded-md outline-teal-500'>
-                                                        <option value="">{s("select_iucn")}</option>
-                                                        {iucnCategory.map(({ id, value, name }) => <option key={id} value={value}>{name}</option>)}
-                                                    </select>
-                                                </label>
+                                                <SpeciesSearchFields
+                                                    formData={formData}
+                                                    handleChange={handleChange}
+                                                />
 
                                                 <div className="mt-4 flex items-center justify-between">
 
