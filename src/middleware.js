@@ -9,28 +9,24 @@
 
 import { NextResponse } from "next/server";
 
-// Supported locales
 const supportedLocales = ["en", "ka"];
-const defaultLocale = "ka"; // Default locale
+const defaultLocale = "ka";
 
 export function middleware(request) {
   const { pathname } = request.nextUrl;
 
-  // Skip static files, APIs, and internal Next.js routes
   if (
     pathname.startsWith("/api") ||
     pathname.startsWith("/_next") ||
-    pathname.includes(".") // Skip static files like favicon.ico
+    pathname.includes(".")
   ) {
     return NextResponse.next();
   }
 
-  // Check if the path includes a supported locale
   const hasLocale = supportedLocales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
-  // Redirect to default locale if missing
   if (!hasLocale) {
     return NextResponse.redirect(new URL(`/${defaultLocale}${pathname}`, request.url));
   }
@@ -38,7 +34,6 @@ export function middleware(request) {
   return NextResponse.next();
 }
 
-// Apply middleware to all routes except static files and APIs
 export const config = {
-  matcher: ["/((?!api|_next|favicon.ico|.*\\..*).*)"], // Matches all dynamic routes
+  matcher: ["/((?!api|_next|favicon.ico|.*\\..*).*)"],
 };
