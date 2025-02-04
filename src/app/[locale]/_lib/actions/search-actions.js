@@ -3,11 +3,9 @@ import qs from 'qs';
 export async function handleSimpleSearch(formData) {
 
   const name = formData.get("lge").trim()
-  const nameType = formData.get("name-type")
 
   const queryParams = {
     name: name || undefined,
-    type: nameType || undefined
   }
 
   const result = qs.stringify(queryParams, {

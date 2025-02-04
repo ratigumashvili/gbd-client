@@ -121,6 +121,8 @@
   "Search": {
     "SimpleSearchByName": "Simple search by name",
     "AdvancedSearch": "Advanced search",
+    "generalSearch": "General search",
+    "speciesSearch": "Search species",
     "LGE": "Latin, Georgian or English name",
     "TaxonRank": "Taxon Rank",
     "LatinNamePlaceholder": "Taxon Latin name",
