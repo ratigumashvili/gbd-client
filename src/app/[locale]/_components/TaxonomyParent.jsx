@@ -52,7 +52,7 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
     }
 
     return (
-        <div className='py-4' ref={printContent}>
+        <section className='py-4' ref={printContent}>
             <div className="flex items-center justify-between mb-6">
                 <TaxonHeading headingData={headingData} />
                 <ActionsDropdown
@@ -175,6 +175,6 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
                 <hr className='shadow-sm' />
                 <DynamicTaxonomyOrder treeContent={fungiTree} />
             </div> */}
-        </div>
+        </section>
     )
 }

@@ -142,7 +142,8 @@
     "taxonomy": "Taxonomy",
     "taxonName": "Title",
     "taxonLatinName": "Latin name",
-    "iucn": "IUCN Red List Status"
+    "iucn": "IUCN Red List Status",
+    "pageTitle": "Search results"
   },
   "Index": {
     "title": "Georgian Biodiversity Database",
