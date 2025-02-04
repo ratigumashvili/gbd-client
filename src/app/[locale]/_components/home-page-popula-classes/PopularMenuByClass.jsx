@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useLocale, useTranslations } from 'next-intl'
 
 import useIsMounted from "@/src/app/[locale]/_hooks/useIsMounted"
-import { detectLocale } from '@/src/app/[locale]/_lib/helpers'
+import { detectLocale, getIcon } from '@/src/app/[locale]/_lib/helpers'
 
 function PopularMenuByClass({ data }) {
   
@@ -46,12 +46,11 @@ function PopularMenuByClass({ data }) {
               </div>
               <div className='min-w-20 min-h-20 flex items-center justify-center ml-4'>
                 <Image
-                  // src={item.icon}
-                  src={'/icons/mammals.svg'}
+                  src={getIcon(item.english_name)}
                   width={70}
                   height={70}
                   alt={item.title}
-                  className='opacity-60 group-hover:opacity-80 w-14 h-14 md:w-[50px] md:h-[50px] lg:w-14 lg:h-14'
+                  className='opacity-60 group-hover:opacity-80 w-14 h-14 md:w-[50px] md:h-[50px] lg:w-10 lg:h-10'
                 />
               </div>
             </div>

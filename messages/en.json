@@ -82,7 +82,8 @@
     "deleteBookmark": "Are you sure you want to perform this action? This will delete this entrie from your local browser history.",
     "cancel": "Cancel",
     "confirm": "Confirm",
-    "filter_title": "Records filter"
+    "filter_title": "Records filter",
+    "specie": "Species"
   },
   "Header": {
     "isu": "Ilia State University",

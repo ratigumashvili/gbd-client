@@ -233,8 +233,8 @@ export const getValue = (value) => {
 };
 
 export const formatCodes = (object) => {
-    if(!object) return
-    return  Object.keys(object).length
+    if (!object) return
+    return Object.keys(object).length
         ? Object.entries(object).map(([key, value], index) => ({
             id: index + 1,
             code: key,
@@ -251,4 +251,28 @@ export const formatCodesTotal = (array) => {
 
 export const formatDateToYMD = (dateString) => {
     return new Date(dateString).toISOString().split("T")[0];
-  }
+}
+
+
+export const getIcon = (value) => {
+    let icon
+
+    switch (value) {
+        case "Ray-finned fishes":
+            icon = "/icons/sea-horse.svg";
+            break;
+        case "Mushroom-forming fungi":
+            icon = "/icons/mushroom-2.svg"
+            break;
+        case "Frogs, Toads and their relatives":
+            icon = "/icons/amphibians.svg"
+            break;
+        case "Granite mosses":
+            icon = "/icons/mosses-1.svg"
+            break;
+        default:
+            icon = "/icons/uncertain.png"
+    }
+
+    return icon
+}

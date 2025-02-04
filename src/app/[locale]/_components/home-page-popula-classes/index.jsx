@@ -1,14 +1,14 @@
-import { getPopularSpecies } from '@/src/app/[locale]/_lib/apiCalls'
-import PopularMenuByClass from './PopularMenuByClass'
+import { getPopularClasses } from '@/src/app/[locale]/_lib/apiCalls'
 
+import PopularMenuByClass from './PopularMenuByClass'
 
 export const revalidate = 0;
 
 async function index({ locale }) {
 
-    const response = await getPopularSpecies(locale, 4)
+    const response = await getPopularClasses(locale, 4)
 
-    const formattedSpecies = response && response.length !== 0 && response?.data?.map((item) => ({
+    const formattedClasses = response && response.length !== 0 && response?.data?.map((item) => ({
         id: item?.id,
         title: item?.title,
         slug: item?.metadata.slug,
@@ -22,8 +22,7 @@ async function index({ locale }) {
 
     return (
         <>
-        {/* <pre>{JSON.stringify(response, null, 2)}</pre> */}
-            <PopularMenuByClass locale={locale} data={formattedSpecies} />
+            <PopularMenuByClass locale={locale} data={formattedClasses} />
         </>
     )
 }

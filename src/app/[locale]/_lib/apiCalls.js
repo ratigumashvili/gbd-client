@@ -35,7 +35,7 @@ export const getRecentSpecies = async (locale, quantity) => axios.get(`${apiUrl}
   }
 }).then((response) => response.data).catch((error) => error.message)
 
-export const getPopularSpecies = async (locale, quantity) => axios.get(`${apiUrl}/taxonomy?sort_item=views&type=TaxClass&per_page=${quantity}`, {
+export const getPopularClasses = async (locale, quantity) => axios.get(`${apiUrl}/taxonomy?sort_item=views&type=TaxClass&per_page=${quantity}`, {
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',

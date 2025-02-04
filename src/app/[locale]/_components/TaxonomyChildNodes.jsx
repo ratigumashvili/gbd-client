@@ -29,7 +29,7 @@ export default function TaxonomyChildNodes({ data, recordsTotal, locale, taxonNa
                             <Link href={`/${pathToChildren}/${item.metadata.slug}?id=${item.id}`} className="block">
                                 <div className="flex items-center justify-between">
                                     <p><span className="capitalize">{pathToChildren}</span> {item.title}</p>
-                                    <p>{item.metadata.species_count}</p>
+                                    <p className="flex items-center justify-between">{item.metadata.species_count} <span className="text-sm italic pl-2">{t("specie")}</span></p>
                                 </div>
                             </Link>
                         </li>
