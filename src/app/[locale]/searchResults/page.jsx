@@ -20,7 +20,7 @@ async function SearchResults({ params, searchParams }) {
   const latinName = searchParams.taxonLatinName
   const iucn = searchParams.iucn
 
-  const check = Object.keys(searchParams)
+  // const check = Object.keys(searchParams)
 
   if(Object.keys(searchParams).length === 0) {
     return redirect('/')
@@ -31,7 +31,7 @@ async function SearchResults({ params, searchParams }) {
     <section className="py-4">
       <PageTitle locale={params.locale} />
       <SearchParameters length={data.length} />
-      {JSON.stringify(check, null, 2)}
+      {/* {JSON.stringify(check, null, 2)} */}
     </section>
   )
 }

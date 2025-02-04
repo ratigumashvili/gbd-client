@@ -1,16 +1,8 @@
-// import createMiddleware from 'next-intl/middleware';
-// import {routing} from './i18n/routing';
- 
-// export default createMiddleware(routing);
- 
-// export const config = {
-//   matcher: ['/', '/(ka|en)/:path*']
-// };
-
 import { NextResponse } from "next/server";
+import { routing } from "@/src/i18n/routing";
 
-const supportedLocales = ["en", "ka"];
-const defaultLocale = "ka";
+const supportedLocales = routing.locales;
+const defaultLocale = routing.defaultLocale;
 
 export function middleware(request) {
   const { pathname } = request.nextUrl;

@@ -12,11 +12,28 @@ import { iucnCategory, taxonRank } from '../_lib/data'
 import SearchIcon from './icons/SearchIcon'
 import Close from './icons/Close'
 
+const nameTypes = [
+    {
+        id: 1,
+        value: "latinName"
+    },
+    {
+        id: 2,
+        value: "englishName"
+    },
+    {
+        id: 3,
+        value: "georgianName"
+    }
+
+]
+
 export default function SearchModal() {
     const [isOpen, setIsOpen] = useState(false)
     const [advancedSearch, setAdvancedSearch] = useState(false)
-
     const [disabled, setDisabled] = useState(true)
+
+    
 
     const router = useRouter()
 
@@ -46,7 +63,7 @@ export default function SearchModal() {
     async function handleAdvancedFormSubmit(formData) {
         const queryParamString = await handleAdvancedSearch(formData)
 
-        if(queryParamString) {
+        if (queryParamString) {
             router.push('/searchResults?' + queryParamString);
         }
 
@@ -114,6 +131,23 @@ export default function SearchModal() {
                                                     required
                                                     onChange={(e) => e.target.value.trim() === "" ? setDisabled(true) : setDisabled(false)}
                                                     className='w-full p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-black' />
+
+                                                <div className='flex flex-col gap-2 my-4'>
+                                                    <p>{s("type")}</p>
+                                                    <div className='flex flex-col sm:flex-row sm:items-center gap-2'>
+                                                        {nameTypes.map((item, i) => (
+                                                            <label key={item.id} className={`flex items-center gap-x-2}`}>
+                                                                <input
+                                                                    type="radio"
+                                                                    name="name-type"
+                                                                    value={item.value}
+                                                                    className="accent-teal-600"
+                                                                />
+                                                                <span className='pl-2'>{s(`${item.value}`)}</span>
+                                                            </label>
+                                                        ))}
+                                                    </div>
+                                                </div>
 
                                                 <div className="mt-4 flex items-center justify-between">
 
