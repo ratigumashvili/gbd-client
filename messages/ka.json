@@ -151,7 +151,10 @@
     "latinName": "ლათინური",
     "englishName": "ინგლისური",
     "georgianName": "ქართული",
-    "specieLatinName": "ლათინური სახელწოდება"
+    "specieLatinName": "ლათინური სახელწოდება",
+    "searchBySpecie": "ძიება სახეობის მიხედვით",
+    "searchByTaxon": "ძიება ტაქსონომიით",
+    "searchByIUCN": "ძიება IUCN წითელი ნუსხის სტატუსის მიხედვით"
   },
   "Index": {
     "title": "საქართველოს ბიომრავალფეროვნების მონაცემთა ბაზა",

@@ -1,11 +1,15 @@
 "use client"
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { iucnCategory, taxonRank } from "@/src/app/[locale]/_lib/data";
+import SelectSearchType from "@/src/app/[locale]/_components/search-form/SelectSearchType"
+import SearchIcon from "@/src/app/[locale]/_components/icons/SearchIcon";
 
-function SpeciesSearchFields({ formData, setFormData, setDisabled }) {
+function SpeciesSearchFields({ formData, setFormData, classNames }) {
+
+  const [disabled, setDisabled] = useState(true);
 
   const s = useTranslations("Search");
   const t = useTranslations("Species")
@@ -22,26 +26,25 @@ function SpeciesSearchFields({ formData, setFormData, setDisabled }) {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const formattedIUCN = iucnCategory.map((item, index) => (
+    {
+      id: index,
+      value: item.value,
+      name: t(`${item.value}`)
+    }
+  ))
+
   return (
-    <>
-      <div className="flex-1 w-full">
-        <label htmlFor="taxon_rank" className="flex flex-col gap-2 text-base">
-          {s("TaxonRank")}
-          <select
-            name="taxon_rank"
-            id="taxon_rank"
-            value={formData.taxon_rank}
-            onChange={handleChange}
-            className="p-[10px] bg-white border rounded-md outline-teal-500"
-          >
-            <option value="">{s("select_taxon_rank")}</option>
-            {taxonRank.map(({ id, value, name }) => (
-              <option key={id} value={value}>
-                {name}
-              </option>
-            ))}
-          </select>
-        </label>
+    <div className={classNames}>
+
+      <div className="flex-1 w-full z-50">
+        <SelectSearchType
+          options={taxonRank || []}
+          placeholder={s("TaxonRank")}
+          name="taxon_rank"
+          id="taxon_rank"
+          label={s("TaxonRank")}
+        />
       </div>
 
       <div className="flex flex-col gap-2 flex-1 w-full">
@@ -55,30 +58,33 @@ function SpeciesSearchFields({ formData, setFormData, setDisabled }) {
           value={formData.specieLatinName}
           onChange={handleChange}
           placeholder={s("speciesName")}
-          className="w-full p-[8.5px] bg-white border rounded-md outline-teal-500 placeholder:text-black dark:placeholder:text-gray-300"
+          className="w-full p-[8.5px] bg-white border rounded-md outline-teal-500 placeholder:text-gray-400 dark:placeholder:text-gray-300"
         />
       </div>
 
-      <div className="flex-1 w-full">
-        <label htmlFor="iucn" className="flex flex-col gap-2 text-base">
-          {s("NationalIUCNCategory")}
-          <select
-            name="iucn"
-            id="iucn"
-            value={formData.iucn}
-            onChange={handleChange}
-            className="p-[10px] bg-white border rounded-md outline-teal-500"
-          >
-            <option value="">{s("select_iucn")}</option>
-            {iucnCategory.map(({ id, value }) => (
-              <option key={id} value={value}>
-                {t(`${value}`)}
-              </option>
-            ))}
-          </select>
-        </label>
+      <div className="flex-1 w-full z-30">
+        <SelectSearchType
+          options={formattedIUCN || []}
+          placeholder={s("select_iucn")}
+          name="iucn"
+          id="iucn"
+          label={s("NationalIUCNCategory")}
+        />
       </div>
-    </>
+
+      <div className="mt-4 flex items-center justify-between">
+        <button
+          type="submit"
+          disabled={disabled}
+          className={`inline-flex justify-center rounded-md border border-transparent bg-teal-600 px-4 py-[10px] text-sm font-medium text-white hover:bg-teal-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-900 focus-visible:ring-offset-2 ${disabled && "opacity-50 pointer-events-none"
+            }`}
+        >
+          <SearchIcon width="18" height="18" />
+          <span className="pl-2">{s("submit")}</span>
+        </button>
+      </div>
+
+    </div>
   )
 }
 

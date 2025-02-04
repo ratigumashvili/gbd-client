@@ -151,7 +151,10 @@
     "latinName": "Latin",
     "englishName": "English",
     "georgianName": "Georgian",
-    "specieLatinName": "Latin name"
+    "specieLatinName": "Latin name",
+    "searchBySpecie": "Search by species",
+    "searchByTaxon": "Search by taxonomy",
+    "searchByIUCN": "Search by IUCN Red List Status"
   },
   "Index": {
     "title": "Georgian Biodiversity Database",

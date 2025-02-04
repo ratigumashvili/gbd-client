@@ -18,6 +18,8 @@ export default function SearchModal() {
         iucn: ""
     });
 
+    const [searchType, setSearchType] = useState("general")
+
     const [advancedSearch, setAdvancedSearch] = useState(false)
     const [disabled, setDisabled] = useState(true)
 
