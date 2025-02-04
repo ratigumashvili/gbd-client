@@ -16,12 +16,12 @@ async function Caucasus({ params }) {
   const { data } = await getData('static-page/caucasian', params.locale)
 
   return (
-    <div className="py-4">
+    <section className="py-4">
       <PageTitle locale={params.locale} />
       <div className="text-content font-firaGo"
         dangerouslySetInnerHTML={{ __html: sanitize(data?.meta_data_localized?.text) }}
       />
-    </div>
+    </section>
   )
 }
 
