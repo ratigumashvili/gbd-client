@@ -6,7 +6,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { useTranslations } from 'next-intl'
 
 import SpeciesSearchFields from "@/src/app/[locale]/_components/search-form/SpeciesSearchFields"
-import { handleAdvancedSpeciesSearch, handleGeneralSearch } from "@/src/app/[locale]/_lib/actions/search-actions"
+import { handleAdvancedSearch, handleGeneralSearch } from "@/src/app/[locale]/_lib/actions/search-actions"
 import SearchIcon from "@/src/app/[locale]/_components/icons/SearchIcon"
 import Close from "@/src/app/[locale]/_components/icons/Close"
 
@@ -15,6 +15,7 @@ export default function SearchModal() {
     const [formData, setFormData] = useState({
         taxon_rank: "",
         specieLatinName: "",
+        taxonLatinName: "",
         iucn: ""
     });
 
@@ -39,6 +40,7 @@ export default function SearchModal() {
         setFormData({
             taxon_rank: "",
             specieLatinName: "",
+            taxonLatinName: "",
             iucn: ""
         })
     }
@@ -54,7 +56,7 @@ export default function SearchModal() {
     }
 
     async function handleSpeciesFormSubmit(formData) {
-        const queryParamString = await handleAdvancedSpeciesSearch(formData)
+        const queryParamString = await handleAdvancedSearch(formData)
 
         if (queryParamString) {
             router.push('/searchResults?' + queryParamString);

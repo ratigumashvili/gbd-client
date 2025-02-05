@@ -15,21 +15,20 @@ function TaxonSearchFields({ formData, handleChange, disabled, classNames, setFo
                 <SelectRank
                     key={formType}
                     setFormData={setFormData}
-                    formType={formType}
                 />
             </div>
 
             <div className="flex flex-col gap-2 flex-1 w-full">
-                <label htmlFor="specieLatinName" className="text-base">
-                    {s("speciesNamePlaceholder")}
+                <label htmlFor="taxonLatinName" className="text-base">
+                    {s("taxonLatinName")}
                 </label>
                 <input
-                    name="specieLatinName"
+                    name="taxonLatinName"
                     type="text"
-                    id="specieLatinName"
-                    value={formData?.specieLatinName}
+                    id="taxonLatinName"
+                    value={formData.taxonLatinName}
                     onChange={handleChange}
-                    placeholder={s("speciesName")}
+                    placeholder={s("taxonLatinNamePlaceholder")}
                     className="w-full p-[8.5px] bg-white border rounded-md outline-teal-500 placeholder:text-gray-400 dark:placeholder:text-gray-300"
                 />
             </div>

@@ -16,15 +16,17 @@ export async function handleGeneralSearch(formData) {
   return result
 }
 
-export async function handleAdvancedSpeciesSearch(formData) {
+export async function handleAdvancedSearch(formData) {
 
   const taxonRankValue = formData.get("taxon_rank")?.trim();
   const specieLatinName = formData.get("specieLatinName")
+  const taxonLatinName = formData.get("taxonLatinName")
   const iucnValue = formData.get("iucn")?.trim();
   
   const queryParams = {
     rank: taxonRankValue || undefined,
     specieLatinName: specieLatinName || undefined,
+    taxonLatinName: taxonLatinName || undefined,
     iucn: iucnValue || undefined
   };
 

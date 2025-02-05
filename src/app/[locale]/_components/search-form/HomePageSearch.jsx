@@ -10,15 +10,14 @@ import TaxonSearchFields from "@/src/app/[locale]/_components/search-form/TaxonS
 import IucnSearchFields from "@/src/app/[locale]/_components/search-form/IucnSearchFields";
 import SpeciesSearchFields from "@/src/app/[locale]/_components/search-form/SpeciesSearchFields";
 
-import { handleAdvancedSpeciesSearch } from "@/src/app/[locale]/_lib/actions/search-actions";
-
-import QuestionIcon from "@/src/app/[locale]/_components/icons/QuestionIcon";
+import { handleAdvancedSearch } from "@/src/app/[locale]/_lib/actions/search-actions";
 
 function HomePageSearch() {
     const [formType, setFormType] = useState("species")
     const [formData, setFormData] = useState({
         taxon_rank: "",
         specieLatinName: "",
+        taxonLatinName: "",
         iucn: ""
     });
     const [disabled, setDisabled] = useState(true);
@@ -55,7 +54,7 @@ function HomePageSearch() {
         if (option === "taxons") {
             setFormData({
                 taxon_rank: "",
-                specieLatinName: "",
+                taxonLatinName: "",
             })
         }
         if (option === "iucn") {
@@ -85,8 +84,8 @@ function HomePageSearch() {
         return title
     }
 
-    async function handleSpeciesFormSubmit(formData) {
-        const queryParamString = await handleAdvancedSpeciesSearch(formData);
+    async function handleAdvancedFormSubmit(formData) {
+        const queryParamString = await handleAdvancedSearch(formData);
         if (queryParamString) {
             router.push("/searchResults?" + queryParamString);
         }
@@ -94,60 +93,79 @@ function HomePageSearch() {
 
     return (
         <section className="px-4 pb-10 pt-6 bg-slate-50 dark:bg-slate-600 border rounded-md mb-4">
-
-            <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl font-medium">{s("advancedSearch")}: {detectTypeTytle(formType)}</h3>
-                <div className="flex items-center gap-x-4">
-                    <QuestionIcon />
-                    <button onClick={() => handleTypeChange("species")} className={formType === "species" ? "text-teal-600" : "text-black"}>species</button>
-                    <button onClick={() => handleTypeChange("taxons")} className={formType === "taxons" ? "text-teal-600" : "text-black"}>taxons</button>
-                    <button onClick={() => handleTypeChange("iucn")} className={formType === "iucn" ? "text-teal-600" : "text-black"}>iucn</button>
+            <div className="mb-6 border-b pb-5 flex flex-col gap-y-4 lg:flex-row lg:justify-between lg:items-center">
+                <h3 className="text-xl font-medium text-center sm:text-left">{s("advancedSearch")}: {detectTypeTytle(formType)}</h3>
+                <div className="flex flex-col gap-y-3 sm:flex-row gap-x-2">
+                    <button
+                        onClick={() => handleTypeChange("species")}
+                        className={formType === "species" ? "button" : "button-secondary"}
+                    >
+                        {s("btn_specie")}
+                    </button>
+                    <button
+                        onClick={() => handleTypeChange("taxons")}
+                        className={formType === "taxons" ? "button" : "button-secondary"}
+                    >
+                        {s("btn_taxons")}
+                    </button>
+                    <button
+                        onClick={() => handleTypeChange("iucn")}
+                        className={formType === "iucn" ? "button" : "button-secondary"}
+                    >
+                        {s("btn_iucn")}
+                    </button>
                 </div>
             </div>
-            <br /><br />
-            {JSON.stringify(formData, null, 2)}
-            <br /><br />
 
             {formType === "species" && (
-                <form action={handleSpeciesFormSubmit}>
-                    <SpeciesSearchFields
-                        key={formType}
-                        formData={formData}
-                        setFormData={setFormData}
-                        handleChange={handleChange}
-                        disabled={disabled}
-                        classNames={`flex flex-col gap-y-6 lg:flex-row items-end gap-4 relative`}
-                        formType="species"
-                    />
-                </form>
+                <>
+                    <p className="border-b pb-5 mb-5 text-sm">{s("specie_search_hint")}</p>
+                    <form action={handleAdvancedFormSubmit}>
+                        <SpeciesSearchFields
+                            key={formType}
+                            formData={formData}
+                            setFormData={setFormData}
+                            handleChange={handleChange}
+                            disabled={disabled}
+                            classNames={`flex flex-col gap-y-6 lg:flex-row items-end gap-4 relative`}
+                            formType="species"
+                        />
+                    </form>
+                </>
             )}
 
             {formType === "taxons" && (
-                <form action={handleSpeciesFormSubmit}>
-                    <TaxonSearchFields
-                        key={formType}
-                        formData={formData}
-                        setFormData={setFormData}
-                        handleChange={handleChange}
-                        disabled={disabled}
-                        classNames={`flex flex-col gap-y-6 md:flex-row items-end gap-4 relative`}
-                        formType={formType}
-                    />
-                </form>
+                <>
+                    <p className="border-b pb-5 mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id nihil, ipsam impedit mollitia distinctio repellat praesentium commodi aperiam voluptatem quae porro quisquam officiis amet atque, quod nulla adipisci ratione esse!</p>
+                    <form action={handleAdvancedFormSubmit}>
+                        <TaxonSearchFields
+                            key={formType}
+                            formData={formData}
+                            setFormData={setFormData}
+                            handleChange={handleChange}
+                            disabled={disabled}
+                            classNames={`flex flex-col gap-y-6 md:flex-row items-end gap-4 relative`}
+                            formType={formType}
+                        />
+                    </form>
+                </>
             )}
 
             {formType === "iucn" && (
-                <form action={handleSpeciesFormSubmit}>
-                    <IucnSearchFields
-                        key={formType}
-                        formData={formData}
-                        setFormData={setFormData}
-                        handleChange={handleChange}
-                        disabled={disabled}
-                        classNames={`flex items-end gap-4 relative`}
-                        formType={formType}
-                    />
-                </form>
+                <>
+                    <p className="border-b pb-5 mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id nihil, ipsam impedit mollitia distinctio repellat praesentium commodi aperiam voluptatem quae porro quisquam officiis amet atque, quod nulla adipisci ratione esse!</p>
+                    <form action={handleAdvancedFormSubmit}>
+                        <IucnSearchFields
+                            key={formType}
+                            formData={formData}
+                            setFormData={setFormData}
+                            handleChange={handleChange}
+                            disabled={disabled}
+                            classNames={`flex items-end gap-4 relative`}
+                            formType={formType}
+                        />
+                    </form>
+                </>
             )}
 
             {/* <Tooltip
