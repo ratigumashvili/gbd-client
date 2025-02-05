@@ -162,7 +162,7 @@
     "btn_taxons": "Taxon",
     "btn_iucn": "IUCN Status",
     "specie_search_hint": "This form searches within species. It allows you to specifically find the record you need based on the taxonomic rank, the Latin name of the species, and the IUCN Red List status assigned to that species. Please note that to use this form, it is mandatory to provide the Latin name of the species.",
-    "taxon_search_hint": "This form searches within taxonomies. You can select any taxon and receive records corresponding to that taxon. For example, if you select the taxon 'Class', you will receive all records registered for that unit. It is also possible to provide the Latin name of the taxon, which will localize the search results. The form does not have any mandatory fields.",
+    "taxon_search_hint": "This form searches within taxonomies. You can select any taxon and receive records corresponding to that taxon. For example, if you select the taxon 'Class', you will receive all records registered for that unit. It is also possible to provide the Latin, Georgian or English names of the taxon, which will localize the search results. The form does not have any mandatory fields.",
     "iucn_search_hint": "This form allows you to search for all species that have been assigned the IUCN Red List Status you selected."
   },
   "Index": {
