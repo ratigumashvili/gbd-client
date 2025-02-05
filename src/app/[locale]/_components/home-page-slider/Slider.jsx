@@ -42,7 +42,7 @@ function Slider({ data }) {
                                 <CalendarIcon />
                             </button>
                             <div>
-                                <Link hrefLang={`/species/${item.id}`} className='text-teal-600 hover:text-teal-700 transition'>
+                                <Link href={`/species/${item.id}`} className='text-teal-600 hover:text-teal-700 transition'>
                                     <h2 className='font-medium text-xl mb-4'>
                                         {item.title}
                                     </h2>
