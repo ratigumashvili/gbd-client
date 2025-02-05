@@ -46,7 +46,7 @@ export default async function Order({ params, searchParams }) {
 
       <TaxonomyChildNodes
         data={child?.data}
-        recordsTotal={child?.recordsTotal}
+        recordsTotal={data?.species_count}
         locale={params.locale}
         taxonName={data?.metadata?.name}
         pathToChildren="family"

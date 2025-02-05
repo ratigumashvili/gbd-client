@@ -47,7 +47,7 @@ export default async function Kingdom({ params, searchParams }) {
 
             <TaxonomyChildNodes
                 data={child?.data}
-                recordsTotal={child?.recordsTotal}
+                recordsTotal={data?.species_count}
                 locale={params.locale}
                 taxonName={data?.metadata?.name}
                 pathToChildren="phylum"

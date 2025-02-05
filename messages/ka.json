@@ -84,6 +84,7 @@
     "confirm": "დადასტურება",
     "filter_title": "მონაცემების ფილტრი",
     "specie": "სახეობა",
+    "sum": "ჯამში",
     "latin_name": "ლათინური სახელწოდება"
   },
   "Header": {
@@ -156,7 +157,7 @@
     "advancedSearch": "გაფართოებული ძებნა",
     "searchBySpecie": "სახეობის მიხედვით",
     "searchByTaxon": "ტაქსონომიით",
-    "searchByIUCN": "IUCN წითელი ნუსხის მიხედვით",
+    "searchByIUCN": "IUCN წითელი ნუსხით",
     "btn_specie": "სახეობება",
     "btn_taxons": "ტაქსონი",
     "btn_iucn": "IUCN სტატუსი",
