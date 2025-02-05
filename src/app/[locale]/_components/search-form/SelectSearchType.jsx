@@ -1,10 +1,12 @@
 "use client";
+
 import { useState, Fragment, useEffect } from "react";
 import { Listbox, Transition } from "@headlessui/react";
+
 import CheckedIcon from "@/src/app/[locale]/_components/icons/CheckedIcon";
 import ChevronUpDown from "@/src/app/[locale]/_components/icons/ChevronUpDown";
 
-export default function CustomSelect({ options, name, id, label, placeholder }) {
+export function CustomSelect({ options, name, id, label, placeholder, setFormData, field }) {
 
     const initialOption = { id: "", name: placeholder };
     const [selected, setSelected] = useState(initialOption);
@@ -15,14 +17,23 @@ export default function CustomSelect({ options, name, id, label, placeholder }) 
         }
     }, [options]);
 
+    const handleCustomChange = (option) => {
+        setSelected(option);
+        setFormData((prev) => ({
+            ...prev,
+            [field]: option.value ?? "",
+        }));
+    };
 
     return (
         <div className="w-full flex flex-col gap-[5px]">
             <input type="hidden" name={name} value={selected.value || ""} />
+            {/* <input type="hidden" name={iucnName} value={selected.value || ""} /> */}
+            ??? {JSON.stringify(selected, null, 2)}
             <label htmlFor={id} className="text-base">
                 {label}
             </label>
-            <Listbox value={selected} onChange={setSelected} id="taxon_rank">
+            <Listbox value={selected} onChange={handleCustomChange} id="taxon_rank">
                 <div className="relative mt-1">
                     <Listbox.Button
                         id={id}

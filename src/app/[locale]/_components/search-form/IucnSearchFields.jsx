@@ -3,35 +3,12 @@
 import { useTranslations } from "next-intl";
 
 import SearchIcon from "@/src/app/[locale]/_components/icons/SearchIcon";
-import SelectRank from "@/src/app/[locale]/_components/search-form/SelectRank";
 import SelectIUCN from "@/src/app/[locale]/_components/search-form/SelectIUCN";
 
-function SpeciesSearchFields({ formData, disabled, handleChange, classNames, setFormData, formType }) {
-
+function IucnSearchFields({ formData, disabled, classNames, setFormData, formType }) {
   const s = useTranslations("Search");
-
   return (
     <div className={classNames}>
-
-      <div className="flex-1 w-full z-50">
-        <SelectRank setFormData={setFormData} formType={formType} />
-      </div>
-
-      <div className="flex flex-col gap-2 flex-1 w-full">
-        <label htmlFor="specieLatinName" className="text-base">
-          {s("speciesNamePlaceholder")} <sup className="text-red-700 font-medium">*</sup>
-        </label>
-        <input
-          name="specieLatinName"
-          type="text"
-          id="specieLatinName"
-          value={formData.specieLatinName}
-          onChange={handleChange}
-          placeholder={s("speciesName")}
-          className="w-full p-[8.5px] bg-white border rounded-md outline-teal-500 placeholder:text-gray-400 dark:placeholder:text-gray-300"
-        />
-      </div>
-
       <div className="flex-1 w-full z-30">
         <SelectIUCN setFormData={setFormData} formType={formType} />
       </div>
@@ -47,9 +24,8 @@ function SpeciesSearchFields({ formData, disabled, handleChange, classNames, set
           <span className="pl-2">{s("submit")}</span>
         </button>
       </div>
-
     </div>
   )
 }
 
-export default SpeciesSearchFields
+export default IucnSearchFields

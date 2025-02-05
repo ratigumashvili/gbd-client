@@ -152,9 +152,10 @@
     "englishName": "ინგლისური",
     "georgianName": "ქართული",
     "specieLatinName": "ლათინური სახელწოდება",
-    "searchBySpecie": "ძიება სახეობის მიხედვით",
-    "searchByTaxon": "ძიება ტაქსონომიით",
-    "searchByIUCN": "ძიება IUCN წითელი ნუსხის სტატუსის მიხედვით"
+    "advancedSearch": "გაფართოებული ძებნა",
+    "searchBySpecie": "სახეობის მიხედვით",
+    "searchByTaxon": "ტაქსონომიით",
+    "searchByIUCN": "IUCN წითელი ნუსხის მიხედვით"
   },
   "Index": {
     "title": "საქართველოს ბიომრავალფეროვნების მონაცემთა ბაზა",
