@@ -366,11 +366,6 @@ export const taxonRank = [
     },
     {
         id: 6,
-        value: "subfamily",
-        name: "Subfamily"
-    },
-    {
-        id: 7,
         value: "genus",
         name: "Genus"
     }

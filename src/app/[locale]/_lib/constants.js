@@ -27,7 +27,7 @@ export const TopMenu = [
     {
         id: 3,
         title: 'team',
-        path: '/team',
+        path: '/team/editors',
         children: []
     },
     {
