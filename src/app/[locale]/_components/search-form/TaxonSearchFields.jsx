@@ -19,7 +19,7 @@ function TaxonSearchFields({ formData, handleChange, disabled, classNames, setFo
             </div>
 
             <div className="flex flex-col gap-2 flex-1 w-full">
-                <label htmlFor="taxonLatinName" className="text-base">
+                <label htmlFor="taxonLatinName" className="text-base line-clamp-1">
                     {s("taxonLatinName")}
                 </label>
                 <input
@@ -29,6 +29,36 @@ function TaxonSearchFields({ formData, handleChange, disabled, classNames, setFo
                     value={formData.taxonLatinName}
                     onChange={handleChange}
                     placeholder={s("taxonLatinNamePlaceholder")}
+                    className="w-full p-[8.5px] bg-white border rounded-md outline-teal-500 placeholder:text-gray-400 dark:placeholder:text-gray-300"
+                />
+            </div>
+
+            <div className="flex flex-col gap-2 flex-1 w-full">
+                <label htmlFor="taxonGeorgianName" className="text-base line-clamp-1">
+                    {s("taxonGeorgianName")}
+                </label>
+                <input
+                    name="taxonGeorgianName"
+                    type="text"
+                    id="taxonGeorgianName"
+                    value={formData.taxonGeorgianName}
+                    onChange={handleChange}
+                    placeholder={s("taxonGeorgianNamePlaceholder")}
+                    className="w-full p-[8.5px] bg-white border rounded-md outline-teal-500 placeholder:text-gray-400 dark:placeholder:text-gray-300"
+                />
+            </div>
+
+            <div className="flex flex-col gap-2 flex-1 w-full">
+                <label htmlFor="taxonEnglishName" className="text-base line-clamp-1">
+                    {s("taxonEnglishName")}
+                </label>
+                <input
+                    name="taxonEnglishName"
+                    type="text"
+                    id="taxonEnglishName"
+                    value={formData.taxonEnglishName}
+                    onChange={handleChange}
+                    placeholder={s("taxonEnglishNamePlaceholder")}
                     className="w-full p-[8.5px] bg-white border rounded-md outline-teal-500 placeholder:text-gray-400 dark:placeholder:text-gray-300"
                 />
             </div>

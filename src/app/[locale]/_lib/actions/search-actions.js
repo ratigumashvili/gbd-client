@@ -21,12 +21,16 @@ export async function handleAdvancedSearch(formData) {
   const taxonRankValue = formData.get("taxon_rank")?.trim();
   const specieLatinName = formData.get("specieLatinName")
   const taxonLatinName = formData.get("taxonLatinName")
+  const taxonGeorgianName = formData.get("taxonGeorgianName")
+  const taxonEnglishName = formData.get("taxonEnglishName")
   const iucnValue = formData.get("iucn")?.trim();
-  
+
   const queryParams = {
     rank: taxonRankValue || undefined,
     specieLatinName: specieLatinName || undefined,
     taxonLatinName: taxonLatinName || undefined,
+    taxonGeorgianName: taxonGeorgianName || undefined,
+    taxonEnglishName: taxonEnglishName || undefined,
     iucn: iucnValue || undefined
   };
 

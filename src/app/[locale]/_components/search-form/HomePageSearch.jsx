@@ -18,6 +18,8 @@ function HomePageSearch() {
         taxon_rank: "",
         specieLatinName: "",
         taxonLatinName: "",
+        taxonGeorgianName: "",
+        taxonEnglishName: "",
         iucn: ""
     });
     const [disabled, setDisabled] = useState(true);
@@ -55,6 +57,8 @@ function HomePageSearch() {
             setFormData({
                 taxon_rank: "",
                 taxonLatinName: "",
+                taxonGeorgianName: "",
+                taxonEnglishName: "",
             })
         }
         if (option === "iucn") {
@@ -93,6 +97,9 @@ function HomePageSearch() {
 
     return (
         <section className="px-4 pb-10 pt-6 bg-slate-50 dark:bg-slate-600 border rounded-md mb-4">
+            {/* <pre>
+                {JSON.stringify(formData, null, 2)}
+            </pre> */}
             <div className="mb-6 border-b pb-5 flex flex-col gap-y-4 lg:flex-row lg:justify-between lg:items-center">
                 <h3 className="text-xl font-medium text-center sm:text-left">{s("advancedSearch")}: {detectTypeTytle(formType)}</h3>
                 <div className="flex flex-col gap-y-3 sm:flex-row gap-x-2">
@@ -144,7 +151,7 @@ function HomePageSearch() {
                             setFormData={setFormData}
                             handleChange={handleChange}
                             disabled={disabled}
-                            classNames={`flex flex-col gap-y-6 md:flex-row items-end gap-4 relative`}
+                            classNames={`flex flex-col gap-y-6 lg:flex-row items-end gap-4 relative`}
                             formType={formType}
                         />
                     </form>
