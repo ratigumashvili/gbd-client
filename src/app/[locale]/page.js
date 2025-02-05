@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import HomePageAbout from "@/src/app/[locale]/_components/HomePageAbout"
 import PopularMenuByClass from "@/src/app/[locale]/_components/home-page-popula-classes/"
 import BrowseByTaxonomy from "@/src/app/[locale]/_components/browseTaxonomy/BrowseByTaxonomy"
-import HomePageSearch from "@/src/app/[locale]/_components/search-form/HomePageSearch"
+import AdvancedSearch from '@/src/app/[locale]/_components/search-form/HomePageSearch';
 import HomePageSlider from "@/src/app/[locale]/_components/home-page-slider/HomePageSlider"
 import Calendar from "@/src/app/[locale]/_components/activity_heatmap"
 
@@ -25,7 +25,7 @@ export default function Home({ params }) {
       </div>
       <div className="flex flex-col gap-y-5">
         <BrowseByTaxonomy title={t("BrowseByTaxonomy")} locale={params.locale} />
-        <HomePageSearch />
+        <AdvancedSearch />
         <HomePageSlider locale={params.locale} />
         <Calendar />
       </div>

@@ -12,7 +12,7 @@ import SpeciesSearchFields from "@/src/app/[locale]/_components/search-form/Spec
 
 import { handleAdvancedSearch } from "@/src/app/[locale]/_lib/actions/search-actions";
 
-function HomePageSearch() {
+function AdvancedSearch() {
     const [formType, setFormType] = useState("species")
     const [formData, setFormData] = useState({
         taxon_rank: "",
@@ -203,4 +203,4 @@ function HomePageSearch() {
     );
 }
 
-export default HomePageSearch;
+export default AdvancedSearch;
