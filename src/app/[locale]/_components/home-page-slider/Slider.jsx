@@ -61,13 +61,8 @@ function Slider({ data }) {
                                         <p className='line-clamp-1'><span className='font-medium pr-1'>{t("according_title")}:</span>{item?.metadata?.according_title}</p>
                                     )}
 
-                                    {item?.genus?.name && (
-                                        <p className='line-clamp-1'>
-                                            <span className='font-medium pr-1'>{t("genus")}:</span>
-                                            <Link href={`/genus/${item?.genus?.slug}?id=${item?.metadata?.tax_genera_id}`}>
-                                                {item?.genus?.name}
-                                            </Link>
-                                        </p>
+                                    {item?.metadata?.georgian_name && (
+                                        <p className='line-clamp-1'><span className='font-medium pr-1'>{t("georgian_name")}:</span>{item?.metadata?.georgian_name}</p>
                                     )}
 
                                     {item.metadata.origin && (
@@ -75,7 +70,6 @@ function Slider({ data }) {
                                     )}
                                 </div>
                             </div>
-                            {/* <Link href={`/species/${item.id}`} className='button w-max mt-4'>{t("read_more")}</Link> */}
                         </div>
                     ))}
                 </Slide>
