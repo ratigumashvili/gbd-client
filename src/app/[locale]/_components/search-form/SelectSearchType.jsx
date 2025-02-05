@@ -69,7 +69,7 @@ export function CustomSelect({ options, name, id, label, placeholder, setFormDat
                                                 {option.name}
                                             </span>
                                             {selected && option.id !== "" && (
-                                                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-white">
+                                                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-black">
                                                     <CheckedIcon width="15" height="15" aria-hidden="true" />
                                                 </span>
                                             )}
