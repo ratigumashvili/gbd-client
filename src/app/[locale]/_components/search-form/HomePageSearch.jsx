@@ -136,7 +136,7 @@ function HomePageSearch() {
 
             {formType === "taxons" && (
                 <>
-                    <p className="border-b pb-5 mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id nihil, ipsam impedit mollitia distinctio repellat praesentium commodi aperiam voluptatem quae porro quisquam officiis amet atque, quod nulla adipisci ratione esse!</p>
+                    <p className="border-b pb-5 mb-5 text-sm">{s("taxon_search_hint")}</p>
                     <form action={handleAdvancedFormSubmit}>
                         <TaxonSearchFields
                             key={formType}
@@ -153,7 +153,7 @@ function HomePageSearch() {
 
             {formType === "iucn" && (
                 <>
-                    <p className="border-b pb-5 mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id nihil, ipsam impedit mollitia distinctio repellat praesentium commodi aperiam voluptatem quae porro quisquam officiis amet atque, quod nulla adipisci ratione esse!</p>
+                    <p className="border-b pb-5 mb-5 text-sm">{s("iucn_search_hint")}</p>
                     <form action={handleAdvancedFormSubmit}>
                         <IucnSearchFields
                             key={formType}
