@@ -2,9 +2,8 @@
 
 import { useTranslations } from "next-intl";
 
-import SearchIcon from "@/src/app/[locale]/_components/icons/SearchIcon";
 import SelectRank from "@/src/app/[locale]/_components/search-form/SelectRank";
-import SelectIUCN from "@/src/app/[locale]/_components/search-form/SelectIUCN";
+import SearchIcon from "@/src/app/[locale]/_components/icons/SearchIcon";
 
 function SpeciesSearchFields({ formData, disabled, handleChange, classNames, setFormData, formType }) {
 
@@ -18,8 +17,8 @@ function SpeciesSearchFields({ formData, disabled, handleChange, classNames, set
       </div>
 
       <div className="flex flex-col gap-2 flex-1 w-full">
-        <label htmlFor="specieLatinName" className="text-base">
-          {s("speciesNamePlaceholder")} <sup className="text-red-700 font-medium">*</sup>
+        <label htmlFor="specieLatinName" className="text-base line-clamp-1">
+          {s("speciesNamePlaceholder")}
         </label>
         <input
           name="specieLatinName"
@@ -32,8 +31,34 @@ function SpeciesSearchFields({ formData, disabled, handleChange, classNames, set
         />
       </div>
 
-      <div className="flex-1 w-full z-30">
-        <SelectIUCN setFormData={setFormData} formType={formType} />
+      <div className="flex flex-col gap-2 flex-1 w-full">
+        <label htmlFor="specieGeorgianName" className="text-base line-clamp-1">
+          {s("specieGeorgianName")}
+        </label>
+        <input
+          name="specieGeorgianName"
+          type="text"
+          id="specieGeorgianName"
+          value={formData.specieGeorgianName}
+          onChange={handleChange}
+          placeholder={s("specieGeorgianNamePlaceholder")}
+          className="w-full p-[8.5px] bg-white border rounded-md outline-teal-500 placeholder:text-gray-400 dark:placeholder:text-gray-300"
+        />
+      </div>
+
+      <div className="flex flex-col gap-2 flex-1 w-full">
+        <label htmlFor="specieEnglishName" className="text-base line-clamp-1">
+          {s("specieEnglishName")}
+        </label>
+        <input
+          name="specieEnglishName"
+          type="text"
+          id="specieEnglishName"
+          value={formData.specieEnglishName}
+          onChange={handleChange}
+          placeholder={s("specieEnglishNamePlaceholder")}
+          className="w-full p-[8.5px] bg-white border rounded-md outline-teal-500 placeholder:text-gray-400 dark:placeholder:text-gray-300"
+        />
       </div>
 
       <div className="mt-4 flex items-center justify-between">

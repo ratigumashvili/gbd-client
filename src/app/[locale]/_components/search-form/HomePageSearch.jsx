@@ -17,6 +17,8 @@ function HomePageSearch() {
     const [formData, setFormData] = useState({
         taxon_rank: "",
         specieLatinName: "",
+        specieGeorgianName: "",
+        specieEnglishName: "",
         taxonLatinName: "",
         taxonGeorgianName: "",
         taxonEnglishName: "",
@@ -31,8 +33,16 @@ function HomePageSearch() {
         const allFieldsEmpty = Object.values(formData).every(
             (value) => value?.trim() === ""
         );
+
+        const onlyTaxonRankSelected =
+            formData.taxon_rank?.trim() !== "" &&
+            Object.entries(formData).every(
+                ([key, value]) => key === "taxon_rank" || value?.trim() === ""
+            );
+
         if (formType === "species") {
-            setDisabled(allFieldsEmpty || formData.specieLatinName === "");
+            // setDisabled(allFieldsEmpty || formData.specieLatinName === "");
+            setDisabled(allFieldsEmpty || onlyTaxonRankSelected)
         }
         if (formType === "taxons" || formType === "iucn") {
             setDisabled(allFieldsEmpty);
@@ -50,7 +60,8 @@ function HomePageSearch() {
             setFormData({
                 taxon_rank: "",
                 specieLatinName: "",
-                iucn: ""
+                specieGeorgianName: "",
+                specieEnglishName: ""
             })
         }
         if (option === "taxons") {

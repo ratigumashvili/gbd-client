@@ -20,6 +20,8 @@ export async function handleAdvancedSearch(formData) {
 
   const taxonRankValue = formData.get("taxon_rank")?.trim();
   const specieLatinName = formData.get("specieLatinName")
+  const specieGeorgianName = formData.get("specieGeorgianName")
+  const specieEnglishName = formData.get("specieEnglishName")
   const taxonLatinName = formData.get("taxonLatinName")
   const taxonGeorgianName = formData.get("taxonGeorgianName")
   const taxonEnglishName = formData.get("taxonEnglishName")
@@ -28,6 +30,8 @@ export async function handleAdvancedSearch(formData) {
   const queryParams = {
     rank: taxonRankValue || undefined,
     specieLatinName: specieLatinName || undefined,
+    specieGeorgianName: specieGeorgianName || undefined,
+    specieEnglishName: specieEnglishName || undefined,
     taxonLatinName: taxonLatinName || undefined,
     taxonGeorgianName: taxonGeorgianName || undefined,
     taxonEnglishName: taxonEnglishName || undefined,
