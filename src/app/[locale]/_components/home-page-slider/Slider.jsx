@@ -49,12 +49,16 @@ function Slider({ data }) {
                                 </Link>
                                 <div className='flex flex-col gap-y-2 text-base'>
 
+                                    {item?.metadata?.scientific_name && (
+                                        <p className='line-clamp-1'><span className='font-medium pr-1'>{t("scientific_name")}:</span>{item?.metadata?.scientific_name}</p>
+                                    )}
+
                                     {item?.metadata?.scientific_name_id && (
                                         <p className='line-clamp-1'><span className='font-medium pr-1'>{t("scientific_name_id")}:</span>{item?.metadata?.scientific_name_id}</p>
                                     )}
 
-                                    {item?.metadata?.scientific_name && (
-                                        <p className='line-clamp-1'><span className='font-medium pr-1'>{t("scientific_name")}:</span>{item?.metadata?.scientific_name}</p>
+                                    {item?.metadata?.according_title && (
+                                        <p className='line-clamp-1'><span className='font-medium pr-1'>{t("according_title")}:</span>{item?.metadata?.according_title}</p>
                                     )}
 
                                     {item?.genus?.name && (
@@ -64,10 +68,6 @@ function Slider({ data }) {
                                                 {item?.genus?.name}
                                             </Link>
                                         </p>
-                                    )}
-
-                                    {item?.metadata?.according_title && (
-                                        <p className='line-clamp-1'><span className='font-medium pr-1'>{t("according_title")}:</span>{item?.metadata?.according_title}</p>
                                     )}
 
                                     {item.metadata.origin && (
