@@ -17,7 +17,7 @@ function BookmarksCart() {
     const cartColor = bookmarks && bookmarks.length === BOKMARK_LIMIT ? "bg-red-800" : "bg-teal-900"
 
     if (!isMounted) {
-        return
+        return null
     }
 
     return (

@@ -113,7 +113,7 @@ function Bookmarked() {
     }
 
     if (!isMounted) {
-        return
+        return null
     }
 
     return (

@@ -44,7 +44,7 @@ function TaxonHeading({ headingData }) {
     const { handleAddBookmark, handleRemoveBookmark, isBookmarked } = useBookmarks()
 
     if (!isMounted) {
-        return
+        return null
     }
 
     return (
