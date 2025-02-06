@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/src/i18n/routing";
 
@@ -23,6 +23,8 @@ function AdvancedSearch() {
         iucn: ""
     });
     const [disabled, setDisabled] = useState(true);
+
+    const targetRef = useRef(null)
 
     const router = useRouter()
 
@@ -116,7 +118,7 @@ function AdvancedSearch() {
     async function handleAdvancedFormSubmit(formData) {
         const queryParamString = await handleAdvancedSearch(formData);
         if (queryParamString) {
-            router.push(`/search?${queryParamString}`, {scrol: true})
+            router.push(`/search?${queryParamString}`)
         }
     }
 

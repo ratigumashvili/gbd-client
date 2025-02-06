@@ -33,6 +33,10 @@ export default function ResetButton({ handleReset, formData, classNames }) {
         } else {
             setDisabled(false)
         }
+
+        if(pathname === "/search") {
+            setDisabled(false)
+        }
     }, [formData])
 
     return (
