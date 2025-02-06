@@ -34,7 +34,6 @@ function SearchParameters({ length = 0 }) {
 
     return (
         <section className="p-4 rounded-md bg-slate-50 dark:bg-slate-600" ref={targetRef}>
-            <pre>{JSON.stringify(searchParams, null, 2)}</pre>
             <h2 className="text-xl font-medium mb-4">{s("parameters")}</h2>
             <div className="flex flex-wrap gap-2">
                 {filteredParams && filteredParams?.length !== 0 && filteredParams?.map((item, index) => (
