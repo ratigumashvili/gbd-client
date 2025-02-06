@@ -116,7 +116,7 @@ function AdvancedSearch() {
     async function handleAdvancedFormSubmit(formData) {
         const queryParamString = await handleAdvancedSearch(formData);
         if (queryParamString) {
-            router.push("/search?" + queryParamString);
+            router.push(`/search?${queryParamString}`, {scrol: true})
         }
     }
 
