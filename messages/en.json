@@ -153,6 +153,8 @@
     "taxonLatinNamePlaceholder": "Taxonomy Latin name",
     "taxonGeorgianName": "Georgian name",
     "taxonGeorgianNamePlaceholder": "Taxon Georgian name",
+    "taxonEnglishName": "English name",
+    "taxonEnglishNamePlaceholder": "Taxon English name",
     "iucn": "IUCN Red List Status",
     "pageTitle": "Search",
     "name": "Name",
