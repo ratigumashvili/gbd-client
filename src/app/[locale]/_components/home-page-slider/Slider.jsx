@@ -33,7 +33,7 @@ function Slider({ data }) {
             <div className="slide-container font-firaGo">
                 <Slide {...properties}>
                     {data && data.length !== 0 && data?.map((item) => (
-                        <div key={item.id} className='px-8 sm:px-14 lg:px-20 py-8 border bg-white rounded-md max-h-[300px] h-full flex flex-col justify-between relative'>
+                        <div key={item.id} className='px-8 sm:px-14 lg:px-20 py-8 border bg-white rounded-md min-h-[300px] flex flex-col justify-between relative'>
                             <button
                                 className='absolute top-3 right-3'
                                 data-tooltip-id="created_at_data"
