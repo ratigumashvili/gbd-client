@@ -6,7 +6,7 @@ import { Listbox, Transition } from "@headlessui/react";
 import CheckedIcon from "@/src/app/[locale]/_components/icons/CheckedIcon";
 import ChevronUpDown from "@/src/app/[locale]/_components/icons/ChevronUpDown";
 
-export function CustomSelect({ options, name, id, label, placeholder, setFormData, field }) {
+export function CustomSelect({ options, name, id, label, placeholder, formData, setFormData, field }) {
 
     const initialOption = { id: "", name: placeholder };
     const [selected, setSelected] = useState(initialOption);
@@ -24,6 +24,12 @@ export function CustomSelect({ options, name, id, label, placeholder, setFormDat
             [field]: option.value ?? "",
         }));
     };
+
+    useEffect(() => {
+        if(!formData[field]){
+            setSelected(initialOption)
+        }
+    }, [formData[field]])
 
     return (
         <div className="w-full flex flex-col gap-[5px]">

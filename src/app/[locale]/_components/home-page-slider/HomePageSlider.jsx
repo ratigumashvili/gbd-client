@@ -16,7 +16,7 @@ async function HomePageSlider({ locale }) {
     return acc;
   }, {});
 
-  const result = Object?.entries(nameCounts).map(([name, count]) => ({
+  const result = nameCounts && Object?.entries(nameCounts).map(([name, count]) => ({
     name,
     count
   }));

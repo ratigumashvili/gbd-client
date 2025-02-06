@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { taxonRank } from "@/src/app/[locale]/_lib/data"
 import { CustomSelect as RankSelect } from "@/src/app/[locale]/_components/search-form/SelectSearchType"
 
-function SelectRank({ setFormData, formType }) {
+function SelectRank({ formData, setFormData, formType }) {
     
     const s = useTranslations("Search");
 
@@ -18,6 +18,7 @@ function SelectRank({ setFormData, formType }) {
                 name="taxon_rank"
                 id="taxon_rank"
                 label={s("TaxonRank")}
+                formData={formData}
                 setFormData={setFormData}
                 formType={formType}
                 field="taxon_rank"

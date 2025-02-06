@@ -3,8 +3,6 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/src/i18n/routing";
-import { Tooltip } from "react-tooltip"
-import { isMobile } from "react-device-detect"
 
 import TaxonSearchFields from "@/src/app/[locale]/_components/search-form/TaxonSearchFields";
 import IucnSearchFields from "@/src/app/[locale]/_components/search-form/IucnSearchFields";
@@ -26,7 +24,8 @@ function AdvancedSearch() {
     });
     const [disabled, setDisabled] = useState(true);
 
-    const router = useRouter();
+    const router = useRouter()
+
     const s = useTranslations("Search");
 
     useEffect(() => {
@@ -41,11 +40,13 @@ function AdvancedSearch() {
             );
 
         if (formType === "species") {
-            // setDisabled(allFieldsEmpty || formData.specieLatinName === "");
             setDisabled(allFieldsEmpty || onlyTaxonRankSelected)
         }
-        if (formType === "taxons" || formType === "iucn") {
+        if (formType === "taxons") {
             setDisabled(allFieldsEmpty);
+        }
+        if (formType === "iucn") {
+            setDisabled(allFieldsEmpty || onlyTaxonRankSelected);
         }
     }, [formData, formType]);
 
@@ -53,6 +54,19 @@ function AdvancedSearch() {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
+
+    const handleReset = () => {
+        setFormData({
+            taxon_rank: "",
+            specieLatinName: "",
+            specieGeorgianName: "",
+            specieEnglishName: "",
+            taxonLatinName: "",
+            taxonGeorgianName: "",
+            taxonEnglishName: "",
+            iucn: ""
+        })
+    }
 
     const handleTypeChange = (option) => {
         setFormType(option);
@@ -102,15 +116,12 @@ function AdvancedSearch() {
     async function handleAdvancedFormSubmit(formData) {
         const queryParamString = await handleAdvancedSearch(formData);
         if (queryParamString) {
-            router.push("/searchResults?" + queryParamString);
+            router.push("/search?" + queryParamString);
         }
     }
 
     return (
         <section className="px-4 pb-10 pt-6 bg-slate-50 dark:bg-slate-600 border rounded-md mb-4">
-            {/* <pre>
-                {JSON.stringify(formData, null, 2)}
-            </pre> */}
             <div className="mb-6 border-b pb-5 flex flex-col gap-y-4 lg:flex-row lg:justify-between lg:items-center">
                 <h3 className="text-xl font-medium text-center sm:text-left">{s("advancedSearch")}: {detectTypeTytle(formType)}</h3>
                 <div className="flex flex-col gap-y-3 sm:flex-row gap-x-2">
@@ -137,13 +148,14 @@ function AdvancedSearch() {
 
             {formType === "species" && (
                 <>
-                    <p className="border-b pb-5 mb-5 text-sm">{s("specie_search_hint")}</p>
+                    <p className="border-b pb-5 mb-5 text-sm xs:text-base leading-7">{s("specie_search_hint")}</p>
                     <form action={handleAdvancedFormSubmit}>
                         <SpeciesSearchFields
                             key={formType}
                             formData={formData}
                             setFormData={setFormData}
                             handleChange={handleChange}
+                            handleReset={handleReset}
                             disabled={disabled}
                             classNames={`flex flex-col gap-y-6 lg:flex-row items-end gap-4 relative`}
                             formType="species"
@@ -154,13 +166,14 @@ function AdvancedSearch() {
 
             {formType === "taxons" && (
                 <>
-                    <p className="border-b pb-5 mb-5 text-sm">{s("taxon_search_hint")}</p>
+                    <p className="border-b pb-5 mb-5 text-sm xs:text-base leading-7">{s("taxon_search_hint")}</p>
                     <form action={handleAdvancedFormSubmit}>
                         <TaxonSearchFields
                             key={formType}
                             formData={formData}
                             setFormData={setFormData}
                             handleChange={handleChange}
+                            handleReset={handleReset}
                             disabled={disabled}
                             classNames={`flex flex-col gap-y-6 lg:flex-row items-end gap-4 relative`}
                             formType={formType}
@@ -171,34 +184,21 @@ function AdvancedSearch() {
 
             {formType === "iucn" && (
                 <>
-                    <p className="border-b pb-5 mb-5 text-sm">{s("iucn_search_hint")}</p>
+                    <p className="border-b pb-5 mb-5 text-sm xs:text-base leading-7 ">{s("iucn_search_hint")}</p>
                     <form action={handleAdvancedFormSubmit}>
                         <IucnSearchFields
                             key={formType}
                             formData={formData}
                             setFormData={setFormData}
                             handleChange={handleChange}
+                            handleReset={handleReset}
                             disabled={disabled}
-                            classNames={`flex items-end gap-4 relative`}
+                            classNames={`flex flex-col lg:flex-row items-end gap-4 relative`}
                             formType={formType}
                         />
                     </form>
                 </>
             )}
-
-            {/* <Tooltip
-                id="latin_name_tooltip"
-                style={{
-                    zIndex: 999,
-                    width: isMobile ? "200px" : "auto",
-                    padding: "2px 6px",
-                    backgroundColor: "black",
-                    color: "white",
-                    fontSize: "14px",
-                    textAlign: "center"
-                }}
-            /> */}
-
         </section>
     );
 }

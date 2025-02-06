@@ -167,7 +167,7 @@ function Bookmarked() {
                                     </button>
                                     <Link
                                         href={'/bookmarked'}
-                                        className="button-secondary w-full whitespace-nowrap disabled:opacity-65 disabled:pointer-events-none"
+                                        className="button-secondary w-full text-center whitespace-nowrap disabled:opacity-65 disabled:pointer-events-none"
                                     >
                                         {t("search_reset_btn")}
                                     </Link>

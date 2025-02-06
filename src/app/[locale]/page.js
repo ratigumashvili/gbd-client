@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import HomePageAbout from "@/src/app/[locale]/_components/HomePageAbout"
 import PopularMenuByClass from "@/src/app/[locale]/_components/home-page-popula-classes/"
 import BrowseByTaxonomy from "@/src/app/[locale]/_components/browseTaxonomy/BrowseByTaxonomy"
-import AdvancedSearch from '@/src/app/[locale]/_components/search-form/HomePageSearch';
+import AdvancedSearch from '@/src/app/[locale]/_components/search-form/AdvancedSearch';
 import HomePageSlider from "@/src/app/[locale]/_components/home-page-slider/HomePageSlider"
 import Calendar from "@/src/app/[locale]/_components/activity_heatmap"
 

@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { CustomSelect as IucnSelect } from "@/src/app/[locale]/_components/search-form/SelectSearchType"
 import { iucnCategory } from "@/src/app/[locale]/_lib/data"
 
-function SelectIUCN({ setFormData, formType }) {
+function SelectIUCN({ formData, setFormData, formType }) {
 
     const s = useTranslations("Search");
     const t = useTranslations("Species")
@@ -26,6 +26,7 @@ function SelectIUCN({ setFormData, formType }) {
             name="iucn"
             id="iucn"
             label={s("NationalIUCNCategory")}
+            formData={formData}
             setFormData={setFormData}
             formType={formType}
             field="iucn"
