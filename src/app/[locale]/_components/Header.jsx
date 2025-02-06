@@ -1,93 +1,97 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
+import Image from "next/image";
+import { useRouter, Link, usePathname } from "@/src/i18n/routing";
+import { TopMenu } from "../_lib/constants";
+import ThemeChangeBtn from "./ThemeChangeBtn";
+import BookmarksCart from "./BookmarksCart";
+import Hamburger from "./icons/Hamburger";
+import Close from "./icons/Close";
+import RightDoubleIcon from "./icons/RightDoubleIcon";
+import { useTranslations } from "next-intl";
+import { detectLocale } from "../_lib/helpers";
+import { useSearchParams } from "next/navigation";
+import SearchIcon from "./icons/SearchIcon";
 
-import Image from "next/image"
+const NavbarDesktop = ({ setMenuOpen, locale }) => {
+    const t = useTranslations("TopNavigation");
 
-import { useRouter, Link, usePathname } from "@/src/i18n/routing"
-
-import { TopMenu } from "../_lib/constants"
-
-import AuthModal from "./AuthModal"
-import ThemeChangeBtn from "./ThemeChangeBtn"
-import BookmarksCart from "./BookmarksCart"
-
-import Hamburger from "./icons/Hamburger"
-import Close from "./icons/Close"
-import RightDoubleIcon from "./icons/RightDoubleIcon"
-
-import { useTranslations } from "next-intl"
-
-import { detectLocale } from "../_lib/helpers"
-import { useSearchParams } from "next/navigation"
-import SearchIcon from "./icons/SearchIcon"
-
-
-const NavbarDesktop = ({ menuOpen, setMenuOpen, locale }) => {
-    const t = useTranslations("TopNavigation")
     return (
         <>
-            <button
-                onClick={() => setMenuOpen((prevState) => !prevState)}
-                className="md:hidden"
-            >
-                {menuOpen ? <Close /> : <Hamburger />}
+            <button onClick={() => setMenuOpen((prev) => !prev)} className="md:hidden">
+                <Hamburger />
             </button>
             <ul className={`hidden md:flex gap-3 text-lg ${detectLocale(locale)}`}>
                 {TopMenu.map(({ id, title, path }) => (
                     <li key={id}>
-                        <Link href={path}>
-                            {t(title)}
-                        </Link>
+                        <Link href={path}>{t(title)}</Link>
                     </li>
                 ))}
-            </ul >
+            </ul>
         </>
-    )
-}
+    );
+};
 
 const NavbarMobile = ({ menuOpen, setMenuOpen, locale }) => {
-
-    const router = useRouter()
-    const t = useTranslations("TopNavigation")
+    const router = useRouter();
+    const t = useTranslations("TopNavigation");
 
     const handleClick = (path) => {
-        router.replace(path)
-        setMenuOpen(false)
-    }
+        router.replace(path);
+        setMenuOpen(false);
+    };
+
     return (
-        <>
-            {menuOpen && (
-                <ul className={`flex flex-col p-4 h-screen w-full absolute z-50 bg-white ${detectLocale(locale)}`}>
-                    {TopMenu.map(({ id, title, path }) => (
-                        <li key={id}>
-                            <button
-                                className="w-full text-left text-2xl font-medium py-4"
-                                onClick={() => handleClick(path)}
-                            >
-                                {t(title)}
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            )}
-        </>
-    )
-}
+        <div
+            className={`
+                fixed 
+                inset-0 
+                bg-white 
+                transform 
+                transition-all 
+                duration-300 
+                ease-in-out 
+                ${menuOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"} 
+                z-50 
+                w-full 
+                h-screen 
+                flex 
+                flex-col 
+                px-6
+                `}
+        >
+            <button
+                className="absolute top-4 right-4 text-black"
+                onClick={() => setMenuOpen(false)}
+            >
+                <Close />
+            </button>
+            <ul className={`flex flex-col space-y-4 ml-10 text-2xl font-medium mt-12 ${detectLocale(locale)}`}>
+                {TopMenu.map(({ id, title, path }) => (
+                    <li key={id}>
+                        <button className="w-full text-left py-2" onClick={() => handleClick(path)}>
+                            {t(title)}
+                        </button>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+};
 
 const LanguageSwitcher = ({ locale }) => {
-
-    const router = useRouter()
-    const pathname = usePathname()
-    const searchParams = useSearchParams()
+    const router = useRouter();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
 
     const handleLanguageChange = (lang) => {
-        lang === 'ka' ? router.replace(pathname + '?' + searchParams, { locale: 'ka' }) : router.replace(pathname + '?' + searchParams, { locale: 'en' })
-    }
+        router.replace(pathname + "?" + searchParams, { locale: lang });
+    };
 
     return (
         <div className="flex gap-2 items-center font-firaGo">
-            {locale === 'ka' ? (
+            {locale === "ka" ? (
                 <>
                     <div className="switch justify-end" onClick={() => handleLanguageChange("en")}>
                         <div className="switch-circle"></div>
@@ -103,25 +107,27 @@ const LanguageSwitcher = ({ locale }) => {
                 </>
             )}
         </div>
-    )
-}
-
+    );
+};
 
 function Header({ locale }) {
-
-    const [menuOpen, setMenuOpen] = useState(false)
-    const t = useTranslations('Header')
-    const c = useTranslations('Common')
+    const [menuOpen, setMenuOpen] = useState(false);
+    const t = useTranslations("Header");
+    const c = useTranslations("Common");
 
     return (
         <div className="relative">
-            <div className="w-full py-2 xs:py-6 md:py-4 text-white bg-teal-700">
+            <div className="w-full py-6 md:py-2 text-white bg-teal-700">
                 <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-sm">
                     <div className="flex items-center gap-2 mb-4 md:mb-0">
                         <h1>
-                            <Link href='https://iliauni.edu.ge/ge' target="blank" className="sm:flex items-center gap-2 font-firaGo hidden">
+                            <Link
+                                href="https://iliauni.edu.ge/ge"
+                                target="blank"
+                                className="sm:flex items-center gap-2 font-firaGo hidden"
+                            >
                                 <RightDoubleIcon />
-                                {t('isu')}
+                                {t("isu")}
                             </Link>
                         </h1>
 
@@ -133,20 +139,16 @@ function Header({ locale }) {
                             <RightDoubleIcon />
                             {t("register")}
                         </Link>
-
-                        {/* <AuthModal /> */}
                     </div>
                     <div className="flex items-center gap-4">
-
                         <LanguageSwitcher locale={locale} />
                         <ThemeChangeBtn />
                         <BookmarksCart />
-                        <Link href={'/search'}>
+                        <Link href={"/search"}>
                             <span className="flex items-center">
                                 <SearchIcon /> {t("search")}
                             </span>
                         </Link>
-
                     </div>
                 </div>
             </div>
@@ -164,23 +166,13 @@ function Header({ locale }) {
                         <h1 className={`text-xl w-[200px] ${detectLocale(locale)}`}>{c("isu")}</h1>
                     </div>
                     <div className="flex gap-3 items-center">
-
-                        <NavbarDesktop
-                            menuOpen={menuOpen}
-                            setMenuOpen={setMenuOpen}
-                            locale={locale}
-                        />
-
+                        <NavbarDesktop setMenuOpen={setMenuOpen} locale={locale} />
                     </div>
                 </div>
             </div>
-            <NavbarMobile
-                menuOpen={menuOpen}
-                setMenuOpen={setMenuOpen}
-                locale={locale}
-            />
+            <NavbarMobile menuOpen={menuOpen} setMenuOpen={setMenuOpen} locale={locale} />
         </div>
-    )
+    );
 }
 
-export default Header
+export default Header;

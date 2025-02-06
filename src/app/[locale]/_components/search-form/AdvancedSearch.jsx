@@ -148,7 +148,7 @@ function AdvancedSearch() {
 
             {formType === "species" && (
                 <>
-                    <p className="border-b pb-5 mb-5 text-sm xs:text-base leading-7">{s("specie_search_hint")}</p>
+                    <p className="border-b pb-5 mb-5 sm:text-sm text-base !leading-7">{s("specie_search_hint")}</p>
                     <form action={handleAdvancedFormSubmit}>
                         <SpeciesSearchFields
                             key={formType}
@@ -166,7 +166,7 @@ function AdvancedSearch() {
 
             {formType === "taxons" && (
                 <>
-                    <p className="border-b pb-5 mb-5 text-sm xs:text-base leading-7">{s("taxon_search_hint")}</p>
+                    <p className="border-b pb-5 mb-5 sm:text-sm text-base !leading-7">{s("taxon_search_hint")}</p>
                     <form action={handleAdvancedFormSubmit}>
                         <TaxonSearchFields
                             key={formType}
@@ -184,7 +184,7 @@ function AdvancedSearch() {
 
             {formType === "iucn" && (
                 <>
-                    <p className="border-b pb-5 mb-5 text-sm xs:text-base leading-7 ">{s("iucn_search_hint")}</p>
+                    <p className="border-b pb-5 mb-5 sm:text-sm text-base !leading-7 ">{s("iucn_search_hint")}</p>
                     <form action={handleAdvancedFormSubmit}>
                         <IucnSearchFields
                             key={formType}
