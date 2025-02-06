@@ -47,21 +47,27 @@ const NavbarDesktop = ({ menuOpen, setMenuOpen, locale }) => {
 }
 
 const NavbarMobile = ({ menuOpen, setMenuOpen, locale }) => {
+
+    const router = useRouter()
     const t = useTranslations("TopNavigation")
+
+    const handleClick = (path) => {
+        router.replace(path)
+        setMenuOpen(false)
+    }
     return (
         <>
             {menuOpen && (
-                <ul className={`flex flex-col gap-4 p-4 h-screen w-full absolute z-50 bg-white ${detectLocale(locale)}`}>
+                <ul className={`flex flex-col p-4 h-screen w-full absolute z-50 bg-white ${detectLocale(locale)}`}>
                     {TopMenu.map(({ id, title, path }) => (
-                        <button
-                            key={id}
-                            className="max-w-max"
-                            onClick={() => setMenuOpen(false)
-                            }>
-                            <Link href={path}>
+                        <li key={id}>
+                            <button
+                                className="w-full text-left text-2xl font-medium py-4"
+                                onClick={() => handleClick(path)}
+                            >
                                 {t(title)}
-                            </Link>
-                        </button>
+                            </button>
+                        </li>
                     ))}
                 </ul>
             )}
@@ -109,7 +115,7 @@ function Header({ locale }) {
 
     return (
         <div className="relative">
-            <div className="w-full py-2 text-white bg-teal-700">
+            <div className="w-full py-2 xs:py-6 md:py-4 text-white bg-teal-700">
                 <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-sm">
                     <div className="flex items-center gap-2 mb-4 md:mb-0">
                         <h1>
