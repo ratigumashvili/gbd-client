@@ -88,6 +88,7 @@ function AdvancedSearch() {
         }
         if (option === "iucn") {
             setFormData({
+                taxon_rank: "",
                 iucn: "",
             })
         }
