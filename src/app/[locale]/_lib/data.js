@@ -341,32 +341,32 @@ export const popularMenu = [
 export const taxonRank = [
     {
         id: 1,
-        value: "kingdom",
+        value: "Kingdom",
         name: "Kingdom"
     },
     {
         id: 2,
-        value: "phylum",
+        value: "Phylum",
         name: "Phylum"
     },
     {
         id: 3,
-        value: "class",
+        value: "TaxClass",
         name: "Class"
     },
     {
         id: 4,
-        value: "order",
+        value: "TaxOrder",
         name: "Order"
     },
     {
         id: 5,
-        value: "family",
+        value: "Family",
         name: "Family"
     },
     {
         id: 6,
-        value: "genus",
+        value: "Genus",
         name: "Genus"
     }
 ]

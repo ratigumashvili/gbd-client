@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import SelectRank from "@/src/app/[locale]/_components/search-form/SelectRank";
 import SearchIcon from "@/src/app/[locale]/_components/icons/SearchIcon";
 import ResetButton from "./ResetButton";
+import SubmitButton from "./SubmitButton";
 
 function SpeciesSearchFields({ formData, disabled, handleChange, handleReset, classNames, setFormData, formType }) {
 
@@ -72,35 +73,7 @@ function SpeciesSearchFields({ formData, disabled, handleChange, handleReset, cl
           formData={formData} 
           classNames={`flex-1 md:!w-max`}
         />
-        <button
-          type="submit"
-          disabled={disabled}
-          className={`
-            inline-flex 
-            flex-1
-            md:!w-max
-            !sm:w-max
-            justify-center 
-            rounded-md 
-            border 
-            border-transparent 
-            bg-teal-600 
-            px-4 
-            py-[10px] 
-            text-sm 
-            font-medium 
-            text-white 
-            hover:bg-teal-700 
-            focus:outline-none 
-            focus-visible:ring-2 
-            focus-visible:ring-teal-900 
-            focus-visible:ring-offset-2 
-            ${disabled && "opacity-50 pointer-events-none"}
-            `}
-        >
-          <SearchIcon width="18" height="18" />
-          <span className="pl-2">{s("submit")}</span>
-        </button>
+        <SubmitButton disabled={disabled} />
       </div>
 
     </div>

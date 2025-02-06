@@ -116,8 +116,9 @@ function AdvancedSearch() {
 
     async function handleAdvancedFormSubmit(formData) {
         const queryParamString = await handleAdvancedSearch(formData);
+        const search_in = formData.get("search_in")
         if (queryParamString) {
-            router.push(`/search?${queryParamString}`)
+            router.push(`/search?search_in=${search_in}&${queryParamString}`)
         }
     }
 
@@ -147,10 +148,13 @@ function AdvancedSearch() {
                 </div>
             </div>
 
+            {/* search_in=specie&name=test&georgian_name=test&english_name=test&taxonomy_level=Kingdom */}
+
             {formType === "species" && (
                 <>
                     <p className="border-b pb-5 mb-5 sm:text-sm text-base !leading-7">{s("specie_search_hint")}</p>
                     <form action={handleAdvancedFormSubmit}>
+                        <input type="hidden" name="search_in" value="specie" />
                         <SpeciesSearchFields
                             key={formType}
                             formData={formData}
@@ -169,6 +173,7 @@ function AdvancedSearch() {
                 <>
                     <p className="border-b pb-5 mb-5 sm:text-sm text-base !leading-7">{s("taxon_search_hint")}</p>
                     <form action={handleAdvancedFormSubmit}>
+                        <input type="hidden" name="search_in" value="taxonomy" />
                         <TaxonSearchFields
                             key={formType}
                             formData={formData}
@@ -187,6 +192,7 @@ function AdvancedSearch() {
                 <>
                     <p className="border-b pb-5 mb-5 sm:text-sm text-base !leading-7 ">{s("iucn_search_hint")}</p>
                     <form action={handleAdvancedFormSubmit}>
+                        <input type="hidden" name="search_in" value="specie" />
                         <IucnSearchFields
                             key={formType}
                             formData={formData}

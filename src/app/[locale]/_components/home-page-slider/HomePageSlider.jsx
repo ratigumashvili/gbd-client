@@ -40,14 +40,11 @@ async function HomePageSlider({ locale }) {
 
 
         <div className="col-span-6 md:col-span-3 bg-slate-50 dark:bg-slate-600 rounded-md p-4">
-          
+
           <Slider data={data} />
         </div>
         <div className="col-span-6 md:col-span-3 border rounded-md p-4">
           {/* <h2 className='text-xl font-medium mb-4'>{translations.specieOfTheDay}</h2> */}
-          <pre>
-            {/* {JSON.stringify(result, null, 2)} */}
-          </pre>
         </div>
 
       </section>
