@@ -2,7 +2,7 @@
 
 import { ThemeProvider } from "next-themes";
 
-import useIsMounted from "../_hooks/useIsMounted";
+import useIsMounted from "@/src/app/[locale]/_hooks/useIsMounted";
 
 export default function ThemeProviders({ children }) {
   const { isMounted } = useIsMounted();
