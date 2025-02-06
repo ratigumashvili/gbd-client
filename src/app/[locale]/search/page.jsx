@@ -7,7 +7,7 @@ import AdvancedSearch from "@/src/app/[locale]/_components/search-form/AdvancedS
 import { capitalizeFirstLetter, detectLocale } from "@/src/app/[locale]/_lib/helpers"
 import { getData, getPaginatedData } from "../_lib/apiCalls"
 
-const PageTitle = ({locale}) => {
+const PageTitle = ({ locale }) => {
   const t = useTranslations("Search")
   return (
     <h2 className={`text-2xl font-medium mb-4 ${detectLocale(locale)}`}>{t("pageTitle")}</h2>
@@ -32,19 +32,14 @@ async function SearchPage({ params, searchParams }) {
     iucn_status: searchParams.iucn_status || undefined
   }
 
-  //   --url 'https://test-api.biodiversity.iliauni.edu.ge/api/1.0/taxonomy/search?search_in=specie&iucn_status=CR' \
+  const result = qs.stringify(queryParams, {
+    skipNulls: true,
+    skipEmptyStrings: true
+  })
 
-
-
-
-   const result = qs.stringify(queryParams, {
-      skipNulls: true,
-      skipEmptyStrings: true
-    })
-
-const data = await getPaginatedData(`taxonomy/search?search_in=${search_in}&${result}`, params.locale, 1, 5)
+  const data = await getPaginatedData(`taxonomy/search?search_in=${search_in}&${result}`, params.locale, 1, 5)
   const check = searchParams && Object.keys(searchParams).length
-  
+
   return (
     <section className="py-4">
       <PageTitle locale={params.locale} />
