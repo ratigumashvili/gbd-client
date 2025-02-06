@@ -8,7 +8,7 @@ export default function ThemeProviders({ children }) {
   const { isMounted } = useIsMounted();
 
   if (!isMounted) {
-    return <>{children}</>;
+    return null
   }
 
   return (
