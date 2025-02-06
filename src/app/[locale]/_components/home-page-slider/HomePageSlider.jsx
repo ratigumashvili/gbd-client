@@ -1,7 +1,6 @@
 import { getRecentSpecies } from "@/src/app/[locale]/_lib/apiCalls"
 
 import Slider from "./Slider"
-import FeaturedSpecie from "./FeaturedSpecie"
 
 async function HomePageSlider({ locale }) {
 
@@ -46,7 +45,9 @@ async function HomePageSlider({ locale }) {
         </div>
         <div className="col-span-6 md:col-span-3 border rounded-md p-4">
           {/* <h2 className='text-xl font-medium mb-4'>{translations.specieOfTheDay}</h2> */}
-          <FeaturedSpecie />
+          <pre>
+            {/* {JSON.stringify(result, null, 2)} */}
+          </pre>
         </div>
 
       </section>
