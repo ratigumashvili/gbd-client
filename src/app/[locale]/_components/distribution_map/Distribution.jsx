@@ -109,10 +109,10 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
                                                 <p className='!my-1'><span>{t("longitude")}</span>: {marker.geocode[1]}</p>
                                             </div>
                                             {marker?.popup?.recorded_by && (
-                                                <p><span className='font-medium'>{t("recorded_by")}:</span> {recorded_by}</p>
+                                                <p><span className='font-medium'>{t("recorded_by")}:</span> {marker?.popup?.recorded_by}</p>
                                             )}
                                             {marker?.popup?.date && (
-                                                <p><span className='font-medium'>{t("date")}:</span> {date}</p>
+                                                <p><span className='font-medium'>{t("date")}:</span> {marker?.popup?.date}</p>
                                             )}
                                         </Popup>
                                     </Marker>

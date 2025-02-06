@@ -9,7 +9,6 @@ import { useRouter, Link, usePathname } from "@/src/i18n/routing"
 import { TopMenu } from "../_lib/constants"
 
 import AuthModal from "./AuthModal"
-import SearchModal from "./SearchModal"
 import ThemeChangeBtn from "./ThemeChangeBtn"
 import BookmarksCart from "./BookmarksCart"
 
@@ -21,6 +20,7 @@ import { useTranslations } from "next-intl"
 
 import { detectLocale } from "../_lib/helpers"
 import { useSearchParams } from "next/navigation"
+import SearchIcon from "./icons/SearchIcon"
 
 
 const NavbarDesktop = ({ menuOpen, setMenuOpen, locale }) => {
@@ -135,7 +135,11 @@ function Header({ locale }) {
                         <LanguageSwitcher locale={locale} />
                         <ThemeChangeBtn />
                         <BookmarksCart />
-                        <SearchModal />
+                        <Link href={'/search'}>
+                            <span className="flex items-center">
+                                <SearchIcon /> {t("search")}
+                            </span>
+                        </Link>
 
                     </div>
                 </div>
