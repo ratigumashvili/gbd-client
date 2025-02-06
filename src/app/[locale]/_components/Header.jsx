@@ -19,10 +19,10 @@ const NavbarDesktop = ({ setMenuOpen, locale }) => {
 
     return (
         <>
-            <button onClick={() => setMenuOpen((prev) => !prev)} className="md:hidden">
+            <button onClick={() => setMenuOpen((prev) => !prev)} className="lg:hidden">
                 <Hamburger />
             </button>
-            <ul className={`hidden md:flex gap-3 text-lg ${detectLocale(locale)}`}>
+            <ul className={`hidden lg:flex gap-3 text-lg ${detectLocale(locale)}`}>
                 {TopMenu.map(({ id, title, path }) => (
                     <li key={id}>
                         <Link href={path}>{t(title)}</Link>
@@ -53,7 +53,7 @@ const NavbarMobile = ({ menuOpen, setMenuOpen, locale }) => {
                 duration-300 
                 ease-in-out 
                 ${menuOpen ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0"} 
-                z-50 
+                z-[999999] 
                 w-full 
                 h-screen 
                 flex 
