@@ -23,8 +23,8 @@ function SearchResultsDisplay({ data }) {
                     <div className="col-span-1 rounded-tl-md border-r border-t border-l border-b bg-slate-50 text-center text-base py-2 px-3 font-medium">{t("taxon_rank")}</div>
                     <div className="col-span-1 border-r border-t border-l border-b bg-slate-50 text-center text-base py-2 px-3 font-medium">{t("scientific_name_id")}</div>
                     <div className="col-span-2 border-r border-t border-l border-b bg-slate-50 text-center text-base py-2 px-3 font-medium">{t("latin_name")}</div>
-                    <div className="col-span-1 rounded-tr-md border-r border-t border-l border-b bg-slate-50 text-center text-base py-2 px-3 font-medium">{t("english_name")}</div>
-                    <div className="col-span-1 rounded-tr-md border-r border-t border-l border-b bg-slate-50 text-center text-base py-2 px-3 font-medium">{t("specieGeorgianName")}</div>
+                    <div className="col-span-1 border-r border-t border-l border-b bg-slate-50 text-center text-base py-2 px-3 font-medium">{t("english_name")}</div>
+                    <div className="col-span-1 border-r border-t border-l border-b bg-slate-50 text-center text-base py-2 px-3 font-medium">{t("specieGeorgianName")}</div>
                     <div className="col-span-1 rounded-tr-md border-r border-t border-l border-b bg-slate-50 text-center text-base py-2 px-3 font-medium">{t("actions")}</div>
                 </div>
 
@@ -41,10 +41,10 @@ function SearchResultsDisplay({ data }) {
                                 </Link>
                             </div>
                             <div className='col-span-1 border-r border-l border-b text-left text-base flex items-center px-3 py-2'>
-                                <span className="truncate">{item?.english_name}</span>
+                                <span className="truncate cursor-default" title={item?.english_name}>{item?.english_name}</span>
                             </div>
                             <div className='col-span-1 border-r border-l border-b text-left text-base flex items-center px-3 py-2'>
-                                <span className="truncate">{item?.georgian_name_title}</span>
+                                <span className="truncate cursor-default" title={item?.georgian_name_title}>{item?.georgian_name_title}</span>
                             </div>
                             <div className='col-span-1 border-r border-l border-b text-left text-base flex items-center px-3 py-2'>
                                 <SearchResultActions item={item} />
