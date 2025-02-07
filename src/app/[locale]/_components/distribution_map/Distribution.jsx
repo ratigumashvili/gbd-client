@@ -35,8 +35,6 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
 
     const key = process.env.NEXT_PUBLIC_STADIA_API_KEY
 
-    console.log(key)
-
     return (
         <div className="my-12">
 
