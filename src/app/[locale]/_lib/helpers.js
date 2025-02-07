@@ -18,8 +18,8 @@ export const checkLink = (path) => path ? path : "#"
 
 export const currentDate = new Date().toLocaleDateString().split('/').join('-')
 
-export const copyToClipboard = (value) => {
-    navigator.clipboard.writeText(value);
+export const copyToClipboard = async (value) => {
+    await navigator.clipboard.writeText(value);
 }
 
 export const toastOptions = {

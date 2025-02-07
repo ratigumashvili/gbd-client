@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { useRouter } from "@/src/i18n/routing";
+import { useRouter, usePathname } from "@/src/i18n/routing";
 
 import TaxonSearchFields from "@/src/app/[locale]/_components/search-form/TaxonSearchFields";
 import IucnSearchFields from "@/src/app/[locale]/_components/search-form/IucnSearchFields";
@@ -26,6 +26,7 @@ function AdvancedSearch() {
     const [disabled, setDisabled] = useState(true);
 
     const router = useRouter()
+    const pathname = usePathname()
 
     const s = useTranslations("Search");
 
@@ -71,7 +72,11 @@ function AdvancedSearch() {
 
     const handleTypeChange = (option) => {
         setFormType(option);
-        router.push('/search')
+
+        if (pathname !== '/') {
+            router.push('/search', { scroll: false })
+        }
+
         if (option === "species") {
             setFormData({
                 taxon_rank: "",

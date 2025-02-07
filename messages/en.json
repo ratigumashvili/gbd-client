@@ -5,6 +5,7 @@
     "readMore": "Read more",
     "citePage": "Cite this page",
     "copied": "Data copied to clipboard",
+    "url_copied": "Record url copied",
     "required": "Please, fill out required '*' fields",
     "feedbackSent": "Your feedback was sent",
     "feedbackForm": "Feedback form",
@@ -86,7 +87,8 @@
     "specie": "Species",
     "sum": "In total",
     "latin_name": "Latin name",
-    "reset": "Rest"
+    "reset": "Rest",
+    "specieGeorgianName": "Georgian name"
   },
   "Header": {
     "isu": "Ilia State University",

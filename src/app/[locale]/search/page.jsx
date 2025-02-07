@@ -10,18 +10,12 @@ import { detectLocale } from "@/src/app/[locale]/_lib/helpers"
 import { getPaginatedData } from "@/src/app/[locale]/_lib/apiCalls"
 
 import { SEARCH_RESULTS_PER_PAGE } from '@/src/app/[locale]/_lib/constants';
+import SearchNotFound from '../_components/SearchNotFound';
 
 const PageTitle = ({ locale }) => {
   const t = useTranslations("Search")
   return (
     <h2 className={`text-2xl font-medium mb-4 ${detectLocale(locale)}`}>{t("pageTitle")}</h2>
-  )
-}
-
-const NothingFound = () => {
-  const t = useTranslations("Search")
-  return (
-    <p className='text-xl font-medium my-4'>{t("nothing_found")}</p>
   )
 }
 
@@ -56,13 +50,13 @@ async function SearchPage({ params, searchParams }) {
       {check !== 0 && <SearchParameters length={data?.recordsTotal} />}
 
       {check !== 0 && data?.data?.length === 0 && (
-        <NothingFound />
+        <SearchNotFound />
       )}
 
       {data.data && data?.data?.length !== 0 && (
         <SearchResultsDisplay data={data.data} />
       )}
-
+      
       {data?.recordsTotal > SEARCH_RESULTS_PER_PAGE && (
         <Pagination
           path={`/search?&search_in=${search_in}&${result}`}
