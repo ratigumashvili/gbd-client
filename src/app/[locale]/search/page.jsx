@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl"
 
 import SearchParameters from "@/src/app/[locale]/_components/SearchParameters"
 import AdvancedSearch from "@/src/app/[locale]/_components/search-form/AdvancedSearch"
+import SearchResultsDisplay from '@/src/app/[locale]/_components/SearchResultsDisplay';
 import Pagination from '@/src/app/[locale]/_components/Pagination';
 
 import { detectLocale } from "@/src/app/[locale]/_lib/helpers"
@@ -52,18 +53,15 @@ async function SearchPage({ params, searchParams }) {
       <PageTitle locale={params.locale} />
       <AdvancedSearch />
 
-      {check !== 0 && <SearchParameters length={data?.data?.length} />}
+      {check !== 0 && <SearchParameters length={data?.recordsTotal} />}
 
       {check !== 0 && data?.data?.length === 0 && (
         <NothingFound />
       )}
 
-      {/* <pre>SEARCH PARAMS: {JSON.stringify(searchParams, null, 2)}</pre> <br /> */}
-      <pre>DATA: {JSON.stringify(data, null, 2)}</pre>
-      {/* <pre>SEARCH IN: {JSON.stringify(search_in, null, 2)}</pre> */}
-      <pre>RESULT: {JSON.stringify(result, null, 2)}</pre>
-      {/* <pre>`search?search_in=${search_in}&${result}</pre> */}
-      {/* search?search_in=specie&iucn_status=DD */}
+      {data.data && data?.data?.length !== 0 && (
+        <SearchResultsDisplay data={data.data} />
+      )}
 
       {data?.recordsTotal > SEARCH_RESULTS_PER_PAGE && (
         <Pagination

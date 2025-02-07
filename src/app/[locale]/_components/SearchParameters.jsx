@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl"
 import { useSearchParams } from "next/navigation";
 
-import { separator } from "@/src/app/[locale]/_lib/helpers";
+import { separator, filterTaxonValue } from "@/src/app/[locale]/_lib/helpers";
 
 function SearchParameters({ length = 0 }) {
 

@@ -92,6 +92,6 @@ export const AUTH_FORM_INITIAL_STATE = {
 export const RESEARCHERS_PER_PAGE = 100
 export const SPECIES_PER_PAGE = 5
 export const TAXON_PER_PAGE = 4
-export const SEARCH_RESULTS_PER_PAGE = 1
+export const SEARCH_RESULTS_PER_PAGE = 10
 
 export const BOKMARK_LIMIT = 50

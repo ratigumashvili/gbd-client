@@ -14,17 +14,8 @@ function Pagination({ path, searchParams, currentPage, total }) {
     const url = pathname + `?id=${searchParams?.id}&page=`
     const searchPageUrl = path + "&page="
 
-    // useEffect(() => {
-    //     if (path !== null) {
-    //         router.replace(path + current, { scroll: false })    
-    //     } else {
-    //         router.replace(url + current, { scroll: false })
-    //     }
-    // }, [current, path, router, url])
-
     useEffect(() => {
-        if (path !== null) {
-            // router.replace(path + "&page=" + current, { scroll: false })    
+        if (path !== null) {  
             router.replace(searchPageUrl + current, { scroll: false })    
         } else {
             router.replace(url + current, { scroll: false })

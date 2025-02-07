@@ -282,3 +282,42 @@ export function capitalizeFirstLetter(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
 }
+
+export const filterTaxonValue = (value) => {
+    let result
+
+    switch (value) {
+        case "Kingdom":
+            result = "kingdom"
+            break;
+        case "Phylum":
+            result = "phylum"
+            break;
+        case "TaxClass":
+            result = "class"
+            break;
+        case "TaxOrder":
+            result = "order"
+            break;
+        case "Family":
+            result = "family"
+            break;
+        case "Genus":
+            result = "genus"
+            break;
+        case "Specie":
+            result = "species"
+            break;
+        default: break
+    }
+
+    return result
+}
+
+export const checkTaxonValue = (value, taxonName, id) => {
+    if (value === "Specie") {
+        return `/species/${id}`
+    } else {
+        return `/${filterTaxonValue(value)}/${taxonName}?id=${id}` 
+    }
+}
