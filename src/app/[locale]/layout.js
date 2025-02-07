@@ -16,7 +16,9 @@ import { arial, firaGo, bpg } from "./_lib/fonts";
 
 import 'react-tooltip/dist/react-tooltip.css'
 import 'react-slideshow-image/dist/styles.css'
-import './globals.css'
+// import './globals.css'
+// import "@/src/app/[locale]/globals.css"
+import "@/src/app/styles/globals.css"
 
 export async function generateMetadata({ params }) {
 
