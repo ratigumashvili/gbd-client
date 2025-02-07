@@ -31,7 +31,9 @@ function SearchResultsDisplay({ data }) {
                 <div className='w-full'>
                     {data?.map((item) => (
                         <div key={item.id} className='grid grid-cols-7 hover:bg-slate-100/30 min-w-7xl'>
-                            <div className='col-span-1 border-r border-l border-b text-left text-base flex items-center px-3 py-2'>{filterTaxonValue(item.type)}</div>
+                            <div className='col-span-1 border-r border-l border-b text-left text-base flex items-center px-3 py-2'>
+                                <span className="capitalize">{filterTaxonValue(item.type)}</span>
+                            </div>
                             <div className='col-span-1 border-r border-l border-b text-left text-base flex items-center px-3 py-2'>id</div>
                             <div className='col-span-2 border-r border-l border-b text-left text-base flex items-center px-3'>
                                 <Link href={checkTaxonValue(item.type, item.slug, item.id)} className="text-teal-700 cursor-pointer font-medium">
