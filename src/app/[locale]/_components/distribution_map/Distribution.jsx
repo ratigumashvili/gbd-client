@@ -33,7 +33,9 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
         iconSize: [38, 38]
     })
 
-    const key = process.env.REACT_APP_STADIA_API_KEY
+    const key = process.env.NEXT_PUBLIC_STADIA_API_KEY
+
+    console.log(key)
 
     return (
         <div className="my-12">
