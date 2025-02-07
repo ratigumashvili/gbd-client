@@ -8,6 +8,11 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "next": {
+    "experimental": {
+      "middlewareSource": "src/middleware"
+    }
+  },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
     "@hookform/resolvers": "^3.6.0",
