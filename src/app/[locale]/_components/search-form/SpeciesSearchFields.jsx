@@ -14,13 +14,13 @@ function SpeciesSearchFields({ formData, disabled, handleChange, handleReset, cl
   return (
     <div className={classNames}>
 
-      <div className="flex-1 w-full z-50">
+      {/* <div className="flex-1 w-full z-50">
         <SelectRank
           formData={formData}
           setFormData={setFormData}
           formType={formType}
         />
-      </div>
+      </div> */}
 
       <div className="flex flex-col gap-2 flex-1 w-full">
         <label htmlFor="specieLatinName" className="text-base line-clamp-1">

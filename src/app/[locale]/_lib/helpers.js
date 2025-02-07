@@ -308,7 +308,7 @@ export const filterTaxonValue = (value) => {
         case "Specie":
             result = "species"
             break;
-        default: break
+        default: return value
     }
 
     return result

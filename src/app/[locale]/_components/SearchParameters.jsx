@@ -39,7 +39,7 @@ function SearchParameters({ length = 0 }) {
                 {filteredParams && filteredParams?.length !== 0 && filteredParams?.map((item, index) => (
                     <div key={index}>
                         <p>
-                            <span className="font-medium">{s(`${item.key}`)}</span>: <span>{item.value}</span>{separator(index, filteredParams)}
+                            <span className="font-medium">{s(`${item.key}`)}</span>: <span className="capitalize">{filterTaxonValue(item.value)}</span>{separator(index, filteredParams)}
                         </p>
                     </div>
                 ))}
