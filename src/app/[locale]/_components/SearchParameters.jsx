@@ -13,24 +13,13 @@ function SearchParameters({ length = 0 }) {
     const searchParams = useSearchParams()
     const s = useTranslations("Search")
 
-    useEffect(() => {
-        if (searchParams.toString()) {
-            setTimeout(() => {
-                targetRef.current?.scrollIntoView({ behavior: "smooth" });
-            }, 0)
-        }
-    }, [searchParams]);
-
-
-    // const getNonEmptyParams = () => {
-    //     const params = new URLSearchParams(searchParams.toString());
-
-    //     return Array.from(params.entries())
-    //         .filter(([_, value]) => value.trim() !== "")
-    //         .map(([key, value]) => ({ key, value }));
-    // };
-
-    // const filteredParams = getNonEmptyParams();
+    // useEffect(() => {
+    //     if (searchParams.toString()) {
+    //         setTimeout(() => {
+    //             targetRef.current?.scrollIntoView({ behavior: "smooth" });
+    //         }, 0)
+    //     }
+    // }, [searchParams]);
 
     const getNonEmptyParams = () => {
         const params = new URLSearchParams(searchParams.toString());

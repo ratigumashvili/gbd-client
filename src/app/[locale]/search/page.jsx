@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl"
 import SearchParameters from "@/src/app/[locale]/_components/SearchParameters"
 import AdvancedSearch from "@/src/app/[locale]/_components/search-form/AdvancedSearch"
 import SearchResultsDisplay from '@/src/app/[locale]/_components/SearchResultsDisplay';
-import Pagination from '@/src/app/[locale]/_components/Pagination';
+import PaginationNumbers from '@/src/app/[locale]/_components/PaginationNumbers';
 
 import { detectLocale } from "@/src/app/[locale]/_lib/helpers"
 import { getPaginatedData } from "@/src/app/[locale]/_lib/apiCalls"
@@ -56,9 +56,18 @@ async function SearchPage({ params, searchParams }) {
       {data.data && data?.data?.length !== 0 && (
         <SearchResultsDisplay data={data.data} />
       )}
-      
-      {data?.recordsTotal > SEARCH_RESULTS_PER_PAGE && (
+
+      {/* {data?.recordsTotal > SEARCH_RESULTS_PER_PAGE && (
         <Pagination
+          path={`/search?&search_in=${search_in}&${result}`}
+          searchParams={searchParams}
+          currentPage={currentPage}
+          total={data?.total_page}
+        />)
+      } */}
+
+      {data?.recordsTotal > SEARCH_RESULTS_PER_PAGE && (
+        <PaginationNumbers
           path={`/search?&search_in=${search_in}&${result}`}
           searchParams={searchParams}
           currentPage={currentPage}
