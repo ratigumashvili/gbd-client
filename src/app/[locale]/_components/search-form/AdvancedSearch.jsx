@@ -8,10 +8,11 @@ import TaxonSearchFields from "@/src/app/[locale]/_components/search-form/TaxonS
 import IucnSearchFields from "@/src/app/[locale]/_components/search-form/IucnSearchFields";
 import SpeciesSearchFields from "@/src/app/[locale]/_components/search-form/SpeciesSearchFields";
 
+import { useLocalStorage } from "@/src/app/[locale]/_hooks/useLocalStorage";
 import { handleAdvancedSearch } from "@/src/app/[locale]/_lib/actions/search-actions";
 
 function AdvancedSearch() {
-    const [formType, setFormType] = useState("species")
+    const [formType, setFormType] = useLocalStorage("gbd-search-type", "species");
     const [formData, setFormData] = useState({
         taxon_rank: "",
         specieLatinName: "",
@@ -69,7 +70,6 @@ function AdvancedSearch() {
     }
 
     const handleTypeChange = (option) => {
-        router.push('/search', {scroll: false})
         setFormType(option);
         if (option === "species") {
             setFormData({
