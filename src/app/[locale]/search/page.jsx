@@ -3,9 +3,12 @@ import { useTranslations } from "next-intl"
 
 import SearchParameters from "@/src/app/[locale]/_components/SearchParameters"
 import AdvancedSearch from "@/src/app/[locale]/_components/search-form/AdvancedSearch"
+import Pagination from '@/src/app/[locale]/_components/Pagination';
 
-import { capitalizeFirstLetter, detectLocale } from "@/src/app/[locale]/_lib/helpers"
-import { getData, getPaginatedData } from "../_lib/apiCalls"
+import { detectLocale } from "@/src/app/[locale]/_lib/helpers"
+import { getPaginatedData } from "@/src/app/[locale]/_lib/apiCalls"
+
+import { SEARCH_RESULTS_PER_PAGE } from '@/src/app/[locale]/_lib/constants';
 
 const PageTitle = ({ locale }) => {
   const t = useTranslations("Search")
@@ -14,15 +17,19 @@ const PageTitle = ({ locale }) => {
   )
 }
 
+const NothingFound = () => {
+  const t = useTranslations("Search")
+  return (
+    <p className='text-xl font-medium my-4'>{t("nothing_found")}</p>
+  )
+}
+
 
 async function SearchPage({ params, searchParams }) {
 
+  const currentPage = searchParams.page || 1
+
   const search_in = searchParams.search_in
-  const level = capitalizeFirstLetter(searchParams?.taxonomy_level)
-  const latinName = searchParams.name
-  const englishName = searchParams.english_name
-  const georgianName = searchParams.georgian_name
-  const iucn = searchParams.iucn_status
 
   let queryParams = {
     taxonomy_level: searchParams?.taxonomy_level || undefined,
@@ -37,17 +44,35 @@ async function SearchPage({ params, searchParams }) {
     skipEmptyStrings: true
   })
 
-  const data = await getPaginatedData(`taxonomy/search?search_in=${search_in}&${result}`, params.locale, 1, 5)
+  const data = await getPaginatedData(`taxonomy/search?search_in=${search_in}&${result}`, params.locale, currentPage, SEARCH_RESULTS_PER_PAGE)
   const check = searchParams && Object.keys(searchParams).length
 
   return (
     <section className="py-4">
       <PageTitle locale={params.locale} />
       <AdvancedSearch />
+
       {check !== 0 && <SearchParameters length={data?.data?.length} />}
-      <pre>SEARCH PARAMS: {JSON.stringify(searchParams, null, 2)}</pre> <br />
-      <pre>{JSON.stringify(search_in, null, 2)}</pre>
+
+      {check !== 0 && data?.data?.length === 0 && (
+        <NothingFound />
+      )}
+
+      {/* <pre>SEARCH PARAMS: {JSON.stringify(searchParams, null, 2)}</pre> <br /> */}
       <pre>DATA: {JSON.stringify(data, null, 2)}</pre>
+      {/* <pre>SEARCH IN: {JSON.stringify(search_in, null, 2)}</pre> */}
+      <pre>RESULT: {JSON.stringify(result, null, 2)}</pre>
+      {/* <pre>`search?search_in=${search_in}&${result}</pre> */}
+      {/* search?search_in=specie&iucn_status=DD */}
+
+      {data?.recordsTotal > SEARCH_RESULTS_PER_PAGE && (
+        <Pagination
+          path={`/search?&search_in=${search_in}&${result}`}
+          searchParams={searchParams}
+          currentPage={currentPage}
+          total={data?.total_page}
+        />)
+      }
     </section>
   )
 }

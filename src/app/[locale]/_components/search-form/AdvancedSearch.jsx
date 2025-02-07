@@ -46,7 +46,7 @@ function AdvancedSearch() {
             setDisabled(allFieldsEmpty);
         }
         if (formType === "iucn") {
-            setDisabled(allFieldsEmpty || onlyTaxonRankSelected);
+            setDisabled(allFieldsEmpty);
         }
     }, [formData, formType]);
 
@@ -69,6 +69,7 @@ function AdvancedSearch() {
     }
 
     const handleTypeChange = (option) => {
+        router.push('/search', {scroll: false})
         setFormType(option);
         if (option === "species") {
             setFormData({
@@ -88,7 +89,6 @@ function AdvancedSearch() {
         }
         if (option === "iucn") {
             setFormData({
-                taxon_rank: "",
                 iucn: "",
             })
         }

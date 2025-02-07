@@ -3,8 +3,8 @@
 import { useTranslations } from "next-intl";
 
 import SelectRank from "@/src/app/[locale]/_components/search-form/SelectRank";
-import ResetButton from "./ResetButton";
-import SubmitButton from "./SubmitButton";
+import ResetButton from "@/src/app/[locale]/_components/search-form/ResetButton";
+import SubmitButton from "@/src/app/[locale]/_components/search-form/SubmitButton";
 
 function TaxonSearchFields({ formData, handleChange, handleReset, disabled, classNames, setFormData, formType }) {
     const s = useTranslations("Search");

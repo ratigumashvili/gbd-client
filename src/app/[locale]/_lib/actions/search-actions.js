@@ -101,10 +101,9 @@ export async function handleAdvancedSearch(formData) {
       georgian_name: values.taxonGeorgianName,
       english_name: values.taxonEnglishName
     },
-    // iucn: {
-    //   taxonomy_level: values.taxon_rank,
-    //   iucn_status: values.iucn
-    // }
+    iucn: {
+      iucn_status: values.iucn
+    }
   };
 
   // Get the correct queryParams based on search type

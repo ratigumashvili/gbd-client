@@ -58,6 +58,7 @@ export default async function Kingdom({ params, searchParams }) {
                     searchParams={searchParams}
                     currentPage={currentPage}
                     total={child?.total_page}
+                    type=""
                 />)
             }
 

@@ -2,10 +2,8 @@
 
 import { useTranslations } from "next-intl";
 
-import SearchIcon from "@/src/app/[locale]/_components/icons/SearchIcon";
 import SelectIUCN from "@/src/app/[locale]/_components/search-form/SelectIUCN";
 import ResetButton from "@/src/app/[locale]/_components/search-form/ResetButton";
-import SelectRank from "@/src/app/[locale]/_components/search-form/SelectRank";
 import SubmitButton from "./SubmitButton";
 
 function IucnSearchFields({ disabled, classNames, formData, setFormData, formType, handleReset }) {
@@ -14,15 +12,7 @@ function IucnSearchFields({ disabled, classNames, formData, setFormData, formTyp
 
   return (
     <div className={classNames}>
-      
-      <div className="flex-1 w-full z-50">
-        <SelectRank
-          key={formType}
-          formData={formData}
-          setFormData={setFormData}
-        />
-      </div>
-
+    
       <div className="flex-1 w-full z-30">
         <SelectIUCN
           formData={formData}
