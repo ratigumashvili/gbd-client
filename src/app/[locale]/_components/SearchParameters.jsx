@@ -22,15 +22,25 @@ function SearchParameters({ length = 0 }) {
     }, [searchParams]);
 
 
+    // const getNonEmptyParams = () => {
+    //     const params = new URLSearchParams(searchParams.toString());
+
+    //     return Array.from(params.entries())
+    //         .filter(([_, value]) => value.trim() !== "")
+    //         .map(([key, value]) => ({ key, value }));
+    // };
+
+    // const filteredParams = getNonEmptyParams();
+
     const getNonEmptyParams = () => {
         const params = new URLSearchParams(searchParams.toString());
-
+    
         return Array.from(params.entries())
-            .filter(([_, value]) => value.trim() !== "")
+            .filter(([key, value]) => key !== "page" && value.trim() !== "") // ✅ Exclude "page"
             .map(([key, value]) => ({ key, value }));
     };
-
-    const filteredParams = getNonEmptyParams();
+    
+    const filteredParams = getNonEmptyParams();    
 
     return (
         <section className="p-4 rounded-md bg-slate-50 dark:bg-slate-600" ref={targetRef}>

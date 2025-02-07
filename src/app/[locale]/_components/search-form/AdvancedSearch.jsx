@@ -71,6 +71,7 @@ function AdvancedSearch() {
 
     const handleTypeChange = (option) => {
         setFormType(option);
+        router.push('/search')
         if (option === "species") {
             setFormData({
                 taxon_rank: "",
