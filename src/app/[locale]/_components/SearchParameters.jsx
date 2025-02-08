@@ -35,7 +35,7 @@ function SearchParameters({ length = 0 }) {
         <section className="p-4 rounded-md bg-slate-50 dark:bg-slate-600" ref={targetRef}>
             <h2 className="text-xl font-medium mb-4">{s("parameters")}</h2>
             <div className="flex flex-wrap gap-2">
-                {filteredParams && filteredParams?.length !== 0 && filteredParams?.map((item, index) => (
+                {filteredParams && filteredParams?.length !== 0 && filteredParams?.slice(1).map((item, index) => (
                     <div key={index}>
                         <p>
                             <span className="font-medium">{s(`${item.key}`)}</span>: <span className="capitalize">{filterTaxonValue(item.value)}</span>{separator(index, filteredParams)}
