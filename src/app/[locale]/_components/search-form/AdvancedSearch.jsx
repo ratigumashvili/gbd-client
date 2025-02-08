@@ -154,8 +154,6 @@ function AdvancedSearch() {
                 </div>
             </div>
 
-            {/* search_in=specie&name=test&georgian_name=test&english_name=test&taxonomy_level=Kingdom */}
-
             {formType === "species" && (
                 <>
                     <p className="border-b pb-5 mb-5 sm:text-sm text-base !leading-7">{s("specie_search_hint")}</p>
@@ -164,12 +162,10 @@ function AdvancedSearch() {
                         <SpeciesSearchFields
                             key={formType}
                             formData={formData}
-                            setFormData={setFormData}
                             handleChange={handleChange}
                             handleReset={handleReset}
                             disabled={disabled}
                             classNames={`flex flex-col gap-y-6 lg:flex-row items-end gap-4 relative`}
-                            formType="species"
                         />
                     </form>
                 </>

@@ -57,7 +57,7 @@ function Pagination({ path, searchParams, currentPage, total }) {
     };
 
     return (
-        <div className="flex items-center justify-center gap-2 mt-8">
+        <div className={`flex items-center gap-2 mt-8 ${isMobile ? "justify-center" : "justify-start"}`}>
 
             {!isMobile && (
                 <button

@@ -360,6 +360,12 @@
     "DD": "Data deficient (DD)",
     "NE": "Not evaluated (NE)",
     "RE": "Regionally Extinct (RE)",
-    "NA": "Not Applicable (NA)"
+    "NA": "Not Applicable (NA)",
+    "Kingdom": "Kingdom",
+    "Phylum": "Phylum",
+    "TaxClass": "Class",
+    "TaxOrder": "Order",
+    "Family": "Family",
+    "Genus": "Genus"
   }
 }

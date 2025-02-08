@@ -2,25 +2,15 @@
 
 import { useTranslations } from "next-intl";
 
-import SelectRank from "@/src/app/[locale]/_components/search-form/SelectRank";
-import SearchIcon from "@/src/app/[locale]/_components/icons/SearchIcon";
 import ResetButton from "./ResetButton";
 import SubmitButton from "./SubmitButton";
 
-function SpeciesSearchFields({ formData, disabled, handleChange, handleReset, classNames, setFormData, formType }) {
+function SpeciesSearchFields({ formData, disabled, handleChange, handleReset, classNames }) {
 
   const s = useTranslations("Search");
 
   return (
     <div className={classNames}>
-
-      {/* <div className="flex-1 w-full z-50">
-        <SelectRank
-          formData={formData}
-          setFormData={setFormData}
-          formType={formType}
-        />
-      </div> */}
 
       <div className="flex flex-col gap-2 flex-1 w-full">
         <label htmlFor="specieLatinName" className="text-base line-clamp-1">

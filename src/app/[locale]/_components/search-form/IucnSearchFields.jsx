@@ -1,14 +1,10 @@
 "use client"
 
-import { useTranslations } from "next-intl";
-
 import SelectIUCN from "@/src/app/[locale]/_components/search-form/SelectIUCN";
 import ResetButton from "@/src/app/[locale]/_components/search-form/ResetButton";
 import SubmitButton from "./SubmitButton";
 
 function IucnSearchFields({ disabled, classNames, formData, setFormData, formType, handleReset }) {
-
-  const s = useTranslations("Search");
 
   return (
     <div className={classNames}>
