@@ -19,7 +19,6 @@ function HomePageChart({ data }) {
         },
         xaxis: {
             categories: labels,
-            //   title: { text: "IUCN Status" },
             title: false,
         },
         yaxis: {
