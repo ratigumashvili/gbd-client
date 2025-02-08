@@ -14,17 +14,18 @@ import BookmarkPlus from "@/src/app/[locale]/_components/icons/BookmarkPlus"
 
 function SearchResultActions({ item }) {
 
-    const locale = useLocale()
-    const t = useTranslations("Common")
+    const { handleAddBookmark, handleRemoveBookmark, isBookmarked } = useBookmarks()
 
     const { isMounted } = useIsMounted()
 
+    const locale = useLocale()
+    const t = useTranslations("Common")
+
     const url = process.env.NEXT_PUBLIC_BASE_URL + "/" + locale + checkTaxonValue(item.type, item.slug, item.id)
-    const scienttificId = item.scienttificId || ""
 
     const storageInfo = {
-        id: item.id,
-        scienttificId: item.scienttificId || "",
+        id: item.scientific_name_id,
+        scienttificId: item.scientific_name_id,
         title: item.name,
         rank: filterTaxonValue(item.type).charAt(0).toUpperCase() + filterTaxonValue(item.type).slice(1),
         url: checkTaxonValue(item.type, item.slug, item.id)
@@ -34,8 +35,6 @@ function SearchResultActions({ item }) {
         await copyToClipboard(url)
         toast.success(t("url_copied"))
     }
-
-    const { handleAddBookmark, handleRemoveBookmark, isBookmarked } = useBookmarks()
 
     if (!isMounted) {
         return null
@@ -50,9 +49,9 @@ function SearchResultActions({ item }) {
             >
                 <UrlIcon width="15" height="15" />
             </button>
-            {isBookmarked.includes(scienttificId) ? (
+            {isBookmarked.includes(storageInfo.id) ? (
                 <button
-                    className="w-full !flex !items-center !justify-center"
+                    className="button-danger w-full !flex !items-center !justify-center"
                     title={t("bookmarkRemove")}
                     onClick={() => handleRemoveBookmark(storageInfo.id)}
                 >

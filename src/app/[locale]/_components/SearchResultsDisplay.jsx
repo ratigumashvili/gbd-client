@@ -34,7 +34,9 @@ function SearchResultsDisplay({ data }) {
                             <div className='col-span-1 border-r border-l border-b text-left text-base flex items-center px-3 py-2'>
                                 <span className="capitalize">{filterTaxonValue(item.type)}</span>
                             </div>
-                            <div className='col-span-1 border-r border-l border-b text-left text-base flex items-center px-3 py-2'>id</div>
+                            <div className='col-span-1 border-r border-l border-b text-left text-base flex items-center px-3 py-2'>
+                                {item.scientific_name_id}
+                            </div>
                             <div className='col-span-2 border-r border-l border-b text-left text-base flex items-center px-3'>
                                 <Link href={checkTaxonValue(item.type, item.slug, item.id)} className="text-teal-700 cursor-pointer font-medium">
                                     {item.name}
@@ -47,7 +49,7 @@ function SearchResultsDisplay({ data }) {
                                 <span className="truncate cursor-default" title={item?.georgian_name_title}>{item?.georgian_name_title}</span>
                             </div>
                             <div className='col-span-1 border-r border-l border-b text-left text-base flex items-center px-3 py-2'>
-                                <SearchResultActions item={item} />
+                                <SearchResultActions item={item}/>
                             </div>
                         </div>
                     ))}
