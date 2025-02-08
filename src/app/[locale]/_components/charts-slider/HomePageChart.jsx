@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-function HomePageChart({ data }) {
+function HomePageChart({ data, locale }) {
 
     const t = useTranslations("Index")
 
@@ -39,12 +39,14 @@ function HomePageChart({ data }) {
         tooltip: {
             enabled: true,
             theme: "light",
-            y: {
-                formatter: (val) => `${val} ${t("species")}`,
-                title: {
-                    formatter: (seriesName) => `${"iucn"}:`,
-                },
-            },
+            custom: function ({ series, seriesIndex, dataPointIndex }) {
+                return `
+                  <div style="padding: 8px; background: #00564d; color: #fff; border-radius: 5px">
+                    <span>${series[seriesIndex][dataPointIndex]}</span> ${locale === "ka" ? "სახეობა კოდით" : "species are in category"} 
+                    <strong>${options.xaxis.categories[dataPointIndex]}</strong>
+                  </div>
+                `;
+              },
             style: {
                 fontSize: "14px",
             },

@@ -41,7 +41,10 @@ async function ChartWithSlider({ locale }) {
       </div>
       <div className="col-span-6 md:col-span-3 bg-slate-50 dark:bg-slate-600 rounded-md p-4">
         <ChartTitle />
-        <HomePageChart data={formattedResults} />
+        <HomePageChart
+          data={formattedResults}
+          locale={locale}
+        />
       </div>
     </section>
   )
