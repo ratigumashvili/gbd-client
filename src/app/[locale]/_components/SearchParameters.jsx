@@ -1,10 +1,10 @@
 "use client"
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useTranslations } from "next-intl"
 import { useSearchParams } from "next/navigation";
 
-import { separator, filterTaxonValue } from "@/src/app/[locale]/_lib/helpers";
+import { separateSearchParams, filterTaxonValue } from "@/src/app/[locale]/_lib/helpers";
 
 function SearchParameters({ length = 0 }) {
 
@@ -38,7 +38,7 @@ function SearchParameters({ length = 0 }) {
                 {filteredParams && filteredParams?.length !== 0 && filteredParams?.slice(1).map((item, index) => (
                     <div key={index}>
                         <p>
-                            <span className="font-medium">{s(`${item.key}`)}</span>: <span className="capitalize">{filterTaxonValue(item.value)}</span>{separator(index, filteredParams)}
+                            <span className="font-medium">{s(`${item.key}`)}</span>: <span className="capitalize">{filterTaxonValue(item.value)}</span>{separateSearchParams(index, filteredParams)}
                         </p>
                     </div>
                 ))}

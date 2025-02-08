@@ -6,6 +6,8 @@ import { bpg } from "./fonts"
 
 export const separator = (index, array, separatorType = ', ') => index === array.length - 1 ? "." : separatorType
 
+export const separateSearchParams = (index, array, separatorType = ', ') => index+1 === array.length - 1 ? "." : separatorType
+
 export const checkObject = (object) => {
     if (object && Object?.keys(object).length !== 0) {
         return object
