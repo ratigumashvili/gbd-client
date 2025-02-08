@@ -31,7 +31,7 @@ async function ChartWithSlider({ locale }) {
   const formattedResults = formattedCategory.map((status, index) => ({
     status,
     value: results[index].recordsTotal
-  }));
+  })).filter((record) => record.value !== 0);
 
   return (
     <section className="grid grid-cols-6 gap-4">
