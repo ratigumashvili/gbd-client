@@ -4,7 +4,7 @@ import HomePageAbout from "@/src/app/[locale]/_components/HomePageAbout"
 import PopularMenuByClass from "@/src/app/[locale]/_components/home-page-popula-classes/"
 import BrowseByTaxonomy from "@/src/app/[locale]/_components/browseTaxonomy/BrowseByTaxonomy"
 import AdvancedSearch from '@/src/app/[locale]/_components/search-form/AdvancedSearch';
-import HomePageSlider from "@/src/app/[locale]/_components/home-page-slider/HomePageSlider"
+import ChartWithSlider from '@/src/app/[locale]/_components/charts-slider/ChartWithSlider';
 import Calendar from "@/src/app/[locale]/_components/activity_heatmap"
 
 import { detectLocale } from "@/src/app/[locale]/_lib/helpers"
@@ -26,7 +26,7 @@ export default function Home({ params }) {
       <div className="flex flex-col gap-y-5">
         <BrowseByTaxonomy title={t("BrowseByTaxonomy")} locale={params.locale} />
         <AdvancedSearch />
-        <HomePageSlider locale={params.locale} />
+        <ChartWithSlider locale={params.locale} />
         <Calendar />
       </div>
     </div>

@@ -190,6 +190,7 @@
     "BrowseByGeography": "ნავიგაცია გეოგრაფიით",
     "registeredRecords": "რეგისტრირებული ჩანაწერი",
     "latestUploads": "ბოლოს დამატებული სახეობები",
+    "regionalIucnDist": "რეგიონალური IUCN სტატუსების განაწილება",
     "specieOfTheDay": "დღის სახეობა",
     "taxon": "ტაქსონი",
     "comment": "კომენტარი",
@@ -228,7 +229,10 @@
     "editor": "რედაქტორი",
     "contributor": "კონტრიბუტორი",
     "read_more": "დაწვრილებით",
-    "genus": "გვარი"
+    "genus": "გვარი",
+    "count": "კოდები",
+    "species": "სახეობა",
+    "iucn": "IUCN სტატუსი"
   },
   "Map": {
     "clickOnMarkers": "მონაცემთა ჩატვირთვისათვის დააწკაპუნეთ რუკაზე არსებულ მარკერებს",

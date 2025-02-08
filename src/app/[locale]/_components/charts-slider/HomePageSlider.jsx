@@ -18,10 +18,8 @@ const properties = {
 }
 
 
-function Slider({ data }) {
+function HomePageSlider({ data }) {
     const t = useTranslations("Index")
-
-    // const dateString = data?.metadata?.created_at.toString()
 
     if (!data) {
         return
@@ -29,8 +27,7 @@ function Slider({ data }) {
 
     return (
         <>
-            <h2 className='text-xl font-medium mb-4'>{t("latestUploads")}</h2>
-            <div className="slide-container font-firaGo">
+            <div className="slide-container">
                 <Slide {...properties}>
                     {data && data.length !== 0 && data?.map((item) => (
                         <div key={item.id} className='px-8 sm:px-14 lg:px-20 py-8 border bg-white rounded-md min-h-[300px] flex flex-col justify-between relative'>
@@ -91,4 +88,4 @@ function Slider({ data }) {
     )
 }
 
-export default Slider
+export default HomePageSlider

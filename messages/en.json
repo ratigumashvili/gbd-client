@@ -190,6 +190,7 @@
     "BrowseByGeography": "Browse by geography",
     "registeredRecords": "registered records",
     "latestUploads": "Recently added species",
+    "regionalIucnDist": "Distribution of Regional IUCN Statuses",
     "specieOfTheDay": "Specie of the day",
     "taxon": "Taxon",
     "comment": "Comment",
@@ -228,7 +229,10 @@
     "editor": "Editor",
     "contributor": "Contributor",
     "read_more": "Read more",
-    "genus": "Genus"
+    "genus": "Genus",
+    "count": "Codes",
+    "species": "Species",
+    "iucn": "IUCN Status"
   },
   "Map": {
     "clickOnMarkers": "Click on markers to load data",
