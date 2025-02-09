@@ -5,7 +5,6 @@ import Image from 'next/image'
 import { useLocale, useTranslations } from 'next-intl'
 
 import useIsMounted from "@/src/app/[locale]/_hooks/useIsMounted"
-import { detectLocale, getIcon } from '@/src/app/[locale]/_lib/helpers'
 
 function PopularMenuByClass({ data }) {
   
@@ -30,13 +29,19 @@ function PopularMenuByClass({ data }) {
           >
             <div className='flex h-full items-center justify-between px-4 py-3 hover:cursor-pointer hover:bg-teal-600 hover:text-white transition group'>
               <div>
-                <h2 className={`text-xl sm:text-xl lg:text-xl font-bold line-clamp-1 ${detectLocale(locale)}`}>
+
+                {/* <h2 className={`text-xl sm:text-xl lg:text-xl font-bold line-clamp-1 ${detectLocale(locale)}`}>
                   {locale === "ka" && item.georgian_name
                     ? item.georgian_name
                     : locale === "en" && item.english_name
                       ? item.english_name
                       : item.title}
+                </h2> */}
+
+                 <h2 className={`text-lg sm:text-xl lg:text-xl font-bold line-clamp-1 font-arial uppercase`}>
+                  {item.title}
                 </h2>
+                
                 {locale === "ka" && <p className='text-sm'>რეგისტრირებული სახეობის</p>}
                 <p className='text-3xl font-medium flex items-end gap-2'>
                   <span className='text-teal-700 group-hover:text-white'>{item.percentage}%</span>
@@ -46,7 +51,7 @@ function PopularMenuByClass({ data }) {
               </div>
               <div className='min-w-20 min-h-20 flex items-center justify-center ml-4'>
                 <Image
-                  src={getIcon(item.english_name)}
+                  src={item.icon ? item.icon : '/icons/uncertain.png'}
                   width={70}
                   height={70}
                   alt={item.title}

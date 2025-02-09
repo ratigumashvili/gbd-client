@@ -256,29 +256,6 @@ export const formatDateToYMD = (dateString) => {
 }
 
 
-export const getIcon = (value) => {
-    let icon
-
-    switch (value) {
-        case "Ray-finned fishes":
-            icon = "/icons/sea-horse.svg";
-            break;
-        case "Mushroom-forming fungi":
-            icon = "/icons/mushroom-2.svg"
-            break;
-        case "Frogs, Toads and their relatives":
-            icon = "/icons/amphibians.svg"
-            break;
-        case "Granite mosses":
-            icon = "/icons/mosses-1.svg"
-            break;
-        default:
-            icon = "/icons/uncertain.png"
-    }
-
-    return icon
-}
-
 export function capitalizeFirstLetter(str) {
     if (str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
