@@ -14,7 +14,7 @@ function PopularMenuByClass({ data }) {
   const { isMounted } = useIsMounted()
 
   if (!isMounted) {
-    return
+    return null
   }
 
   return (
