@@ -4,11 +4,9 @@ import sanitizeHtml from 'sanitize-html';
 
 import { bpg } from "./fonts"
 
-export const separator = (index, array, separatorType = ', ') => index === array.length - 1 ? "." : separatorType
+export const separator = (index, array, separatorType = ', ', separatorEnd = ".") => index === array.length - 1 ? separatorEnd : separatorType
 
 export const separateSearchParams = (index, array, separatorType = ', ') => index+1 === array.length - 1 ? "." : separatorType
-
-export const taxonomyParentSeparator = (index, array, separatorType = ' → ') => index === array.length - 1 ? "" : separatorType
 
 export const checkObject = (object) => {
     if (object && Object?.keys(object).length !== 0) {

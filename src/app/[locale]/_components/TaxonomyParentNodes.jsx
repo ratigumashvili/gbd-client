@@ -1,5 +1,5 @@
 import { Link } from "@/src/i18n/routing"
-import { taxonomyParentSeparator } from "@/src/app/[locale]/_lib/helpers"
+import { separator } from "@/src/app/[locale]/_lib/helpers"
 
 const taxonomy = [
     {
@@ -44,7 +44,7 @@ export default function TaxonomyParentNodes() {
                     className={`font-medium ${index === taxonomy.length - 1 ? "text-gray-600 hover:text-gray-700/80 transition" : "text-teal-700 hover:text-teal-700/80 transition"}`}
                 >
                     <span className="capitalize">{item.type}</span> {item.title} 
-                    <span className="text-gray-400 font-normal">{taxonomyParentSeparator(index, taxonomy)}</span>
+                    <span className="text-gray-400 font-normal">{separator(index, taxonomy, ' → ', "")}</span>
                 </Link>
             ))}
 
