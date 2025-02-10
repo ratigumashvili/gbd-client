@@ -25,7 +25,7 @@ const HomePageAbout = async ({locale}) => {
       <ComponentTitle />
       <article
         dangerouslySetInnerHTML={{ __html: sanitize(data?.meta_data_localized?.intro)}}
-        className="[&>p]:mb-3 font-firaGo line-clamp-[12]"
+        className="[&>p]:mb-3 font-firaGo line-clamp-[11]"
       />
       <ReadMore />
     </div>

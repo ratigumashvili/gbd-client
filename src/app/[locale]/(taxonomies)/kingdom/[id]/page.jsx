@@ -1,5 +1,6 @@
 import NothingFound from '@/src/app/[locale]/_components/NothingFound'
 import TaxonomyParent from '@/src/app/[locale]/_components/TaxonomyParent'
+import TaxonomyParentNodes from '@/src/app/[locale]/_components/TaxonomyParentNodes';
 import TaxonomyChildNodes from '@/src/app/[locale]/_components/TaxonomyChildNodes';
 import TaxonomyConservationStatus from '@/src/app/[locale]/_components/TaxonomyConservationStatus';
 import Pagination from '@/src/app/[locale]/_components/Pagination';
@@ -44,6 +45,8 @@ export default async function Kingdom({ params, searchParams }) {
                 totalCount={codesCountTotal}
                 codes={formattedCodes}
             />
+
+            <TaxonomyParentNodes />
 
             <TaxonomyChildNodes
                 data={child?.data}

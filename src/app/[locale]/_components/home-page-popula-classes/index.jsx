@@ -6,7 +6,7 @@ export const revalidate = 0;
 
 async function index({ locale }) {
 
-    const response = await getPopularClasses(locale, 4)
+    const response = await getPopularClasses(locale, 3)
 
     const formattedClasses = response && response.length !== 0 && response?.data?.map((item) => ({
         id: item?.id,
