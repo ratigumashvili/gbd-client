@@ -24,7 +24,7 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
     const router = useRouter()
 
     const transformImageData = (data) =>
-        data.map((item, index) => {
+        data && data?.length !== 0 && data.map((item, index) => {
 
             const defaultWidth = 100;
             const defaultHeight = 150;
@@ -53,7 +53,7 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
         setImages(transformImageData(photos))
     }, [photos])
 
-    const lightboxSlides = images.map((img) => (
+    const lightboxSlides = images?.map((img) => (
         {
             src: img.src,
             title: img.caption,
@@ -104,9 +104,9 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
 
             {componentTitle && (<h2 className='mt-8 mb-0 font-medium block-title'>{componentTitle}</h2>)}
 
-            {images.length === 0 ? (
+            {images?.length === 0 ? (
                 <div className="flex flex-wrap gap-1">
-                    {Array.from({ length: photos.length }).map((_, idx) => (
+                    {Array.from({ length: photos?.length }).map((_, idx) => (
                         <SkeletonLoader key={idx} classNames={"w-full max-w-[120px] h-[100px]"} />
                     ))}
                 </div>
