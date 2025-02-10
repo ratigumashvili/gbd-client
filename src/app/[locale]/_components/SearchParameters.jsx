@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl"
 import { useSearchParams } from "next/navigation";
 
@@ -12,14 +12,19 @@ function SearchParameters({ length = 0 }) {
 
     const searchParams = useSearchParams()
     const s = useTranslations("Search")
+    
+    useEffect(() => {
+        const filteredParams = new URLSearchParams(searchParams.toString());
+        filteredParams.delete("page");
 
-    // useEffect(() => {
-    //     if (searchParams.toString()) {
-    //         setTimeout(() => {
-    //             targetRef.current?.scrollIntoView({ behavior: "smooth" });
-    //         }, 0)
-    //     }
-    // }, [searchParams]);
+        const filteredParamsString = filteredParams.toString();
+
+        if (filteredParamsString) {
+            setTimeout(() => {
+                targetRef.current?.scrollIntoView({ behavior: "smooth" });
+            }, 0);
+        }
+    }, [searchParams.toString().replace(/page=\d+&?/g, "")]);
 
     const getNonEmptyParams = () => {
         const params = new URLSearchParams(searchParams.toString());
@@ -33,6 +38,7 @@ function SearchParameters({ length = 0 }) {
 
     return (
         <section className="p-4 rounded-md bg-slate-50 dark:bg-slate-600" ref={targetRef}>
+            {JSON.stringify(searchParams.get("page"), null, 2)}
             <h2 className="text-xl font-medium mb-4">{s("parameters")}</h2>
             <div className="flex flex-wrap gap-2">
                 {filteredParams && filteredParams?.length !== 0 && filteredParams?.slice(1).map((item, index) => (
