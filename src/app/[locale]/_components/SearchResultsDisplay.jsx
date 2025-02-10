@@ -15,10 +15,6 @@ function SearchResultsDisplay({ data }) {
 
             <div className="w-full min-w-[1000px] md:w-full">
 
-                {/* <pre>
-                    {JSON.stringify(data, null, 2)}
-                </pre> */}
-
                 <div className='grid grid-cols-7 w-full rounded-t-md overflow-hidden'>
                     <div className="col-span-1 rounded-tl-md border-r border-t border-l border-b bg-slate-50 text-center text-base py-2 px-3 font-medium">{t("taxon_rank")}</div>
                     <div className="col-span-1 border-r border-t border-l border-b bg-slate-50 text-center text-base py-2 px-3 font-medium">{t("scientific_name_id")}</div>
@@ -46,7 +42,7 @@ function SearchResultsDisplay({ data }) {
                                 <span className="truncate cursor-default" title={item?.english_name}>{item?.english_name}</span>
                             </div>
                             <div className='col-span-1 border-r border-l border-b text-left text-base flex items-center px-3 py-2'>
-                                <span className="truncate cursor-default" title={item?.georgian_name_title}>{item?.georgian_name_title}</span>
+                                <span className="truncate cursor-default" title={item?.georgian_name}>{item?.georgian_name}</span>
                             </div>
                             <div className='col-span-1 border-r border-l border-b text-left text-base flex items-center px-3 py-2'>
                                 <SearchResultActions item={item}/>
