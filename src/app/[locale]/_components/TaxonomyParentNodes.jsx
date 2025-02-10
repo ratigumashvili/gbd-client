@@ -36,15 +36,15 @@ const taxonomy = [
 
 export default function TaxonomyParentNodes() {
     return (
-        <div className="py-4 flex gap-2 flex-wrap text-lg">
+        <div className="py-4 flex gap-2 flex-wrap text-lg border-b border-b-slate-100 mb-10">
             {taxonomy.map((item, index) => (
                 <Link
                     key={item.id}
                     href={`/${item.type}/${item.title}?id=${item.id}`}
-                    className={`font-medium ${index === taxonomy.length - 1 ? "text-gray-600 hover:text-gray-700/80 transition" : "text-teal-700 hover:text-teal-700/80 transition"}`}
+                    className={`${index === taxonomy.length - 1 ? "italic text-gray-600 hover:text-gray-700/80 transition" : "text-teal-700 hover:text-teal-700/80 transition"}`}
                 >
                     <span className="capitalize">{item.type}</span> {item.title} 
-                    <span className="text-gray-400 font-normal">{separator(index, taxonomy, ' → ', "")}</span>
+                    <span className="text-gray-400 ">{separator(index, taxonomy, ' → ', "")}</span>
                 </Link>
             ))}
 
