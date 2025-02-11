@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { usePathname, useRouter } from '@/src/i18n/routing'
 
-function TaxonomyGallerySearch({ query }) {
+function TaxonomyGallerySearch() {
 
     const [searchValue, setSearchValue] = useState("")
 
@@ -13,30 +13,22 @@ function TaxonomyGallerySearch({ query }) {
     const pathname = usePathname()
     const router = useRouter()
 
-    async function handleFormSubmit(formData) {
-        // const latinName = formData.get("latinName")
-
+    async function handleFormSubmit(e) {
+        e.preventDefault()
         const newParams = new URLSearchParams(searchParams);
         newParams.set("page", 1);
         newParams.set("q", searchValue);
 
         router.replace(`${pathname}?${newParams.toString()}`)
 
-        // const latinName = formData.get("latinName");
-        // const newParams = new URLSearchParams(searchParams);
-    
-        // // ✅ Always start from page 1
-        // newParams.set("page", "1");  
-        // newParams.set("q", latinName.trim()); 
-    
-        // router.replace(`${pathname}?${newParams.toString()}`);
+        console.log(searchParams.get("page"))
     }
 
     const t = useTranslations("Common")
 
     return (
         <div>
-            <form action={handleFormSubmit} className="flex gap-2">
+            <form onSubmit={handleFormSubmit} className="flex gap-2">
                 <input
                     type="text"
                     name="latinName"
@@ -47,7 +39,8 @@ function TaxonomyGallerySearch({ query }) {
                 />
                 <button
                     type="submit"
-                    className="button-secondary disabled:opacity-50 pointer-events-none"
+                    onClick={handleFormSubmit}
+                    className="button-secondary disabled:opacity-50 disabled:pointer-events-none"
                     disabled={searchValue.trim() === ""}
                 >
                     {t("submit")}

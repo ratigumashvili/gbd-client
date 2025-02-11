@@ -20,11 +20,9 @@ function PaginationNumbers({ path, searchParams, currentPage, total }) {
     const query = searchParams?.query ? searchParams.query : ""
 
     const url = pathname + `?id=${searchParams?.id}&page=`;
-    const searchPageUrl = path + "&page=" + `${query && query}`;
 
     useEffect(() => {
         if (path !== null) {
-            // router.replace(searchPageUrl + current + query, { scroll: false });
             const newParams = new URLSearchParams(searchParams);
             newParams.set("page", current); // Update page number
             router.replace(`${pathname}?${newParams.toString()}`, { scroll: false });
@@ -38,6 +36,12 @@ function PaginationNumbers({ path, searchParams, currentPage, total }) {
             setCurrent(total);
         }
     }, [current, total]);
+
+    useEffect(() => {
+        if (searchParams.q) {
+            setCurrent(Number(searchParams.page))
+        }
+    }, [searchParams.q])
 
     const goToPage = (page) => {
         setCurrent(page);
@@ -108,7 +112,6 @@ function PaginationNumbers({ path, searchParams, currentPage, total }) {
                 </>
             )}
 
-            {!isMobile && (
                 <button
                     onClick={() => goToPage(current + 1)}
                     disabled={current === total}
@@ -116,7 +119,6 @@ function PaginationNumbers({ path, searchParams, currentPage, total }) {
                 >
                     {t("next")}
                 </button>
-            )}
 
         </div>
     );
