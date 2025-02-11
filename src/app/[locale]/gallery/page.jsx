@@ -1,7 +1,8 @@
 import { useTranslations } from "next-intl"
 
 import TaxonomyParentGallery from '@/src/app/[locale]/_components/TaxonomyParentGallery'
-import Pagination from '@/src/app/[locale]/_components/PaginationNumbers'
+import TaxonomyGallerySearch from "@/src/app/[locale]/_components/TaxonomyGallerySearch"
+import PaginationNumbers from "@/src/app/[locale]/_components/PaginationNumbers"
 
 import { getGalleryData, getPaginatedData } from '@/src/app/[locale]/_lib/apiCalls'
 import { detectLocale } from "@/src/app/[locale]/_lib/helpers"
@@ -18,33 +19,20 @@ export default async function Gallery({ params, searchParams }) {
   const currentPage = searchParams.page || 1
   const query = searchParams.q || ""
 
-  const handleFormSubmit = async (formData) => {
-    "use server"
-    const latinName = formData.get("latinName")
-    console.log("latinName: ", latinName)
-    
-  };
-
   const data = await getGalleryData(`files?`, params.locale, currentPage, query ? query : "", GALLERY_IMAGE_PER_PAGE )
 
   return (
     <section className='py-4'>
       <div className="flex items-center justify-center mb-4">
         <div className="flex-1"><PageTitle locale={params.locale} /></div>
-        <div>
-          <form action={handleFormSubmit} className="flex gap-2">
-            <input type="text" name="latinName" className="px-3 py-2 border rounded-sm" placeholder="Latin name" />
-            <button type="submit" className="button-secondary">Submit</button>
-            <Link href={"/gallery"} className="button-danger">Reset</Link>
-          </form>
-        </div>
+        <TaxonomyGallerySearch />
       </div>
 
 
       <TaxonomyParentGallery photos={data?.data} />
 
       {data?.recordsTotal > GALLERY_IMAGE_PER_PAGE && (
-        <Pagination
+        <PaginationNumbers
           path={`?files`}
           searchParams={searchParams}
           currentPage={currentPage}

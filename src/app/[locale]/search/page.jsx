@@ -57,15 +57,6 @@ async function SearchPage({ params, searchParams }) {
         <SearchResultsDisplay data={data.data} />
       )}
 
-      {/* {data?.recordsTotal > SEARCH_RESULTS_PER_PAGE && (
-        <Pagination
-          path={`/search?&search_in=${search_in}&${result}`}
-          searchParams={searchParams}
-          currentPage={currentPage}
-          total={data?.total_page}
-        />)
-      } */}
-
       {data?.recordsTotal > SEARCH_RESULTS_PER_PAGE && (
         <PaginationNumbers
           path={`/search?&search_in=${search_in}&${result}`}

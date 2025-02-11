@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 
 import { useIsMobile } from "@/src/app/[locale]/_hooks/useIsMobile";
 
-function Pagination({ path, searchParams, currentPage, total }) {
+function PaginationNumbers({ path, searchParams, currentPage, total }) {
     const [current, setCurrent] = useState(+currentPage || 1);
     const router = useRouter();
     const pathname = usePathname();
@@ -122,4 +122,4 @@ function Pagination({ path, searchParams, currentPage, total }) {
     );
 }
 
-export default Pagination;
+export default PaginationNumbers;
