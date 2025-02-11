@@ -10,7 +10,7 @@ import { GALLERY_IMAGE_PER_PAGE } from '@/src/app/[locale]/_lib/constants'
 
 const PageTitle = ({ locale }) => {
   const t = useTranslations("Gallery")
-  return <h2 className={`text-2xl font-medium ${detectLocale(locale)}`}>{t("pageTitle")}</h2>
+  return <div className="flex items-center justify-center md:justify-start"><h2 className={`text-2xl font-medium ${detectLocale(locale)}`}>{t("pageTitle")}</h2></div>
 }
 
 export default async function Gallery({ params, searchParams }) {
@@ -22,12 +22,14 @@ export default async function Gallery({ params, searchParams }) {
 
   return (
     <section className='py-4'>
-      <div className="flex items-center justify-center mb-4 border">
-        <div className="flex-1"><PageTitle locale={params.locale} /></div>
+      <div className="flex flex-col gap-y-4 md:flex-row md:gap-y-0 md:items-center md:justify-between mb-8">
+        <PageTitle locale={params.locale} />
         <TaxonomyGallerySearch />
       </div>
 
       <TaxonomyParentGallery photos={data?.data} />
+
+      
 
       {data?.data?.length !== 0 && (
         <PaginationNumbers
