@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl"
 import TaxonomyParentGallery from '@/src/app/[locale]/_components/TaxonomyParentGallery'
 import TaxonomyGallerySearch from "@/src/app/[locale]/_components/TaxonomyGallerySearch"
 import PaginationNumbers from "@/src/app/[locale]/_components/PaginationNumbers"
+import SearchNotFound from "@/src/app/[locale]/_components/SearchNotFound"
 
 import { getGalleryData } from '@/src/app/[locale]/_lib/apiCalls'
 import { detectLocale } from "@/src/app/[locale]/_lib/helpers"
@@ -29,7 +30,9 @@ export default async function Gallery({ params, searchParams }) {
 
       <TaxonomyParentGallery photos={data?.data} />
 
-      
+      {data && data?.data?.length === 0 && (
+        <SearchNotFound />
+      )}
 
       {data?.data?.length !== 0 && (
         <PaginationNumbers
