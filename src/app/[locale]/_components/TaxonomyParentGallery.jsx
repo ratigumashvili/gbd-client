@@ -14,6 +14,7 @@ import CustomThumbnail from "@/src/app/[locale]/_components/CustomThumbnail";
 
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/captions.css";
+import { generateUrl } from "../_lib/helpers";
 
 function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
 
@@ -45,7 +46,8 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
                 uploadedBy: item.uploadedBy || null,
                 size: Number(item.metadata.size / 1000),
                 extension: item.extension,
-                priority: index < 3
+                priority: index < 3,
+                url: item.related_items
             };
         });
 
@@ -64,7 +66,8 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
             uploadedBy: img.uploadedBy,
             size: img.size,
             extension: img.extension,
-            id: img.id
+            id: img.id,
+            url: img.related_items
         }
     ));
 
@@ -84,7 +87,6 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
 
     return (
         <section className="mb-4">
-            {/* <pre>{JSON.stringify(photos, null, 2)}</pre> */}
             <style>
                 {`
                     .react-grid-gallery .ReactGridGallery_tile {

@@ -300,3 +300,20 @@ export const checkTaxonValue = (value, taxonName, id) => {
         return `/${filterTaxonValue(value)}/${taxonName}?id=${id}` 
     }
 }
+
+export const generateUrl = () => {
+    const typeToPath = {
+        Kingdom: "kingdom",
+        Phylum: "phylum",
+        TaxClass: "class",
+        TaxOrder: "order",
+        Family: "family",
+        Genus: "genus",
+    };
+
+    return item.type in typeToPath
+        ? `/${typeToPath[item.type]}/${item.slug}?id=${item.id}`
+        : item.type === "Specie"
+        ? `/species/${item.id}`
+        : "";
+};
