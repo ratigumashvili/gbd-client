@@ -63,7 +63,8 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
             author: img.author,
             uploadedBy: img.uploadedBy,
             size: img.size,
-            extension: img.extension
+            extension: img.extension,
+            id: img.id
         }
     ));
 
@@ -83,6 +84,7 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
 
     return (
         <section className="mb-4">
+            {/* <pre>{JSON.stringify(photos, null, 2)}</pre> */}
             <style>
                 {`
                     .react-grid-gallery .ReactGridGallery_tile {
@@ -141,7 +143,10 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
                                 />
                             </div>
 
-                            <h2 className="text-3xl italic py-[5px] px-[10px] mb-1">{slide.title}</h2>
+                            <h2 className="text-3xl italic py-[5px] px-[10px] mb-1">
+                                {slide.title} 
+                                {/* <Link href={`/species/${slide.id}`} className="pl-4">view</Link> */}
+                            </h2>
 
                             {taxon?.path && (
                                 <div className="flex items-center justify-center gap-x-2 mb-3 text-lg">

@@ -36,7 +36,7 @@ const taxonomy = [
 
 export default function TaxonomyParentNodes() {
     return (
-        <div className="py-4 flex gap-2 flex-wrap text-lg border-b border-b-slate-100 mb-10">
+        <div className="py-4 flex gap-2 flex-wrap text-lg border-b border-b-slate-100 border-t border-t-slate-50 mb-10">
             {taxonomy.map((item, index) => (
                 <Link
                     key={item.id}

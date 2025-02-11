@@ -41,12 +41,12 @@ function TaxonomyGallerySearch() {
                     name="latinName"
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
-                    className="px-3 py-2 border rounded-sm w-full sm:w-[250px] lg:w-[300px]"
+                    className="px-3 py-2 border rounded-sm w-full sm:w-[250px] lg:w-[300px] focus:ring-0 focus:outline-teal-600"
                     placeholder={t("latin_name")}
                 />
                 <button
                     type="submit"
-                    className="button-secondary disabled:opacity-50 disabled:pointer-events-none"
+                    className="button-secondary disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gray-200"
                     disabled={searchValue.trim() === "" || searchValue.trim() === initialSearchValue}
                 >
                     {t("submit")}

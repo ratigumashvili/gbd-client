@@ -5,7 +5,7 @@ import TaxonomyGallerySearch from "@/src/app/[locale]/_components/TaxonomyGaller
 import PaginationNumbers from "@/src/app/[locale]/_components/PaginationNumbers"
 import SearchNotFound from "@/src/app/[locale]/_components/SearchNotFound"
 
-import { getGalleryData } from '@/src/app/[locale]/_lib/apiCalls'
+import { getGalleryData, getPaginatedData } from '@/src/app/[locale]/_lib/apiCalls'
 import { detectLocale } from "@/src/app/[locale]/_lib/helpers"
 import { GALLERY_IMAGE_PER_PAGE } from '@/src/app/[locale]/_lib/constants'
 
