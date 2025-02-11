@@ -13,7 +13,8 @@ export default function TaxonomyParentNodes({ data }) {
                         <Link
                             key={item.id}
                             href={`/${item.type.toLowerCase()}/${item.name.toLowerCase()}?id=${item.id}`}
-                            className={`${index === data.length - 1 ? "italic text-gray-600 hover:text-gray-700/80 transition" : "text-teal-700 hover:text-teal-700/80 transition"}`}
+                            // className={`${index === data.length - 1 ? "italic text-gray-600 hover:text-gray-700/80 transition" : "text-teal-700 hover:text-teal-700/80 transition"}`}
+                            className="text-teal-700 hover:text-teal-700/80 transition"
                         >
                             <span className="capitalize">{item.type}</span> {item.name}
                             <span className="text-gray-400 ">{separator(index, data, ' → ', "")}</span>
