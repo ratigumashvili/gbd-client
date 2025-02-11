@@ -32,9 +32,6 @@ export default async function Phylum({ params, searchParams }) {
 
   return (
     <>
-    <pre>
-      {JSON.stringify(reversedParent, null, 2)}
-    </pre>
       <TaxonomyParent
         data={data}
         photos={data.files}
