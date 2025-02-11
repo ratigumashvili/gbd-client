@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { Link } from "@/src/i18n/routing"
 
-import { separator } from "@/src/app/[locale]/_lib/helpers"
+import { filterTaxonValue, separator } from "@/src/app/[locale]/_lib/helpers"
 
 export default function TaxonomyParentNodes({ data }) {
     return (
@@ -12,11 +12,10 @@ export default function TaxonomyParentNodes({ data }) {
                     {data && data?.length !== 0 && data.reverse().map((item, index) => (
                         <Link
                             key={item.id}
-                            href={`/${item.type.toLowerCase()}/${item.name.toLowerCase()}?id=${item.id}`}
-                            // className={`${index === data.length - 1 ? "italic text-gray-600 hover:text-gray-700/80 transition" : "text-teal-700 hover:text-teal-700/80 transition"}`}
+                            href={`/${filterTaxonValue(item.type)}/${item.name.toLowerCase()}?id=${item.id}`}
                             className="text-teal-700 hover:text-teal-700/80 transition"
                         >
-                            <span className="capitalize">{item.type}</span> {item.name}
+                            <span className="capitalize">{filterTaxonValue(item.type)}</span> {item.name}
                             <span className="text-gray-400 ">{separator(index, data, ' → ', "")}</span>
                         </Link>
                     ))}

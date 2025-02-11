@@ -14,7 +14,8 @@ import TaxonomyParentGallery from '@/src/app/[locale]/_components/TaxonomyParent
 import TaxonHeading from '@/src/app/[locale]/_components/TaxonHeading';
 
 import { useFullUrl } from '@/src/app/[locale]/_hooks/useFullUrl';
- 
+import TaxonomyParentNodes from '../TaxonomyParentNodes';
+
 export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinates }) {
 
     const printContent = useRef();
@@ -49,6 +50,7 @@ export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinat
 
     return (
         <div className="py-4" ref={printContent}>
+
             <div className="flex items-center justify-between mb-6">
                 <TaxonHeading headingData={headingData} />
                 <ActionsDropdown
@@ -64,10 +66,10 @@ export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinat
             <div className="flex flex-col gap-4">
                 {data?.files?.length !== 0 &&
                     <>
-                        <TaxonomyParentGallery 
+                        <TaxonomyParentGallery
                             photos={data?.files}
-                            componentTitle={t("gallery")} 
-                            // taxon={taxon} 
+                            componentTitle={t("gallery")}
+                        // taxon={taxon} 
                         />
                     </>
                 }
@@ -81,6 +83,10 @@ export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinat
                     />
                     <SingleTaxonConservation data={data} />
                 </div>
+            </div>
+
+            <div className='my-8'>
+                <TaxonomyParentNodes data={data?.parents} />
             </div>
 
             {heatMapCoordinates !== 0 && <Map heatMapCoordinates={heatMapCoordinates} pinMapCoordinates={pinMapCoordinates} className="-z-0" />}
