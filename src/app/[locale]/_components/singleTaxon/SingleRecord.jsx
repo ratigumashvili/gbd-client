@@ -18,6 +18,11 @@ import TaxonomyParentNodes from '../TaxonomyParentNodes';
 
 export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinates }) {
 
+    const reversedParent = data?.parents?.length 
+    ? [...data.parents].reverse() 
+    : [];
+
+
     const printContent = useRef();
 
     const handlePrint = useReactToPrint({
@@ -85,9 +90,7 @@ export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinat
                 </div>
             </div>
 
-            <div className='my-8'>
-                <TaxonomyParentNodes data={data?.parents} />
-            </div>
+            <TaxonomyParentNodes data={reversedParent} />
 
             {heatMapCoordinates !== 0 && <Map heatMapCoordinates={heatMapCoordinates} pinMapCoordinates={pinMapCoordinates} className="-z-0" />}
 

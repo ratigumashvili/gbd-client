@@ -22,6 +22,10 @@ export default async function TaxonClass({ params, searchParams }) {
   const formattedCodes = formatCodes(codesObject)
   const codesCountTotal = formatCodesTotal(formattedCodes)
 
+  const reversedParent = data?.parents?.length 
+  ? [...data.parents].reverse() 
+  : [];
+
   if (!data) {
     return <NothingFound />
   }
@@ -45,7 +49,7 @@ export default async function TaxonClass({ params, searchParams }) {
         codes={formattedCodes}
       />
 
-      <TaxonomyParentNodes data={data?.parents} />
+      <TaxonomyParentNodes data={reversedParent} />
 
       <TaxonomyChildNodes
         data={child?.data}

@@ -4,12 +4,13 @@ import { Link } from "@/src/i18n/routing"
 import { filterTaxonValue, separator } from "@/src/app/[locale]/_lib/helpers"
 
 export default function TaxonomyParentNodes({ data }) {
+
     return (
         <>
             {data && data?.length !== 0 && (
-                <div className="py-4 flex items-center gap-2 flex-wrap text-base border-b border-b-slate-100 border-t border-t-slate-50 mb-10">
+                <div className="py-4 mt-8 flex items-center gap-2 flex-wrap text-base border-b border-b-slate-100 border-t border-t-slate-50 mb-10">
                     <Image src={'/nodes.svg'} alt="Nodes" width={20} height={20} />
-                    {data && data?.length !== 0 && data.reverse().map((item, index) => (
+                    {data.map((item, index) => (
                         <Link
                             key={item.id}
                             href={`/${filterTaxonValue(item.type)}/${item.name.toLowerCase()}?id=${item.id}`}

@@ -22,12 +22,19 @@ export default async function Phylum({ params, searchParams }) {
   const formattedCodes = formatCodes(codesObject)
   const codesCountTotal = formatCodesTotal(formattedCodes)
 
+  const reversedParent = data?.parents?.length 
+    ? [...data.parents].reverse() 
+    : [];
+
   if (!data) {
     return <NothingFound />
   }
 
   return (
     <>
+    <pre>
+      {JSON.stringify(reversedParent, null, 2)}
+    </pre>
       <TaxonomyParent
         data={data}
         photos={data.files}
@@ -45,7 +52,7 @@ export default async function Phylum({ params, searchParams }) {
         codes={formattedCodes}
       />
 
-      <TaxonomyParentNodes data={data?.parents} />
+      <TaxonomyParentNodes data={reversedParent} />
 
       <TaxonomyChildNodes
         data={child?.data}
