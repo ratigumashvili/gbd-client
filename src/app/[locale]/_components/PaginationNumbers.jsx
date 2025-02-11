@@ -17,12 +17,17 @@ function Pagination({ path, searchParams, currentPage, total }) {
         customAgent: navigator.userAgent,
     });
 
+    const query = searchParams?.query ? searchParams.query : ""
+
     const url = pathname + `?id=${searchParams?.id}&page=`;
-    const searchPageUrl = path + "&page=";
+    const searchPageUrl = path + "&page=" + `${query && query}`;
 
     useEffect(() => {
         if (path !== null) {
-            router.replace(searchPageUrl + current, { scroll: false });
+            // router.replace(searchPageUrl + current + query, { scroll: false });
+            const newParams = new URLSearchParams(searchParams);
+            newParams.set("page", current); // Update page number
+            router.replace(`${pathname}?${newParams.toString()}`, { scroll: false });
         } else {
             router.replace(url + current, { scroll: false });
         }

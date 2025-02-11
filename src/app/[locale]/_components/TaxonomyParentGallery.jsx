@@ -53,7 +53,7 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
         setImages(transformImageData(photos))
     }, [photos])
 
-    const lightboxSlides = images?.map((img) => (
+    const lightboxSlides = images && images.length !== 0 && images?.map((img) => (
         {
             src: img.src,
             title: img.caption,
