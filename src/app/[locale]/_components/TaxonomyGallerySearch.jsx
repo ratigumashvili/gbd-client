@@ -1,30 +1,37 @@
-"use client"
+"use client";
 
-import { useState } from 'react'
-import { useSearchParams } from 'next/navigation'
-import { useTranslations } from 'next-intl'
-import { usePathname, useRouter } from '@/src/i18n/routing'
+import { useState, useEffect, useCallback } from "react";
+import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { usePathname, useRouter } from "@/src/i18n/routing";
 
 function TaxonomyGallerySearch() {
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+    const router = useRouter();
+    const t = useTranslations("Common");
 
-    const [searchValue, setSearchValue] = useState("")
+    const initialSearchValue = searchParams.get("q") || "";
+    const [searchValue, setSearchValue] = useState(initialSearchValue);
 
-    const searchParams = useSearchParams()
-    const pathname = usePathname()
-    const router = useRouter()
+    const handleFormSubmit = useCallback(
+        (e) => {
+            e.preventDefault();
 
-    async function handleFormSubmit(e) {
-        e.preventDefault()
-        const newParams = new URLSearchParams(searchParams);
-        newParams.set("page", 1);
-        newParams.set("q", searchValue);
+            if (!searchValue.trim()) return;
 
-        router.replace(`${pathname}?${newParams.toString()}`)
+            const newParams = new URLSearchParams(searchParams);
+            newParams.set("page", "1");
+            newParams.set("q", searchValue.trim());
 
-        console.log(searchParams.get("page"))
-    }
+            router.replace(`${pathname}?${newParams.toString()}`);
+        },
+        [searchValue, router, pathname, searchParams]
+    );
 
-    const t = useTranslations("Common")
+    useEffect(() => {
+        setSearchValue(initialSearchValue);
+    }, [initialSearchValue]);
 
     return (
         <div>
@@ -39,22 +46,24 @@ function TaxonomyGallerySearch() {
                 />
                 <button
                     type="submit"
-                    onClick={handleFormSubmit}
                     className="button-secondary disabled:opacity-50 disabled:pointer-events-none"
-                    disabled={searchValue.trim() === ""}
+                    disabled={searchValue.trim() === "" || searchValue.trim() === initialSearchValue}
                 >
                     {t("submit")}
                 </button>
                 <button
                     type="button"
-                    onClick={() => router.push("/gallery")}
-                    className='button-danger'
+                    onClick={() => {
+                        setSearchValue("");
+                        router.push("/gallery");
+                    }}
+                    className="button-danger"
                 >
                     {t("reset")}
                 </button>
             </form>
         </div>
-    )
+    );
 }
 
-export default TaxonomyGallerySearch
+export default TaxonomyGallerySearch;
