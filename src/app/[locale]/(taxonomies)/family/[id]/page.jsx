@@ -1,5 +1,6 @@
 import NothingFound from "@/src/app/[locale]/_components/NothingFound";
 import TaxonomyParent from "@/src/app/[locale]/_components/TaxonomyParent";
+import TaxonomyParentNodes from "@/src/app/[locale]/_components/TaxonomyParentNodes"
 import TaxonomyChildNodes from "@/src/app/[locale]/_components/TaxonomyChildNodes";
 import TaxonomyConservationStatus from '@/src/app/[locale]/_components/TaxonomyConservationStatus'
 import Pagination from "@/src/app/[locale]/_components/Pagination";
@@ -38,11 +39,13 @@ export default async function Family({ params, searchParams }) {
       // description={data[0]?.description}
       />
 
-        <TaxonomyConservationStatus
-          taxonName={data?.metadata?.name}
-          totalCount={codesCountTotal}
-          codes={formattedCodes}
-        />
+      <TaxonomyConservationStatus
+        taxonName={data?.metadata?.name}
+        totalCount={codesCountTotal}
+        codes={formattedCodes}
+      />
+
+      <TaxonomyParentNodes data={data?.parents} />
 
       <TaxonomyChildNodes
         data={child?.data}

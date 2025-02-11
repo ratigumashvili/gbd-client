@@ -1,5 +1,6 @@
 import NothingFound from "@/src/app/[locale]/_components/NothingFound";
 import TaxonomyParent from "@/src/app/[locale]/_components/TaxonomyParent"
+import TaxonomyParentNodes from "@/src/app/[locale]/_components/TaxonomyParentNodes"
 import TaxonomyChildNodes from "@/src/app/[locale]/_components/TaxonomyChildNodes";
 import TaxonomyConservationStatus from '@/src/app/[locale]/_components/TaxonomyConservationStatus'
 import Cite from "@/src/app/[locale]/_components/Cite";
@@ -43,6 +44,8 @@ export default async function Genus({ params, searchParams }) {
         totalCount={codesCountTotal}
         codes={formattedCodes}
       />
+
+      <TaxonomyParentNodes data={data?.parents} />
 
       <TaxonomyChildNodes
         data={species?.data}
