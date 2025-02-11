@@ -11,7 +11,7 @@ export const getData = async (endpoint, locale) => axios.get(`${apiUrl}/${endpoi
     },
   }).then((response) => response.data).catch((error) => error)
 
-export const getPaginatedData = async (endpoint, locale, currentPage, query, perPage) => axios.get(`${apiUrl}/${endpoint}`,
+export const getPaginatedData = async (endpoint, locale, currentPage, perPage) => axios.get(`${apiUrl}/${endpoint}`,
   {
     headers: {
       'Content-Type': 'application/json',
@@ -21,7 +21,6 @@ export const getPaginatedData = async (endpoint, locale, currentPage, query, per
     params: {
       'page': currentPage,
       'per_page': perPage,
-      'q': query
     }
   }).then((response) => response.data).catch((error) => error.message)
 
@@ -45,3 +44,16 @@ export const getPopularClasses = async (locale, quantity) => axios.get(`${apiUrl
   },
 }).then((response) => response.data).catch((error) => error.message)
 
+export const getGalleryData = async (endpoint, locale, currentPage, query, perPage) => axios.get(`${apiUrl}/${endpoint}`,
+  {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Accept-Language': locale
+    },
+    params: {
+      'page': currentPage,
+      'per_page': perPage,
+      'q': query
+    }
+  }).then((response) => response.data).catch((error) => error.message)

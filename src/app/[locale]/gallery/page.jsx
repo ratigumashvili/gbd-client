@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl"
 import TaxonomyParentGallery from '@/src/app/[locale]/_components/TaxonomyParentGallery'
 import Pagination from '@/src/app/[locale]/_components/PaginationNumbers'
 
-import { getPaginatedData } from '@/src/app/[locale]/_lib/apiCalls'
+import { getGalleryData, getPaginatedData } from '@/src/app/[locale]/_lib/apiCalls'
 import { detectLocale } from "@/src/app/[locale]/_lib/helpers"
 import { GALLERY_IMAGE_PER_PAGE } from '@/src/app/[locale]/_lib/constants'
 import { Link } from "@/src/i18n/routing"
@@ -25,7 +25,7 @@ export default async function Gallery({ params, searchParams }) {
     
   };
 
-  const data = await getPaginatedData(`files?`, params.locale, currentPage, query ? query : "", GALLERY_IMAGE_PER_PAGE )
+  const data = await getGalleryData(`files?`, params.locale, currentPage, query ? query : "", GALLERY_IMAGE_PER_PAGE )
 
   return (
     <section className='py-4'>
