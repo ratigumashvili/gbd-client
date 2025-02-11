@@ -16,12 +16,7 @@ import TaxonHeading from '@/src/app/[locale]/_components/TaxonHeading';
 import { useFullUrl } from '@/src/app/[locale]/_hooks/useFullUrl';
 import TaxonomyParentNodes from '../TaxonomyParentNodes';
 
-export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinates }) {
-
-    const reversedParent = data?.parents?.length 
-    ? [...data.parents].reverse() 
-    : [];
-
+export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinates, reversedParent }) {
 
     const printContent = useRef();
 

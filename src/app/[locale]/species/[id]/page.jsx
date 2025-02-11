@@ -20,6 +20,10 @@ export default async function SingleSpecies({ params }) {
   }))
   .filter(item => !(item.geocode[0] === null || isNaN(item.geocode[0]) || item.geocode[1] === null || isNaN(item.geocode[1])));
 
+  const reversedParent = data?.parents?.length 
+  ? [...data.parents].reverse() 
+  : [];
+
   if (!data) {
     return <NothingFound />
   }
@@ -30,6 +34,7 @@ export default async function SingleSpecies({ params }) {
       data={data}
       heatMapCoordinates={heatMapCoordinates}
       pinMapCoordinates={pinMapCoordinates}
+      reversedParent={reversedParent}
     />
     </>
   )
