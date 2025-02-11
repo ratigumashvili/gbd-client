@@ -11,22 +11,22 @@ function TaxonomyGallerySearch({ query }) {
     const router = useRouter()
 
     async function handleFormSubmit(formData) {
-        // const latinName = formData.get("latinName")
+        const latinName = formData.get("latinName")
 
-        // const newParams = new URLSearchParams(searchParams);
-        // newParams.set("page", 1);
-        // newParams.set("q", latinName);
-
-        // router.replace(`${pathname}?${newParams.toString()}`)
-
-        const latinName = formData.get("latinName");
         const newParams = new URLSearchParams(searchParams);
+        newParams.set("page", 1);
+        newParams.set("q", latinName);
+
+        router.replace(`${pathname}?${newParams.toString()}`)
+
+        // const latinName = formData.get("latinName");
+        // const newParams = new URLSearchParams(searchParams);
     
-        // ✅ Always start from page 1
-        newParams.set("page", "1");  
-        newParams.set("q", latinName.trim()); 
+        // // ✅ Always start from page 1
+        // newParams.set("page", "1");  
+        // newParams.set("q", latinName.trim()); 
     
-        router.replace(`${pathname}?${newParams.toString()}`);
+        // router.replace(`${pathname}?${newParams.toString()}`);
     }
 
     const t = useTranslations("Common")
