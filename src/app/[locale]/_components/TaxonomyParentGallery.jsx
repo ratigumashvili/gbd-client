@@ -47,15 +47,21 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
                 size: Number(item.metadata.size / 1000),
                 extension: item.extension,
                 priority: index < 3,
-                url: item.related_items
+                url: photos[index].related_items?.map((item) => ({
+                    id: item.id,
+                    slug: item.slug,
+                    type: item.type
+                }))
             };
         });
+
 
     useEffect(() => {
         setImages(transformImageData(photos))
     }, [photos])
+    
 
-    const lightboxSlides = images && images.length !== 0 && images?.map((img) => (
+    const lightboxSlides = images && images.length !== 0 && images?.map((img, index) => (
         {
             src: img.src,
             title: img.caption,
@@ -67,7 +73,7 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
             size: img.size,
             extension: img.extension,
             id: img.id,
-            url: img.related_items
+            url: img.url
         }
     ));
 
@@ -87,6 +93,7 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
 
     return (
         <section className="mb-4">
+            <pre>{JSON.stringify(images, null, 2)}</pre>
             <style>
                 {`
                     .react-grid-gallery .ReactGridGallery_tile {
