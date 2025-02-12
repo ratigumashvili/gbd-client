@@ -23,7 +23,7 @@ export default function TaxonomyParentNodes({ data }) {
                             <span className="capitalize">{filterTaxonValue(item.type)}</span> {item.name}
                             <span className="text-gray-400 ">
                                 {!path.startsWith("/species")
-                                    ? (separator(index, data, ' → ', " : "))
+                                    ? (separator(index, data, ' → ', <span className="pl-2">:</span>))
                                     : (separator(index, data, ' → ', ""))}
                             </span>
                         </Link>
