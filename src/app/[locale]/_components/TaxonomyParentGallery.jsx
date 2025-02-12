@@ -50,10 +50,6 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
                     size: Number(item.metadata.size / 1000),
                     extension: item.extension,
                     priority: index < 3,
-                    // url: Array.isArray(item.related_items)
-                    //     ? item.related_items.filter(Boolean).map(generateUrl).filter((item) => item.startsWith('/species'))
-                    //     : []
-
                     url: Array.isArray(item.related_items)
                         ? item.related_items.filter(Boolean).map(generateUrl)
                             .filter(item => ORDER.includes(item.type))
