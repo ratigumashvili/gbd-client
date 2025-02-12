@@ -55,7 +55,7 @@ function TaxonomyGallerySearch() {
                     type="button"
                     onClick={() => {
                         setSearchValue("");
-                        router.push("/gallery");
+                        router.replace("/gallery");
                     }}
                     className="button-danger"
                 >

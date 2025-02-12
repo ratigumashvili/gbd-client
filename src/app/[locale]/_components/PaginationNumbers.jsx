@@ -17,14 +17,14 @@ function PaginationNumbers({ path, searchParams, currentPage, total }) {
         customAgent: navigator.userAgent,
     });
 
-    const query = searchParams?.query ? searchParams.query : ""
+    // const query = searchParams?.query ? searchParams.query : ""
 
     const url = pathname + `?id=${searchParams?.id}&page=`;
 
     useEffect(() => {
         if (path !== null) {
             const newParams = new URLSearchParams(searchParams);
-            newParams.set("page", current); // Update page number
+            newParams.set("page", current);
             router.replace(`${pathname}?${newParams.toString()}`, { scroll: false });
         } else {
             router.replace(url + current, { scroll: false });
@@ -42,6 +42,12 @@ function PaginationNumbers({ path, searchParams, currentPage, total }) {
             setCurrent(Number(searchParams.page))
         }
     }, [searchParams.q])
+
+    useEffect(() => {
+        if(!searchParams.page) {
+            setCurrent(1)
+        }
+    }, [searchParams.page])
 
     const goToPage = (page) => {
         setCurrent(page);
@@ -67,7 +73,6 @@ function PaginationNumbers({ path, searchParams, currentPage, total }) {
 
     return (
         <div className={`flex items-center gap-2 mt-8 ${isMobile ? "justify-center" : "justify-start"}`}>
-
             {!isMobile && (
                 <button
                     onClick={() => goToPage(current - 1)}
