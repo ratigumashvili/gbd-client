@@ -5,13 +5,15 @@ import TaxonomyGallerySearch from "@/src/app/[locale]/_components/TaxonomyGaller
 import PaginationNumbers from "@/src/app/[locale]/_components/PaginationNumbers"
 import SearchNotFound from "@/src/app/[locale]/_components/SearchNotFound"
 
-import { getGalleryData} from '@/src/app/[locale]/_lib/apiCalls'
+import { getGalleryData } from '@/src/app/[locale]/_lib/apiCalls'
 import { detectLocale } from "@/src/app/[locale]/_lib/helpers"
 import { GALLERY_IMAGE_PER_PAGE } from '@/src/app/[locale]/_lib/constants'
 
 const PageTitle = ({ locale }) => {
   const t = useTranslations("Gallery")
-  return <div className="flex items-center justify-center md:justify-start"><h2 className={`text-2xl font-medium ${detectLocale(locale)}`}>{t("pageTitle")}</h2></div>
+  return <div className="flex items-center justify-center md:justify-start">
+    <h2 className={`text-2xl font-medium ${detectLocale(locale)}`}>{t("pageTitle")}</h2>
+  </div>
 }
 
 export default async function Gallery({ params, searchParams }) {
@@ -27,7 +29,7 @@ export default async function Gallery({ params, searchParams }) {
         <PageTitle locale={params.locale} />
         <TaxonomyGallerySearch />
       </div>
-      
+
       <TaxonomyParentGallery photos={data?.data} />
 
       {data && data?.data?.length === 0 && (
