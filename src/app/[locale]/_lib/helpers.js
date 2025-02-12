@@ -301,7 +301,12 @@ export const checkTaxonValue = (value, taxonName, id) => {
     }
 }
 
-export const generateUrl = () => {
+export const generateUrl = (item) => {
+    if (!item || typeof item !== "object") {
+        console.error("generateUrl received invalid item:", item);
+        return "";
+    }
+
     const typeToPath = {
         Kingdom: "kingdom",
         Phylum: "phylum",
@@ -317,3 +322,4 @@ export const generateUrl = () => {
         ? `/species/${item.id}`
         : "";
 };
+

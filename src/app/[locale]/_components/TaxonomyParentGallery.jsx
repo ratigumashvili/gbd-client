@@ -7,14 +7,15 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Gallery } from "react-grid-gallery";
 import Lightbox from "yet-another-react-lightbox";
-
 import { useRouter } from "@/src/i18n/routing";
+
 import SkeletonLoader from "@/src/app/[locale]/_components/SkeletonLoader";
 import CustomThumbnail from "@/src/app/[locale]/_components/CustomThumbnail";
+import SearchIcon from "@/src/app/[locale]/_components/icons/SearchIcon";
+import { generateUrl } from "@/src/app/[locale]/_lib/helpers";
 
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/captions.css";
-import { generateUrl } from "../_lib/helpers";
 
 function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
 
@@ -25,41 +26,40 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
     const router = useRouter()
 
     const transformImageData = (data) =>
-        data && data?.length !== 0 && data.map((item, index) => {
+        data && Array.isArray(data) && data.length !== 0
+            ? data.map((item, index) => {
+                const defaultWidth = 100;
+                const defaultHeight = 150;
 
-            const defaultWidth = 100;
-            const defaultHeight = 150;
-
-            return {
-                id: item.id,
-                src: item.file_url,
-                thumbnail: item.file_url,
-                thumbnailWidth: defaultWidth,
-                thumbnailHeight: defaultHeight,
-                width: item.metadata?.width || defaultWidth,
-                height: item.metadata?.height || defaultHeight,
-                caption: item.name,
-                place: item.location,
-                date: item.date_meta,
-                comments: item.comment,
-                author: item.author_title,
-                uploadedBy: item.uploadedBy || null,
-                size: Number(item.metadata.size / 1000),
-                extension: item.extension,
-                priority: index < 3,
-                url: photos[index].related_items?.map((item) => ({
+                return {
                     id: item.id,
-                    slug: item.slug,
-                    type: item.type
-                }))
-            };
-        });
+                    src: item.file_url,
+                    thumbnail: item.file_url,
+                    thumbnailWidth: defaultWidth,
+                    thumbnailHeight: defaultHeight,
+                    width: item.metadata?.width || defaultWidth,
+                    height: item.metadata?.height || defaultHeight,
+                    caption: item.name,
+                    place: item.location,
+                    date: item.date_meta,
+                    comments: item.comment,
+                    author: item.author_title,
+                    uploadedBy: item.uploadedBy || null,
+                    size: Number(item.metadata.size / 1000),
+                    extension: item.extension,
+                    priority: index < 3,
+                    url: Array.isArray(item.related_items)
+                        ? item.related_items.filter(Boolean).map(generateUrl).filter((item) => item.startsWith('/species'))
+                        : []
+                };
+            })
+            : [];
 
 
     useEffect(() => {
         setImages(transformImageData(photos))
     }, [photos])
-    
+
 
     const lightboxSlides = images && images.length !== 0 && images?.map((img, index) => (
         {
@@ -93,7 +93,6 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
 
     return (
         <section className="mb-4">
-            <pre>{JSON.stringify(images, null, 2)}</pre>
             <style>
                 {`
                     .react-grid-gallery .ReactGridGallery_tile {
@@ -152,10 +151,16 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
                                 />
                             </div>
 
-                            <h2 className="text-3xl italic py-[5px] px-[10px] mb-1">
-                                {slide.title} 
-                                {/* <Link href={`/species/${slide.id}`} className="pl-4">view</Link> */}
-                            </h2>
+                            <div className="mb-1 flex items-center justify-center mx-auto">
+                                <h2 className="text-3xl italic py-[5px] px-[10px] w-max">
+                                    {slide.title}
+                                </h2>
+                                {slide.url.length !== 0 && (
+                                    <Link href={`${slide.url}`} className="pl-4">
+                                        <SearchIcon classNames={"text-white"} width="27" height="27" />
+                                    </Link>
+                                )}
+                            </div>
 
                             {taxon?.path && (
                                 <div className="flex items-center justify-center gap-x-2 mb-3 text-lg">

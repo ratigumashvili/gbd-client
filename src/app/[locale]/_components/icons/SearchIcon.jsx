@@ -1,6 +1,6 @@
 import React from "react";
 
-function SearchIcon({width="17", height="17"}) {
+function SearchIcon({width="17", height="17", classNames}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11,7 +11,7 @@ function SearchIcon({width="17", height="17"}) {
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth="2"
-      className="lucide lucide-search"
+      className={`lucide lucide-search ${classNames}`}
       viewBox="0 0 24 24"
     >
       <circle cx="11" cy="11" r="8"></circle>
