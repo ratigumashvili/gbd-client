@@ -97,7 +97,6 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
 
     return (
         <section className="mb-4">
-            {/* <pre>{JSON.stringify(images, null, 2)}</pre> */}
             <style>
                 {`
                     .react-grid-gallery .ReactGridGallery_tile {

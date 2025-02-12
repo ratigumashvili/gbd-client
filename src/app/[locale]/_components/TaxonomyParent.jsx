@@ -18,7 +18,7 @@ import { sanitize } from '@/src/app/[locale]/_lib/helpers'
 import { useFullUrl } from '@/src/app/[locale]/_hooks/useFullUrl'
 import { usePathname } from '@/src/i18n/routing'
 
-export default function TaxonomyParentBackup({ data, photos, species, rank, accordingTo, sna, vernakularName, locale }) {
+export default function TaxonomyParent({ data, photos, species, rank, accordingTo, sna, vernakularName, locale }) {
 
     const path = usePathname()
     
@@ -36,11 +36,6 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
     });
 
     // Single Taxon page
-
-    const taxon = {
-        name: data?.metadata?.name,
-        path: fullUrl
-    }
 
     const headingData = {
         id: data?.metadata?.scientific_name_id || uuidv4(),
@@ -164,7 +159,7 @@ export default function TaxonomyParentBackup({ data, photos, species, rank, acco
                     {photos && photos.length !== 0 && (
                         <>
                             <h2 className='font-medium my-2 block-title'>{t("gallery")}</h2>
-                            <TaxonomyParentGallery photos={photos} taxon={taxon} />
+                            <TaxonomyParentGallery photos={photos} />
                         </>
                     )}
                 </div>
