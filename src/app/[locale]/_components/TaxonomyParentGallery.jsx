@@ -11,6 +11,7 @@ import { useRouter } from "@/src/i18n/routing";
 
 import SkeletonLoader from "@/src/app/[locale]/_components/SkeletonLoader";
 import CustomThumbnail from "@/src/app/[locale]/_components/CustomThumbnail";
+import LoadingIcon from "@/src/app/[locale]/_components/icons/LoadingIcon";
 
 import { filterTaxonValue, generateUrl } from "@/src/app/[locale]/_lib/helpers";
 import { ORDER } from "@/src/app/[locale]/_lib/constants";
@@ -52,7 +53,7 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
                     // url: Array.isArray(item.related_items)
                     //     ? item.related_items.filter(Boolean).map(generateUrl).filter((item) => item.startsWith('/species'))
                     //     : []
-                   
+
                     url: Array.isArray(item.related_items)
                         ? item.related_items.filter(Boolean).map(generateUrl)
                             .filter(item => ORDER.includes(item.type))
@@ -100,7 +101,7 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
 
     return (
         <section className="mb-4">
-{/* <pre>{JSON.stringify(images, null, 2)}</pre> */}
+            {/* <pre>{JSON.stringify(images, null, 2)}</pre> */}
             <style>
                 {`
                     .react-grid-gallery .ReactGridGallery_tile {
@@ -156,7 +157,11 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
                                     alt={slide.title}
                                     fill
                                     style={{ objectFit: 'contain' }}
+                                    className="z-10"
                                 />
+                                <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                    <LoadingIcon width="30" height="30" className="animate-spin" />
+                                </p>
                             </div>
 
                             <div className="mb-1 flex flex-col items-center justify-center gap-2 mx-auto">
