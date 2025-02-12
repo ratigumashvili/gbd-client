@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl"
 import { useSearchParams } from "next/navigation";
 
-import { separateSearchParams, filterTaxonValue } from "@/src/app/[locale]/_lib/helpers";
+import { separator, filterTaxonValue } from "@/src/app/[locale]/_lib/helpers";
 
 function SearchParameters({ length = 0 }) {
 
@@ -30,7 +30,7 @@ function SearchParameters({ length = 0 }) {
         const params = new URLSearchParams(searchParams.toString());
     
         return Array.from(params.entries())
-            .filter(([key, value]) => key !== "page" && value.trim() !== "") // ✅ Exclude "page"
+            .filter(([key, value]) => key !== "page" && value.trim() !== "")
             .map(([key, value]) => ({ key, value }));
     };
     
@@ -43,7 +43,7 @@ function SearchParameters({ length = 0 }) {
                 {filteredParams && filteredParams?.length !== 0 && filteredParams?.slice(1).map((item, index) => (
                     <div key={index}>
                         <p>
-                            <span className="font-medium">{s(`${item.key}`)}</span>: <span className="capitalize">{filterTaxonValue(item.value)}</span>{separateSearchParams(index, filteredParams)}
+                            <span className="font-medium">{s(`${item.key}`)}</span>: <span className="capitalize">{filterTaxonValue(item.value)}</span>{separator(index+1, filteredParams)}
                         </p>
                     </div>
                 ))}
