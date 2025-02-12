@@ -11,8 +11,9 @@ import { useRouter } from "@/src/i18n/routing";
 
 import SkeletonLoader from "@/src/app/[locale]/_components/SkeletonLoader";
 import CustomThumbnail from "@/src/app/[locale]/_components/CustomThumbnail";
-import SearchIcon from "@/src/app/[locale]/_components/icons/SearchIcon";
-import { generateUrl } from "@/src/app/[locale]/_lib/helpers";
+
+import { filterTaxonValue, generateUrl } from "@/src/app/[locale]/_lib/helpers";
+import { ORDER } from "@/src/app/[locale]/_lib/constants";
 
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/captions.css";
@@ -48,8 +49,13 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
                     size: Number(item.metadata.size / 1000),
                     extension: item.extension,
                     priority: index < 3,
+                    // url: Array.isArray(item.related_items)
+                    //     ? item.related_items.filter(Boolean).map(generateUrl).filter((item) => item.startsWith('/species'))
+                    //     : []
                     url: Array.isArray(item.related_items)
-                        ? item.related_items.filter(Boolean).map(generateUrl).filter((item) => item.startsWith('/species'))
+                        ? item.related_items.filter(Boolean).map(generateUrl)
+                            .filter(item => ORDER.includes(item.type))
+                            .sort((a, b) => ORDER.indexOf(a.type) - ORDER.indexOf(b.type))
                         : []
                 };
             })
@@ -93,6 +99,7 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
 
     return (
         <section className="mb-4">
+            <pre>{JSON.stringify(images, null, 2)}</pre>
             <style>
                 {`
                     .react-grid-gallery .ReactGridGallery_tile {
@@ -151,15 +158,17 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
                                 />
                             </div>
 
-                            <div className="mb-1 flex items-center justify-center mx-auto">
+                            <div className="mb-1 flex  flex-col items-center justify-center gap-2 mx-auto">
                                 <h2 className="text-3xl italic py-[5px] px-[10px] w-max">
                                     {slide.title}
                                 </h2>
-                                {slide.url.length !== 0 && (
-                                    <Link href={`${slide.url}`} className="pl-4">
-                                        <SearchIcon classNames={"text-white"} width="27" height="27" />
-                                    </Link>
-                                )}
+                                <div className="flex gap-2 items-center">
+                                    {slide.url.map((item, index) => (
+                                        <div key={index}>
+                                            <span className="capitalize">{filterTaxonValue(item.type)}</span>: <Link href={`${item.url}`} className="pl-2 text-teal-600 hover:underline">{item.name}</Link>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
 
                             {taxon?.path && (

@@ -316,10 +316,24 @@ export const generateUrl = (item) => {
         Genus: "genus",
     };
 
+    // return item.type in typeToPath
+    //     ? `/${typeToPath[item.type]}/${item.slug}?id=${item.id}`
+    //     : item.type === "Specie"
+    //     ? `/species/${item.id}`
+    //     : "";
+
     return item.type in typeToPath
-        ? `/${typeToPath[item.type]}/${item.slug}?id=${item.id}`
+        ? ({
+            name: item.name,
+            url: `/${typeToPath[item.type]}/${item.slug}?id=${item.id}`, 
+            type: item.type
+        })
         : item.type === "Specie"
-        ? `/species/${item.id}`
+        ? ({
+            name: item.name,
+            url: `/species/${item.id}`, 
+            type: "Species"
+        })
         : "";
 };
 

@@ -94,5 +94,6 @@ export const SPECIES_PER_PAGE = 5
 export const TAXON_PER_PAGE = 5
 export const SEARCH_RESULTS_PER_PAGE = 10
 export const GALLERY_IMAGE_PER_PAGE = 44
-
 export const BOKMARK_LIMIT = 50
+
+export const ORDER = ["Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"];
