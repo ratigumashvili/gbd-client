@@ -1,13 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { usePathname, useRouter } from "@/src/i18n/routing";
 import { useTranslations } from "next-intl";
-
 import { useIsMobile } from "@/src/app/[locale]/_hooks/useIsMobile";
 
 function PaginationNumbers({ path, searchParams, currentPage, total }) {
-    const [current, setCurrent] = useState(+currentPage || 1);
+    const [current, setCurrent] = useState(Number(currentPage) || 1);
     const router = useRouter();
     const pathname = usePathname();
     const t = useTranslations("Common");
@@ -17,59 +16,45 @@ function PaginationNumbers({ path, searchParams, currentPage, total }) {
         customAgent: navigator.userAgent,
     });
 
-    // const query = searchParams?.query ? searchParams.query : ""
-
-    const url = pathname + `?id=${searchParams?.id}&page=`;
+    useEffect(() => {
+        const newParams = new URLSearchParams(searchParams);
+        newParams.set("page", current);
+        router.replace(`${pathname}?${newParams.toString()}`, { scroll: false });
+    }, [current, searchParams, pathname, router]);
 
     useEffect(() => {
-        if (path !== null) {
-            const newParams = new URLSearchParams(searchParams);
-            newParams.set("page", current);
-            router.replace(`${pathname}?${newParams.toString()}`, { scroll: false });
+        if (Number(searchParams.page)) {
+            setCurrent(Number(searchParams.page));
         } else {
-            router.replace(url + current, { scroll: false });
+            setCurrent(1);
         }
-    }, [current, path, router, url]);
+    }, [searchParams.page]);
 
     useEffect(() => {
         if (current > total) {
             setCurrent(total);
         }
-    }, [current, total]);
+    }, [total]);
 
-    useEffect(() => {
-        if (searchParams.q) {
-            setCurrent(Number(searchParams.page))
+    const goToPage = useCallback((page) => {
+        if (page >= 1 && page <= total) {
+            setCurrent(page);
         }
-    }, [searchParams.q])
+    }, [total]);
 
-    useEffect(() => {
-        if(!searchParams.page) {
-            setCurrent(1)
-        }
-    }, [searchParams.page])
+    const getPages = useCallback(() => {
+        const maxPages = isMobile ? 4 : 8;
+        const half = Math.floor(maxPages / 2);
 
-    const goToPage = (page) => {
-        setCurrent(page);
-    };
-
-    const getPages = () => {
-        let pages = [];
-        const maxPages = !isMobile ? 10 : 4;
-
-        let start = Math.max(1, current - Math.floor(maxPages / 2));
+        let start = Math.max(1, current - half);
         let end = Math.min(total, start + maxPages - 1);
 
         if (end - start < maxPages - 1) {
             start = Math.max(1, end - maxPages + 1);
         }
 
-        for (let i = start; i <= end; i++) {
-            pages.push(i);
-        }
-
-        return pages;
-    };
+        return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+    }, [current, total, isMobile]);
 
     return (
         <div className={`flex items-center gap-2 mt-8 ${isMobile ? "justify-center" : "justify-start"}`}>
@@ -85,12 +70,7 @@ function PaginationNumbers({ path, searchParams, currentPage, total }) {
 
             {current > 3 && (
                 <>
-                    <button
-                        onClick={() => goToPage(1)}
-                        className="button"
-                    >
-                        1
-                    </button>
+                    <button onClick={() => goToPage(1)} className="button">1</button>
                     <span className="px-2">...</span>
                 </>
             )}
@@ -108,23 +88,17 @@ function PaginationNumbers({ path, searchParams, currentPage, total }) {
             {current < total - 2 && (
                 <>
                     <span className="px-2">...</span>
-                    <button
-                        onClick={() => goToPage(total)}
-                        className="button"
-                    >
-                        {total}
-                    </button>
+                    <button onClick={() => goToPage(total)} className="button">{total}</button>
                 </>
             )}
 
-                <button
-                    onClick={() => goToPage(current + 1)}
-                    disabled={current === total}
-                    className="button disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                    {t("next")}
-                </button>
-
+            <button
+                onClick={() => goToPage(current + 1)}
+                disabled={current === total}
+                className="button disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+                {t("next")}
+            </button>
         </div>
     );
 }
