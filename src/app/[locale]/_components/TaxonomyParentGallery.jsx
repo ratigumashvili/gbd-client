@@ -158,11 +158,11 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
                                 />
                             </div>
 
-                            <div className="mb-1 flex  flex-col items-center justify-center gap-2 mx-auto">
+                            <div className="mb-1 flex flex-col items-center justify-center gap-2 mx-auto">
                                 <h2 className="text-3xl italic py-[5px] px-[10px] w-max">
                                     {slide.title}
                                 </h2>
-                                <div className="flex gap-2 items-center">
+                                <div className="hidden md:flex flex-wrap gap-2 items-center">
                                     {slide.url.map((item, index) => (
                                         <div key={index}>
                                             <span className="capitalize">{filterTaxonValue(item.type)}</span>: <Link href={`${item.url}`} className="pl-2 text-teal-600 hover:underline">{item.name}</Link>
