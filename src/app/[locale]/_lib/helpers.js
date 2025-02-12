@@ -316,12 +316,6 @@ export const generateUrl = (item) => {
         Genus: "genus",
     };
 
-    // return item.type in typeToPath
-    //     ? `/${typeToPath[item.type]}/${item.slug}?id=${item.id}`
-    //     : item.type === "Specie"
-    //     ? `/species/${item.id}`
-    //     : "";
-
     return item.type in typeToPath
         ? ({
             name: item.name,

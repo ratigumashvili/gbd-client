@@ -52,6 +52,7 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
                     // url: Array.isArray(item.related_items)
                     //     ? item.related_items.filter(Boolean).map(generateUrl).filter((item) => item.startsWith('/species'))
                     //     : []
+                   
                     url: Array.isArray(item.related_items)
                         ? item.related_items.filter(Boolean).map(generateUrl)
                             .filter(item => ORDER.includes(item.type))
@@ -99,6 +100,7 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
 
     return (
         <section className="mb-4">
+{/* <pre>{JSON.stringify(images, null, 2)}</pre> */}
             <style>
                 {`
                     .react-grid-gallery .ReactGridGallery_tile {
@@ -161,10 +163,10 @@ function TaxonomyParentGallery({ photos, componentTitle, taxon }) {
                                 <h2 className="text-3xl italic py-[5px] px-[10px] w-max">
                                     {slide.title}
                                 </h2>
-                                <div className="hidden md:flex flex-wrap gap-2 items-center">
+                                <div className="hidden md:flex flex-wrap gap-2 items-center justify-center">
                                     {slide.url.map((item, index) => (
                                         <div key={index}>
-                                            <span className="capitalize">{filterTaxonValue(item.type)}</span>: <Link href={`${item.url}`} className="pl-2 text-teal-600 hover:underline">{item.name}</Link>
+                                            <span className="capitalize">{filterTaxonValue(item.type)}</span>: <Link href={`${filterTaxonValue(item.url)}`} className="pl-2 text-teal-600 hover:underline">{item.name}</Link>
                                         </div>
                                     ))}
                                 </div>
