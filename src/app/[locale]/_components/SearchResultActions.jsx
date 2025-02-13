@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { useLocale, useTranslations } from "next-intl"
 import { toast } from "react-toastify"
 
@@ -13,15 +14,21 @@ import BookmarkMinus from "@/src/app/[locale]/_components/icons/BookmarkMinus"
 import BookmarkPlus from "@/src/app/[locale]/_components/icons/BookmarkPlus"
 
 function SearchResultActions({ item }) {
+    const [origin, setOrigin] = useState("")
 
     const { handleAddBookmark, handleRemoveBookmark, isBookmarked } = useBookmarks()
-
     const { isMounted } = useIsMounted()
 
     const locale = useLocale()
     const t = useTranslations("Common")
 
-    const url = process.env.NEXT_PUBLIC_BASE_URL + "/" + locale + checkTaxonValue(item.type, item.slug, item.id)
+    useEffect(() => {
+        if(typeof window !== "undefined") {
+            setOrigin(window.location.origin)
+        }
+    }, [item])
+
+    const url = origin + "/" + locale + checkTaxonValue(item.type, item.slug, item.id)
 
     const storageInfo = {
         id: item.scientific_name_id,
