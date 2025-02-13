@@ -371,6 +371,7 @@
     "TaxClass": "Class",
     "TaxOrder": "Order",
     "Family": "Family",
-    "Genus": "Genus"
+    "Genus": "Genus",
+    "specific_information": "Specific information"
   }
 }

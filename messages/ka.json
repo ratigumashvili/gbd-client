@@ -371,6 +371,7 @@
     "TaxClass": "კლასი",
     "TaxOrder": "რიგი",
     "Family": "ოჯახი",
-    "Genus": "გვარი"
+    "Genus": "გვარი",
+    "specific_information": "სპეციფიკური ინფორმაცია"
   }
 }

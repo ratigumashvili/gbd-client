@@ -2,7 +2,7 @@ import { isMobile } from "react-device-detect"
 import { Tooltip } from "react-tooltip"
 import { useTranslations } from "next-intl"
 
-import { getStatus, isEmptyObj, separator, sanitize } from "@/src/app/[locale]/_lib/helpers"
+import { isEmptyObj, sanitize } from "@/src/app/[locale]/_lib/helpers"
 
 export default function SingleTaxonConservation({ data }) {
 
@@ -168,7 +168,7 @@ export default function SingleTaxonConservation({ data }) {
 
                 {data?.metadata?.specific_information && (
                     <>
-                        <dt>info</dt>
+                        <dt>{t("specific_information")}</dt>
                         <dd>{data?.metadata?.specific_information}</dd>
                     </>
                 )}
