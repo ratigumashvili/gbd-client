@@ -304,7 +304,7 @@
   "Species": {
     "metadata": "Metadata",
     "conservation_status": "Conservation Status",
-    "conservation_status_for": "Conservation Status for Taxon",
+    "conservation_status_for": "Conservation Status for Taxon in Georgia",
     "gallery": "Gallery",
     "map": "Heatmap",
     "scientific_name_id": "Scientific name ID",
@@ -372,6 +372,7 @@
     "TaxOrder": "Order",
     "Family": "Family",
     "Genus": "Genus",
-    "specific_information": "Specific information"
+    "specific_information": "Specific information",
+    "tax_source": "Taxonomy source"
   }
 }

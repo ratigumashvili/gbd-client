@@ -304,7 +304,7 @@
   "Species": {
     "metadata": "მეტამონაცემები",
     "conservation_status": "კონსერვაციის სტატუსი",
-    "conservation_status_for": "კონსერვაციის სტატუსი ტაქსონისთვის",
+    "conservation_status_for": "კონსერვაციის სტატუსი ტაქსონისთვის საქართველოში",
     "gallery": "გალერეა",
     "map": "რუკა",
     "scientific_name_id": "სამეცნიერო ID",
@@ -372,6 +372,7 @@
     "TaxOrder": "რიგი",
     "Family": "ოჯახი",
     "Genus": "გვარი",
-    "specific_information": "სპეციფიკური ინფორმაცია"
+    "specific_information": "სპეციფიკური ინფორმაცია",
+    "tax_source": "ტაქსონომიური წყარო"
   }
 }

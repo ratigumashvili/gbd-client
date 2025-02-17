@@ -22,14 +22,7 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
 
         {data?.metadata?.scientific_name && (
           <>
-            <dt><Link href={`${sna}`} target="blank" className="text-teal-700">{t("scientific_name")}</Link>:</dt>
-            <dd><em>{data?.metadata?.scientific_name}</em></dd>
-          </>
-        )}
-
-        {data?.metadata?.according_title && (
-          <>
-            <dt><Link href={`${accordingTo}`} target="blank" className="text-teal-700">{t("name_according_to")}</Link>:</dt>
+            <dt><Link href={`${sna}`} target="blank" className="text-teal-700">{t("tax_source")}</Link>:</dt>
             <dd>
               {data?.metadata?.according_title && data?.metadata?.according_title.startsWith('http') || data?.metadata?.according_title.startsWith('https')
                 ? <Link href={data?.metadata?.according_title} target="blank">{t("url")}</Link>
@@ -38,12 +31,21 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
           </>
         )}
 
-        <>
-          <dt>
-            <Link href={`${rank}`} target='blank' className='text-teal-700'>{t("taxon_rank")}</Link>:
-          </dt>
-          <dd>Species</dd>
-        </>
+        {data?.metadata?.according_title && (
+          <>
+            <dt><Link href={`${accordingTo}`} target="blank" className="text-teal-700">{t("name_according_to")}</Link>:</dt>
+            <dd><em>{data?.metadata?.scientific_name}</em></dd>
+          </>
+        )}
+
+        {data?.metadata?.taxon_rank && (
+          <>
+            <dt>
+              <Link href={`${rank}`} target='blank' className='text-teal-700'>{t("taxon_rank")}</Link>:
+            </dt>
+            <dd>{data?.metadata?.taxon_rank}</dd>
+          </>
+        )}
 
         {data?.metadata?.georgian_name && (
           <>
@@ -84,12 +86,12 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
           </>
         )}
 
-        {data?.metadata?.specific_epithet && (
+        {/* {data?.metadata?.specific_epithet && (
           <>
             <dt>{t("specific_epithet")}:</dt>
             <dd>{data?.metadata?.specific_epithet}</dd>
           </>
-        )}
+        )} */}
 
         {data?.metadata?.origin && (
           <>
