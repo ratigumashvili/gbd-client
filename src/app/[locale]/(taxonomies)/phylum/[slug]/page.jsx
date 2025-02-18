@@ -62,7 +62,6 @@ export default async function Phylum({ params, searchParams }) {
       {child?.recordsTotal > TAXON_PER_PAGE && (
         <Pagination
           path={null}
-          searchParams={searchParams}
           currentPage={currentPage}
           total={child?.total_page}
         />)

@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "@/src/i18n/routing";
 import { useTranslations } from "next-intl";
 import { useIsMobile } from "@/src/app/[locale]/_hooks/useIsMobile";
 
-function PaginationNumbers({ path, searchParams, currentPage, total }) {
+function PaginationNumbers({ searchParams, currentPage, total }) {
     const [current, setCurrent] = useState(Number(currentPage) || 1);
     const router = useRouter();
     const pathname = usePathname();

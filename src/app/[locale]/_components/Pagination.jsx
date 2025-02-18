@@ -5,13 +5,12 @@ import { useState, useEffect } from "react"
 import { usePathname, useRouter } from "@/src/i18n/routing"
 import { useTranslations } from "next-intl"
 
-function Pagination({ path, searchParams, currentPage, total }) {
+function Pagination({ path, currentPage, total }) {
     const [current, setCurrent] = useState(+currentPage || 1)
 
     const router = useRouter()
     const pathname = usePathname()
 
-    // const url = pathname + `?id=${searchParams?.id}&page=`
     const url = pathname + `?page=`
     const searchPageUrl = path + "&page="
 

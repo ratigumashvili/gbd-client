@@ -38,7 +38,6 @@ export default async function Gallery({ params, searchParams }) {
 
       {data?.data?.length !== 0 && (
         <PaginationNumbers
-          path={`?files`}
           searchParams={searchParams}
           currentPage={currentPage}
           total={data?.total_page}

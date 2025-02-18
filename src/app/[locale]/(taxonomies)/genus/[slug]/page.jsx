@@ -62,7 +62,6 @@ export default async function Genus({ params, searchParams }) {
       {species?.recordsTotal > SPECIES_PER_PAGE && (
         <Pagination
           path={null}
-          searchParams={searchParams}
           currentPage={currentPage}
           total={species?.total_page}
         />)
