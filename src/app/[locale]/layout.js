@@ -20,13 +20,15 @@ import "@/src/app/styles/globals.css"
 
 export async function generateMetadata({ params }) {
 
+  const isProduction = process.env.NEXT_PUBLIC_APP_ENVIRONMENT === "production"
+
   return {
     title: "Georgian Biodiversity Database",
     description: "This internet resource aims to introduce the world-wide scientific (and not only scientific) community to the biological diversity of Georgia (and, to certain extent, the Caucasus ecoregion).",
     keywords: "Biodiversity, Ilia State University, Institute of Ecology",
     robots: {
-      index: false,
-      follow: false,
+      index: isProduction ? false : true,
+      follow: isProduction ? false : true,
     },
     icons: {
       icon: ['/favicon.ico'],
