@@ -27,8 +27,8 @@ export async function generateMetadata({ params }) {
     description: "This internet resource aims to introduce the world-wide scientific (and not only scientific) community to the biological diversity of Georgia (and, to certain extent, the Caucasus ecoregion).",
     keywords: "Biodiversity, Ilia State University, Institute of Ecology",
     robots: {
-      index: isProduction ? false : true,
-      follow: isProduction ? false : true,
+      index: isProduction ? true : false,
+      follow: isProduction ? true : false,
     },
     icons: {
       icon: ['/favicon.ico'],
