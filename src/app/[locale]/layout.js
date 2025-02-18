@@ -16,8 +16,6 @@ import { arial, firaGo, bpg } from "./_lib/fonts";
 
 import 'react-tooltip/dist/react-tooltip.css'
 import 'react-slideshow-image/dist/styles.css'
-// import './globals.css'
-// import "@/src/app/[locale]/globals.css"
 import "@/src/app/styles/globals.css"
 
 export async function generateMetadata({ params }) {
@@ -26,8 +24,8 @@ export async function generateMetadata({ params }) {
 
   return {
     title: "Georgian Biodiversity Database",
-    description: "description",
-    keywords: "keyword 1, keyword 2",
+    description: "This internet resource aims to introduce the world-wide scientific (and not only scientific) community to the biological diversity of Georgia (and, to certain extent, the Caucasus ecoregion).",
+    keywords: "Biodiversity, Ilia State University, Institute of Ecology",
     icons: {
       icon: ['/favicon.ico'],
     },
@@ -40,7 +38,6 @@ export async function generateMetadata({ params }) {
 
 export default async function RootLayout({ children, params }) {
   const locale = params.locale || "en"
-  // console.log('RootLayout resolved locale:', locale);
 
   if (!routing.locales.includes(locale)) {
     notFound();

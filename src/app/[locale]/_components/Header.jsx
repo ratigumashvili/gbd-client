@@ -155,14 +155,16 @@ function Header({ locale }) {
             <div className="shadow-md text-white bg-teal-600">
                 <div className="container flex justify-between items-center flex-container mx-auto px-4 py-8">
                     <div className="flex items-center gap-3">
-                        <Image
-                            src="/iliauni-logo_eng.png"
-                            width={80}
-                            height={80}
-                            alt="logo"
-                            priority
-                            className="brightness-0 invert-[1]"
-                        />
+                        <Link href={'/'}>
+                            <Image
+                                src="/iliauni-logo_eng.png"
+                                width={80}
+                                height={80}
+                                alt="logo"
+                                priority
+                                className="brightness-0 invert-[1]"
+                            />
+                        </Link>
                         <h1 className={`text-xl w-[200px] ${detectLocale(locale)}`}>{c("isu")}</h1>
                     </div>
                     <div className="flex gap-3 items-center">
