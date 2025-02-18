@@ -11,7 +11,8 @@ function Pagination({ path, searchParams, currentPage, total }) {
     const router = useRouter()
     const pathname = usePathname()
 
-    const url = pathname + `?id=${searchParams?.id}&page=`
+    // const url = pathname + `?id=${searchParams?.id}&page=`
+    const url = pathname + `?page=`
     const searchPageUrl = path + "&page="
 
     useEffect(() => {

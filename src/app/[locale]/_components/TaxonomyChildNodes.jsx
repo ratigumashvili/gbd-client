@@ -26,7 +26,7 @@ export default function TaxonomyChildNodes({ data, recordsTotal, locale, taxonNa
                 {pathToChildren !== 'species' ? (
                     data?.map((item) => (
                         <li key={item.id} className="px-4 py-4 mb-4 bg-slate-50 dark:bg-slate-600 rounded-md hover:bg-teal-700 hover:text-white hover:cursor-pointer transition-all ease-in">
-                            <Link href={`/${pathToChildren}/${item.metadata.slug}?id=${item.id}`} className="block hover:cursor-pointer">
+                            <Link href={`/${pathToChildren}/${item.metadata.slug}`} className="block hover:cursor-pointer">
                                 <div className="flex items-center justify-between">
                                     <p><span className="capitalize">{pathToChildren}</span> {item.title}</p>
                                     <p className="flex items-center justify-between">{item.metadata.species_count} <span className="text-sm italic pl-2">{t("specie")}</span></p>
