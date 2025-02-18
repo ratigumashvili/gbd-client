@@ -14,8 +14,8 @@ export default async function Kingdom({ params, searchParams }) {
 
     const currentPage = searchParams.page || 1
 
-    const { data } = await getData(`taxonomy/${searchParams.id}?type=Kingdom`, params.locale)
-    const child = await getPaginatedData(`taxonomy?type=Phylum&parent_id=${searchParams.id}`, params.locale, currentPage, TAXON_PER_PAGE)
+    const { data } = await getData(`taxonomy/${params.slug}?type=Kingdom`, params.locale)
+    const child = await getPaginatedData(`taxonomy?type=Phylum&parent_slug=${params.slug}`, params.locale, currentPage, TAXON_PER_PAGE)
 
     const codesObject = data?.national_red_list_status_counts
     

@@ -1,21 +1,21 @@
-import NothingFound from '@/src/app/[locale]/_components/NothingFound'
-import TaxonomyParent from '@/src/app/[locale]/_components/TaxonomyParent'
+import NothingFound from "@/src/app/[locale]/_components/NothingFound";
+import TaxonomyParent from "@/src/app/[locale]/_components/TaxonomyParent"
 import TaxonomyParentNodes from "@/src/app/[locale]/_components/TaxonomyParentNodes"
-import TaxonomyChildNodes from '@/src/app/[locale]/_components/TaxonomyChildNodes'
+import TaxonomyChildNodes from "@/src/app/[locale]/_components/TaxonomyChildNodes";
 import TaxonomyConservationStatus from '@/src/app/[locale]/_components/TaxonomyConservationStatus'
-import Pagination from '@/src/app/[locale]/_components/Pagination'
-import Cite from '@/src/app/[locale]/_components/Cite'
+import Cite from "@/src/app/[locale]/_components/Cite";
+import Pagination from "@/src/app/[locale]/_components/Pagination";
 
-import { getData, getPaginatedData } from '@/src/app/[locale]/_lib/apiCalls'
+import { getData, getPaginatedData } from "@/src/app/[locale]/_lib/apiCalls";
 import { formatCodes, formatCodesTotal } from '@/src/app/[locale]/_lib/helpers'
-import { TAXON_PER_PAGE } from '@/src/app/[locale]/_lib/constants'
+import { SPECIES_PER_PAGE } from "@/src/app/[locale]/_lib/constants";
 
-export default async function TaxonClass({ params, searchParams }) {
+export default async function Genus({ params, searchParams }) {
 
   const currentPage = searchParams.page || 1
 
-  const { data } = await getData(`taxonomy/${searchParams.id}?type=TaxClass`, params.locale)
-  const child = await getPaginatedData(`taxonomy?type=TaxOrder&parent_id=${searchParams.id}`, params.locale, currentPage, TAXON_PER_PAGE)
+  const { data } = await getData(`taxonomy/${params.slug}?type=Genus`, params.locale)
+  const species = await getPaginatedData(`taxonomy?type=Specie&parent_id=${searchParams.id}`, params.locale, currentPage, SPECIES_PER_PAGE)
 
   const codesObject = data?.national_red_list_status_counts
 
@@ -35,11 +35,11 @@ export default async function TaxonClass({ params, searchParams }) {
       <TaxonomyParent
         data={data}
         photos={data.files}
-        species={child}
+        species={species.data}
         rank={`https://dwc.tdwg.org/list/#dwc_taxonRank`}
-        accordingTo={`https://dwc.tdwg.org/list/#dwc_nameAccordingTo`}
+        accordingTo={``}
         sna={`https://dwc.tdwg.org/list/#dwc_scientificNameAuthorship`}
-        vernakularName={`https://dwc.tdwg.org/list/#dwc_vernacularName`}
+        vernakularName={``}
       // description={data[0]?.description}
       />
 
@@ -52,22 +52,21 @@ export default async function TaxonClass({ params, searchParams }) {
       <TaxonomyParentNodes data={reversedParent} />
 
       <TaxonomyChildNodes
-        data={child?.data}
-        recordsTotal={data?.species_count}
+        data={species?.data}
+        recordsTotal={species?.recordsTotal}
         locale={params.locale}
         taxonName={data?.metadata?.name}
-        pathToChildren="order"
+        pathToChildren="species"
       />
 
-      {child?.recordsTotal > TAXON_PER_PAGE && (
+      {species?.recordsTotal > SPECIES_PER_PAGE && (
         <Pagination
           path={null}
           searchParams={searchParams}
           currentPage={currentPage}
-          total={child?.total_page}
+          total={species?.total_page}
         />)
       }
-
       <Cite name={data?.metadata?.name} />
     </>
   )
