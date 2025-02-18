@@ -32,9 +32,6 @@ export default async function TaxonClass({ params, searchParams }) {
 
   return (
     <>
-    <pre>
-      {JSON.stringify(params, null, 2)}
-    </pre>
       <TaxonomyParent
         data={data}
         photos={data.files}
