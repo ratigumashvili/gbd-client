@@ -7,12 +7,12 @@ import { getData } from "@/src/app/[locale]/_lib/apiCalls"
 import ComponentTitle from './ComponentTitle'
 import { Counter } from './Counter'
 
-const Blocks = ({ id, title, slug, count }) => {
+const Blocks = ({ title, slug, count }) => {
 
     const t = useTranslations("Index")
 
     return (
-        <Link href={`/kingdom/${slug}?id=${id}`}
+        <Link href={`/kingdom/${slug}?id=${slug}`}
             className='text-center flex-1 p-6 rounded-md border border-teal-600 bg-teal-600 text-white hover:bg-white hover:text-gray-900 transition-all ease-in'
         >
             <h4 className='font-medium text-2xl mb-2'>{title}</h4>
@@ -39,7 +39,6 @@ async function BrowseByTaxonomy({ locale, title }) {
                 {filteredData?.map((item) => (
                     <Blocks
                         key={item.id}
-                        id={item.id}
                         title={item.title}
                         slug={item.metadata.slug}
                         count={item.metadata.species_count}
