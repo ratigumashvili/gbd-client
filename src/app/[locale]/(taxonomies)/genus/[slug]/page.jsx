@@ -15,7 +15,7 @@ export default async function Genus({ params, searchParams }) {
   const currentPage = searchParams.page || 1
 
   const { data } = await getData(`taxonomy/${params.slug}?type=Genus`, params.locale)
-  const species = await getPaginatedData(`taxonomy?type=Specie&parent_slug=${searchParams.id}`, params.locale, currentPage, SPECIES_PER_PAGE)
+  const species = await getPaginatedData(`taxonomy?type=Specie&parent_id=${data?.metadata?.id}`, params.locale, currentPage, SPECIES_PER_PAGE)
 
   const codesObject = data?.national_red_list_status_counts
 
