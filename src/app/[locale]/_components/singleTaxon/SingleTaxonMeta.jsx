@@ -34,7 +34,7 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
         {data?.metadata?.according_title && (
           <>
             <dt><Link href={`${accordingTo}`} target="blank" className="text-teal-700">{t("name_according_to")}</Link>:</dt>
-            <dd><em>{data?.metadata?.scientific_name}</em></dd>
+            <dd>{data?.metadata?.scientific_name}</dd>
           </>
         )}
 
