@@ -11,7 +11,7 @@ export const useFullUrl = () => {
   const [fullUrl, setFullUrl] = useState("");
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (window && typeof window !== "undefined") {
 
       const query = searchParams.toString();
       const url = `${window.location.origin}${pathname}${query ? `?${query}` : ""}`;

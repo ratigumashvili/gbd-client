@@ -23,7 +23,7 @@ function SearchResultActions({ item }) {
     const t = useTranslations("Common")
 
     useEffect(() => {
-        if(typeof window !== "undefined") {
+        if(window && typeof window !== "undefined") {
             setOrigin(window.location.origin)
         }
     }, [item])

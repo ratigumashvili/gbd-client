@@ -100,19 +100,19 @@ export const isEmptyObj = (obj) => {
     return Object.values(obj).every(val => !val);
 }
 
-export const openNewWindow = (locale, page, title) => {
-    const baseUrl = `${window.location.origin}/${locale}/${page}`; // Fully resolved URL
-    const params = new URLSearchParams({
-        title: title
-    });
-    const fullUrl = `${baseUrl}?${params.toString()}`;
+// export const openNewWindow = (locale, page, title) => {
+//     const baseUrl = `${window.location.origin}/${locale}/${page}`; // Fully resolved URL
+//     const params = new URLSearchParams({
+//         title: title
+//     });
+//     const fullUrl = `${baseUrl}?${params.toString()}`;
 
-    window.open(
-        fullUrl,
-        '_blank',
-        'width=800,height=600,scrollbars=yes,resizable=yes'
-    );
-}
+//     window.open(
+//         fullUrl,
+//         '_blank',
+//         'width=800,height=600,scrollbars=yes,resizable=yes'
+//     );
+// }
 
 export const getStatus = (value) => {
 
