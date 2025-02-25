@@ -50,7 +50,6 @@ export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinat
 
     return (
         <div className="py-4" ref={printContent}>
-            <pre>{JSON.stringify(data.metadata, null, 2)}</pre>
             <div className="flex items-center justify-between mb-6">
                 <TaxonHeading headingData={headingData} />
                 <ActionsDropdown
