@@ -24,7 +24,7 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
           <>
             <dt><Link href={`${sna}`} target="blank" className="text-teal-700">{t("tax_source")}</Link>:</dt>
             <dd>
-              {data?.metadata?.according_title && data?.metadata?.according_title.startsWith('http') || data?.metadata?.according_title.startsWith('https')
+              {data?.metadata?.according_title && data?.metadata?.according_title.startsWith('http') || data?.metadata?.according_title?.startsWith('https')
                 ? <Link href={data?.metadata?.according_title} target="blank">{t("url")}</Link>
                 : <span>{data?.metadata?.according_title}</span>}
             </dd>
