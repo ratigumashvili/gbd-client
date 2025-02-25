@@ -98,7 +98,7 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
                                 <dt><Link href={`${sna ?? "#"}`} target='blank' className='text-teal-700'>{s("tax_source")}</Link>:</dt>
                                 <dd>
                                     {
-                                        data?.metadata?.according_title && data?.metadata?.according_title.startsWith('http') || data?.metadata?.according_title.startsWith('https')
+                                        data?.metadata?.according_title && data?.metadata?.according_title.startsWith('http') || data?.metadata?.according_title?.startsWith('https')
                                             ? <Link href={data?.metadata?.according_title}>{s("url")}</Link>
                                             : <span>{data?.metadata?.according_title}</span>
                                     }
