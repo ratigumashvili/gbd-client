@@ -50,11 +50,11 @@ function TaxonHeading({ headingData }) {
     return (
         <div className='flex flex-1 items-center justify-between pr-4 gap-4'>
             {isSpecie ? (
-                <h2 className="text-2xl font-medium">{title}
+                <h2 className="text-2xl font-medium"><em>{title}</em>
                     <Check status={status} evaluated={evaluatedBy} />
                 </h2>
             ) : (
-                <h2 className="text-2xl font-medium">{title}</h2>
+                <h2 className="text-2xl font-medium"><em>{title}</em></h2>
             )}
             <div className='flex items-center gap-4'>
                 <button onClick={() => router.back()} title={t("goBack")}>
