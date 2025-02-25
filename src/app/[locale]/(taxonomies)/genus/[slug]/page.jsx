@@ -40,6 +40,7 @@ export default async function Genus({ params, searchParams }) {
         accordingTo={``}
         sna={`https://dwc.tdwg.org/list/#dwc_scientificNameAuthorship`}
         vernakularName={``}
+        taxonRank={"Genus"}
       // description={data[0]?.description}
       />
 

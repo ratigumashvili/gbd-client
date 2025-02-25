@@ -16,11 +16,8 @@ import { checkLink, separator } from "@/src/app/[locale]/_lib/helpers"
 import { fungiTree } from '../_lib/data'
 import { sanitize } from '@/src/app/[locale]/_lib/helpers'
 import { useFullUrl } from '@/src/app/[locale]/_hooks/useFullUrl'
-import { usePathname } from '@/src/i18n/routing'
 
-export default function TaxonomyParent({ data, photos, species, rank, accordingTo, sna, vernakularName, locale }) {
-
-    const path = usePathname()
+export default function TaxonomyParent({ data, photos, species, rank, accordingTo, sna, vernakularName, locale, taxonRank }) {
 
     const fullUrl = useFullUrl()
 
@@ -43,7 +40,8 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
         scienttificId: data?.metadata?.scientific_name_id,
         rank: data?.metadata?.taxon_rank_title,
         url: fullUrl,
-        orgChartData: []
+        orgChartData: [],
+        taxonRank: taxonRank
     }
 
     return (

@@ -40,6 +40,7 @@ export default async function Phylum({ params, searchParams }) {
         accordingTo={`https://dwc.tdwg.org/list/#dwc_nameAccordingTo`}
         sna={`https://dwc.tdwg.org/list/#dwc_scientificNameAuthorship`}
         vernakularName={`https://dwc.tdwg.org/list/#dwc_vernacularName`}
+        taxonRank={"Phylum"}
       // description={data[0]?.description}
       />
 

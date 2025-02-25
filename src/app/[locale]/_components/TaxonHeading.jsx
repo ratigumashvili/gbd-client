@@ -25,7 +25,8 @@ function TaxonHeading({ headingData }) {
         isSpecie = false,
         status = null,
         evaluatedBy = null,
-        orgChartData
+        orgChartData,
+        taxonRank
     } = headingData
 
     const storageInfo = {
@@ -50,11 +51,11 @@ function TaxonHeading({ headingData }) {
     return (
         <div className='flex flex-1 items-center justify-between pr-4 gap-4'>
             {isSpecie ? (
-                <h2 className="text-2xl font-medium"><em>{title}</em>
+                <h2 className="text-2xl font-medium"><em>{taxonRank} {title}</em>
                     <Check status={status} evaluated={evaluatedBy} />
                 </h2>
             ) : (
-                <h2 className="text-2xl font-medium"><em>{title}</em></h2>
+                <h2 className="text-2xl font-medium"><em>{taxonRank} {title}</em></h2>
             )}
             <div className='flex items-center gap-4'>
                 <button onClick={() => router.back()} title={t("goBack")}>
