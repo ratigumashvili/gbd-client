@@ -39,18 +39,18 @@ export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinat
         id: data?.metadata?.scientific_name_id || uuidv4(),
         title: data?.metadata?.name,
         scienttificId: data?.metadata?.scientific_name_id,
-        rank: data?.metadata?.taxon_rank_title || "Species",
+        rank: data?.metadata?.taxon_rank || "Species",
         url: fullUrl,
         isSpecie: true,
         status: data?.metadata?.conversation_status,
-        evaluatedBy: data?.metadata?.evaluated_by
+        evaluatedBy: data?.metadata?.evaluated_by,
     }
 
     // Single Specie page
 
     return (
         <div className="py-4" ref={printContent}>
-
+            <pre>{JSON.stringify(data.metadata, null, 2)}</pre>
             <div className="flex items-center justify-between mb-6">
                 <TaxonHeading headingData={headingData} />
                 <ActionsDropdown

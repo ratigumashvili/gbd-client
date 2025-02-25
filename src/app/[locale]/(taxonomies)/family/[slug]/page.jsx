@@ -40,7 +40,6 @@ export default async function Family({ params, searchParams }) {
         accordingTo={``}
         sna={`https://dwc.tdwg.org/list/#dwc_scientificNameAuthorship`}
         vernakularName={``}
-        taxonRank={"Family"}
       // description={data[0]?.description}
       />
 
