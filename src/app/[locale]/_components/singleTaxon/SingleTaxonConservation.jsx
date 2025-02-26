@@ -145,7 +145,9 @@ export default function SingleTaxonConservation({ data }) {
                 {data?.metadata?.conversion_status_references && (
                     <>
                         <dt>{t("references")}:</dt>
-                        <dd>{data?.metadata?.conversion_status_references}</dd>
+                        <dd>
+                        <div dangerouslySetInnerHTML={{ __html: sanitize(data?.metadata?.conversion_status_references) }} />
+                        </dd>
                     </>
                 )}
 
