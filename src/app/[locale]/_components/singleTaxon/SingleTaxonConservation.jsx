@@ -24,8 +24,8 @@ export default function SingleTaxonConservation({ data }) {
 
     const t = useTranslations("Species")
 
-    if(isEmptyObj(status)) return <div className="flex-1"></div>
-    
+    if (isEmptyObj(status)) return <div className="flex-1"></div>
+
     const iucnTooltipContent = data?.metadata?.iucn_red_list_status !== null && t(data?.metadata?.iucn_red_list_status)
     const redListTooltipContent = data?.metadata?.national_red_list_status !== null && t(data?.metadata?.national_red_list_status)
 
@@ -44,7 +44,7 @@ export default function SingleTaxonConservation({ data }) {
                                 data-tooltip-content={redListTooltipContent}
                                 className="mb-3"
                             >
-                               <span>*</span>
+                                <span>*</span>
                             </button>
                         </dd>
                         <Tooltip
@@ -146,7 +146,7 @@ export default function SingleTaxonConservation({ data }) {
                     <>
                         <dt>{t("references")}:</dt>
                         <dd>
-                        <div dangerouslySetInnerHTML={{ __html: sanitize(data?.metadata?.conversion_status_references) }} />
+                            <div dangerouslySetInnerHTML={{ __html: sanitize(data?.metadata?.conversion_status_references) }} />
                         </dd>
                     </>
                 )}

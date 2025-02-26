@@ -34,7 +34,7 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
         {data?.metadata?.according_title && (
           <>
             <dt><Link href={`${accordingTo}`} target="blank" className="text-teal-700">{t("name_according_to")}</Link>:</dt>
-            <dd>{data?.metadata?.scientific_name}</dd>
+            <dd>{data?.metadata?.according_title}</dd>
           </>
         )}
 
@@ -79,7 +79,9 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
           <>
             <dt>{t("taxonomy_source")}:</dt>
             <dd>
-                {data?.metadata?.taxonomy_source_name}
+              {data?.metadata?.taxonomy_source_name && data?.metadata?.taxonomy_source_name.startsWith('http') || data?.metadata?.taxonomy_source_name?.startsWith('https')
+                ? <Link href={data?.metadata?.taxonomy_source_name} target="blank">{t("url")}</Link>
+                : <span>{data?.metadata?.taxonomy_source_name}</span>}
             </dd>
           </>
         )}
@@ -110,7 +112,9 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
         {data?.metadata?.reference_in_georgia && (
           <>
             <dt>{t("reference_of_occurrence")}:</dt>
-            <dd>{data?.metadata?.reference_in_georgia}</dd>
+            <dd>{data?.metadata?.reference_in_georgia && data?.metadata?.reference_in_georgia.startsWith('http') || data?.metadata?.reference_in_georgia?.startsWith('https')
+              ? <Link href={data?.metadata?.reference_in_georgia} target="blank">{t("url")}</Link>
+              : <span>{data?.metadata?.reference_in_georgia}</span>}</dd>
           </>
         )}
 
