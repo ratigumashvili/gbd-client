@@ -79,19 +79,17 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
           <>
             <dt>{t("taxonomy_source")}:</dt>
             <dd>
-              <Link href={data?.metadata?.taxonomy_source_url}>
                 {data?.metadata?.taxonomy_source_name}
-              </Link>
             </dd>
           </>
         )}
 
-        {/* {data?.metadata?.specific_epithet && (
+        {/* === {data?.metadata?.specific_epithet && (
           <>
             <dt>{t("specific_epithet")}:</dt>
             <dd>{data?.metadata?.specific_epithet}</dd>
           </>
-        )} */}
+        )} === */}
 
         {data?.metadata?.origin && (
           <>
@@ -126,23 +124,23 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
           <dd>persons list</dd>
         </>
 
-        {data?.metadata?.references_list && (
+        {/* {data?.metadata?.references_list && (
           <>
             <dt>{t("references_list")}:</dt>
             <dd>
               <div dangerouslySetInnerHTML={{ __html: sanitize(data?.metadata?.references_list) }} />
             </dd>
           </>
-        )}
+        )} */}
 
-        {data?.metadata?.gbd_remarks && (
+        {/* {data?.metadata?.gbd_remarks && (
           <>
             <dt>{t("gbd_remarks")}:</dt>
             <dd>
               <div dangerouslySetInnerHTML={{ __html: sanitize(data?.metadata?.gbd_remarks) }} />
             </dd>
           </>
-        )}
+        )} */}
 
       </dl>
     </div>

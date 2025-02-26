@@ -3,6 +3,8 @@ import NothingFound from "@/src/app/[locale]/_components/NothingFound";
 
 import { getData } from "@/src/app/[locale]/_lib/apiCalls";
 
+// export const revalidate = 0;
+
 export default async function SingleSpecies({ params }) {
 
   const { data } = await getData(`taxonomy/${params.id}/?type=Specie`, params.locale)
