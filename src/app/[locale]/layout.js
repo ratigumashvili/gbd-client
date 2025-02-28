@@ -19,26 +19,35 @@ import 'react-slideshow-image/dist/styles.css'
 import "@/src/app/styles/globals.css"
 
 export async function generateMetadata({ params }) {
-
-  const isProduction = process.env.NEXT_PUBLIC_APP_ENVIRONMENT === "production"
+  const isProduction = process.env.NEXT_PUBLIC_APP_ENVIRONMENT === "production";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://biodiversity.iliauni.edu.ge";
+  const imageUrl = `${siteUrl}/featured_image.png`;
 
   return {
     title: "Georgian Biodiversity Database",
     description: "This internet resource aims to introduce the world-wide scientific (and not only scientific) community to the biological diversity of Georgia (and, to certain extent, the Caucasus ecoregion).",
     keywords: "Biodiversity, Ilia State University, Institute of Ecology",
-    robots: {
-      index: isProduction ? true : false,
-      follow: isProduction ? true : false,
-    },
+    robots: isProduction ? "index, follow" : "noindex, nofollow",
     icons: {
-      icon: ['/favicon.ico'],
+      icon: '/favicon.ico',
     },
     openGraph: {
-      images: ['/featured_image.png']
+      title: "Georgian Biodiversity Database",
+      description: "This internet resource aims to introduce the world-wide scientific (and not only scientific) community to the biological diversity of Georgia (and, to certain extent, the Caucasus ecoregion).",
+      url: siteUrl,
+      type: "website",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: "Georgian Biodiversity Database",
+        },
+      ],
     },
-  }
-
+  };
 }
+
 
 export default async function RootLayout({ children, params }) {
   const locale = params.locale || "en"
