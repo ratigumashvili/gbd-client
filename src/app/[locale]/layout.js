@@ -34,7 +34,7 @@ export async function generateMetadata({ params }) {
       icon: ['/favicon.ico'],
     },
     openGraph: {
-      images: ['']
+      images: ['/featured_image.png']
     },
   }
 
