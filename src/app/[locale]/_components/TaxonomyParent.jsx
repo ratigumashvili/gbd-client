@@ -67,7 +67,7 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
                                 <dd>{data?.metadata?.scientific_name_id}</dd>
                             </>
                         )}
-                        {data?.metadata?.according_title && (
+                        {data?.metadata?.scientific_name_authorship_title && (
                             <>
                                 <dt><Link href={`${accordingTo ?? "#"}`} target='blank' className='text-teal-700'>{s("name_according_to")}</Link>:</dt>
                                 <dd>

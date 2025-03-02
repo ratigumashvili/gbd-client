@@ -10,6 +10,10 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
   return (
     <div className="flex-1">
 
+      {/* <pre>
+        {JSON.stringify(data.metadata, null, 2)}
+      </pre> */}
+
       <h2 className='mt-8 mb-2 font-medium block-title'>{t("metadata")}</h2>
       <dl className="data-list">
 
@@ -26,15 +30,27 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
             <dd>
               {data?.metadata?.according_title && data?.metadata?.according_title.startsWith('http') || data?.metadata?.according_title?.startsWith('https')
                 ? <Link href={data?.metadata?.according_title} target="blank">{t("url")}</Link>
-                : <span>{data?.metadata?.according_title}</span>}
+                : <span>{data?.metadata?.according_title}</span>
+              }
             </dd>
           </>
         )}
 
-        {data?.metadata?.according_title && (
+        {/* {data?.metadata?.according_title && (
           <>
             <dt><Link href={`${accordingTo}`} target="blank" className="text-teal-700">{t("name_according_to")}</Link>:</dt>
-            <dd>{data?.metadata?.according_title}</dd>
+            <dd>
+              {data?.metadata?.according_title}
+            </dd>
+          </>
+        )} */}
+
+        {data?.metadata?.scientific_name && (
+          <>
+            <dt><Link href={`${accordingTo}`} target="blank" className="text-teal-700">{t("name_according_to")}</Link>:</dt>
+            <dd>
+              {data?.metadata.scientific_name}
+            </dd>
           </>
         )}
 
@@ -64,7 +80,7 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakul
         {data?.metadata?.synonyms && (
           <>
             <dt>{t("synonyms")}:</dt>
-            <dd>{data?.metadata?.synonyms}</dd>
+            <dd><em>{data?.metadata?.synonyms}</em></dd>
           </>
         )}
 
