@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl"
 
 import { sanitize } from "@/src/app/[locale]/_lib/helpers"
 
-export default function SingleTaxonMeta({ data, rank, accordingTo, sna, vernakularName }) {
+export default function SingleTaxonMeta({ data, rank, accordingTo, sna }) {
 
   const t = useTranslations("Species")
 

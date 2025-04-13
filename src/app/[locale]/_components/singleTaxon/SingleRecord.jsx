@@ -72,7 +72,6 @@ export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinat
                         rank={"https://dwc.tdwg.org/list/#dwc_taxonRank"}
                         accordingTo={`https://dwc.tdwg.org/list/#dwc_nameAccordingTo`}
                         sna={`https://dwc.tdwg.org/list/#dwc_scientificNameAuthorship`}
-                        vernakularName={``}
                     />
                     <SingleTaxonConservation data={data} />
                 </div>
