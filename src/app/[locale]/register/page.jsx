@@ -2,15 +2,11 @@
 
 import { useState } from "react"
 
-
-
 import { Link, useRouter } from "@/src/i18n/routing"
 
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
-
-import bcrypt from "bcryptjs";
 
 import { toast } from "react-toastify"
 
@@ -19,7 +15,6 @@ import { useTranslations } from "next-intl"
 import FormErrors from "../_components/FormErrors"
 import { detectLocale, toastOptions } from "../_lib/helpers"
 
-const salt = bcrypt.genSaltSync(10)
 
 export default function RegisterPage({ params }) {
 
@@ -50,8 +45,6 @@ export default function RegisterPage({ params }) {
 
     async function submitData(formData) {
 
-        const hashedPassword = bcrypt.hashSync(formData.password, salt)
-
         try {
             const response = await fetch(process.env.NEXT_PUBLIC_REGISTER_URL, {
                 method: 'POST',
@@ -63,12 +56,13 @@ export default function RegisterPage({ params }) {
                     first_name: formData.first_name,
                     last_name: formData.last_name,
                     email: formData.email,
-                    password: hashedPassword,
+                    password: formData.password,
                     institution: formData.institution,
                     interests: formData.institution,
                 }),
             })
 
+            
             if (response.ok) {
                 toast.success(t("userRegistered"), toastOptions)
                 router.replace('/')
