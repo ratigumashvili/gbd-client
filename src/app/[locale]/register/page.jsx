@@ -12,9 +12,8 @@ import { toast } from "react-toastify"
 
 import { useTranslations } from "next-intl"
 
-import FormErrors from "../_components/FormErrors"
-import { detectLocale, toastOptions } from "../_lib/helpers"
-
+import FormErrors from "@/src/app/[locale]/_components/FormErrors"
+import { detectLocale, toastOptions } from "@/src/app/[locale]/_lib/helpers"
 
 export default function RegisterPage({ params }) {
 
