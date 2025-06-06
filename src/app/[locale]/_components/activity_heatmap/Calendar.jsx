@@ -61,7 +61,8 @@ export default function Calendar() {
     return (
         <section className="p-4 my-4 min-h-[400px] bg-slate-50 dark:bg-slate-600 rounded-md">
             <h2 className="text-xl font-medium mb-4">
-                {t("GBDActivityCalendar")} ({formattedStartDate} - {endDate})
+                {/* {t("GBDActivityCalendar")} ({formattedStartDate} - {endDate}) */}
+                {t("GBDActivityCalendar")}
             </h2>
 
             <div className="relative">
