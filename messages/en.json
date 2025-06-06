@@ -13,6 +13,8 @@
     "issueDesc": "Issue description",
     "provideTitle": "Provide descriptive title",
     "describeIssue": "Describe an issue",
+    "name": "Your name",
+    "email": "Your email",
     "sendFeedback": "Send feedback",
     "copyUrl": "Copy permalink",
     "print": "Print page",

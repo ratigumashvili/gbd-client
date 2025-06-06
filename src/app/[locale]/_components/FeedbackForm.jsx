@@ -49,7 +49,7 @@ export default function FeedbackForm({ isOpen, closeModal, metaData, feedbackabl
                     content: description,
                     email: "test@test.com",
                     name: "test",
-                    meta: metaData 
+                    meta: metaData
                 })
             });
 
@@ -61,7 +61,7 @@ export default function FeedbackForm({ isOpen, closeModal, metaData, feedbackabl
 
             const result = await response.json();
             toast.success(result?.data?.message, toastOptions);
-            
+
             closeModal();
 
         } catch (error) {
@@ -128,6 +128,26 @@ export default function FeedbackForm({ isOpen, closeModal, metaData, feedbackabl
                                                 placeholder: t("describeIssue"),
                                             }}
                                         />
+
+                                        <div className='flex gap-4 w-full'>
+
+                                            <input
+                                                value={name}
+                                                onChange={(e) => setName(e.target.value)}
+                                                type="text"
+                                                className='p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-xs w-full'
+                                                placeholder={t("name")}
+                                            />
+
+                                            <input
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                type="text"
+                                                className='p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-xs w-full'
+                                                placeholder={t("email")}
+                                            />
+                                        </div>
+
 
                                         <ReCAPTCHA
                                             sitekey={process.env.NEXT_PUBLIC_SITE_KEY}
