@@ -6,52 +6,41 @@ import { Tooltip } from "react-tooltip";
 import { isMobile } from "react-device-detect";
 import { useLocale, useTranslations } from "next-intl";
 
-import { getValue } from "@/src/app/[locale]/_lib/helpers"
 import useDates from "@/src/app/[locale]/_hooks/useDates"
 
 import CustomLegend from "./Features";
 import { legendItems } from "./Features";
 
-const activityChartData = [
-    { date: "2022-12-01", count: 0 },
-    { date: "2023-12-01", count: 0 },
-    { date: "2024-04-01", count: 0 },
-    { date: "2024-05-22", count: 1 },
-    { date: "2024-06-01", count: 2 },
-    { date: "2024-06-27", count: 3 },
-    { date: "2024-06-28", count: 4 },
-    { date: "2024-07-28", count: 5 },
-    { date: "2024-08-01", count: 0 },
-    { date: "2024-09-02", count: 4 },
-    { date: "2024-09-05", count: 7 },
-    { date: "2024-09-12", count: 1 },
-    { date: "2024-09-20", count: 2 },
-    { date: "2024-11-22", count: 10 },
-    { date: "2024-11-29", count: 11 },
-    { date: "2025-01-03", count: 2 },
-    { date: "2025-01-04", count: 3 },
-    { date: "2025-01-08", count: 1 },
-    { date: "2025-01-10", count: 10 },
-    { date: "2025-01-16", count: 2 },
-    { date: "2025-01-17", count: 3 },
-    { date: "2025-01-20", count: 1 },
-    { date: "2025-01-23", count: 3 },
-    { date: "2025-01-29", count: 1 },
-    { date: "2025-01-31", count: 6 },
-];
-
 export default function Calendar() {
     const [selectedData, setSelectedData] = useState(null);
+    const [activityData, setActivityData] = useState([])
+
+    useEffect(() => {
+        async function getActivityData() {
+            try {
+                const request = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/activity-calendar`, {
+                    headers: { Accept: "application/json" }
+                });
+                if (!request.ok) throw new Error("Network response was not ok");
+                const response = await request.json();
+                setActivityData(response);
+            } catch (error) {
+                console.error("Failed to fetch activity data:", error);
+            }
+        }
+
+        getActivityData();
+    }, []);
 
     const { formattedStartDate, endDate } = useDates()
 
     const locale = useLocale()
 
-    const data = activityChartData.map((item) => {
+    const data = activityData?.data?.map((item) => {
         return {
             count: item.count,
             date: item.date,
-            level: getValue(item.count),
+            level: item.level
         }
     }).filter(d => d.date >= formattedStartDate && d.date <= endDate)
 
@@ -76,7 +65,7 @@ export default function Calendar() {
             </h2>
 
             <div className="relative">
-                {data && data.length !== 0 && (
+                {data && data.length !== 0 ? (
                     <ActivityCalendar
                         data={data}
                         blockSize={20}
@@ -106,7 +95,7 @@ export default function Calendar() {
                             totalCount: locale === "ka" ? `${t("total")} {{count}} ${t("record")}` : `{{count}} ${t("total")}`,
                         }}
                     />
-                )}
+                ) : <h1>No data to display</h1>}
                 <CustomLegend />
             </div>
 
