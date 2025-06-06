@@ -5,13 +5,11 @@ import { Fragment, useState } from 'react'
 
 import MDEditor from '@uiw/react-md-editor';
 import rehypeSanitize from "rehype-sanitize";
-
+import { toast } from 'react-toastify';
 import { useTranslations } from 'next-intl';
-
 import ReCAPTCHA from 'react-google-recaptcha';
 
-import { toast } from 'react-toastify';
-import { toastOptions } from '../_lib/helpers';
+import { toastOptions } from '@/src/app/[locale]/_lib/helpers';
 
 import Close from './icons/Close';
 

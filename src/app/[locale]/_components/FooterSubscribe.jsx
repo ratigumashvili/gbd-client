@@ -24,9 +24,31 @@ function FooterSubscribe() {
     const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm({ resolver: zodResolver(schema) })
 
     async function submitData(formData) {
-        console.log(formData.email)
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/subscribe`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    email: formData.email,
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                toast.error("Subscription failed")
+                console.log(errorData)
+                return;
+            }
+
+            const result = await response.json();
+            toast.success(result?.message, toastOptions)
+        } catch (error) {
+            console.error("Error submitting subscription:", error);
+        }
         reset()
-        toast.success(t("success"), toastOptions)
     }
 
     return (
