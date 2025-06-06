@@ -13,6 +13,8 @@
     "issueDesc": "Issue description",
     "provideTitle": "Provide descriptive title",
     "describeIssue": "Describe an issue",
+    "descError": "Description field must contain at least 10 characters",
+    "submissionError": "Error submitting feedback. Please, try again later.",
     "name": "Your name",
     "email": "Your email",
     "sendFeedback": "Send feedback",

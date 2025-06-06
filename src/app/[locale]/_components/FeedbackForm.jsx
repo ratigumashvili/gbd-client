@@ -29,9 +29,14 @@ export default function FeedbackForm({ isOpen, closeModal, metaData, feedbackabl
         e.preventDefault();
         setFormError(false);
 
-        if (issueTitle.trim() === '' || description.trim() === '' || description.length < 10) {
+        if (issueTitle.trim() === '' || description.trim() === '') {
             setFormError(t("required"));
             return;
+        }
+
+        if (description.length < 10) {
+            setFormError(t("descError"))
+            return
         }
 
         try {
@@ -55,6 +60,7 @@ export default function FeedbackForm({ isOpen, closeModal, metaData, feedbackabl
             if (!response.ok) {
                 const errorData = await response.json();
                 console.error("Feedback failed:", errorData);
+                toast.error(t("submissionError"))
                 return;
             }
 
