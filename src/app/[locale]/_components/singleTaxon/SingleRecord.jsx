@@ -54,6 +54,8 @@ export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinat
                     pinMapCoordinates={pinMapCoordinates}
                     isSpecie={true}
                     downloadContent={true}
+                    feedbackable_type={data?.metadata?.taxon_rank_title || data?.metadata?.taxon_rank}
+                    feedbackable_id={data?.metadata?.id}
                 />
             </div>
 

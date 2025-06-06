@@ -13,14 +13,16 @@ import FeedbackForm from './FeedbackForm'
 
 import Hamburger from './icons/Hamburger'
 
-export default function ActionsDropdown({ 
-    handlePrint = () => void(0), 
-    data, 
+export default function ActionsDropdown({
+    handlePrint = () => void (0),
+    data,
     heatMapCoordinates = [],
     pinMapCoordinates = [],
     species = [],
-    isSpecie = false, 
-    downloadContent = true 
+    isSpecie = false,
+    downloadContent = true,
+    feedbackable_type,
+    feedbackable_id
 }) {
 
     const [isOpen, setIsOpen] = useState(false)
@@ -43,7 +45,7 @@ export default function ActionsDropdown({
         date: currentDate
     }
 
-     const dataToDownload = isSpecie ? {
+    const dataToDownload = isSpecie ? {
         id: data?.metadata?.id,
         georgian_name: data?.metadata?.georgian_name,
         english_name: data?.metadata?.english_name,
@@ -98,7 +100,15 @@ export default function ActionsDropdown({
     return (
         <div className="relative print:hidden">
 
-            {isOpen && <FeedbackForm isOpen={isOpen} closeModal={closeModal} metaData={metaData} />}
+            {isOpen && (
+                <FeedbackForm
+                    isOpen={isOpen}
+                    closeModal={closeModal}
+                    metaData={metaData}
+                    feedbackable_type={feedbackable_type}
+                    feedbackable_id={feedbackable_id}
+                />
+            )}
 
             <Menu as="div" className="relative inline-block text-left dark:text-slate-700">
                 <Menu.Button title={t("actions")} className="dark:text-slate-300 mt-2">

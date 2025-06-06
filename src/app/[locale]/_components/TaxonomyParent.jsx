@@ -53,6 +53,8 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
                     species={species}
                     isSpecie={false}
                     downloadContent={true}
+                    feedbackable_type={data?.metadata?.taxon_rank_title || taxon_rank}
+                    feedbackable_id={data?.metadata?.id}
                 />
             </div>
             <div className="flex flex-col md:flex-row gap-4">

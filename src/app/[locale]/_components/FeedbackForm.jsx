@@ -13,10 +13,12 @@ import { toastOptions } from '@/src/app/[locale]/_lib/helpers';
 
 import Close from './icons/Close';
 
-export default function FeedbackForm({ isOpen, closeModal, metaData }) {
+export default function FeedbackForm({ isOpen, closeModal, metaData, feedbackable_type, feedbackable_id }) {
 
     const [issueTitle, setIssueTitle] = useState('')
     const [description, setDescription] = useState('')
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
     const [formError, setFormError] = useState(false)
 
     const [recaptchaValue, setRecaptchaValue] = useState(null)
@@ -24,17 +26,49 @@ export default function FeedbackForm({ isOpen, closeModal, metaData }) {
     const t = useTranslations("Common")
 
     const handleFormSubmit = async (e) => {
-        e.preventDefault()
-        setFormError(false)
-        
-        if (issueTitle.trim() === '' || description.trim() === '') {
-            setFormError(t("required"))
-        } else {
-            console.log({ issueTitle, description, metaData })
-            closeModal()
-            toast.success(t("feedbackSent"), toastOptions)
-        }  
-    }
+        e.preventDefault();
+        setFormError(false);
+
+        if (issueTitle.trim() === '' || description.trim() === '' || description.length < 10) {
+            setFormError(t("required"));
+            return;
+        }
+
+        try {
+            // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/taxonomy-feedback`, {
+            const response = await fetch(`https://test-api.biodiversity.iliauni.edu.ge/api/1.0/taxonomy-feedback`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    feedbackable_type: feedbackable_type.toLowerCase(),
+                    feedbackable_id: Number(feedbackable_id),
+                    title: issueTitle,
+                    content: description,
+                    email: "test@test.com",
+                    name: "test",
+                    meta: metaData 
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error("Feedback failed:", errorData);
+                return;
+            }
+
+            const result = await response.json();
+            toast.success(result?.data?.message, toastOptions);
+            
+            closeModal();
+
+        } catch (error) {
+            console.error("Error submitting feedback:", error);
+        }
+    };
+
 
     return (
         <>
@@ -104,7 +138,7 @@ export default function FeedbackForm({ isOpen, closeModal, metaData }) {
                                             <button
                                                 type="submit"
                                                 className="button disabled:opacity-50 disabled:cursor-not-allowed"
-                                                disabled={!recaptchaValue}
+                                                // disabled={!recaptchaValue}
                                                 onClick={handleFormSubmit}
                                             >
                                                 {t("sendFeedback")}
