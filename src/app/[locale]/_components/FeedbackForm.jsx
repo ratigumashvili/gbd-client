@@ -35,8 +35,7 @@ export default function FeedbackForm({ isOpen, closeModal, metaData, feedbackabl
         }
 
         try {
-            // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/taxonomy-feedback`, {
-            const response = await fetch(`https://test-api.biodiversity.iliauni.edu.ge/api/1.0/taxonomy-feedback`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/taxonomy-feedback`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
