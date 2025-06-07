@@ -155,7 +155,7 @@ export default function FeedbackForm({ isOpen, closeModal, metaData, feedbackabl
 
 
                                         <ReCAPTCHA
-                                            sitekey={process.env.NEXT_PUBLIC_SITE_KEY}
+                                            sitekey="6LfOKEgqAAAAAOMKntAqwp9eAyV17r0fBYNAeSQm"
                                             onChange={(value) => setRecaptchaValue(value)}
                                         />
 
