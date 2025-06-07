@@ -163,7 +163,7 @@ export default function FeedbackForm({ isOpen, closeModal, metaData, feedbackabl
                                             <button
                                                 type="submit"
                                                 className="button disabled:opacity-50 disabled:cursor-not-allowed"
-                                                // disabled={!recaptchaValue}
+                                                disabled={!recaptchaValue}
                                                 onClick={handleFormSubmit}
                                             >
                                                 {t("sendFeedback")}
