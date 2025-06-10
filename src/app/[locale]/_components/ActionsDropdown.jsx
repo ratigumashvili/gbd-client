@@ -21,8 +21,8 @@ export default function ActionsDropdown({
     species = [],
     isSpecie = false,
     downloadContent = true,
-    // feedbackable_type,
-    // feedbackable_id
+    feedbackable_type,
+    feedbackable_id
 }) {
 
     const [isOpen, setIsOpen] = useState(false)
@@ -126,7 +126,7 @@ export default function ActionsDropdown({
                     <Menu.Items className="absolute top-10 right-0 z-10 flex flex-col gap-1 p-1 text-sm bg-white whitespace-nowrap rounded-sm min-w-28 shadow-md">
                         <Menu.Item as="button" onClick={handleCopyToClipboard} className="actions-dropdown-item">{t("copyUrl")}</Menu.Item>
                         <Menu.Item as="button" onClick={handlePrint} className="actions-dropdown-item">{t("print")}</Menu.Item>
-                        {/* <Menu.Item as="button" onClick={openModal} className="actions-dropdown-item">{t("feedback")}</Menu.Item> */}
+                        <Menu.Item as="button" onClick={openModal} className="actions-dropdown-item">{t("feedback")}</Menu.Item>
                         {downloadContent && (<Menu.Item as="button" onClick={() => exportData(dataToDownload)} className="actions-dropdown-item">{t("download_json")}</Menu.Item>)}
                         {downloadContent && (<Menu.Item as="button" onClick={() => exportDataAsCSV(dataToDownload)} className="actions-dropdown-item">{t("download_csv")}</Menu.Item>)}
                     </Menu.Items>
