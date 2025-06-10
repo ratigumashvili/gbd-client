@@ -177,7 +177,7 @@
     "btn_specie": "Specie",
     "btn_taxons": "Taxon",
     "btn_iucn": "IUCN Status",
-    "specie_search_hint": "This form searches within species. It allows you to find the record you need based on the Latin, Georgian, or English name of the species. Please note that selecting only the taxonomic rank will not allow you to perform the search function. Use this field to refine search results. The form does not have any mandatory fields.",
+    "specie_search_hint": "This form searches within species. It allows you to find the record you need based on the Latin, Georgian, or English name of the species.",
     "taxon_search_hint": "This form searches within taxonomies. You can select any taxon and receive records corresponding to that taxon. For example, if you select the taxon 'Class', you will receive all records registered for that unit. It is also possible to provide the Latin, Georgian or English names of the taxon, which will localize the search results. The form does not have any mandatory fields.",
     "iucn_search_hint": "This form allows you to search for all species that have been assigned the regional IUCN status you selected. The form does not have any mandatory fields.",
     "search_in": "You searched for",
