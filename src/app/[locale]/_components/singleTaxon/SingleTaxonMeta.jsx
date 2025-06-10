@@ -10,10 +10,6 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna }) {
   return (
     <div className="flex-1">
 
-      {/* <pre>
-        {JSON.stringify(data.metadata, null, 2)}
-      </pre> */}
-
       <h2 className='mt-8 mb-2 font-medium block-title'>{t("metadata")}</h2>
       <dl className="data-list">
 
