@@ -140,13 +140,8 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
                             </>
                         )}
 
-                        {data?.contributors?.length > 0 && (
-                            <>
-                                <dt>{s("contributors")}:</dt>
-                                <dd>{data?.contributors?.map((contributor, index) => <p key={index}>{contributor.first_name} {contributor.last_name}{separator(index, data?.contributors)}</p>)}</dd>
-                            </>
-                        )}
                     </dl>
+
                 </div>
                 <div className="flex-1">
                     {photos && photos.length !== 0 && (
