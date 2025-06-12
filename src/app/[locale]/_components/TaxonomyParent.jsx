@@ -133,25 +133,19 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
                             </>
                         )}
 
-                        {/* {pageAuthors?.length !== 0 && (
+                        {data?.editors?.length > 0 && (
                             <>
-                                <dt>{t("authors")}:</dt>
-                                <dd>
-                                    {pageAuthors?.map((author, index) => (
-                                        <span key={author.id}>
-                                            <Link href={checkLink(`/authors/${author?.id?.toString()}`)}>
-                                                {author.name}
-                                            </Link>{separator(index, pageAuthors)}
-                                        </span>
-                                    ))}
-                                </dd>
+                                <dt>{s("editors")}:</dt>
+                                <dd>{data?.editors?.map((editor, index) => <p key={index}>{editor.first_name} {editor.last_name}{separator(index, data?.editors)}</p>)}</dd>
                             </>
-                        )} */}
-                        <dt>{s("editors")}:</dt>
-                        <dd>authors list</dd>
+                        )}
 
-                        <dt>{s("contributors")}:</dt>
-                        <dd>persons list</dd>
+                        {data?.contributors?.length > 0 && (
+                            <>
+                                <dt>{s("contributors")}:</dt>
+                                <dd>{data?.contributors?.map((contributor, index) => <p key={index}>{contributor.first_name} {contributor.last_name}{separator(index, data?.contributors)}</p>)}</dd>
+                            </>
+                        )}
                     </dl>
                 </div>
                 <div className="flex-1">
