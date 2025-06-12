@@ -32,15 +32,6 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna }) {
           </>
         )}
 
-        {/* {data?.metadata?.according_title && (
-          <>
-            <dt><Link href={`${accordingTo}`} target="blank" className="text-teal-700">{t("name_according_to")}</Link>:</dt>
-            <dd>
-              {data?.metadata?.according_title}
-            </dd>
-          </>
-        )} */}
-
         {data?.metadata?.scientific_name && (
           <>
             <dt><Link href={`${accordingTo}`} target="blank" className="text-teal-700">{t("name_according_to")}</Link>:</dt>
@@ -98,13 +89,6 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna }) {
           </>
         )}
 
-        {/* === {data?.metadata?.specific_epithet && (
-          <>
-            <dt>{t("specific_epithet")}:</dt>
-            <dd>{data?.metadata?.specific_epithet}</dd>
-          </>
-        )} === */}
-
         {data?.metadata?.origin && (
           <>
             <dt>{t("native_introduced")}:</dt>
@@ -151,24 +135,6 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna }) {
             </dd>
           </>
         )}
-
-        {/* {data?.metadata?.references_list && (
-          <>
-            <dt>{t("references_list")}:</dt>
-            <dd>
-              <div dangerouslySetInnerHTML={{ __html: sanitize(data?.metadata?.references_list) }} />
-            </dd>
-          </>
-        )} */}
-
-        {/* {data?.metadata?.gbd_remarks && (
-          <>
-            <dt>{t("gbd_remarks")}:</dt>
-            <dd>
-              <div dangerouslySetInnerHTML={{ __html: sanitize(data?.metadata?.gbd_remarks) }} />
-            </dd>
-          </>
-        )} */}
 
       </dl>
     </div>
