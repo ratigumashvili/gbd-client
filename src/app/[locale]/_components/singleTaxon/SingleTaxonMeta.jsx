@@ -1,7 +1,7 @@
 import { Link } from "@/src/i18n/routing"
 import { useTranslations } from "next-intl"
 
-import { sanitize } from "@/src/app/[locale]/_lib/helpers"
+import { sanitize, separator } from "@/src/app/[locale]/_lib/helpers"
 
 export default function SingleTaxonMeta({ data, rank, accordingTo, sna }) {
 
@@ -130,15 +130,27 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna }) {
           </>
         )}
 
-        <>
-          <dt>{t("editor")}:</dt>
-          <dd>name, surname, email</dd>
-        </>
+        {data?.editors?.length > 0 && (
+          <>
+            <dt>{t("editor")}:</dt>
+            <dd>
+              {data?.editors?.map((editor, index) =>
+                <p key={index} className="inline">{editor.first_name} {editor.last_name}{separator(index, data?.editors)}</p>
+              )}
+            </dd>
+          </>
+        )}
 
-        <>
-          <dt>{t("contributors")}:</dt>
-          <dd>persons list</dd>
-        </>
+        {data?.contributors?.length > 0 && (
+          <>
+            <dt>{t("contributors")}:</dt>
+            <dd>
+              {data?.contributors?.map((contributor, index) =>
+                <p key={index}>{contributor.first_name} {contributor.last_name}{separator(index, data?.contributors)}</p>
+              )}
+            </dd>
+          </>
+        )}
 
         {/* {data?.metadata?.references_list && (
           <>

@@ -32,6 +32,7 @@ export default async function SingleSpecies({ params }) {
 
   return (
     <>
+    <pre>{JSON.stringify(data.editors, null, 2)}</pre>
       <SingleRecord
         data={data}
         heatMapCoordinates={heatMapCoordinates}
