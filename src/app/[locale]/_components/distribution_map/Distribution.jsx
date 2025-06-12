@@ -171,7 +171,7 @@ export default function Distribution({ heatMapCoordinates, pinMapCoordinates }) 
                                                     {item.popup.place}
                                                 </div>
                                                 <div className='col-span-1 border-r border-b text-center text-base py-2 px-3'>
-                                                    {item.popup.recorder_by}
+                                                    {item.popup.recorded_by}
                                                 </div>
                                                 <div className='col-span-1 border-r border-b text-center text-base py-2 px-3'>
                                                     {item.popup.date}

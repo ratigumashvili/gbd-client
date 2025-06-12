@@ -17,7 +17,8 @@ export default async function SingleSpecies({ params }) {
     geocode: [parseFloat(item.latitude), parseFloat(item.longitude)],
     popup: {
       place: item.locality,
-      recorded_by: item.recorded_by
+      recorded_by: item.recorded_by,
+      date: item.date
     }
   }))
     .filter(item => !(item.geocode[0] === null || isNaN(item.geocode[0]) || item.geocode[1] === null || isNaN(item.geocode[1])));
@@ -32,7 +33,6 @@ export default async function SingleSpecies({ params }) {
 
   return (
     <>
-    <pre>{JSON.stringify(data.editors, null, 2)}</pre>
       <SingleRecord
         data={data}
         heatMapCoordinates={heatMapCoordinates}
