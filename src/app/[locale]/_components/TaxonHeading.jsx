@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter } from "@/src/i18n/routing"
+import { Link, useRouter } from "@/src/i18n/routing"
 import { useTranslations } from "next-intl"
 
 import { useBookmarks } from "@/src/app/[locale]/_hooks/useBookmarks"
@@ -13,6 +13,7 @@ import { Check } from "./Check"
 
 import thumb from "@/public/logo.svg"
 import OrgChartIcon from "./icons/OrgChartIcon"
+import { taxonRank } from "../_lib/data"
 
 function TaxonHeading({ headingData }) {
 
@@ -21,11 +22,11 @@ function TaxonHeading({ headingData }) {
         title,
         scienttificId,
         rank,
+        taxonId,
         url,
         isSpecie = false,
         status = null,
         evaluatedBy = null,
-        orgChartData,
     } = headingData
 
     const storageInfo = {
@@ -61,16 +62,9 @@ function TaxonHeading({ headingData }) {
                     <GoBack width="22" heigth="22" />
                 </button>
 
-                {orgChartData && (
-                    <button
-                        onClick={() => { }}
-                        className="disabled:opacity-50 disabled:cursor-not-allowed"
-                        disabled
-                        title={t("taxOrder")}
-                    >
-                        <OrgChartIcon width="25" height="25" />
-                    </button>
-                )}
+                <Link href={`/dynamic-order?rank=${rank}&taxonId=${taxonId}`}>
+                    <OrgChartIcon width="25" height="25" />
+                </Link>
 
                 {isBookmarked.includes(scienttificId) ? (
                     <button title={t("bookmarkRemove")} onClick={() => handleRemoveBookmark(storageInfo.id)}>

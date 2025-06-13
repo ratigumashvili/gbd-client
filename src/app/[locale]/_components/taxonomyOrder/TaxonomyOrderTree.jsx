@@ -6,8 +6,6 @@ import { useTranslations } from "next-intl";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { Tree, TreeNode } from "react-organizational-chart"
 
-import DataDownload from "./DataDownload";
-
 import FullScreenIcon from "@/src/app/[locale]/_components/icons/FullScreenIcon";
 import ZoomInIcon from "@/src/app/[locale]/_components/icons/ZoomInIcon";
 import ZoomOutIcon from "@/src/app/[locale]/_components/icons/ZoomOutIcon";
@@ -24,11 +22,8 @@ const TreeList = ({ name, list }) => {
 
 const TreeItem = ({ name, data }) => {
     return (
-        <TreeNode
-            label={<div className='tree-node'>{name}</div>
-            }
-        >
-            {data && data[0].children ? <TreeList list={data[0].children} /> : null}
+        <TreeNode label={<div className='tree-node'>{name}</div>}>
+            {data && data[0].children.length > 0 ? <TreeList list={data[0].children} /> : null}
         </TreeNode>
     )
 }
@@ -72,24 +67,23 @@ export default function TaxonomyOrderTree({ treeContent }) {
                 <div className="flex gap-2">
                     <button
                         onClick={handleFullScreen.enter}
-                        className="border rounded-md px-2 py-1"
+                        className="border rounded-md px-2 py-1 bg-white"
                         title={t("fullScreen")}
                     >
                         <FullScreenIcon w={"18"} height={"18"} />
                     </button>
 
-                    <DataDownload title={treeContent.title} />
-
                     <button
                         onClick={decreaseSize}
-                        className="border rounded-md px-2 py-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="border rounded-md px-2 py-1 disabled:opacity-50 disabled:cursor-not-allowed bg-white"
                         disabled={scale <= minScale}
                     >
                         <ZoomOutIcon />
                     </button>
+
                     <button
                         onClick={increaseSize}
-                        className="border rounded-md px-2 py-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="border rounded-md px-2 py-1 disabled:opacity-50 disabled:cursor-not-allowed bg-white"
                         disabled={scale >= maxScale}
                     >
                         <ZoomInIcon />
@@ -104,9 +98,9 @@ export default function TaxonomyOrderTree({ treeContent }) {
                         lineWidth={'2px'}
                         lineColor={'#00BFA5'}
                         lineBorderRadius={'10px'}
-                        label={<div className='tree-parent-node'>{treeContent.title}</div>}
+                        label={<div className='tree-parent-node'>{treeContent?.name}</div>}
                     >
-                        <TreeList list={treeContent.children} />
+                        <TreeList list={treeContent?.children} />
                     </Tree>
                 </FullScreen>
             </div>

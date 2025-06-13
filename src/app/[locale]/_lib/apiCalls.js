@@ -40,7 +40,7 @@ export const getPopularClasses = async (locale, quantity) => axios.get(`${apiUrl
     'Content-Type': 'application/json',
     'Accept': 'application/json',
     'Accept-Language': locale,
-    'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' 
+    'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0'
   },
 }).then((response) => response.data).catch((error) => error.message)
 
@@ -57,3 +57,16 @@ export const getGalleryData = async (endpoint, locale, currentPage, query, perPa
       'q': query
     }
   }).then((response) => response.data).catch((error) => error.message)
+
+export const getDynamicOrder = async (endpoint, locale, id, rank,) => axios.get(`${apiUrl}/${endpoint}`,
+  {
+    params: {
+      'identifier': id.toString(),
+      'type': rank
+    },
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Accept-Language': locale,
+    },
+  }).then((response) => response.data).catch((error) => error)
