@@ -2,8 +2,6 @@
 import DynamicTaxonomyOrder from "@/src/app/[locale]/_components/taxonomyOrder"
 import { getDynamicOrder } from "@/src/app/[locale]/_lib/apiCalls"
 
-import { fungiTree } from '@/src/app/[locale]/_lib/data'
-
 async function DynamicOrder({ params, searchParams }) {
   const { locale } = await params
   const rank = await searchParams.rank
