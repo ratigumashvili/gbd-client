@@ -9,12 +9,18 @@ import { Tree, TreeNode } from "react-organizational-chart"
 import FullScreenIcon from "@/src/app/[locale]/_components/icons/FullScreenIcon";
 import ZoomInIcon from "@/src/app/[locale]/_components/icons/ZoomInIcon";
 import ZoomOutIcon from "@/src/app/[locale]/_components/icons/ZoomOutIcon";
+import { filterTaxonValue } from "../../_lib/helpers";
+
+function capitalizeFirstLetter(str) {
+    if (!str) return "";
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
 
 const TreeList = ({ name, list }) => {
     return (
         <TreeNode label={name}>
             {list && list.length > 0 ? list.map((child) =>
-                <TreeItem key={child.id} name={child.name} data={[child]} />
+                <TreeItem key={child.id} name={`${capitalizeFirstLetter(filterTaxonValue(child.type))} ${child.name}`} data={[child]} />
             ) : null}
         </TreeNode>
     )
@@ -98,7 +104,7 @@ export default function TaxonomyOrderTree({ treeContent }) {
                         lineWidth={'2px'}
                         lineColor={'#00BFA5'}
                         lineBorderRadius={'10px'}
-                        label={<div className='tree-parent-node'>{treeContent?.name}</div>}
+                        label={<div className='tree-parent-node'>{capitalizeFirstLetter(filterTaxonValue(treeContent?.type))} {treeContent?.name}</div>}
                     >
                         <TreeList list={treeContent?.children} />
                     </Tree>
