@@ -3,7 +3,6 @@ import DynamicTaxonomyOrder from "@/src/app/[locale]/_components/taxonomyOrder"
 import { getDynamicOrder } from "@/src/app/[locale]/_lib/apiCalls"
 import { redirect } from "next/navigation"
 
-
 async function DynamicOrder({ params, searchParams }) {
   const { locale } = await params
   const rank = await searchParams.rank
