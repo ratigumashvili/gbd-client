@@ -1,6 +1,8 @@
 
 import DynamicTaxonomyOrder from "@/src/app/[locale]/_components/taxonomyOrder"
 import { getDynamicOrder } from "@/src/app/[locale]/_lib/apiCalls"
+import { redirect } from "next/navigation"
+
 
 async function DynamicOrder({ params, searchParams }) {
   const { locale } = await params
@@ -24,6 +26,11 @@ async function DynamicOrder({ params, searchParams }) {
 }
 
   const { data } = await getDynamicOrder(`taxonomy/children-hierarchy`, locale, taxonId, filterTaxonomyValue(rank))
+
+  if(!rank || !taxonId) {
+    return redirect("/")
+  }
+
   return (
     <>
       <section>

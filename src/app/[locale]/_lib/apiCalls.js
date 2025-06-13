@@ -61,7 +61,7 @@ export const getGalleryData = async (endpoint, locale, currentPage, query, perPa
 export const getDynamicOrder = async (endpoint, locale, id, rank,) => axios.get(`${apiUrl}/${endpoint}`,
   {
     params: {
-      'identifier': id.toString(),
+      'identifier': id?.toString(),
       'type': rank
     },
     headers: {
