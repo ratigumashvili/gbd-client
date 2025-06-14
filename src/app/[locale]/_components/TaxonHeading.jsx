@@ -11,9 +11,7 @@ import BookmarkMinus from "./icons/BookmarkMinus"
 import BookmarkPlus from "./icons/BookmarkPlus"
 import { Check } from "./Check"
 
-import thumb from "@/public/logo.svg"
 import OrgChartIcon from "./icons/OrgChartIcon"
-import { taxonRank } from "../_lib/data"
 
 function TaxonHeading({ headingData }) {
 
@@ -62,7 +60,7 @@ function TaxonHeading({ headingData }) {
                     <GoBack width="22" heigth="22" />
                 </button>
 
-                {rank !== "Species" && <Link href={`/dynamic-order?rank=${rank}&taxonId=${taxonId}`}>
+                {!isSpecie && <Link href={`/dynamic-order?rank=${rank}&taxonId=${taxonId}`}>
                     <OrgChartIcon width="25" height="25" />
                 </Link>}
 

@@ -12,11 +12,12 @@ import Map from "@/src/app/[locale]/_components/distribution_map"
 import Cite from '@/src/app/[locale]/_components/Cite';
 import TaxonomyParentGallery from '@/src/app/[locale]/_components/TaxonomyParentGallery';
 import TaxonHeading from '@/src/app/[locale]/_components/TaxonHeading';
+import TaxonomyParentNodes from '@/src/app/[locale]/_components/TaxonomyParentNodes';
 
 import { useFullUrl } from '@/src/app/[locale]/_hooks/useFullUrl';
-import TaxonomyParentNodes from '../TaxonomyParentNodes';
 
 export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinates, reversedParent }) {
+
 
     const printContent = useRef();
 
@@ -84,7 +85,12 @@ export default function SingleRecord({ data, heatMapCoordinates, pinMapCoordinat
             {heatMapCoordinates !== 0 && <Map heatMapCoordinates={heatMapCoordinates} pinMapCoordinates={pinMapCoordinates} className="-z-0" />}
 
             <div className='mt-8 mb-4'>
-                <Cite name={data?.metadata?.name} />
+                <Cite
+                    name={data?.metadata?.name}
+                    editors={data?.editors}
+                    contributors={data?.contributors}
+                    isSpecie={true}
+                />
             </div>
 
         </div>
