@@ -22,9 +22,9 @@ export default async function Genus({ params, searchParams }) {
   const formattedCodes = formatCodes(codesObject)
   const codesCountTotal = formatCodesTotal(formattedCodes)
 
-  const reversedParent = data?.parents?.length 
-  ? [...data.parents].reverse() 
-  : [];
+  const reversedParent = data?.parents?.length
+    ? [...data.parents].reverse()
+    : [];
 
   if (!data) {
     return <NothingFound />
@@ -40,8 +40,6 @@ export default async function Genus({ params, searchParams }) {
         accordingTo={``}
         sna={`https://dwc.tdwg.org/list/#dwc_scientificNameAuthorship`}
         vernakularName={``}
-        // taxonRank={"Genus"}
-      // description={data[0]?.description}
       />
 
       <TaxonomyConservationStatus
@@ -67,7 +65,13 @@ export default async function Genus({ params, searchParams }) {
           total={species?.total_page}
         />)
       }
-      <Cite name={data?.metadata?.name} />
+      
+      <Cite
+        name={data?.metadata?.name}
+        editors={data?.editors}
+        contributors={data?.contributors}
+        isSpecie={false}
+      />
     </>
   )
 }

@@ -62,9 +62,9 @@ function TaxonHeading({ headingData }) {
                     <GoBack width="22" heigth="22" />
                 </button>
 
-                <Link href={`/dynamic-order?rank=${rank}&taxonId=${taxonId}`}>
+                {rank !== "Species" && <Link href={`/dynamic-order?rank=${rank}&taxonId=${taxonId}`}>
                     <OrgChartIcon width="25" height="25" />
-                </Link>
+                </Link>}
 
                 {isBookmarked.includes(scienttificId) ? (
                     <button title={t("bookmarkRemove")} onClick={() => handleRemoveBookmark(storageInfo.id)}>

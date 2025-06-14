@@ -9,7 +9,7 @@ import { copyToClipboard, currentDate, toastOptions } from "@/src/app/[locale]/_
 
 import Copy from "./icons/Copy"
 
-export default function Cite({ name }) {
+export default function Cite({ name, editors = [], contributors = [], isSpecie = false }) {
 
     const [citeElement, setCiteElement] = useState()
     
@@ -37,7 +37,7 @@ export default function Cite({ name }) {
             >
                 <Copy width="18" height="18" />
             </button>
-            <em><b>{t("citePage")}:</b></em> <span ref={citeRef}>{`${name}`}. {t("gbd")} ({t("tbilisi")}, {`${currentDate.slice(-4)}`}). {t("isu")}, {t("ecology_inst")}. {t("available")}: {`${fullUrl}`}. {t("date_accessed")}: {`${currentDate}`}.</span>
+            <em><b>{t("citePage")}:</b></em> <span ref={citeRef}>{editors?.slice().reverse().map((editor, index) => <span key={index}>{editor.last_name}, {editor.first_name.slice(0, 1)}. </span>)} <em>{`${name}`}</em>. Georgian Biodiversity Database (Tbilisi, {`${currentDate.slice(-4)}`}). Ilia State University, Institute of Ecology. Available at: {`${fullUrl}`}. Date Accessed: {`${currentDate}`}.</span>
         </div>
     )
 }

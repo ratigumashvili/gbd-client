@@ -22,9 +22,9 @@ export default async function Family({ params, searchParams }) {
   const formattedCodes = formatCodes(codesObject)
   const codesCountTotal = formatCodesTotal(formattedCodes)
 
-  const reversedParent = data?.parents?.length 
-  ? [...data.parents].reverse() 
-  : [];
+  const reversedParent = data?.parents?.length
+    ? [...data.parents].reverse()
+    : [];
 
   if (!data) {
     return <NothingFound />
@@ -40,7 +40,6 @@ export default async function Family({ params, searchParams }) {
         accordingTo={``}
         sna={`https://dwc.tdwg.org/list/#dwc_scientificNameAuthorship`}
         vernakularName={``}
-      // description={data[0]?.description}
       />
 
       <TaxonomyConservationStatus
@@ -66,7 +65,13 @@ export default async function Family({ params, searchParams }) {
           total={child?.total_page}
         />)
       }
-      <Cite name={data?.metadata?.name} />
+
+      <Cite
+        name={data?.metadata?.name}
+        editors={data?.editors}
+        contributors={data?.contributors}
+        isSpecie={false}
+      />
     </>
   )
 }

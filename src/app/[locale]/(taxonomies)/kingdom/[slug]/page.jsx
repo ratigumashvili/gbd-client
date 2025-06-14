@@ -18,7 +18,7 @@ export default async function Kingdom({ params, searchParams }) {
     const child = await getPaginatedData(`taxonomy?type=Phylum&parent_id=${data?.metadata?.id}`, params.locale, currentPage, TAXON_PER_PAGE)
 
     const codesObject = data?.national_red_list_status_counts
-    
+
     const formattedCodes = formatCodes(codesObject)
     const codesCountTotal = formatCodesTotal(formattedCodes)
 
@@ -37,7 +37,6 @@ export default async function Kingdom({ params, searchParams }) {
                 accordingTo={`https://dwc.tdwg.org/list/#dwc_nameAccordingTo`}
                 sna={`https://dwc.tdwg.org/list/#dwc_scientificNameAuthorship`}
                 vernakularName={`https://dwc.tdwg.org/list/#dwc_vernacularName`}
-            // description={data?.metadata}
             />
 
             <TaxonomyConservationStatus
@@ -55,6 +54,7 @@ export default async function Kingdom({ params, searchParams }) {
                 taxonName={data?.metadata?.name}
                 pathToChildren="phylum"
             />
+
             {child?.recordsTotal > TAXON_PER_PAGE && (
                 <Pagination
                     path={null}
@@ -63,7 +63,12 @@ export default async function Kingdom({ params, searchParams }) {
                 />)
             }
 
-            <Cite name={data?.metadata?.name} />
+            <Cite
+                name={data?.metadata?.name}
+                editors={data?.editors}
+                contributors={data?.contributors}
+                isSpecie={false}
+            />
         </>
     )
 }
