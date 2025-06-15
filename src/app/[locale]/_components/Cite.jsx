@@ -28,6 +28,8 @@ export default function Cite({ name, editors = [], contributors = [], isSpecie =
         toast.success(t("copied"), toastOptions)
     }
 
+    const authors = editors.concat(contributors)
+
     return (
         <div className='bg-slate-50 dark:bg-slate-600 rounded-md pt-6 pl-6 pb-6 pr-10 mt-8 text-xs relative'>
             <button
@@ -37,7 +39,7 @@ export default function Cite({ name, editors = [], contributors = [], isSpecie =
             >
                 <Copy width="18" height="18" />
             </button>
-            <em><b>{t("citePage")}:</b></em> <span ref={citeRef}>{editors?.slice().reverse().map((editor, index) => <span key={index}>{editor.last_name}, {editor.first_name.slice(0, 1)}. </span>)} <em>{`${name}`}</em>. Georgian Biodiversity Database (Tbilisi, {`${currentDate.slice(-4)}`}). Ilia State University, Institute of Ecology. Available at: {`${fullUrl}`}. Date Accessed: {`${currentDate}`}.</span>
+            <em><b>{t("citePage")}:</b></em> <span ref={citeRef}>{authors?.map((author, index) => <span key={index}>{author.last_name}, {author.first_name.slice(0, 1)}. </span>)} <em>{`${name}`}</em>. Georgian Biodiversity Database (Tbilisi, {`${currentDate.slice(-4)}`}). Ilia State University, Institute of Ecology. Available at: {`${fullUrl}`}. Date Accessed: {`${currentDate}`}.</span>
         </div>
     )
 }
