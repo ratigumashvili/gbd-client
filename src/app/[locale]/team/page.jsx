@@ -1,10 +1,33 @@
-"use client"
+import { getPaginatedData } from "@/src/app/[locale]/_lib/apiCalls"
 
-import { useLocale } from 'next-intl';
-import { redirect } from 'next/navigation';
+import Pagination from "@/src/app/[locale]/_components/Pagination"
 
-export default function TeamPage() {
-  const locale = useLocale();
+import { RESEARCHERS_PER_PAGE } from "@/src/app/[locale]/_lib/constants"
+import { Blocks} from "@/src/app/[locale]/team/Features"
 
-  return redirect(`/${locale}/team/editors`)
+const Team = async ({ params, searchParams }) => {
+
+  const currentPage = searchParams.page || 1
+
+  const response = await getPaginatedData('researcher', params.locale, currentPage, RESEARCHERS_PER_PAGE)
+
+  return (
+    <div className="py-4">
+
+      <Blocks data={response.data} />
+
+      {response?.recordsTotal > RESEARCHERS_PER_PAGE && (
+        <Pagination
+          path={null}
+          searchParams={null}
+          currentPage={currentPage}
+          total={response?.total_page}
+        />)
+      }
+
+    </div>
+
+  )
 }
+
+export default Team

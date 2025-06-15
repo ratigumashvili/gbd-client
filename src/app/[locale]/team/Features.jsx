@@ -35,7 +35,7 @@ export const Blocks = ({ data = [] }) => {
                     </div>
                     <div>
                         <h2 className="font-medium text-xl mb-1 font-firaGo">
-                            <Link href={`/team/editors/${item.id}`} className="block hover:text-teal-700 transition-all duration-150">{item.title}</Link>
+                            <Link href={`/team/${item.id}`} className="block hover:text-teal-700 transition-all duration-150">{item.title}</Link>
                         </h2>
                         <span className="inline-block mb-3 mt-2 text-sm py-1 px-2 bg-teal-600 text-white rounded-md">{item.position}</span>
                         <div

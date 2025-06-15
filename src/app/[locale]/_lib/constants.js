@@ -27,7 +27,7 @@ export const TopMenu = [
     {
         id: 3,
         title: 'team',
-        path: '/team/editors',
+        path: '/team',
         children: []
     },
     {
@@ -83,7 +83,7 @@ export const AUTH_FORM_INITIAL_STATE = {
     message: null
 }
 
-export const RESEARCHERS_PER_PAGE = 100
+export const RESEARCHERS_PER_PAGE = 4
 export const SPECIES_PER_PAGE = 5
 export const TAXON_PER_PAGE = 5
 export const SEARCH_RESULTS_PER_PAGE = 10
