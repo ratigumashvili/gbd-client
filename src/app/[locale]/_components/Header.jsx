@@ -131,7 +131,7 @@ function Header({ locale }) {
                             </Link>
                         </h1>
 
-                        <Link href="/" className="flex items-center gap-2 font-firaGo">
+                        <Link href="https://admin.biodiversity.iliauni.edu.ge" target="blank" className="flex items-center gap-2 font-firaGo">
                             <RightDoubleIcon />
                             {t("dashboard")}
                         </Link>

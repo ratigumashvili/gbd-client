@@ -48,12 +48,6 @@ export const TopMenu = [
         path: '/gallery',
         children: []
     },
-    // {
-    //     id: 7,
-    //     title: 'collaborators',
-    //     path: '/collaborators',
-    //     children: []
-    // }
 ]
 
 export const MARGIN = { top: 10, right: 10, bottom: 50, left: 50 };
