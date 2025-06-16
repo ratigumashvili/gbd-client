@@ -2,22 +2,9 @@
 
 import Image from "next/image"
 import { useLocale, useTranslations } from "next-intl"
-import { Link, usePathname } from "@/src/i18n/routing"
+import { Link } from "@/src/i18n/routing"
 
 import { detectLocale, sanitize } from "@/src/app/[locale]/_lib/helpers"
-
-const routes = [
-    {
-        id: 1,
-        title: "editors",
-        path: "/team/editors"
-    },
-    {
-        id: 2,
-        title: "contributors",
-        path: '/team/contributors'
-    }
-]
 
 export const Blocks = ({ data = [] }) => {
     return (
@@ -57,27 +44,5 @@ export const PageTitle = () => {
     return <h2 className={`text-2xl font-medium mb-4 ${detectLocale(locale)}`}>{t("pageTitle")}</h2>
 }
 
-export const RoleTranslate = () => {
 
-    const pathName = usePathname()
-    const t = useTranslations("Team")
-
-    const existingPaths = routes.map((item) => item.path)
-
-    if (existingPaths.includes(pathName)) {
-        return (
-            <div className="flex gap-x-4 mb-8">
-                {routes.map((item) => (
-                    <Link
-                        key={item.id}
-                        href={`${item.path}`}
-                        className={pathName === item.path ? "font-medium text-teal-700" : "font-normal text-black"}
-                    >
-                        <h3 className="text-xl">{t(item.title)}</h3>
-                    </Link>
-                ))}
-            </div>
-        )
-    }
-}
 
