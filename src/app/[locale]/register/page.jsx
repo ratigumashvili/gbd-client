@@ -36,8 +36,12 @@ export default function RegisterPage({ params }) {
         email: z.string().email({
             message: t("emailError"),
         }),
-        institution: z.string(),
-        interests: z.string()
+        institution: z.string().optional(),
+        department: z.string().optional(),
+        research_interests: z.string().optional(),
+        discipline: z.string().optional(),
+        field: z.string().optional(),
+        country: z.string().optional()
     });
 
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({ resolver: zodResolver(schema) })
@@ -57,11 +61,14 @@ export default function RegisterPage({ params }) {
                     email: formData.email,
                     password: formData.password,
                     institution: formData.institution,
-                    interests: formData.institution,
+                    department: formData.department,
+                    research_interests: formData.research_interests,
+                    discipline: formData.discipline,
+                    field: formData.field,
+                    country: formData.country
                 }),
             })
 
-            
             if (response.ok) {
                 toast.success(t("userRegistered"), toastOptions)
                 router.replace('/')
@@ -95,6 +102,7 @@ export default function RegisterPage({ params }) {
                         {...register("first_name")}
                     />
                     {errors.first_name && <FormErrors error={errors.first_name.message} />}
+                    
                     <input
                         type="text"
                         name="last_name"
@@ -103,6 +111,7 @@ export default function RegisterPage({ params }) {
                         {...register("last_name")}
                     />
                     {errors.last_name && <FormErrors error={errors.last_name.message} />}
+                    
                     <input
                         type="email"
                         name="email"
@@ -111,6 +120,7 @@ export default function RegisterPage({ params }) {
                         {...register("email")}
                     />
                     {errors.email && <FormErrors error={errors.email.message} />}
+                    
                     <input
                         type="text"
                         name="institution"
@@ -118,12 +128,46 @@ export default function RegisterPage({ params }) {
                         className='p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-sm'
                         {...register("institution")}
                     />
+
+                    <input
+                        type="text"
+                        name="department"
+                        placeholder={t("department")}
+                        className='p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-sm'
+                        {...register("department")}
+                    />
+
+                    <input
+                        type="text"
+                        name="discipline"
+                        placeholder={t("discipline")}
+                        className='p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-sm'
+                        {...register("discipline")}
+                    />
+
+                    <input
+                        type="text"
+                        name="field"
+                        placeholder={t("field")}
+                        className='p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-sm'
+                        {...register("field")}
+                    />
+
                     <textarea
-                        name="interests"
+                        name="research_interests"
                         placeholder={t("interests")}
                         className='p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-sm'
-                        {...register("interests")}
+                        {...register("research_interests")}
                     />
+
+                    <input
+                        type="text"
+                        name="country"
+                        placeholder={t("country")}
+                        className='p-2 bg-transparent border rounded-md outline-teal-500 placeholder:text-sm'
+                        {...register("country")}
+                    />
+                    
                     <input
                         type="password"
                         name="password"
@@ -132,6 +176,7 @@ export default function RegisterPage({ params }) {
                         {...register("password")}
                     />
                     {errors.password && <FormErrors error={errors.password.message} />}
+                    
                     <div className="flex items-center gap-2 text-sm">
                         <input
                             type="checkbox"
