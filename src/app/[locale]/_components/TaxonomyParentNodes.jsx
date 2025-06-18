@@ -17,7 +17,7 @@ export default function TaxonomyParentNodes({ data }) {
                     {data.map((item, index) => (
                         <Link
                             key={item.id}
-                            href={`/${filterTaxonValue(item.type)}/${item.name.toLowerCase()}?id=${item.id}`}
+                            href={`/${filterTaxonValue(item.type)}/${item.name?.toLowerCase()}?id=${item.id}`}
                             className="text-teal-700 hover:text-teal-700/80 transition"
                         >
                             <span className="capitalize">{filterTaxonValue(item.type)}</span> {item.name}

@@ -8,7 +8,7 @@ export const useFilterByField = (data, searchField = "title") => {
     return data.filter((item) => {
       const fieldValue = item[searchField];
       return fieldValue
-        ? fieldValue.toString().toLowerCase().includes(searchTerm.toLowerCase())
+        ? fieldValue.toString().toLowerCase().includes(searchTerm?.toLowerCase())
         : false;
     });
   }, [data, searchTerm, searchField]);

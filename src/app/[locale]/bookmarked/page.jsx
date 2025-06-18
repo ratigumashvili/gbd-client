@@ -76,7 +76,7 @@ function Bookmarked() {
 
         if (rankFilter) {
             filteredData = filteredData.filter((item) =>
-                item.rank.trim().toLowerCase() === rankFilter.trim().toLowerCase()
+                item?.rank?.trim().toLowerCase() === rankFilter?.trim().toLowerCase()
             );
         }
 

@@ -47,7 +47,7 @@ export default function FeedbackForm({ isOpen, closeModal, metaData, feedbackabl
                     "Accept": "application/json"
                 },
                 body: JSON.stringify({
-                    feedbackable_type: feedbackable_type.toLowerCase(),
+                    feedbackable_type: feedbackable_type?.toLowerCase(),
                     feedbackable_id: Number(feedbackable_id),
                     title: issueTitle,
                     content: description,

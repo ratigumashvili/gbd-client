@@ -6,7 +6,7 @@ export const useFilterByName = (data, searchField = "title") => {
   const filteredData = useMemo(() => {
     if (!data) return;
     return data.filter((item) =>
-      item[searchField]?.toLowerCase().includes(searchTerm.toLowerCase())
+      item[searchField]?.toLowerCase().includes(searchTerm?.toLowerCase())
     );
   }, [data, searchTerm, searchField]);
 
