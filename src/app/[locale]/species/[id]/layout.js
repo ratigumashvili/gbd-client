@@ -8,7 +8,7 @@ export async function generateMetadata({ params }) {
     return {
         title: data?.seo?.title,
         description: sanitize(data?.seo?.description, {allowedTags: [], allowedAttributes: {}}),
-        keywords: data?.seo?.keywords,
+        // keywords: sanitize(data?.seo?.keywords, {allowedTags: [], allowedAttributes: {}}),
         openGraph: {
             images: data?.seo?.og_image
         }
