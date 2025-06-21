@@ -11,9 +11,6 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna }) {
     <div className="flex-1">
 
       <h2 className='mt-8 mb-2 font-medium block-title'>{t("metadata")}</h2>
-      <pre>
-        {JSON.stringify(data, null, 2)}
-      </pre>
       <dl className="data-list">
 
         {data?.metadata?.scientific_name_id && (
@@ -23,21 +20,16 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna }) {
           </>
         )}
 
-        {data?.metadata?.scientific_name && (
+        {data?.metadata?.according_title && (
           <>
-            <dt><Link href={`${sna}`} target="blank" className="text-teal-700">{t("tax_source")}</Link>:</dt>
-            <dd>
-              {data?.metadata?.according_title && data?.metadata?.according_title?.startsWith('http') || data?.metadata?.according_title?.startsWith('https')
-                ? <Link href={data?.metadata?.according_title} target="blank">{t("url")}</Link>
-                : <span>{data?.metadata?.according_title}</span>
-              }
-            </dd>
+            <dt><Link href={`${accordingTo}`} target="blank" className="text-teal-700">{t("name_according_to")}</Link>:</dt>
+            <dd>{data?.metadata?.according_title}</dd>
           </>
         )}
 
         {data?.metadata?.scientific_name && (
           <>
-            <dt><Link href={`${accordingTo}`} target="blank" className="text-teal-700">{t("name_according_to")}</Link>:</dt>
+            <dt><Link href={`${sna}`} target="blank" className="text-teal-700">{t("tax_source")}</Link>:</dt>
             <dd>
               {data?.metadata.scientific_name}
             </dd>
