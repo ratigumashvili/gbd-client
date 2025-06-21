@@ -87,7 +87,7 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
                                     <Link href={`${rank ?? "#"}`} target='blank' className='text-teal-700'>{s("taxon_rank")}</Link>:
                                 </dt>
                                 <dd>
-                                    {data?.metadata?.taxon_rank_url
+                                    {data?.metadata?._url
                                         ? <Link href={data?.metadata?.taxon_rank_url} target="blank">{data?.metadata?.taxon_rank_title}</Link>
                                         : <span>{data?.metadata?.taxon_rank_title}</span>}
                                 </dd>

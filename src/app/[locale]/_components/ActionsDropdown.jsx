@@ -52,7 +52,7 @@ export default function ActionsDropdown({
         scientific_name: data?.metadata?.scientific_name,
         scientific_name_id: data?.metadata?.scientific_name_id,
         title_according_to: data?.metadata?.according_title,
-        taxon_rank: data.metadata.taxon_rank,
+        taxon_rank: data?.metadata?.taxon_rank,
         synonyms: data?.metadata?.synonyms,
         subspecies: data?.metadata?.subspecies,
         taxonomy_source_name: data?.metadata?.taxonomy_source_name,
