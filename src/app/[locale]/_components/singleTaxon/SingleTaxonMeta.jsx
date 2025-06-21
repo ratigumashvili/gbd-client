@@ -114,6 +114,15 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna }) {
           </>
         )}
 
+        {data?.metadata?.references_list && (
+          <>
+            <dt>{t("references_list")}</dt>
+            <dd>
+              <div dangerouslySetInnerHTML={{ __html: sanitize(data?.metadata?.references_list) }} />
+            </dd>
+          </>
+        )}
+
         {data?.editors?.length > 0 && (
           <>
             <dt>{t("editor")}:</dt>
