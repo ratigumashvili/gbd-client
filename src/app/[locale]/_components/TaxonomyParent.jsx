@@ -150,12 +150,6 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
                     )}
                 </div>
             </div>
-
-            {/* <div className="col-span-2 my-4 border rounded-md print:hidden">
-                <h2 className='font-medium text-md my-4 px-4'>{locale === 'ka' ? `${data?.metadata?.name} - ${t("visualRepresentation")}` : `${t("visualRepresentation")} ${data?.metadata?.name}`}</h2>
-                <hr className='shadow-sm' />
-                <DynamicTaxonomyOrder treeContent={fungiTree} />
-            </div> */}
         </section>
     )
 }
