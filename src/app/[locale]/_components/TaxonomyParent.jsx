@@ -10,10 +10,8 @@ import { v4 as uuidv4 } from 'uuid';
 import ActionsDropdown from './ActionsDropdown'
 import TaxonomyParentGallery from './TaxonomyParentGallery'
 import TaxonHeading from './TaxonHeading'
-import DynamicTaxonomyOrder from './taxonomyOrder'
 
-import { checkLink, separator } from "@/src/app/[locale]/_lib/helpers"
-import { fungiTree } from '../_lib/data'
+import { separator } from "@/src/app/[locale]/_lib/helpers"
 import { sanitize } from '@/src/app/[locale]/_lib/helpers'
 import { useFullUrl } from '@/src/app/[locale]/_hooks/useFullUrl'
 
