@@ -39,7 +39,6 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
         rank: data?.metadata?.taxon_rank_title || taxon_rank,
         taxonId: data?.metadata?.id,
         url: fullUrl,
-        // orgChartData: [],
     }
 
     return (
