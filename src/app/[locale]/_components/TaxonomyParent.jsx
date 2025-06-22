@@ -17,7 +17,7 @@ import { fungiTree } from '../_lib/data'
 import { sanitize } from '@/src/app/[locale]/_lib/helpers'
 import { useFullUrl } from '@/src/app/[locale]/_hooks/useFullUrl'
 
-export default function TaxonomyParent({ data, photos, species, rank, accordingTo, sna, vernakularName, locale }) {
+export default function TaxonomyParent({ data, photos, species, rank, accordingTo, sna, vernakularName, taxon_rank }) {
 
     const fullUrl = useFullUrl()
 

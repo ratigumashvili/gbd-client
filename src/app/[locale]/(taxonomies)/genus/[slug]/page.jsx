@@ -39,7 +39,8 @@ export default async function Genus({ params, searchParams }) {
         rank={`https://dwc.tdwg.org/list/#dwc_taxonRank`}
         accordingTo={``}
         sna={`https://dwc.tdwg.org/list/#dwc_scientificNameAuthorship`}
-        vernakularName={``}
+        vernakularName={`https://dwc.tdwg.org/list/#dwc_vernacularName`}
+        taxon_rank="Genus"
       />
 
       <TaxonomyConservationStatus
