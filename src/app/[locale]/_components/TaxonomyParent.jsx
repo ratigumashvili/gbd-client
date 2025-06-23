@@ -51,7 +51,7 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
                     species={species}
                     isSpecie={false}
                     downloadContent={true}
-                    feedbackable_type={data?.metadata?.taxon_rank_title || taxon_rank}
+                    feedbackable_type={taxon_rank}
                     feedbackable_id={data?.metadata?.id}
                 />
             </div>
@@ -84,16 +84,14 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
                             </>
                         )}
 
-                        {data?.metadata?.taxon_rank_title && (
-                            <>
-                                <dt>
-                                    <Link href={`${rank ?? "#"}`} target='blank' className='text-teal-700'>{s("taxon_rank")}</Link>:
-                                </dt>
-                                <dd>
-                                    {data?.metadata?.taxon_rank_title}
-                                </dd>
-                            </>
-                        )}
+
+                        <dt>
+                            <Link href={`${rank ?? "#"}`} target='blank' className='text-teal-700'>{s("taxon_rank")}</Link>:
+                        </dt>
+                        <dd>
+                            {data?.metadata?.taxon_rank_title || s(`${taxon_rank}`)}
+                        </dd>
+
 
                         {data?.metadata?.according_title && (
                             <>
