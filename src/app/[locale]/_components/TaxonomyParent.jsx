@@ -103,12 +103,11 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
 
                         {data?.metadata?.english_name && (
                             <>
-                                <dt><Link href={`${vernakularName ?? "#"}`} target='blank' className='text-teal-700'>{s("english_name")}</Link>:
+                                <dt>
+                                    <Link href={`${vernakularName ?? "#"}`} target='blank' className='text-teal-700'>{s("english_name")}</Link>:
                                 </dt>
                                 <dd>
-                                    {data?.metadata?.english_url
-                                        ? <Link href={data?.metadata?.english_url} target="blank">{data?.metadata?.english_name}</Link>
-                                        : <span>{data?.metadata?.english_name}</span>}
+                                    {data?.metadata?.english_name}
                                 </dd>
                             </>
                         )}
