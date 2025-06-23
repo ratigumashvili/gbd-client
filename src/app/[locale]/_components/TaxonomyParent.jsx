@@ -77,6 +77,13 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
                             </>
                         )}
 
+                        {data?.metadata?.published_in_year && (
+                            <>
+                                <dt>{s("name_published_in_year")}:</dt>
+                                <dd>{data?.metadata?.published_in_year}</dd>
+                            </>
+                        )}
+
                         {data?.metadata?.taxon_rank_title && (
                             <>
                                 <dt>
@@ -98,13 +105,6 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
                                             : <span>{data?.metadata?.according_title}</span>
                                     }
                                 </dd>
-                            </>
-                        )}
-
-                        {data?.metadata?.published_in_year && (
-                            <>
-                                <dt>{s("name_published_in_year")}:</dt>
-                                <dd>{data?.metadata?.published_in_year}</dd>
                             </>
                         )}
 
