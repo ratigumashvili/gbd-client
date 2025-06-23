@@ -70,7 +70,7 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
 
                         {data?.metadata?.scientific_name_authorship_title && (
                             <>
-                                <dt><Link href={`${accordingTo ?? "#"}`} target='blank' className='text-teal-700'>{s("name_according_to")}</Link>:</dt>
+                                <dt><Link href={`${sna ?? "#"}`} target='blank' className='text-teal-700'>{s("name_according_to")}</Link>:</dt>
                                 <dd>
                                     {data?.metadata?.scientific_name_authorship_title}
                                 </dd>
@@ -97,7 +97,7 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
 
                         {data?.metadata?.according_title && (
                             <>
-                                <dt><Link href={`${sna ?? "#"}`} target='blank' className='text-teal-700'>{s("tax_source")}</Link>:</dt>
+                                <dt><Link href={`${accordingTo ?? "#"}`} target='blank' className='text-teal-700'>{s("tax_source")}</Link>:</dt>
                                 <dd>
                                     {
                                         data?.metadata?.according_title && data?.metadata?.according_title.startsWith('http') || data?.metadata?.according_title?.startsWith('https')
