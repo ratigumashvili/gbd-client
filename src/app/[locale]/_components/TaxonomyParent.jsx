@@ -60,6 +60,9 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
 
                     <h2 className='font-medium my-2 block-title'>{t("desc")}</h2>
 
+
+                    <pre>{JSON.stringify(data?.metadata, null, 2)}</pre>
+
                     <dl className="data-list">
                         {data?.metadata?.scientific_name_id && (
                             <>
@@ -98,6 +101,13 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
                                             : <span>{data?.metadata?.according_title}</span>
                                     }
                                 </dd>
+                            </>
+                        )}
+
+                        {data?.metadata?.published_in_year && (
+                            <>
+                                <dt>{s("name_published_in_year")}:</dt>
+                                <dd>{data?.metadata?.published_in_year}</dd>
                             </>
                         )}
 
