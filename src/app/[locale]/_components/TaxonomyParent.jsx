@@ -67,13 +67,12 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
                                 <dd>{data?.metadata?.scientific_name_id}</dd>
                             </>
                         )}
+
                         {data?.metadata?.scientific_name_authorship_title && (
                             <>
                                 <dt><Link href={`${accordingTo ?? "#"}`} target='blank' className='text-teal-700'>{s("name_according_to")}</Link>:</dt>
                                 <dd>
-                                    {data?.metadata?.scientific_name_authorship_url
-                                        ? <Link href={data?.metadata?.scientific_name_authorship_url} target="blank">{data?.metadata?.scientific_name_authorship_title}</Link>
-                                        : <span>{data?.metadata?.scientific_name_authorship_title}</span>}
+                                    {data?.metadata?.scientific_name_authorship_title}
                                 </dd>
                             </>
                         )}
@@ -84,24 +83,24 @@ export default function TaxonomyParent({ data, photos, species, rank, accordingT
                                     <Link href={`${rank ?? "#"}`} target='blank' className='text-teal-700'>{s("taxon_rank")}</Link>:
                                 </dt>
                                 <dd>
-                                    {data?.metadata?._url
-                                        ? <Link href={data?.metadata?.taxon_rank_url} target="blank">{data?.metadata?.taxon_rank_title}</Link>
-                                        : <span>{data?.metadata?.taxon_rank_title}</span>}
+                                    {data?.metadata?.taxon_rank_title}
                                 </dd>
                             </>
                         )}
-                        {data?.metadata?.scientific_name_authorship_title && (
+
+                        {data?.metadata?.according_title && (
                             <>
                                 <dt><Link href={`${sna ?? "#"}`} target='blank' className='text-teal-700'>{s("tax_source")}</Link>:</dt>
                                 <dd>
                                     {
                                         data?.metadata?.according_title && data?.metadata?.according_title.startsWith('http') || data?.metadata?.according_title?.startsWith('https')
-                                            ? <Link href={data?.metadata?.according_title}>{s("url")}</Link>
+                                            ? <Link href={data?.metadata?.according_title} target='blank'>{s("url")}</Link>
                                             : <span>{data?.metadata?.according_title}</span>
                                     }
                                 </dd>
                             </>
                         )}
+
                         {data?.metadata?.english_name && (
                             <>
                                 <dt><Link href={`${vernakularName ?? "#"}`} target='blank' className='text-teal-700'>{s("english_name")}</Link>:

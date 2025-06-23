@@ -37,7 +37,7 @@ export default async function Family({ params, searchParams }) {
         photos={data.files}
         species={child}
         rank={`https://dwc.tdwg.org/list/#dwc_taxonRank`}
-        accordingTo={``}
+        accordingTo={`https://dwc.tdwg.org/list/#dwc_nameAccordingTo`}
         sna={`https://dwc.tdwg.org/list/#dwc_scientificNameAuthorship`}
         vernakularName={`https://dwc.tdwg.org/list/#dwc_vernacularName`}
         taxon_rank="Family"

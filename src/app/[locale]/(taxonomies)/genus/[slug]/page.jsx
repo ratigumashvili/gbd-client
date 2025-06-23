@@ -37,7 +37,7 @@ export default async function Genus({ params, searchParams }) {
         photos={data.files}
         species={species.data}
         rank={`https://dwc.tdwg.org/list/#dwc_taxonRank`}
-        accordingTo={``}
+        accordingTo={`https://dwc.tdwg.org/list/#dwc_nameAccordingTo`}
         sna={`https://dwc.tdwg.org/list/#dwc_scientificNameAuthorship`}
         vernakularName={`https://dwc.tdwg.org/list/#dwc_vernacularName`}
         taxon_rank="Genus"
