@@ -20,19 +20,21 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, taxon_ra
           </>
         )}
 
-        {data?.metadata?.scientific_name && (
+        {data?.metadata?.according_title && (
           <>
             <dt><Link href={`${sna}`} target="blank" className="text-teal-700">{t("tax_source")}</Link>:</dt>
             <dd>
-              {data?.metadata.scientific_name}
+              {data?.metadata?.according_title && data?.metadata?.according_title.startsWith('http') || data?.metadata?.according_title?.startsWith('https')
+                ? <Link href={data?.metadata?.according_title} target="blank">{t("url")}</Link>
+                : <span>{data?.metadata?.according_title}</span>}
             </dd>
           </>
         )}
 
-        {data?.metadata?.according_title && (
+        {data?.metadata?.scientific_name && (
           <>
             <dt><Link href={`${accordingTo}`} target="blank" className="text-teal-700">{t("name_according_to")}</Link>:</dt>
-            <dd>{data?.metadata?.according_title}</dd>
+            <dd>{data?.metadata.scientific_name}</dd>
           </>
         )}
 
