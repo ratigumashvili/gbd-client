@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl"
 
 import { sanitize, separator } from "@/src/app/[locale]/_lib/helpers"
 
-export default function SingleTaxonMeta({ data, rank, accordingTo, sna }) {
+export default function SingleTaxonMeta({ data, rank, accordingTo, sna, taxon_rank }) {
 
   const t = useTranslations("Species")
 
@@ -36,14 +36,12 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna }) {
           </>
         )}
 
-        {data?.metadata?.taxon_rank && (
-          <>
-            <dt>
-              <Link href={`${rank}`} target='blank' className='text-teal-700'>{t("taxon_rank")}</Link>:
-            </dt>
-            <dd>{data?.metadata?.taxon_rank}</dd>
-          </>
-        )}
+
+        <dt>
+          <Link href={`${rank}`} target='blank' className='text-teal-700'>{t("taxon_rank")}</Link>:
+        </dt>
+        <dd>{data?.metadata?.taxon_rank || t(`${taxon_rank}`)}</dd>
+
 
         {data?.metadata?.georgian_name && (
           <>
