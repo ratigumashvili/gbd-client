@@ -36,7 +36,7 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, taxon_ra
         {/* Shows Taxon author */}
         {data?.metadata?.scientific_name && (
           <>
-            <dt><Link href={`${accordingTo}`} target="blank" className="text-teal-700">{t("according_title")}</Link>:</dt>
+            <dt>{t("according_title")}:</dt>
             <dd>{data?.metadata.scientific_name}</dd>
           </>
         )}
