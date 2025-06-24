@@ -24,7 +24,7 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, taxon_ra
         {/* Shows taxonomy source */}
         {data?.metadata?.according_title && (
           <>
-            <dt>{t("tax_source")}:</dt>
+            <dt>{t("taxonomy_source")}:</dt>
             <dd>
               {data?.metadata?.according_title && data?.metadata?.according_title.startsWith('http') || data?.metadata?.according_title?.startsWith('https')
                 ? <Link href={data?.metadata?.according_title} target="blank">{t("url")}</Link>
