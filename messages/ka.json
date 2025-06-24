@@ -384,6 +384,7 @@
     "Genus": "გვარი",
     "specific_information": "სპეციფიკური ინფორმაცია",
     "tax_source": "ტაქსონომიური წყარო",
-    "Specie": "სახეობა"
+    "Specie": "სახეობა",
+    "according_title": "აღმწერი"
   }
 }

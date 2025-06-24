@@ -384,6 +384,7 @@
     "Genus": "Genus",
     "specific_information": "Specific information",
     "tax_source": "Taxonomy source",
-    "Specie": "Specie"
+    "Specie": "Specie",
+    "according_title": "Taxon author"
   }
 }

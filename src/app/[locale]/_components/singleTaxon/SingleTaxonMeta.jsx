@@ -11,6 +11,7 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, taxon_ra
     <div className="flex-1">
 
       <h2 className='mt-8 mb-2 font-medium block-title'>{t("metadata")}</h2>
+
       <dl className="data-list">
 
         {data?.metadata?.scientific_name_id && (
@@ -33,7 +34,7 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, taxon_ra
 
         {data?.metadata?.scientific_name && (
           <>
-            <dt><Link href={`${accordingTo}`} target="blank" className="text-teal-700">{t("name_according_to")}</Link>:</dt>
+            <dt><Link href={`${accordingTo}`} target="blank" className="text-teal-700">{t("according_title")}</Link>:</dt>
             <dd>{data?.metadata.scientific_name}</dd>
           </>
         )}
