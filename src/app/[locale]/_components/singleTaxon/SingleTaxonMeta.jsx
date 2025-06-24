@@ -64,7 +64,7 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, taxon_ra
 
         {data?.metadata?.taxonomy_source_name && (
           <>
-            <dt>!!!{t("taxonomy_source")}:</dt>
+            <dt>{t("taxonomy_source")}:</dt>
             <dd>
               {data?.metadata?.taxonomy_source_name && data?.metadata?.taxonomy_source_name.startsWith('http') || data?.metadata?.taxonomy_source_name?.startsWith('https')
                 ? <Link href={data?.metadata?.taxonomy_source_name} target="blank">{t("url")}</Link>
