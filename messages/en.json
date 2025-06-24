@@ -383,6 +383,7 @@
     "Family": "Family",
     "Genus": "Genus",
     "specific_information": "Specific information",
-    "tax_source": "Taxonomy source"
+    "tax_source": "Taxonomy source",
+    "Specie": "Specie"
   }
 }

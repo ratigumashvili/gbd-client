@@ -36,12 +36,10 @@ export default function SingleTaxonMeta({ data, rank, accordingTo, sna, taxon_ra
           </>
         )}
 
-
         <dt>
           <Link href={`${rank}`} target='blank' className='text-teal-700'>{t("taxon_rank")}</Link>:
         </dt>
-        <dd>{data?.metadata?.taxon_rank || s(`${taxon_rank}`)}</dd>
-
+        <dd>{data?.metadata?.taxon_rank || t(`${taxon_rank}`)}</dd>
 
         {data?.metadata?.georgian_name && (
           <>
